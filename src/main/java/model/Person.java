@@ -1,11 +1,16 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Person {
-
+	
+	@Id
+	@GeneratedValue
 	private long ID;
+	
 	private String photo;
 	private String academia;
 	private int numTelephone;
