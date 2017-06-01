@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE xml>
 <persistence version="2.1">
    <persistence-unit name="ProjectDataBase" transaction-type="JTA">
@@ -13,4 +13,4 @@
         <property name="hibernate.use_sql_comments" value="true" />
      </properties>
    </persistence-unit>
-</persistence>
+</persistence> -->
