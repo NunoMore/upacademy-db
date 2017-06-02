@@ -12,7 +12,7 @@ public class Person {
 	private long ID;
 	
 	private String photo;
-	private String academia;
+	private String academy;
 	private int numTelephone;
 	private String facebookLink;
 	private String linkedInLink;
@@ -31,11 +31,11 @@ public class Person {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getAcademia() {
-		return academia;
+	public String getAcademy() {
+		return academy;
 	}
-	public void setAcademia(String academia) {
-		this.academia = academia;
+	public void setAcademy(String academy) {
+		this.academy = academy;
 	}
 	public int getNumTelephone() {
 		return numTelephone;
