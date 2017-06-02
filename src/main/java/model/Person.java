@@ -4,7 +4,7 @@ public class Person {
 
 	private long ID;
 	private String photo;
-	private String academia;
+	private String academy;
 	private int numTelephone;
 	private String facebookLink;
 	private String linkedInLink;
@@ -24,10 +24,10 @@ public class Person {
 		this.photo = photo;
 	}
 	public String getAcademia() {
-		return academia;
+		return academy;
 	}
 	public void setAcademia(String academia) {
-		this.academia = academia;
+		this.academy = academia;
 	}
 	public int getNumTelephone() {
 		return numTelephone;
