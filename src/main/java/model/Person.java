@@ -1,8 +1,17 @@
 package model;
 
-public class Person {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Person {
+	
+	@Id
+	@GeneratedValue
 	private long ID;
+	
+	private String name;
 	private String photo;
 	private String academy;
 	private int numTelephone;
@@ -11,6 +20,13 @@ public class Person {
 	private String gitHubLink;
 	private String workPlace;
 	private String curriculum;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public long getID() {
 		return ID;
 	}
@@ -23,11 +39,18 @@ public class Person {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getAcademia() {
+
+	public String getacademy() {
 		return academy;
 	}
-	public void setAcademia(String academia) {
-		this.academy = academia;
+	public void setacademy(String academy) {
+		this.academy = academy;
+	}
+	public String getAcademy() {
+		return academy;
+	}
+	public void setAcademy(String academy) {
+		this.academy = academy;
 	}
 	public int getNumTelephone() {
 		return numTelephone;
