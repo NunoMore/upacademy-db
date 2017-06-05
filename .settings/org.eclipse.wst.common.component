@@ -4,6 +4,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <property name="context-root" value="UPACADEMY_DB"/>
+<<<<<<< HEAD
         <property name="java-output-path" value="/upacademy-db/target/classes"/>
+=======
+        <property name="java-output-path" value="/UPACADEMY_DB/target/classes"/>
+>>>>>>> dev
     </wb-module>
 </project-modules>
