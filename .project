@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
 	<name>upacademy-db</name>
-=======
-	<name>UPACADEMY_DB</name>
->>>>>>> dev
 	<comment></comment>
 	<projects>
 	</projects>
@@ -20,14 +16,6 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-<<<<<<< HEAD
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-=======
->>>>>>> dev
 			<name>org.jboss.tools.jst.web.kb.kbbuilder</name>
 			<arguments>
 			</arguments>
@@ -47,14 +35,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-<<<<<<< HEAD
-=======
 		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
->>>>>>> dev
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
@@ -64,10 +49,7 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
-<<<<<<< HEAD
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
-=======
->>>>>>> dev
 		<nature>org.jboss.tools.ws.jaxrs.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>

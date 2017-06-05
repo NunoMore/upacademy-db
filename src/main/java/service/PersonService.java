@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-package service;
 
-public class PersonService {
-
-}
-=======
 package service;
 
 import java.util.Collection;
@@ -44,4 +38,4 @@ public class PersonService {
 		em.remove(person);
 	}
 }
->>>>>>> dev
+

@@ -1,0 +1,3 @@
+model/Person.class
+view/PersonBean.class
+service/PersonService.class

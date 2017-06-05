@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -40,105 +39,15 @@
 			</ui:define>
 			
 			<ui:define name="display">
-				<h1 class="clicheFrases">Hello Wellcome to UpAcademy's Alumni Database</h1>
-				<p></p>
-				<h2 class="clicheFrases2">Find Your Old UpAcademy Budy</h2>
+				<h:form>
+					<h:panelGrid id="logIn" columns="2" cellpadding="5">
+						<h:outputText value="User: " />
+						<p:inputText />
+						<h:outputText value="Password: " />
+						<p:inputText />
+					</h:panelGrid>
+				</h:form>
 			</ui:define>
 		</ui:composition>
 	</body>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
-
-<h:body>
-	<div id="page">
-
-
-		<div id="header" class="row"></div>
-		<div id="content" class="row">
-			<h:form>
-				<p:inputText value="#{personBean.person.name}" />
-				<p:inputText value="#{personBean.person.numTelephone}"></p:inputText>
-				<p:commandButton value="create" action="#{personBean.createPerson}"></p:commandButton>
-
-				<p:dataTable var="person" value="#{personBean.readPerson()}">
-					<p:column headerText="Id">
-						<h:outputText value="#{person.ID}" />
-					</p:column>
-
-					<p:column headerText="Name">
-						<h:outputText value="#{person.name}" />
-					</p:column>
-					<p:column headerTest="Delete Option">
-						<p:commandButton value="delete" action="#{personBean.removePerson()}"></p:commandButton>
-					</p:column>
-				</p:dataTable>
-				
-				<p:dataTable var="person" value="#{personBean.readPerson()}" editable="true" editMode="cell" >
-				<f:facet name="header">
-           			Double click on the fields to edit their value
-       			</f:facet>
-       			
-       			<p:ajax event="cellEdit"  update="j_idt10:products"/>
-       			
-				<p:column headerText="Id">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{product.getEntityId()}" />
-						</f:facet>
-						<f:facet name="input" >
-							<p:inputText value="#{product.getEntityId()}" style="width:96%" label="Name" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Name">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{product.name}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{product.name}" style="width:96%" label="Name" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Num Telephone">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{product.discount}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{product.discount}" style="width:96%" label="Name" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-			</p:dataTable>
-			
-			<!-- 	<p>Edit atributs</p>
-				<p:inputText value="#{personBean.person.name}"></p:inputText>
-				<p:commandButton value="update" action="#{personBean.updatePerson}"></p:commandButton>
-			 -->
-							
-			
-			</h:form>
-		</div>
-
-		<div id="footer" class="row">
-		</div>
-
-	</div>
-
-</h:body>
->>>>>>> dev
 </html>

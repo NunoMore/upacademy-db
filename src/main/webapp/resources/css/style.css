@@ -35,6 +35,53 @@
 	white-space: pre-wrap;
 }
 
+#naveg{
+	padding-left: 0px;
+	background: white;
+	padding: 0px;
+}
+
+li{
+	display: inline;
+}
+
+.naveglist > li > a {
+	padding: 10px 30px;
+}
+
+.naveglist {
+	font-size: 20px;
+	background-color: #cccccc;
+	padding: 10px 50px;
+}
+
+.naveglist > li + li {
+	margin-left: 0px;
+}
+
+.naveglist > li > a {
+	text-align: center;
+	width: 210px;
+	color: black;
+	border-radius: 0px;
+}
+
+.naveglist > li.active > a {
+	font-weight: bold;
+	color: black;
+	background-color: #ffbb00;
+}
+
+.naveglist > li.active > a:hover {
+	background-color: #474747;
+	color: #ffbb00;
+}
+
+.naveglist > li > a:hover {
+	background-color: #474747;
+	color: #ffbb00;
+}
+
 #footer{
 	height: 48px;
 	background-color: #567705;

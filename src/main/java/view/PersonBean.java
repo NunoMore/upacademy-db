@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package view;
-
-public class PersonBean {
-
-}
-=======
 package view;
 
 import java.util.Collection;
@@ -54,4 +47,4 @@ public class PersonBean {
 		return "index";
 	}
 }
->>>>>>> dev
+
