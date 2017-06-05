@@ -18,6 +18,13 @@
 	background-color: #8e9185;
 }
 
+#contentDisplay {
+    height: 758px;
+    width: 97%;
+    padding-top: 45px;
+    padding-left: 60px;
+}
+
 #menuButton1, #menuButton2, #menuButton3, #menuButton4, #menuButton5{
 	height: 15%;
 	width: 90%;
@@ -37,7 +44,7 @@
 
 #naveg{
 	padding-left: 0px;
-	background: white;
+	background: #d9f2d5;
 	padding: 0px;
 }
 
@@ -46,17 +53,18 @@ li{
 }
 
 .naveglist > li > a {
-	padding: 10px 30px;
+	padding: 5px 30px;
 }
 
 .naveglist {
-	font-size: 20px;
-	background-color: #cccccc;
-	padding: 10px 50px;
+	font-size: 15x;
+	background-color: #d9f2d5;
+	padding: 10px 100px;
 }
 
 .naveglist > li + li {
-	margin-left: 0px;
+	margin-left: 20px;
+
 }
 
 .naveglist > li > a {
@@ -69,7 +77,7 @@ li{
 .naveglist > li.active > a {
 	font-weight: bold;
 	color: black;
-	background-color: #ffbb00;
+	background-color: white;
 }
 
 .naveglist > li.active > a:hover {
@@ -80,6 +88,23 @@ li{
 .naveglist > li > a:hover {
 	background-color: #474747;
 	color: #ffbb00;
+}
+
+
+#logInBox {
+	display:grid;
+	grid-template-colums:repeat(4, 1fr);
+	grid-grap: 10px;
+	grid-auto-rows:200px;
+	grid-template-areas: 
+	". a a ."
+	". a a .";
+}
+
+#logIn{
+	grid-area: a;
+	align-self:center;
+	justify-self: center;
 }
 
 #footer{
