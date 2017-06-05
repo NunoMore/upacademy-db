@@ -27,50 +27,52 @@
 		</ui:define>
 
 		<ui:define name="display">
-			<p:dataTable id="consultAll" var="person"
-				value="#{PersonService.consult()}" widgetVar="carsTable"
-				multiViewState="true" rows="10" paginator="true"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" selectionMode="single"
-				selection="#{dtTableStateView.selectedCar}" rowKey="#{car.id}"
-				emptyMessage="No cars found with given criteria"
-				filteredValue="#{dtTableStateView.filteredCars}">
+			<h:form id="formTable">
+				<p:dataTable id="consultAll" var="person"
+					value="#{personBean.readPerson()}" widgetVar="personsTable"
+					multiViewState="true" rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
+					emptyMessage="No persons found with that search criteria"
+					filteredValue="#{tableView.filteredPersons}">
 
-				<f:facet name="header">
-					<p:outputPanel>
-						<h:outputText value="Search all fields:" />
-						<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
-							style="width:150px" placeholder="Enter keyword" />
-					</p:outputPanel>
-				</f:facet>
-
-				<p:ajax event="rowSelect" update=":form:carDetail"
-					oncomplete="PF('carDialog').show()" />
-
-				<p:column headerText="Id" filterBy="#{car.id}" sortBy="#{car.id}"
-					filterMatchMode="contains">
-					<h:outputText value="#{car.id}" />
-				</p:column>
-
-				<p:column headerText="Year" filterBy="#{car.year}"
-					sortBy="#{car.year}" filterMatchMode="startsWith">
-					<h:outputText value="#{car.year}" />
-				</p:column>
-
-				<p:column headerText="Brand" filterBy="#{car.brand}"
-					sortBy="#{car.brand}" filterMatchMode="exact">
-					<f:facet name="filter">
-						<p:selectOneMenu onchange="PF('carsTable').filter()"
-							style="width:100px;">
-							<f:selectItem itemLabel="Select One" itemValue="#{null}"
-								noSelectionOption="true" />
-							<f:selectItems value="#{dtTableStateView.brands}" />
-						</p:selectOneMenu>
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Search all fields:" />
+							<p:inputText id="globalFilter"
+								onkeyup="PF('personsTable').filter()" style="width:150px"
+								placeholder="Search" />
+						</p:outputPanel>
 					</f:facet>
-					<h:outputText value="#{car.brand}" />
-				</p:column>
 
-				<p:column headerText="Color" filterBy="#{car.color}"
+					<p:ajax event="rowSelect" update=":formTable:personDetail"
+						oncomplete="PF('personDialog').show()" />
+
+					<p:column headerText="Id" filterBy="#{person.ID}"
+						sortBy="#{person.ID}" filterMatchMode="contains">
+						<h:outputText value="#{person.ID}" />
+					</p:column>
+
+					<p:column headerText="Nome" filterBy="#{person.name}"
+						sortBy="#{person.name}" filterMatchMode="startsWith">
+						<h:outputText value="#{person.name}" />
+					</p:column>
+
+					<p:column headerText="Academia" filterBy="#{person.academy}"
+						sortBy="#{person.academy}" filterMatchMode="exact">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('personsTable').filter()"
+								style="width:100px;">
+								<f:selectItem itemLabel="Academias" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{tableView.academies}" />
+							</p:selectOneMenu>
+						</f:facet>
+						<h:outputText value="#{person.academy}" />
+					</p:column>
+
+					<!-- <p:column headerText="" filterBy="#{car.color}"
 					sortBy="#{car.color}" filterMatchMode="in">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="Colors"
@@ -80,36 +82,50 @@
 						</p:selectCheckboxMenu>
 					</f:facet>
 					<h:outputText value="#{car.color}" />
-				</p:column>
-			</p:dataTable>
+				</p:column> -->
+				</p:dataTable>
 
-			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="carDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty dtTableStateView.selectedCar}"
-						columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage
-								name="demo/images/car/#{dtTableStateView.selectedCar.brand}-big.gif" />
-						</f:facet>
+				<p:dialog header="helooooo" widgetVar="personDialog" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="personDetail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty tableView.selectedPerson}"
+							columnClasses="label,value">
+							<f:facet name="header">
+								<p:graphicImage name="resources/fotos/nuno_moreira.jpg" />
+								<!-- colocar o seguinte:  resources/fotos/tableView.selectedPerson.photo-->
+							</f:facet>
 
-						<h:outputText value="Id:" />
-						<h:outputText value="#{dtTableStateView.selectedCar.id}" />
+							<h:outputText value="Id" />
+							<h:outputText value="#{tableView.selectedPerson.ID}" />
 
-						<h:outputText value="Year" />
-						<h:outputText value="#{dtTableStateView.selectedCar.year}" />
+							<h:outputText value="Nome" />
+							<h:outputText value="#{tableView.selectedPerson.name}" />
 
-						<h:outputText value="Brand" />
-						<h:outputText value="#{dtTableStateView.selectedCar.brand}" />
+							<h:outputText value="Academia" />
+							<h:outputText value="#{tableView.selectedPerson.academy}" />
 
-						<h:outputText value="Color:" />
-						<h:outputText value="#{dtTableStateView.selectedCar.color}"
-							style="color:#{dtTableStateView.selectedCar.color}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
+							<!-- <h:outputText value="Email" />
+						<h:link value="#{tableView.selectedPerson.email}"/> -->
 
+							<h:outputText value="Tlm" />
+							<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
+
+							<h:outputText value="Facebook" />
+							<h:link value="#{tableView.selectedPerson.facebookLink}" />
+
+							<h:outputText value="LinkedIn" />
+							<h:link value="#{tableView.selectedPerson.linkedInLink}" />
+
+							<h:outputText value="Git Hub" />
+							<h:link value="#{tableView.selectedPerson.gitHubLink}" />
+
+							<h:outputText value="LinkedIn" />
+							<h:link value="#{tableView.selectedPerson.linkedInLink}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 
