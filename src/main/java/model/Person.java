@@ -11,14 +11,22 @@ public class Person {
 	@GeneratedValue
 	private long ID;
 	
+	private String name;
 	private String photo;
-	private String academia;
+	private String academy;
 	private int numTelephone;
 	private String facebookLink;
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
 	private String curriculum;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public long getID() {
 		return ID;
 	}
@@ -31,11 +39,18 @@ public class Person {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getAcademia() {
-		return academia;
+
+	public String getacademy() {
+		return academy;
 	}
-	public void setAcademia(String academia) {
-		this.academia = academia;
+	public void setacademy(String academy) {
+		this.academy = academy;
+	}
+	public String getAcademy() {
+		return academy;
+	}
+	public void setAcademy(String academy) {
+		this.academy = academy;
 	}
 	public int getNumTelephone() {
 		return numTelephone;

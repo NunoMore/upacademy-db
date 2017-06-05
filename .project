@@ -21,12 +21,20 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>org.jboss.tools.ws.jaxrs.metamodelBuilder</name>
+=======
+			<name>org.jboss.tools.cdi.core.cdibuilder</name>
+>>>>>>> dev
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>org.jboss.tools.cdi.core.cdibuilder</name>
+=======
+			<name>org.jboss.tools.ws.jaxrs.metamodelBuilder</name>
+>>>>>>> dev
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -47,10 +55,17 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+<<<<<<< HEAD
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
 		<nature>org.jboss.tools.ws.jaxrs.nature</nature>
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
+=======
+		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
+		<nature>org.jboss.tools.cdi.core.cdinature</nature>
+		<nature>org.jboss.tools.ws.jaxrs.nature</nature>
+		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+>>>>>>> dev
 	</natures>
 </projectDescription>
