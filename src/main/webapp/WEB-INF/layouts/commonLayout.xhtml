@@ -7,38 +7,77 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-	<!-- Codigo bootstrap -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous" />
-
-	<!-- Optional theme -->
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-		crossorigin="anonymous" />
+		
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 	<title><ui:insert name="title">Some title</ui:insert></title>
-	<h:outputStylesheet library="css" name="commonLayoutStyle.css" />
-
+	
+	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="css/style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+	<h:outputScript name="bootstrap/js/bootstrap.js" />
+	
 </h:head>
 <body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
-		</ui:insert>
+	<!--  Header -->
+	<div class="row">
+		<div id="head" class="col-md-12">
+			<h2 class="titulo">UpAcademy Linked</h2>
+		</div>
+	</div>
+	
+	<!-- barra de log in -->
+	<div id="loginBar" class="col-md-12">
+		<ui:insert name="logInBar"></ui:insert>
+	</div>
+	
+	<div class="row">
+		<!-- Menu Lateral -->
+		<div id="sideMenu" class="col-md-2">
+			<div id="menuButton1" class="col-md-12">
+				<ui:insert name="button1" class="button">
+				</ui:insert>
+			</div>
+
+			<div id="menuButton2" class="col-md-12">
+				<ui:insert name="button2" class="button">
+				</ui:insert>
+			</div>
+
+			<div id="menuButton3" class="col-md-12">
+				<ui:insert name="button3" class="button">
+				</ui:insert>
+			</div>
+
+			<div id="menuButton4" class="col-md-12">
+				<ui:insert name="button4" class="button">
+				</ui:insert>
+			</div>
+			
+			<div id="menuButton5" class="col-md-12">
+				<ui:insert name="button5" class="button">
+				</ui:insert>
+			</div>
+		</div>
+
+		<!-- Conteudo central -->
+		<div id="content" class="col-md-10">
+			<div id="contendDisplay" class="col-md-12">
+				<ui:insert name="display">
+				</ui:insert>
+			</div>
+		</div>
 	</div>
 
-	<div  class="fundoGeral" id="content">
-		<ui:insert name="content" />	
-	</div>
 
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
-		</ui:insert>
+	<!-- footer -->
+	<div class="row">
+		<div id="footer" class="col-md-12">
+			<h4 class="ProgramerName">Programa criado por Group
+				UpAcademy 2017</h4>
+		</div>
 	</div>
 
 	<!-- Ficheiro jQuery (online) -->
@@ -46,14 +85,14 @@
 		</script>
 
 	<!-- Ficheiro script online para Bootstrap -->
-	<!-- Latest compiled and minified JavaScript -->
+	<!-- Latest compiled and minified JavaScript 
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous">
 	</script>
 	
-	<h:outputScript library="javascript" name="script.js" /> 
+	<h:outputScript library="javascript" name="script.js" /> -->
 
 </body>
 </html>

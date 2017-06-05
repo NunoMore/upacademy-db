@@ -1,1 +1,41 @@
-//css
+#head{
+	color: #fffcd3;
+	background: #567705;
+	text-align: center;
+	height: 100px;
+}
+
+#sideMenu {
+	height: 870px;
+	padding: 40px 10px 40px 10px;
+	color: white;
+	background-color: #c7c9c3;
+}
+
+#content{
+	height: 870px;
+	color: white;
+	background-color: #8e9185;
+}
+
+#menuButton1, #menuButton2, #menuButton3, #menuButton4, #menuButton5{
+	height: 15%;
+	width: 90%;
+	padding-top: 5px;
+	margin: 20px 10px 20px 10px;
+	text-align: center;
+	color:white;
+}
+
+.btn{
+	height:100px;
+	width: 100%;
+	font-size: 25px;
+	border-radius: 8px;
+	white-space: pre-wrap;
+}
+
+#footer{
+	height: 48px;
+	background-color: #567705;
+}

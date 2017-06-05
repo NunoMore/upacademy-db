@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<body>
+		<ui:composition template="WEB-INF/layouts/commonLayout.xhtml">
+		
+		<!-- menu lateral - botao remete para area de perfil pessoal -->
+			<ui:define name="button1">
+				<h:form>
+					<h:commandButton value="My Profile" action="MyProfileMenu" styleClass="btn btn-default"/>
+				</h:form>
+			</ui:define>
+			
+		<!-- menu lateral - botao remete para menu que ve os colegas etc -->
+			<ui:define name="button2">
+				<h:form>
+					<h:commandButton value="Enter in Database" action="dataBaseMenu" styleClass="btn btn-default"/>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	
+	</body>
+</html>

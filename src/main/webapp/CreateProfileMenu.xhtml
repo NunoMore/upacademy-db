@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<body>
+		<ui:composition template="WEB-INF/layouts/commonLayout.xhtml">
+		
+			<!-- back to main menu button -->
+			<ui:define name="button1">
+				<h:form>
+					<h:commandButton id="button1" action="MyProfileMenu" value="Back" />
+				</h:form>
+			</ui:define>	
+			
+			<!-- subText -->
+			<ui:define name="loginBar">
+				<h2>Create your Profile</h2>
+			</ui:define>	
+			
+			<!-- Content data -->
+			<ui:define name="display">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="2" >
+						<h:outputLabel value="My Id" />
+						<h:outputText value ="#{fds}" />
+						
+						<h:outputLabel value="Name" />
+						<p:inputText />
+					</h:panelGrid>
+						
+					<h:panelGrid columns="2" cellpadding="6">
+						<!-- Mais para a frente talvez se deva criar aqui um SelecOnMenu  -->
+						<h:outputLabel value="Academy" />
+						<p:inputText />
+						
+						<h:outputLabel value="Contact" />
+						<p:inputText />
+						
+						<h:outputLabel value="Current Job" />
+						<p:inputText />
+						
+						<h:outputLabel value="Facebook" />
+						<p:inputText />
+						
+						<h:outputLabel value="LinkedIn" />
+						<p:inputText />
+						
+						<h:outputLabel value="GitHub" />
+						<p:inputText />
+					
+					</h:panelGrid>
+					
+					<h:panelGrid columns="2" cellpadding="2">
+						
+					</h:panelGrid>
+				</h:form>
+			
+			
+			</ui:define>		
+		
+		
+		
+		
+		
+		
+		
+		
+		</ui:composition>
+	</body>
+</html>
