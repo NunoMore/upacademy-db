@@ -17,7 +17,7 @@ public class PersonBean {
 	private Person person = new Person();
 	@Inject
 	private PersonService personService;
-
+	private Person favorite;
 
 	public Person getPerson() {
 		return person;
@@ -27,6 +27,14 @@ public class PersonBean {
 		this.person = person;
 	}
 	
+	public Person getFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(Person favorite) {
+		this.favorite = favorite;
+	}
+
 	public  String createPerson(){
 		personService.createPerson(person);
 		return "index";
@@ -37,13 +45,18 @@ public class PersonBean {
 		
 	}
 	
-//	public String updatePerson(){
-//		personService.updatePerson(person);
-//		return "index";
-//	}
+	public String updatePerson(){
+		personService.updatePerson(person);
+		return "index";
+	}
 	
 	public String removePerson(){
 		personService.removePerson(person);
 		return "index";
 	}
+	public String addFavorite(){
+		personService.addFavorites(person,favorite);
+		return "index";
+	}
+
 }

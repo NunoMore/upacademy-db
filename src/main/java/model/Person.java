@@ -1,5 +1,9 @@
 package model;
 
+
+
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,13 +19,18 @@ public class Person {
 	private String photo;
 	private String academy;
 	private int numTelephone;
+	private String email;
 	private String facebookLink;
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
 	private String curriculum;
+	private String favoritesList;
+	
 	
 	public String getName() {
+		
+		
 		return name;
 	}
 	public void setName(String name) {
@@ -30,21 +39,11 @@ public class Person {
 	public long getID() {
 		return ID;
 	}
-	public void setID(long iD) {
-		ID = iD;
-	}
 	public String getPhoto() {
 		return photo;
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
-	}
-
-	public String getacademy() {
-		return academy;
-	}
-	public void setacademy(String academy) {
-		this.academy = academy;
 	}
 	public String getAcademy() {
 		return academy;
@@ -56,7 +55,16 @@ public class Person {
 		return numTelephone;
 	}
 	public void setNumTelephone(int numTelephone) {
+		if(numTelephone<900000000 || numTelephone>999999999){
+			throw new IllegalArgumentException("Number must be portuguese Cellphone");
+		}else
 		this.numTelephone = numTelephone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getFacebookLink() {
 		return facebookLink;
@@ -88,5 +96,17 @@ public class Person {
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
+	public ArrayList<Long> getFavoritesList() {
+		String[] favoriteListParts= favoritesList.split(",");
+		ArrayList<Long> favoritelist =new ArrayList<Long>();
+		for(String part : favoriteListParts){
+			favoritelist.add(Long.valueOf(part));
+		}
+		return favoritelist;
+	}
+	public void setFavoritesList(ArrayList<Long> favoritesList) {
+		this.favoritesList = favoritesList.toString();
+	}
+
 	
 }
