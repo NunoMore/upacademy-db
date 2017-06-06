@@ -13,7 +13,7 @@
 		<!--  Create Columns with products -->
 			<ui:define name="button1">
 				<h:form>
-					<h:commandButton value="Edit Profile" action="CreateProfileMenu" styleClass="btn btn-default" />
+					<h:commandButton value="Edit Profile" action="EditProfileMenu" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
 			
@@ -60,7 +60,7 @@
 							</p:panelGrid>
 						</div>
 	
-						<div id="gridInfo" class="col-md-6">
+						<div id="tableInfo" class="col-md-6">
 						<!-- Datatable with some extra info -->
 						<p:dataTable var="product" value="#{personBean.readPerson()}">
 							
