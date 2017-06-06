@@ -45,10 +45,10 @@
 	
 						<div id="tableInfo" class="col-md-6">
 						<!-- Datatable with some extra info -->
-						<p:dataTable var="product" value="#{personBean.readPerson()}">
+						<p:dataTable var="person" value="#{personBean.readPerson()}">
 							
 							<p:column headerText="Id">
-								<h:outputText value="#{person.Id}" />
+								<h:outputText value="#{person.ID}" />
 							</p:column>
 							
 							<p:column headerText="Current Job">
