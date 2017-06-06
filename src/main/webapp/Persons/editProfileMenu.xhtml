@@ -6,12 +6,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	template="WEB-INF/layouts/commonLayout.xhtml">
+	template="/WEB-INF/layouts/commonLayout.xhtml">
 
 			<!-- back to main menu button -->
 			<ui:define name="buttons">
 				<h:form>
-					<p:commandButton id="button1" class="btn" action="MyProfileMenu" value="Back" />
+					<p:commandButton id="button1" class="btn" ajax="false" action="myProfileMenu" value="Back" />
 				</h:form>
 			</ui:define>	
 				

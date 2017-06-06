@@ -11,10 +11,10 @@
 		<!-- menu lateral - botao remete para area de perfil pessoal -->
 		<ui:define name="buttons">
 			<h:form>
-				<p:commandButton value="My Profile" action="Persons/myProfileMenu"
+				<p:commandButton value="My Profile" ajax="false" action="Persons/myProfileMenu"
 					styleClass="btn btn-default" />
 	
-				<h:commandButton value="Enter in Database" action="dataBaseMenu"
+				<p:commandButton value="Enter in Database" ajax="false" action="dataBaseMenu"
 					styleClass="btn btn-default" />
 			</h:form>
 		</ui:define>
