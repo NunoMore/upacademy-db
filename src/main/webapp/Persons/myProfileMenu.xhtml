@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+<<<<<<< HEAD
 	xmlns:p="http://primefaces.org/ui">
 	
 	<body>
@@ -87,3 +88,97 @@
 
 <!-- https://stackoverflow.com/questions/2524514/how-to-use-hselectbooleancheckbox-in-hdatatable-to-select-multiple-rows -->
 		
+=======
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+	<!--  Create Columns with products -->
+	<ui:define name="button1">
+		<h:form>
+			<h:commandButton value="Edit Profile" action="EditProfileMenu"
+				styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
+
+	<!--  Edit Product -->
+	<ui:define name="button2">
+		<h:form>
+			<h:commandButton value="Somethig here" action="SomethingMenu"
+				styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
+
+	<!-- Remove Product -->
+	<ui:define name="button3">
+		<h:form>
+			<h:commandButton value="My Conections" action="ConectionsMenu"
+				styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
+
+	<!-- back to main -->
+	<ui:define name="button5">
+		<h:form>
+			<h:commandButton value="Back to Main Menu" action="/main-page"
+				styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="display">
+		<h:form>
+			<div id="grid" class="col-md-12">
+				<div id="gridFoto" class="col-md-12">
+					<!-- Panelgrid with photo -->
+					<p:dataTable var="person" value="#{personBean.readPerson()}"
+						columns="2">
+						<f:facet name="header">
+							<p:graphicImage name="images/defaultUser.png" />
+						</f:facet>
+
+						<p:column headerText="">
+							<h:outputText value="Name:" />
+							<h:outputText value="Academy:" />
+							<h:outputText value="Contact:" />
+						</p:column>
+
+						<p:column headerText="Info">
+							<h:outputText value="#{person.name}" />
+							<h:outputText value="#{person.academy}" />
+							<h:outputText value="#{person.numTelephone}" />
+						</p:column>
+
+					</p:dataTable>
+				</div>
+
+				<div id="tableInfo" class="col-md-6">
+					<!-- Datatable with some extra info -->
+					<p:dataTable var="person" value="#{personBean.readPerson()}">
+
+						<p:column headerText="Id">
+							<h:outputText value="#{person.ID}" />
+						</p:column>
+
+						<p:column headerText="Current Job">
+							<h:outputText value="#{person.workPlace}" />
+						</p:column>
+
+						<p:column headerText="Facebook">
+							<h:outputText value="#{person.facebookLink}" />
+						</p:column>
+
+						<p:column headerText="LinkedIn">
+							<h:outputText value="#{person.linkedInLink}" />
+						</p:column>
+
+						<p:column headerText="GitHub">
+							<h:outputText value="#{person.gitHubLink}" />
+						</p:column>
+
+					</p:dataTable>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+>>>>>>> 1f2671edd4b89e78e0a26924b35c4fe9c9f30e96
