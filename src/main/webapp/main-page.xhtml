@@ -7,41 +7,41 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/layouts/commonLayout.xhtml">
 
-	<!-- menu lateral - botao remete para area de perfil pessoal -->
-	<ui:define name="button1">
-		<h:form>
-			<h:commandButton value="My Profile" action="MyProfileMenu"
-				styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
+		<!-- menu lateral - botao remete para area de perfil pessoal -->
+		<ui:define name="button1">
+			<h:form>
+				<h:commandButton value="My Profile" action="Persons/myProfileMenu"
+					styleClass="btn btn-default" />
+			</h:form>
+		</ui:define>
 
-	<!-- menu lateral - botao remete para menu que ve os colegas etc -->
-	<ui:define name="button2">
-		<h:form>
-			<h:commandButton value="Enter in Database" action="dataBaseMenu"
-				styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
+		<!-- menu lateral - botao remete para menu que ve os colegas etc -->
+		<ui:define name="button2">
+			<h:form>
+				<h:commandButton value="Enter in Database" action="dataBaseMenu"
+					styleClass="btn btn-default" />
+			</h:form>
+		</ui:define>
 
-	<ui:define name="display">
-		<h:form id="formTable">
-			<p:dataTable id="consultAll" var="person"
-				value="#{personBean.readPerson()}" widgetVar="personsTable"
-				multiViewState="true" rows="10" paginator="true"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" selectionMode="single"
-				selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
-				emptyMessage="No persons found with that search criteria"
-				filteredValue="#{tableView.filteredPersons}">
+		<ui:define name="display">
+			<h:form id="formTable">
+				<p:dataTable id="consultAll" var="person"
+					value="#{personBean.readPerson()}" widgetVar="personsTable"
+					multiViewState="true" rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
+					emptyMessage="No persons found with that search criteria"
+					filteredValue="#{tableView.filteredPersons}">
 
-				<f:facet name="header">
-					<p:outputPanel>
-						<h:outputText value="Search all fields:" />
-						<p:inputText id="globalFilter"
-							onkeyup="PF('personsTable').filter()" style="width:150px"
-							placeholder="Search" />
-					</p:outputPanel>
-				</f:facet>
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Search all fields:" />
+							<p:inputText id="globalFilter"
+								onkeyup="PF('personsTable').filter()" style="width:150px"
+								placeholder="Search" />
+						</p:outputPanel>
+					</f:facet>
 
 				<p:ajax event="rowSelect" update=":formTable:personDetail"
 					oncomplete="PF('personDialog').show()" />
