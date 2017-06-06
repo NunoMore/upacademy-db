@@ -8,13 +8,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/layouts/commonLayout.xhtml">
 
+
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
-	<ui:define name="button2">
+	<ui:define name="buttons">
 		<h:form>
-			<h:commandButton value="Enter" action="main-page"
+			<p:commandButton value="Enter" action="main-page"
 				styleClass="btn btn-default" />
 		</h:form>
-
 	</ui:define>
 
 	<ui:define name="display">
@@ -23,11 +23,11 @@
 				<h:panelGrid id="logIn" columns="2" cellpadding="5">
 					<h:outputText value="User: " />
 					<p:inputText />
-					<h:outputText value="Password: " />
+					<h:outputText type="password" value="Password: " />
 					<p:inputText />
 				</h:panelGrid>
 			</div>
 		</h:form>
-
 	</ui:define>
 </ui:composition>
+
