@@ -11,9 +11,9 @@
 		<ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
 		
 			<!-- back to main menu button -->
-			<ui:define name="button1">
+			<ui:define name="buttons">
 				<h:form>
-					<h:commandButton id="button1" class="btn" action="MyProfileMenu" value="Back" />
+					<p:commandButton id="button1" class="btn" action="MyProfileMenu" value="Back" />
 				</h:form>
 			</ui:define>	
 				
@@ -47,11 +47,8 @@
 					
 					</h:panelGrid>
 					
-					<h:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" />
+					<p:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" />
 				
-				</h:form>
-				
-				<h:form enctype="multipart/form-data">
   					<p:fileUpload value="#{uploadBasicoBean.uploadedFile}" mode="simple"/>
   						<p:commandButton value="Enviar" ajax="false" actionListener="#{uploadBasicoBean.upload}" />
 				</h:form>
