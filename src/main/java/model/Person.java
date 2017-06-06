@@ -53,9 +53,6 @@ public class Person {
 		return numTelephone;
 	}
 	public void setNumTelephone(int numTelephone) {
-		if(numTelephone<900000000 || numTelephone>999999999){
-			throw new IllegalArgumentException("Number must be portuguese Cellphone");
-		}else
 		this.numTelephone = numTelephone;
 	}
 	public String getEmail() {
