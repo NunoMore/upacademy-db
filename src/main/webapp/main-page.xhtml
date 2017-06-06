@@ -86,7 +86,7 @@
 				</p:dataTable>
 
 				<p:dialog header="helooooo" widgetVar="personDialog" modal="true"
-					showEffect="fade" hideEffect="fade" resizable="false">
+					showEffect="explode" hideEffect="bounce" resizable="false">
 					<p:outputPanel id="personDetail" style="text-align:center;">
 						<p:panelGrid columns="2"
 							rendered="#{not empty tableView.selectedPerson}"
@@ -105,8 +105,7 @@
 							<h:outputText value="Academia" />
 							<h:outputText value="#{tableView.selectedPerson.academy}" />
 
-							<!-- <h:outputText value="Email" />
-						<h:link value="#{tableView.selectedPerson.email}"/> -->
+							<!-- meter aqui email -->
 
 							<h:outputText value="Tlm" />
 							<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
