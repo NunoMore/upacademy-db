@@ -82,11 +82,10 @@
 				showEffect="explode" hideEffect="bounce" resizable="false">
 				<p:outputPanel id="personDetail" style="text-align:center;">
 					<p:panelGrid columns="2"
-						rendered="#{not empty tableView.selectedPerson}"
-						columnClasses="label,value">
+						rendered="#{not empty tableView.selectedPerson}">
 						<f:facet name="header">
-							<p:graphicImage name="resources/fotos/nuno_moreira.jpg" />
-							<!-- colocar o seguinte:  resources/fotos/tableView.selectedPerson.photo-->
+							<p:graphicImage name="resources/images/defaulUser.png" />
+							<!-- colocar o seguinte ??:  resources/fotos/tableView.selectedPerson.photo-->
 						</f:facet>
 
 						<h:outputText value="Id" />
@@ -97,8 +96,6 @@
 
 						<h:outputText value="Academia" />
 						<h:outputText value="#{tableView.selectedPerson.academy}" />
-
-						<!-- meter aqui email -->
 
 						<h:outputText value="Tlm" />
 						<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
