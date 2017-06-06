@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	
-	<body>
-		<ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
-		
-			<!-- back to main menu button -->
-			<ui:define name="button1">
-				<h:form>
-					<h:commandButton id="button1" class="btn" action="MyProfileMenu" value="Back" />
-				</h:form>
-			</ui:define>	
-				
-			<!-- Content data -->
-			<ui:define name="display">
-				<h:form>
-					<h:panelGrid columns="2" cellpadding="10" styleClass="ui-grid" >
-						<h:outputLabel value="My Id" />
-						<h:outputText value ="#{fds}" />
-						
-						<h:outputLabel value="Name " />
-						<p:inputText value="#{personBean.person.name}" />
-						
-						<h:outputLabel value="Academy " />
-						<p:inputText value="#{personBean.person.academy}" />
-						
-						<h:outputLabel value="Contact " />
-						<p:inputText value="#{personBean.person.numTelephone}" />
-						
-						<h:outputLabel value="Current Job " />
-						<p:inputText value="#{personBean.person.workPlace}" />
-						
-						<h:outputLabel value="Facebook " />
-						<p:inputText value="#{personBean.person.facebookLink}" />
-						
-						<h:outputLabel value="Linkedin " />
-						<p:inputText value="#{personBean.person.linkedInLink}" />
-						
-						<h:outputLabel value="GitHub " />
-						<p:inputText value="#{personBean.person.gitHubLink}" />
-					
-					</h:panelGrid>
-					
-					<h:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" />
-				
-				</h:form>
-				
-				<h:form enctype="multipart/form-data">
-  					<p:fileUpload value="#{uploadBasicoBean.uploadedFile}" mode="simple"/>
-  						<p:commandButton value="Enviar" ajax="false" actionListener="#{uploadBasicoBean.upload}" />
-				</h:form>
-			
-			</ui:define>		
-		</ui:composition>
-	</body>
-</html>
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+	<!-- back to main menu button -->
+	<ui:define name="button1">
+		<h:form>
+			<h:commandButton id="button1" class="btn" action="MyProfileMenu"
+				value="Back" />
+		</h:form>
+	</ui:define>
+
+	<!-- Content data -->
+	<ui:define name="display">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="10" styleClass="ui-grid">
+				<h:outputLabel value="My Id" />
+				<h:outputText value="#{fds}" />
+
+				<h:outputLabel value="Name " />
+				<p:inputText value="#{personBean.person.name}" />
+
+				<h:outputLabel value="Academy " />
+				<p:inputText value="#{personBean.person.academy}" />
+
+				<h:outputLabel value="Contact " />
+				<p:inputText value="#{personBean.person.numTelephone}" />
+
+				<h:outputLabel value="Current Job " />
+				<p:inputText value="#{personBean.person.workPlace}" />
+
+				<h:outputLabel value="Facebook " />
+				<p:inputText value="#{personBean.person.facebookLink}" />
+
+				<h:outputLabel value="Linkedin " />
+				<p:inputText value="#{personBean.person.linkedInLink}" />
+
+				<h:outputLabel value="GitHub " />
+				<p:inputText value="#{personBean.person.gitHubLink}" />
+
+			</h:panelGrid>
+
+			<h:commandButton styleClass="btn btn-submit" value="Submit"
+				action="#{personBean.createPerson}" />
+
+		</h:form>
+
+		<h:form enctype="multipart/form-data">
+			<p:fileUpload value="#{uploadBasicoBean.uploadedFile}" mode="simple" />
+			<p:commandButton value="Enviar" ajax="false"
+				actionListener="#{uploadBasicoBean.upload}" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
