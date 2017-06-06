@@ -102,7 +102,6 @@ public class Person {
 	public void setFavoritesList(ArrayList<Long> favoritesList) {
 		this.favoritesList = favoritesList.toString();
 	}
-
 	
 }
 
