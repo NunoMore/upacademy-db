@@ -5,60 +5,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-<<<<<<< HEAD
-	xmlns:p="http://primefaces.org/ui">
-	
-	<body>
-		<ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
-		
-			<!-- back to main menu button -->
-			<ui:define name="buttons">
-				<h:form>
-					<p:commandButton id="button1" class="btn" action="MyProfileMenu" value="Back" />
-				</h:form>
-			</ui:define>	
-				
-			<!-- Content data -->
-			<ui:define name="display">
-				<h:form>
-					<h:panelGrid columns="2" cellpadding="10" styleClass="ui-grid" >
-						<h:outputLabel value="My Id" />
-						<h:outputText value ="#{fds}" />
-						
-						<h:outputLabel value="Name " />
-						<p:inputText value="#{personBean.person.name}" />
-						
-						<h:outputLabel value="Academy " />
-						<p:inputText value="#{personBean.person.academy}" />
-						
-						<h:outputLabel value="Contact " />
-						<p:inputText value="#{personBean.person.numTelephone}" />
-						
-						<h:outputLabel value="Current Job " />
-						<p:inputText value="#{personBean.person.workPlace}" />
-						
-						<h:outputLabel value="Facebook " />
-						<p:inputText value="#{personBean.person.facebookLink}" />
-						
-						<h:outputLabel value="Linkedin " />
-						<p:inputText value="#{personBean.person.linkedInLink}" />
-						
-						<h:outputLabel value="GitHub " />
-						<p:inputText value="#{personBean.person.gitHubLink}" />
-					
-					</h:panelGrid>
-					
-					<p:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" />
-				
-  					<p:fileUpload value="#{uploadBasicoBean.uploadedFile}" mode="simple"/>
-  						<p:commandButton value="Enviar" ajax="false" actionListener="#{uploadBasicoBean.upload}" />
-				</h:form>
-			
-			</ui:define>		
-		</ui:composition>
-	</body>
-</html>
-=======
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
@@ -113,4 +59,3 @@
 
 	</ui:define>
 </ui:composition>
->>>>>>> 1f2671edd4b89e78e0a26924b35c4fe9c9f30e96
