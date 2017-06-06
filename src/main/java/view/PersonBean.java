@@ -37,7 +37,7 @@ public class PersonBean {
 
 	public  String createPerson(){
 		personService.createPerson(person);
-		return "index";
+		return "/Persons/MyProfileMenu";
 	}
 	
 	public Collection<Person> readPerson(){
@@ -60,3 +60,4 @@ public class PersonBean {
 	}
 
 }
+
