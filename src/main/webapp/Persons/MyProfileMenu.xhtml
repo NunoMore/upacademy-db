@@ -8,19 +8,19 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<body>
-		<ui:composition template="WEB-INF/layouts/commonLayout.xhtml">
+		<ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
 		
 		<!--  Create Columns with products -->
 			<ui:define name="button1">
 				<h:form>
-					<h:commandButton value="Create Profile" action="CreateProfileMenu" styleClass="btn btn-default" />
+					<h:commandButton value="Edit Profile" action="CreateProfileMenu" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
 			
 			<!--  Edit Product -->
 			<ui:define name="button2">
 				<h:form>
-					<h:commandButton value="Edit Profile" action="EditProfileMenu" styleClass="btn btn-default" />
+					<h:commandButton value="Somethig here" action="SomethingMenu" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
 			
@@ -34,69 +34,65 @@
 			<!-- back to main -->
 			<ui:define name="button5">
 				<h:form>
-					<h:commandButton value="Back to Main Menu" action="main-page" styleClass="btn btn-default" />
+					<h:commandButton value="Back to Main Menu" action="/main-page" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
 			
 			<ui:define name="display">
 				<h:form>
-				
-				<!-- Panelgrid with photo -->
-					<p:panelGrid columns="2">
-					    <f:facet name="header">
-					        <p:graphicImage name="images.defaultUser.png" />
-					    </f:facet>
-					 
-					    <h:outputText value="Name:" />
-					    <h:outputText value="#{person.name}" />
-					 
-					    <h:outputText value="Academy" />
-					    <h:outputText value="#{person.academy}" />
-					 
-					    <h:outputText value="Contact" />
-					    <h:outputText value="#{person.phoneNumber}" />
-					 
-					</p:panelGrid>
-					
-					<!-- Datatable with some extra info -->
-					<p:dataTable var="product" value="#{personBean.personService.myConectionsDb.listEdit}">
-						
-						<p:column headerText="Id">
-							<h:outputText value="#{person.Id}" />
-						</p:column>
-						
-						<p:column headerText="Current Job">
-							<h:outputText value="#{person.workPlace}" />
-						</p:column>
-						
-						<p:column headerText="Facebook">
-							<h:outputText>
-								<p:link href="#{person.facebookLink}" value="Facebook"></p:link>
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="LinkedIn">
-							<h:outputText>
-								<p:link href="#{person.linkedInLink}" value="LinkedID"></p:link>
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="GitHub">
-							<h:outputText>
-								<p:link href="#{person.gitHubLink}" value="GitHub"></p:link>
-							</h:outputText>
-						</p:column>
-						
-						<p:column headerText="Photo">
-							<p:accordionPanel>
-								<p:tab title="imagens">
-									<f:facet name="photo">
-										<p:graphicImage name="somethingPath"/>
-									</f:facet>
-								</p:tab>	
-							</p:accordionPanel>
-						</p:column>							
-					</p:dataTable>
+					<div id="grid" class="col-md-12">
+						<div id="gridFoto" class="col-md-12">
+							<!-- Panelgrid with photo -->
+							<p:panelGrid columns="2">
+							    <f:facet name="header">
+							        <p:graphicImage name="images/defaultUser.png" />
+							    </f:facet>
+							 
+							    <h:outputText value="Name:" />
+							    <h:outputText value="#{person.name}" />
+							 
+							    <h:outputText value="Academy" />
+							    <h:outputText value="#{person.academy}" />
+							 
+							    <h:outputText value="Contact" />
+							    <h:outputText value="#{person.phoneNumber}" />
+							 
+							</p:panelGrid>
+						</div>
+	
+						<div id="gridInfo" class="col-md-6">
+						<!-- Datatable with some extra info -->
+						<p:dataTable var="product" value="#{personBean.readPerson()}">
+							
+							<p:column headerText="Id">
+								<h:outputText value="#{person.Id}" />
+							</p:column>
+							
+							<p:column headerText="Current Job">
+								<h:outputText value="#{person.workPlace}" />
+							</p:column>
+							
+							<p:column headerText="Facebook">
+								<h:outputText>
+									<p:link href="#{person.facebookLink}" value="Facebook"></p:link>
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="LinkedIn">
+								<h:outputText>
+									<p:link href="#{person.linkedInLink}" value="LinkedID"></p:link>
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="GitHub">
+								<h:outputText>
+									<p:link href="#{person.gitHubLink}" value="GitHub"></p:link>
+								</h:outputText>
+							</p:column>
+													
+						</p:dataTable>
+					</div>
+					</div>
 				</h:form>
 			</ui:define>
 

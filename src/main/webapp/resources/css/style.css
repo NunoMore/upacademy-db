@@ -2,7 +2,7 @@
 	color: #fffcd3;
 	background: #567705;
 	text-align: center;
-	height: 100px;
+	height: 70px;
 }
 
 #sideMenu {
@@ -16,6 +16,7 @@
 	height: 870px;
 	color: white;
 	background-color: #8e9185;
+
 }
 
 #contentDisplay {
@@ -23,6 +24,7 @@
     width: 97%;
     padding-top: 45px;
     padding-left: 60px;
+
 }
 
 #menuButton1, #menuButton2, #menuButton3, #menuButton4, #menuButton5{
@@ -41,6 +43,17 @@
 	border-radius: 8px;
 	white-space: pre-wrap;
 }
+
+.btn-submit {
+	height: 60px;
+	width: 200px;
+	font-size: 18px;
+	border-radius: 8px;
+	margin-top: 40px;
+	margin-right: 40px;
+	white-space: pre-wrap;
+}
+
 
 #naveg{
 	padding-left: 0px;
@@ -90,22 +103,25 @@ li{
 	color: #ffbb00;
 }
 
-
-#logInBox {
-	display:grid;
-	grid-template-colums:repeat(4, 1fr);
-	grid-grap: 10px;
-	grid-auto-rows:200px;
-	grid-template-areas: 
-	". a a ."
-	". a a .";
+.ui-grid{
+	margin: 0px auto;
 }
 
-#logIn{
-	grid-area: a;
-	align-self:center;
-	justify-self: center;
+
+#gridFoto{
+	padding: 50px 450px;
+
 }
+
+#gridInfo{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+td, th {
+    padding: 20px;
+}
+
 
 #footer{
 	height: 48px;
