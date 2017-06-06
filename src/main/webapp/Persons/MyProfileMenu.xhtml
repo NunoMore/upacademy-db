@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<body>
+		<ui:composition template="WEB-INF/layouts/commonLayout.xhtml">
+		
+		<!--  Create Columns with products -->
+			<ui:define name="button1">
+				<h:form>
+					<h:commandButton value="Create Profile" action="CreateProfileMenu" styleClass="btn btn-default" />
+				</h:form>
+			</ui:define>
+			
+			<!--  Edit Product -->
+			<ui:define name="button2">
+				<h:form>
+					<h:commandButton value="Edit Profile" action="EditProfileMenu" styleClass="btn btn-default" />
+				</h:form>
+			</ui:define>
+			
+		<!-- Remove Product -->
+			<ui:define name="button3">
+				<h:form>
+					<h:commandButton value="My Conections" action="ConectionsMenu" styleClass="btn btn-default" />
+				</h:form>
+			</ui:define>
+			
+			<!-- back to main -->
+			<ui:define name="button5">
+				<h:form>
+					<h:commandButton value="Back to Main Menu" action="main-page" styleClass="btn btn-default" />
+				</h:form>
+			</ui:define>
+			
+			<ui:define name="display">
+				<h:form>
+				
+				<!-- Panelgrid with photo -->
+					<p:panelGrid columns="2">
+					    <f:facet name="header">
+					        <p:graphicImage name="demo/images/misc/kobe.png" />
+					    </f:facet>
+					 
+					    <h:outputText value="Name:" />
+					    <h:outputText value="#{person.name}" />
+					 
+					    <h:outputText value="Academy" />
+					    <h:outputText value="#{person.academy}" />
+					 
+					    <h:outputText value="Contact" />
+					    <h:outputText value="#{person.phoneNumber}" />
+					 
+					</p:panelGrid>
+					
+					<!-- Datatable with some extra info -->
+					<p:dataTable var="product" value="#{personBean.personService.myConectionsDb.listEdit}">
+						
+						<p:column headerText="Id">
+							<h:outputText value="#{person.Id}" />
+						</p:column>
+						
+						<p:column headerText="Current Job">
+							<h:outputText value="#{person.workPlace}" />
+						</p:column>
+						
+						<p:column headerText="Facebook">
+							<h:outputText>
+								<p:link href="#{person.facebookLink}" value="Facebook"></p:link>
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="LinkedIn">
+							<h:outputText>
+								<p:link href="#{person.linkedInLink}" value="LinkedID"></p:link>
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="GitHub">
+							<h:outputText>
+								<p:link href="#{person.gitHubLink}" value="GitHub"></p:link>
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Photo">
+							<p:accordionPanel>
+								<p:tab title="imagens">
+									<f:facet name="photo">
+										<p:graphicImage name="somethingPath"/>
+									</f:facet>
+								</p:tab>	
+							</p:accordionPanel>
+						</p:column>							
+					</p:dataTable>
+				</h:form>
+			</ui:define>
+
+		</ui:composition>
+	</body>
+</html>
+
+<!-- https://stackoverflow.com/questions/2524514/how-to-use-hselectbooleancheckbox-in-hdatatable-to-select-multiple-rows -->
+		
