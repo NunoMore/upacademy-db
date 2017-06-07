@@ -1,6 +1,8 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -37,7 +39,7 @@ public class PersonBean {
 
 	public  String createPerson(){
 		personService.createPerson(person);
-		return "/Persons/MyProfileMenu";
+		return "/Persons/myProfileMenu";
 	}
 	
 	public Collection<Person> readPerson(){
@@ -47,7 +49,7 @@ public class PersonBean {
 	
 	public String updatePerson(){
 		personService.updatePerson(person);
-		return "index";
+		return "/Persons/myProfileMenu";
 	}
 	
 	public String removePerson(){
@@ -59,5 +61,16 @@ public class PersonBean {
 		return "index";
 	}
 
+	private List<Person> selectedPerson;
+
+	public List<Person> getSelectedPerson() {
+		return selectedPerson;
+	}
+
+	public void setSelectedPerson(List<Person> selectedPerson) {
+		this.selectedPerson = selectedPerson;
+	}
+	
+	
 }
 

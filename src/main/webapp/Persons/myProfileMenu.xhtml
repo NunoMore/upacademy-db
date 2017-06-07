@@ -14,7 +14,7 @@
 					<p:commandButton value="Edit Profile" action="editProfileMenu" ajax="false" styleClass="btn btn-default" />
 		
 					<p:commandButton value="Create Profile" action="createProfileMenu" ajax="false" styleClass="btn btn-default" />
-				
+
 					<p:commandButton value="My Conections" action="conectionsMenu" ajax="false" styleClass="btn btn-default" />
 		
 					<p:commandButton value="Back to Main Menu" action="/main-page" ajax="false" styleClass="btn btn-default" />
@@ -45,10 +45,10 @@
 	
 						<div id="tableInfo" class="col-md-6">
 						<!-- Datatable with some extra info -->
-						<p:dataTable var="product" value="#{personBean.readPerson()}">
+						<p:dataTable var="person" value="#{personBean.readPerson()}">
 							
 							<p:column headerText="Id">
-								<h:outputText value="#{person.Id}" />
+								<h:outputText value="#{person.ID}" />
 							</p:column>
 							
 							<p:column headerText="Current Job">
@@ -56,21 +56,15 @@
 							</p:column>
 							
 							<p:column headerText="Facebook">
-								<h:outputText>
-									<p:link href="#{person.facebookLink}" value="Facebook"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.facebookLink}" />
 							</p:column>
 							
 							<p:column headerText="LinkedIn">
-								<h:outputText>
-									<p:link href="#{person.linkedInLink}" value="LinkedID"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.linkedInLink}" />
 							</p:column>
 							
 							<p:column headerText="GitHub">
-								<h:outputText>
-									<p:link href="#{person.gitHubLink}" value="GitHub"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.gitHubLink}" />
 							</p:column>
 													
 						</p:dataTable>
