@@ -18,10 +18,10 @@
 				<h:panelGrid id="logIn" columns="2" cellpadding="5">
 					<h:outputText value="User: " />
 					<p:inputText />
-					<h:outputText type="password" value="Password: " />
-					<p:inputText />
+					<h:outputText value="Password: " />
+					<p:inputText type="password"/>
 					<p:commandButton value="login" action="main-page"></p:commandButton>
-					<p:outputLabel value="forgot Password" action="forgotPassword"></p:outputLabel>
+					<p:link value="forgot Password" action="forgotPassword"></p:link>
 				</h:panelGrid>
 			</div>
 		</h:form>
