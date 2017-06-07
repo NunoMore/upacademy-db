@@ -11,12 +11,8 @@
 		<!--  Create Columns with products -->
 			<ui:define name="buttons">
 				<h:form>
-					<p:commandButton value="Edit Profile" action="editProfileMenu" ajax="false" styleClass="btn btn-default" />
-		
-					<p:commandButton value="Create Profile" action="createProfileMenu" ajax="false" styleClass="btn btn-default" />
-
-					<p:commandButton value="My Conections" action="conectionsMenu" ajax="false" styleClass="btn btn-default" />
-		
+					<p:commandButton value="Read Users" action="/Admin/readUsers"></p:commandButton>
+					<p:commandButton value="Read Academies" action="/Admin/readAcademies"></p:commandButton>
 					<p:commandButton value="Back to Main Menu" action="/main-page" ajax="false" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
@@ -37,18 +33,21 @@
 							    <h:outputText value="Academy" />
 							    <h:outputText value="#{personBean.person.academy}" />
 							 
-							    <h:outputText value="Contact" />
-							    <h:outputText value="#{personBean.person.numTelephone}" />
+							    <h:outputText value="Email" />
+							    <h:outputText value="#{personBean.person.email}" />
 							 
 							</p:panelGrid>
 						</div>
 	
-						<div id="tableInfo" class="col-md-6">
+						<div id="tableInfo" class="col-md-12">
 						<!-- Datatable with some extra info -->
-						<p:dataTable var="person" value="#{personBean.readPerson()}">
+						<p:dataTable var="person" value="#{personBean.readPerson()}" editable="true" style="margin-bottom:20px">
 							
-							<p:column headerText="Id">
-								<h:outputText value="#{person.ID}" />
+							<p:column headerText="Email">
+								<h:outputText value="#{person.email}" />
+							</p:column>
+							<p:column headerText="Academic Course">
+								<h:outputText value="#{person.academicCourse}" />
 							</p:column>
 							
 							<p:column headerText="Current Job">
@@ -66,6 +65,13 @@
 							<p:column headerText="GitHub">
 								<h:outputText value="#{person.gitHubLink}" />
 							</p:column>
+							<p:column headerText="Telephone Number">
+								<h:outputText value="#{person.numTelephone}" />
+							</p:column>
+							<p:column headerText="Curriculum">
+								<h:outputText value="#{person.curriculum}" />
+							</p:column>
+							
 													
 						</p:dataTable>
 					</div>
