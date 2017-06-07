@@ -68,10 +68,13 @@
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
 						<f:facet name="header">
-							<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}"/>
-							<p:graphicImage name="images/defaultUser.png" rendered="#{person.photo == null}"/>
+							<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}" style="width:100px"/>
+							<p:graphicImage name="images/defaultUser.png" rendered="#{person.photo == null}" style="width:100px"/>
 						</f:facet>
 
+						<h:outputText value="Nome" />
+						<h:outputText value="#{tableView.selectedPerson.name}" />
+						
 						<h:outputText value="Nome" />
 						<h:outputText value="#{tableView.selectedPerson.name}" />
 
