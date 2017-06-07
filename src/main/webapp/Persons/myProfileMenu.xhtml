@@ -11,9 +11,9 @@
 		<!--  Create Columns with products -->
 			<ui:define name="buttons">
 				<h:form>
-					<p:commandButton value="Edit Profile" action="editProfileMenu" styleClass="btn btn-default" />
+					<p:commandButton value="Create Profile" action="createProfileMenu" styleClass="btn btn-default" />
 		
-					<p:commandButton value="Somethig here" action="somethingMenu" styleClass="btn btn-default" />
+					<p:commandButton value="Edit Profile" action="editProfileMenu" styleClass="btn btn-default" />
 				
 					<p:commandButton value="My Conections" action="conectionsMenu" styleClass="btn btn-default" />
 		
@@ -56,21 +56,15 @@
 							</p:column>
 							
 							<p:column headerText="Facebook">
-								<h:outputText>
-									<p:link href="#{person.facebookLink}" value="Facebook"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.facebookLink}" />
 							</p:column>
 							
 							<p:column headerText="LinkedIn">
-								<h:outputText>
-									<p:link href="#{person.linkedInLink}" value="LinkedID"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.linkedInLink}" />
 							</p:column>
 							
 							<p:column headerText="GitHub">
-								<h:outputText>
-									<p:link href="#{person.gitHubLink}" value="GitHub"></p:link>
-								</h:outputText>
+								<h:outputText value="#{person.gitHubLink}" />
 							</p:column>
 													
 						</p:dataTable>

@@ -18,35 +18,57 @@
 			<!-- Content data -->
 			<ui:define name="display">
 				<h:form>
-					<h:panelGrid columns="2" cellpadding="10" styleClass="ui-grid" >
-						<h:outputLabel value="My Id" />
-						<h:outputText value ="#{fds}" />
+					<p:dataTable var="person" value="#{personBean.readPerson()}" editable="true" selection="#{personBean.selectedPerson}" rowKey="#{person.ID}">
+						<f:facet name="header">
+							Edit My Profile
+						</f:facet>
 						
-						<h:outputLabel value="Name " />
-						<p:inputText value="#{personBean.person.name}" />
+						<p:column selectionMode="multiple" style="width: 60px;" />
 						
-						<h:outputLabel value="Academy " />
-						<p:inputText value="#{personBean.person.academy}" />
+						<p:column headerText="Id">
+							<h:outputText value="#{person.ID}" />
+						</p:column>
 						
-						<h:outputLabel value="Contact " />
-						<p:inputText value="#{personBean.person.numTelephone}" />
+						<p:column headerText="Name">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{person.name}"/>
+									</f:facet>
+									<f:facet name = "input">
+										<p:inputText id= "nameInput" value = "#{person.name}" style="width:96%" />
+									</f:facet>
+								</p:cellEditor>
+						</p:column>
 						
-						<h:outputLabel value="Current Job " />
-						<p:inputText value="#{personBean.person.workPlace}" />
+						<p:column headerText="Academy">
+								<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{person.academy}"/>
+								</f:facet>
+								<f:facet name = "input">
+									<p:inputText id= "acdemyInput" value = "#{person.academy}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
 						
-						<h:outputLabel value="Facebook " />
-						<p:inputText value="#{personBean.person.facebookLink}" />
+						<p:column headerText="Contact">
+								<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{person.numTelephone}"/>
+								</f:facet>
+								<f:facet name = "input">
+									<p:inputText id= "contactInput" value = "#{person.numTelephone}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
 						
-						<h:outputLabel value="Linkedin " />
-						<p:inputText value="#{personBean.person.linkedInLink}" />
-						
-						<h:outputLabel value="GitHub " />
-						<p:inputText value="#{personBean.person.gitHubLink}" />
-					
-					</h:panelGrid>
-					
-					<p:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" />
-				
+						<p:column style="width:6%" exportable="false">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+										
+					<p:commandButton styleClass="btn btn-submit" value="Submit"  action="#{personBean.createPerson}" ajax="false"/>
+	
   					<p:fileUpload value="#{uploadBasicoBean.uploadedFile}" mode="simple"/>
   						<p:commandButton value="Enviar" ajax="false" actionListener="#{uploadBasicoBean.upload}" />
 				</h:form>

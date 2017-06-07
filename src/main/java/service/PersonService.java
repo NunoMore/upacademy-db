@@ -20,6 +20,7 @@ public class PersonService {
 	
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
+	
 
 	public void createPerson(Person person){
 		em.persist(person);
@@ -31,7 +32,6 @@ public class PersonService {
 	}
 	public void updatePerson(Person person){
 		em.merge(person);
-		
 	}
 	public void removePerson(Person person){
 		person = em.find(Person.class,person.getID());
@@ -65,5 +65,6 @@ public class PersonService {
 		}
 		return favoritesList;
 	}
+	
 }
 
