@@ -1,50 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/layouts/commonLayout.xhtml">
 
-		<!-- menu lateral - botao remete para area de perfil pessoal -->
-		<ui:define name="buttons">
-			<h:form>
-				<p:commandButton value="My Profile" ajax="false" action="Persons/myProfileMenu"
-					styleClass="btn btn-default" />
-	
-				<p:commandButton value="Enter in Database" ajax="false" action="dataBaseMenu"
-					styleClass="btn btn-default" />
-			</h:form>
-		</ui:define>
+	<!-- menu lateral - botao remete para area de perfil pessoal -->
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="My Profile" ajax="false"
+				action="Persons/myProfileMenu" styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
 
-		<ui:define name="display">
-			<h:form id="formTable">
-				<p:dataTable id="consultAll" var="person"
-					value="#{personBean.readPerson()}" widgetVar="personsTable"
-					multiViewState="true" rows="10" paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" selectionMode="single"
-					selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
-					emptyMessage="No persons found with that search criteria"
-					filteredValue="#{tableView.filteredPersons}">
+	<ui:define name="display">
+		<h:form id="formTable">
+			<p:dataTable id="consultAll" var="person"
+				value="#{personBean.readPerson()}" widgetVar="personsTable"
+				multiViewState="true" rows="10" paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15" selectionMode="single"
+				selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
+				emptyMessage="No persons found with that search criteria"
+				filteredValue="#{tableView.filteredPersons}">
 
-					<f:facet name="header">
-						<p:outputPanel>
-							<h:outputText value="Search all fields:" />
-							<p:inputText id="globalFilter"
-								onkeyup="PF('personsTable').filter()" style="width:150px"
-								placeholder="Search" />
-						</p:outputPanel>
-					</f:facet>
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Search all fields:" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('personsTable').filter()" style="width:150px"
+							placeholder="Search" />
+					</p:outputPanel>
+				</f:facet>
 
 				<p:ajax event="rowSelect" update=":formTable:personDetail"
 					oncomplete="PF('personDialog').show()" />
 
-				<p:column headerText="Id" filterBy="#{person.ID}"
-					sortBy="#{person.ID}" filterMatchMode="contains">
-					<h:outputText value="#{person.ID}" />
+				<p:column headerText="Foto">
+					<p:graphicImage value="#{person.photo}" />
 				</p:column>
 
 				<p:column headerText="Nome" filterBy="#{person.name}"
@@ -56,26 +52,14 @@
 					sortBy="#{person.academy}" filterMatchMode="exact">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('personsTable').filter()"
-							style="width:100px;">
+							style="width:150px;">
 							<f:selectItem itemLabel="Academias" itemValue="#{null}"
 								noSelectionOption="true" />
-							<f:selectItems value="#{tableView.academies}" />
+							<f:selectItems value="#{AcademyService.academies}" /> <!-- falta criar academyService -->
 						</p:selectOneMenu>
 					</f:facet>
 					<h:outputText value="#{person.academy}" />
 				</p:column>
-
-				<!-- <p:column headerText="" filterBy="#{car.color}"
-					sortBy="#{car.color}" filterMatchMode="in">
-					<f:facet name="filter">
-						<p:selectCheckboxMenu label="Colors"
-							onchange="PF('carsTable').filter()" style="width:80px;"
-							panelStyle="width:125px" scrollHeight="150">
-							<f:selectItems value="#{dtTableStateView.colors}" />
-						</p:selectCheckboxMenu>
-					</f:facet>
-					<h:outputText value="#{car.color}" />
-				</p:column> -->
 			</p:dataTable>
 
 			<p:dialog header="helooooo" widgetVar="personDialog" modal="true"
@@ -84,12 +68,9 @@
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
 						<f:facet name="header">
-							<p:graphicImage name="resources/images/defaulUser.png" />
-							<!-- colocar o seguinte ??:  resources/fotos/tableView.selectedPerson.photo-->
+							<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}"/>
+							<p:graphicImage name="images/defaultUser.png" rendered="#{person.photo == null}"/>
 						</f:facet>
-
-						<h:outputText value="Id" />
-						<h:outputText value="#{tableView.selectedPerson.ID}" />
 
 						<h:outputText value="Nome" />
 						<h:outputText value="#{tableView.selectedPerson.name}" />
@@ -97,7 +78,7 @@
 						<h:outputText value="Academia" />
 						<h:outputText value="#{tableView.selectedPerson.academy}" />
 
-						<h:outputText value="Tlm" />
+						<h:outputText value="Telemóvel" />
 						<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
 
 						<h:outputText value="Facebook" />
@@ -105,7 +86,7 @@
 
 						<h:outputText value="LinkedIn" />
 						<h:link value="#{tableView.selectedPerson.linkedInLink}" />
-						
+
 						<h:outputText value="Git Hub" />
 						<h:link value="#{tableView.selectedPerson.gitHubLink}" />
 					</p:panelGrid>
