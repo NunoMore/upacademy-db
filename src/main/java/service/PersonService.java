@@ -1,7 +1,7 @@
 
 package service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -37,34 +37,5 @@ public class PersonService {
 		person = em.find(Person.class,person.getID());
 		em.remove(person);
 	}
-	public void addFavorites(Person person, Person favorite){
-		long ID = favorite.getID();	
-
-		person.getFavoritesList().add(ID);
-		person.setFavoritesList(person.getFavoritesList());
-		
-		updatePerson(person);
-	}
-	public void removeFavorites(Person person,Person favorite){
-		long ID = favorite.getID();
-		
-		if(person.getFavoritesList().contains(ID)){
-			person.getFavoritesList().remove(ID);
-		}else{
-			throw new IllegalArgumentException("This person is not in your favorites list");
-		}
-		
-	}
-	public ArrayList<Person> readFavoritesList(Person person){
-		ArrayList<Long> favorite = person.getFavoritesList();
-		ArrayList<Person> favoritesList = new ArrayList<Person>();
-		Person favoritePerson = new Person();
-		for(int i=0 ; i<favorite.size();i++){
-			favoritePerson = em.find(Person.class,favorite.get(i));
-			favoritesList.add(favoritePerson);
-		}
-		return favoritesList;
-	}
-	
 }
 

@@ -1,20 +1,27 @@
 package model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.primefaces.component.password.Password;
+
+import com.sun.mail.iap.ByteArray;
+
 @Entity
-public class Person {
+public class Person implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
 	private long ID;
 	
 	private String name;
-	private String photo;
+	private String password;
+	private ByteArray photo;
 	private String academy;
 	private int numTelephone;
 	private String email;
@@ -23,7 +30,8 @@ public class Person {
 	private String gitHubLink;
 	private String workPlace;
 	private String curriculum;
-	private String favoritesList;
+	private String securityQuestion;
+	private String securityAnswer;
 	
 	
 	public String getName() {
@@ -34,13 +42,19 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public long getID() {
 		return ID;
 	}
-	public String getPhoto() {
+	public ByteArray getPhoto() {
 		return photo;
 	}
-	public void setPhoto(String photo) {
+	public void setPhoto(ByteArray photo) {
 		this.photo = photo;
 	}
 	public String getAcademy() {
@@ -91,16 +105,17 @@ public class Person {
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
-	public ArrayList<Long> getFavoritesList() {
-		String[] favoriteListParts= favoritesList.split(",");
-		ArrayList<Long> favoritelist =new ArrayList<Long>();
-		for(String part : favoriteListParts){
-			favoritelist.add(Long.valueOf(part));
-		}
-		return favoritelist;
+	public String getSecurityQuestion() {
+		return securityQuestion;
 	}
-	public void setFavoritesList(ArrayList<Long> favoritesList) {
-		this.favoritesList = favoritesList.toString();
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 	
 }
