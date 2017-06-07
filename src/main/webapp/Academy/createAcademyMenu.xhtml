@@ -20,13 +20,13 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 			
-				<p:outputText value="Name" />
+				<h:outputText value="Name" />
 				<p:inputText value="#{Academy.name}" />
 				
 				<p:outputLabel for="german" value="Start Date:" />
 				<p:calendar id="german" value="#{calendarView.date}" locate="de" navigator="true" pattern="yyyy-MMM-dd" />
 				
-				<p:outputText value="Description" />
+				<h:outputText value="Description" />
 				<p:inputTextarea rows="6" cols="33" />
 				
 			</h:panelGrid>
