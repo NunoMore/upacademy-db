@@ -7,10 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.primefaces.component.password.Password;
-
-import com.sun.mail.iap.ByteArray;
-
 @Entity
 public class Person implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,7 +17,7 @@ public class Person implements Serializable{
 	
 	private String name;
 	private String password;
-	private ByteArray photo;
+	private byte[] photo;
 	private String academy;
 	private int numTelephone;
 	private String email;
@@ -48,14 +44,14 @@ public class Person implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getID() {
-		return ID;
-	}
-	public ByteArray getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(ByteArray photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+	public long getID() {
+		return ID;
 	}
 	public String getAcademy() {
 		return academy;
