@@ -10,12 +10,7 @@
 
 
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="Enter" action="main-page" ajax="false"
-				styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
+
 
 	<ui:define name="display">
 		<h:form>
@@ -25,6 +20,8 @@
 					<p:inputText />
 					<h:outputText type="password" value="Password: " />
 					<p:inputText />
+					<p:commandButton value="login" action="main-page"></p:commandButton>
+					<p:outputLabel value="forgot Password" action="forgotPassword"></p:outputLabel>
 				</h:panelGrid>
 			</div>
 		</h:form>
