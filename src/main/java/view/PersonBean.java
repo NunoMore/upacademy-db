@@ -1,8 +1,7 @@
 package view;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,7 +18,6 @@ public class PersonBean {
 	private Person person = new Person();
 	@Inject
 	private PersonService personService;
-	private Person favorite;
 
 	public Person getPerson() {
 		return person;
@@ -27,14 +25,6 @@ public class PersonBean {
 
 	public void setPerson(Person person) {
 		this.person = person;
-	}
-	
-	public Person getFavorite() {
-		return favorite;
-	}
-
-	public void setFavorite(Person favorite) {
-		this.favorite = favorite;
 	}
 
 	public  String createPerson(){
@@ -56,21 +46,5 @@ public class PersonBean {
 		personService.removePerson(person);
 		return "index";
 	}
-	public String addFavorite(){
-		personService.addFavorites(person,favorite);
-		return "index";
-	}
-
-	private List<Person> selectedPerson;
-
-	public List<Person> getSelectedPerson() {
-		return selectedPerson;
-	}
-
-	public void setSelectedPerson(List<Person> selectedPerson) {
-		this.selectedPerson = selectedPerson;
-	}
-	
-	
 }
 

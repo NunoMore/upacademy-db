@@ -1,47 +1,76 @@
 package model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Person {
+public class Person implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
 	private long ID;
 	
 	private String name;
-	private String photo;
+	private String dateOfBirth;
+	private String academicCourse;
+	private String gender;
+	private byte[] photo;
 	private String academy;
 	private int numTelephone;
 	private String email;
+	private String password;
 	private String facebookLink;
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
 	private String curriculum;
-	private String favoritesList;
+	private String securityQuestion;
+	private String securityAnswer;
 	
 	
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public String getAcademicCourse() {
+		return academicCourse;
+	}
+	public void setAcademicCourse(String academicCourse) {
+		this.academicCourse = academicCourse;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getName() {
-		
-		
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getID() {
-		return ID;
+	public String getPassword() {
+		return password;
 	}
-	public String getPhoto() {
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(String photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+	public long getID() {
+		return ID;
 	}
 	public String getAcademy() {
 		return academy;
@@ -91,16 +120,17 @@ public class Person {
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
-	public ArrayList<Long> getFavoritesList() {
-		String[] favoriteListParts= favoritesList.split(",");
-		ArrayList<Long> favoritelist =new ArrayList<Long>();
-		for(String part : favoriteListParts){
-			favoritelist.add(Long.valueOf(part));
-		}
-		return favoritelist;
+	public String getSecurityQuestion() {
+		return securityQuestion;
 	}
-	public void setFavoritesList(ArrayList<Long> favoritesList) {
-		this.favoritesList = favoritesList.toString();
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 	
 }
