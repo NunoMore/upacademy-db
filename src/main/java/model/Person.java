@@ -16,11 +16,14 @@ public class Person implements Serializable{
 	private long ID;
 	
 	private String name;
-	private String password;
+	private String dateOfBirth;
+	private String academicCourse;
+	private String gender;
 	private byte[] photo;
 	private String academy;
 	private int numTelephone;
 	private String email;
+	private String password;
 	private String facebookLink;
 	private String linkedInLink;
 	private String gitHubLink;
@@ -30,9 +33,25 @@ public class Person implements Serializable{
 	private String securityAnswer;
 	
 	
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public String getAcademicCourse() {
+		return academicCourse;
+	}
+	public void setAcademicCourse(String academicCourse) {
+		this.academicCourse = academicCourse;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getName() {
-		
-		
 		return name;
 	}
 	public void setName(String name) {
