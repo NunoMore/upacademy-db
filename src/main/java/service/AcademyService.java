@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -19,6 +20,11 @@ public class AcademyService {
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
 	
+	//private List<Academy> listEdit = new ArrayList<>();
+	//private List<Academy> selectedEdit;
+	
+	
+	
 	public void createAcademy(Academy academy){
 		em.persist(academy);
 	}
@@ -32,5 +38,13 @@ public class AcademyService {
 		academy = em.find(Academy.class, academy.getName());
 		em.remove(academy);
 	}
+	
+	/*public void updateList(){
+		List<Academy> newList= new ArrayList<>();
+		for(int i=0; i<em size(); i++){
+			newListadd((Academy) em.values().toArray()[i]);
+			listEdit = newList;
+		}
+	}*/
 	
 }

@@ -21,13 +21,15 @@
 			<h:panelGrid columns="2" cellpadding="5">
 			
 				<h:outputText value="Name" />
-				<p:inputText value="#{Academy.name}" />
+				<p:inputText value="#{academyBean.academy.name}" />
 				
 				<p:outputLabel for="german" value="Start Date:" />
-				<p:calendar id="german" value="#{calendarView.date}" locate="de" navigator="true" pattern="yyyy-MMM-dd" />
+				<p:calendar id="german" value="#{academyBean.academy.date}" locate="de" navigator="true" pattern="yyyy-MMM-dd" />
 				
 				<h:outputText value="Description" />
-				<p:inputTextarea rows="6" cols="33" />
+				<p:inputTextarea value="#{academyBean.academy.description}" rows="6" cols="33" />
+				
+				<h:commandButton styleClass="btn btn-submit" action="#{academyBean.createAcademy}" value="Create!" />
 				
 			</h:panelGrid>
 		</h:form>

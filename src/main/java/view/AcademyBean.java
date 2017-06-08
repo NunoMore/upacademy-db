@@ -17,9 +17,9 @@ public class AcademyBean {
 	@Inject
 	private AcademyService academyService;
 	
-	public String createAcademy(String nextPage){
+	public String createAcademy(){
 		academyService.createAcademy(academy);
-		return nextPage;
+		return "/Academy/AcademyMenu";
 	}
 	
 	public Collection<Academy> readAcademy(){
@@ -29,6 +29,14 @@ public class AcademyBean {
 	
 	public void removeAcademy(){
 		academyService.removeAcademy(academy);
+	}
+
+	public Academy getAcademy() {
+		return academy;
+	}
+
+	public void setAcademy(Academy academy) {
+		this.academy = academy;
 	}
 	
 	

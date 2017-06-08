@@ -12,20 +12,54 @@
 			<ui:define name="buttons">
 				<h:form>
 					<p:commandButton value="Manage Academies" action="createAcademyMenu" ajax="false" styleClass="btn btn-default" />
-		
-					<p:commandButton value="Edit Academy" action="editAcademyMenu" ajax="false" styleClass="btn btn-default" />
-
-					<p:commandButton value="Bla" action="conectionsMenu" ajax="false" styleClass="btn btn-default" />
-		
-					<p:commandButton value="Back to Main Menu" action="/myProfileMenu" ajax="false" styleClass="btn btn-default" />
+					
+					<p:commandButton value="Back to Main Menu" action="/Persons/myProfileMenu" ajax="false" styleClass="btn btn-default" />
 				</h:form>
 			</ui:define>
 			
 			<ui:define name="display">
 				<h:form>
-					<div id="grid" class="col-md-12">
+					<p:dataTable var="academy" value="#{academyBean.readAcademy()}" editable="true" selection="#{asdasdean.selectedAcademygwe}" rowKey="#{academy.name}">
+						<f:facet name="header">
+							Academies
+						</f:facet>
 						
-					</div>
+						<p:column selectionMode="multiple" style="width: 60px;" />
+						
+						<p:column headerText="Name">
+							<h:outputText value="#{academy.name}" />
+						</p:column>
+						
+						<p:column headerText="Starting date">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{academy.date}"/>
+									</f:facet>
+									<f:facet name = "input">
+										<p:inputText id= "nameInput" value = "#{academy.date}" style="width:96%" />
+									</f:facet>
+								</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Descrition">
+								<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{academy.description}"/>
+								</f:facet>
+								<f:facet name = "input">
+									<p:inputText id= "acdemyInput" value = "#{academy.description}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column style="width:6%" exportable="false">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+										
+					<p:commandButton styleClass="btn btn-submit" value="Remove"  action="#{academdsgsdyBean.editAcedemy}" ajax="false"/>
+						
+					
 				</h:form>
 			</ui:define>
 		</ui:composition>
