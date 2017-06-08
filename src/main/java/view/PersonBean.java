@@ -29,7 +29,7 @@ public class PersonBean {
 
 	public  String createPerson(){
 		personService.createPerson(person);
-		return "/Persons/myProfileMenu";
+		return "myProfileMenu";
 	}
 	
 	public Collection<Person> readPerson(){
@@ -39,7 +39,7 @@ public class PersonBean {
 	
 	public String updatePerson(){
 		personService.updatePerson(person);
-		return "/Persons/myProfileMenu";
+		return "myProfileMenu";
 	}
 	
 	public String removePerson(){
