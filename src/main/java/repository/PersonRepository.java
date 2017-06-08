@@ -2,6 +2,7 @@ package repository;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -19,7 +20,14 @@ public class PersonRepository {
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
 	
-
+	@PostConstruct
+	public void initAdmim(){
+		final Person admin = new Person();
+		admin.setPassword("admin");
+		admin.setUsername("admin");
+		createPerson(admin);
+	}
+	
 	public void createPerson(Person person){
 		em.persist(person);
 	}

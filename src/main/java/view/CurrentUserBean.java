@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 @Named("userBean")
 @SessionScoped
-public class UserBean implements Serializable {
+public class CurrentUserBean implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private Person person = new Person();

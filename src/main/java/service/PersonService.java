@@ -17,6 +17,7 @@ import repository.PersonRepository;
 @RequestScoped
 public class PersonService {
 	
+	
 	@Inject
 	private PersonRepository personRepository;
 	

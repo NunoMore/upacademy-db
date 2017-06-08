@@ -3,7 +3,7 @@ package view;
 
 import java.util.Collection;
 
-import javax.annotation.PostConstruct;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,14 +16,6 @@ import service.PersonService;
 @RequestScoped
 public class PersonBean {
 	
-	@PostConstruct
-	public void initAdmim(){
-		final Person admin = new Person();
-		admin.setPassword("admin");
-		admin.setUsername("admin");
-		
-		
-	}
 	
 	
 	private Person person = new Person();
