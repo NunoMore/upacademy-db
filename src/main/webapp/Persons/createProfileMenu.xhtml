@@ -10,8 +10,7 @@
 
 	<ui:define name="buttons">
 		<h:form>
-			<p:commandButton value="Return" ajax="false" action="myProfileMenu"
-				class="button" />
+			<p:commandButton value="Return" ajax="false" action="myProfileMenu"/>
 		</h:form>
 	</ui:define>
 
@@ -34,8 +33,7 @@
 			<p:inputNumber value="#{personBean.person.numTelephone}"></p:inputNumber>
 			<br></br>
 			<br></br>
-			<p:commandButton value="Save Changes"
-				action="#{personBean.createPerson}"></p:commandButton>
+			<p:commandButton value="Save Changes" action="#{personBean.createPerson}"></p:commandButton>
 		</h:form>
 	</ui:define>
 
