@@ -7,48 +7,51 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-		
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<title><ui:insert name="title">Some title</ui:insert></title>
 	
+	<!-- BOOTSTRAP -->
 	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
-	<h:outputStylesheet name="css/style.css"/>
 	<h:outputScript name="bootstrap/js/bootstrap.js" />
 	
-	<ui:insert name="css" />
+	<!-- css only -->
+	<h:outputStylesheet name="css/style.css" />
+	<h:outputStylesheet name="css/commonHeader.css" />
 	
+	<ui:insert name="css" />
+
 </h:head>
 <body>
 	<!--  Header -->
-	<div class="row">
-		<div id="head" class="col-md-12">
-			<h2 class="titulo">UpAcademy Linked</h2>
-		</div>
-	</div>
-	
+	<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
+
 	<!-- barra de log in -->
 	<div id="naveg" class="col-md-12">
 		<ul class="naveglist">
-			<li role="presentation" class="active"><a href="#">UP ACADEMY</a></li>
-			<li role="presentation" class="active"><a href="#">SER PROGRAMADOR?</a></li>
-			<li role="presentation" class="active"><a href="#">ÉS PROGRAMADOR</a></li>
+			<li role="presentation" class="active"><a href="#">UP
+					ACADEMY</a></li>
+			<li role="presentation" class="active"><a href="#">SER
+					PROGRAMADOR?</a></li>
+			<li role="presentation" class="active"><a href="#">ÉS
+					PROGRAMADOR</a></li>
 			<li role="presentation" class="active"><a href="#">CURSOS</a></li>
 			<li role="presentation" class="active"><a href="#">CONTACTOS</a></li>
 			<li role="presentation" class="active"><a href="#">ALUMNI</a></li>
-			<li style="float-right" role="presentation"><a href="#">Sign Out</a></li>
+			<li style="" role="presentation"><a href="#">Sign Out</a></li>
 		</ul>
 	</div>
 
-	
+
 	<div class="row">
 		<!-- Menu Lateral -->
 		<div id="sideMenu" class="col-md-2">
 			<div id="menuButton1" class="col-md-12">
 				<ui:insert name="buttons" class="button">
-				
+
 				</ui:insert>
 			</div>
 		</div>
@@ -64,12 +67,7 @@
 
 
 	<!-- footer -->
-	<div class="row">
-		<div id="footer" class="col-md-12">
-			<h4 class="ProgramerName">Programa criado por Group
-				UpAcademy 2017</h4>
-		</div>
-	</div>
+	<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
 
 </body>
 </html>
