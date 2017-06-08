@@ -3,6 +3,7 @@ package view;
 import java.io.Serializable;
 import java.rmi.activation.ActivationDesc;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;

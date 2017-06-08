@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Academy;
+import model.Person;
 import service.AcademyService;
 
 @Named("academyBean")
@@ -31,13 +32,13 @@ public class AcademyBean {
 		return academyService.readAcademy();
 		
 	}
-	public String removeAcademy(List<Academy> academyList, String nextPage){
-		academyService.remove(academy);
+	public String removeAcademy(List<Academy> editAcademy, String nextPage){
+		academyService.removeAcademy(academy);
 		academyService.updateAcademy(academy);
 		return nextPage;
 		
 	}
-
+	
 	public Academy getAcademy() {
 		return academy;
 	}

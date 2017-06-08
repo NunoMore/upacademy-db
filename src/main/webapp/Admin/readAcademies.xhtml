@@ -73,7 +73,7 @@
 			</p:dataTable>
 
 			<p:commandButton styleClass="btn btn-submit" value="Remove"
-				action="#{academyBean.removeAcademy(academyBean.academyService.selectedEdit, 'AcademyMenu')}" ajax="false" />
+				action="#{academyBean.removeAcademy(academyBean.academyService.academyRepository.selectedEdit, 'AcademyMenu')}" ajax="false" />
 
 
 			<h:panelGrid columns="2" cellpadding="5">
