@@ -22,6 +22,14 @@ public class Academy implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	private Long ID;
+	
+	public Long getID() {
+		return ID;
+	}
+	public void setID(Long iD) {
+		ID = iD;
+	}
 
 	private String name;
 	private String description;

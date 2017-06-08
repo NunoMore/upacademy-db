@@ -1,6 +1,8 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -17,18 +19,23 @@ public class AcademyBean {
 	@Inject
 	private AcademyService academyService;
 	
+	
+	private List<Academy> editAcademy = new ArrayList<>();
+	
 	public String createAcademy(){
 		academyService.createAcademy(academy);
-		return "/Academy/AcademyMenu";
+		return "AcademyMenu";
 	}
 	
 	public Collection<Academy> readAcademy(){
 		return academyService.readAcademy();
 		
 	}
-	
-	public void removeAcademy(){
-		academyService.removeAcademy(academy);
+	public String removeAcademy(List<Academy> academyList, String nextPage){
+		academyService.remove(academy);
+		academyService.updateAcademy(academy);
+		return nextPage;
+		
 	}
 
 	public Academy getAcademy() {
@@ -38,6 +45,23 @@ public class AcademyBean {
 	public void setAcademy(Academy academy) {
 		this.academy = academy;
 	}
+
+	public AcademyService getAcademyService() {
+		return academyService;
+	}
+
+	public void setAcademyService(AcademyService academyService) {
+		this.academyService = academyService;
+	}
+
+	public List<Academy> getEditAcademy() {
+		return editAcademy;
+	}
+
+	public void setEditAcademy(List<Academy> editAcademy) {
+		this.editAcademy = editAcademy;
+	}
+
 	
 	
 }

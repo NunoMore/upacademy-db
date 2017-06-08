@@ -1,65 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-		<!--  Create Columns with products -->
-			<ui:define name="buttons">
-				<h:form>
-					<p:commandButton value="Manage Academies" action="createAcademyMenu" ajax="false" styleClass="btn btn-default" />
-					
-					<p:commandButton value="Back to Main Menu" action="/Persons/myProfileMenu" ajax="false" styleClass="btn btn-default" />
-				</h:form>
-			</ui:define>
-			
-			<ui:define name="display">
-				<h:form>
-					<p:dataTable var="academy" value="#{academyBean.readAcademy()}" editable="true" selection="#{asdasdean.selectedAcademygwe}" rowKey="#{academy.name}">
-						<f:facet name="header">
-							Academies
-						</f:facet>
-						
-						<p:column selectionMode="multiple" style="width: 60px;" />
-						
-						<p:column headerText="Name">
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="Manage Academies" action="createAcademyMenu"
+				ajax="false" styleClass="btn btn-default" />
+
+			<p:commandButton value="Back to Main Menu"
+				action="/Persons/myProfileMenu" ajax="false"
+				styleClass="btn btn-default" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="display">
+		<h:form>
+			<p:dataTable var="academy" value="#{academyBean.readAcademy()}"
+				editable="true" selection="#{tableView.selectedList}"
+				rowKey="#{academy.ID}">
+				<f:facet name="header">
+					Academies
+				</f:facet>
+
+				<p:column selectionMode="multiple" style="width: 60px;" />
+
+				<p:column headerText="Name">
+					<p:cellEditor>
+						<f:facet name="output">
 							<h:outputText value="#{academy.name}" />
-						</p:column>
-						
-						<p:column headerText="Starting date">
-								<p:cellEditor>
-									<f:facet name="output">
-										<h:outputText value="#{academy.date}"/>
-									</f:facet>
-									<f:facet name = "input">
-										<p:inputText id= "nameInput" value = "#{academy.date}" style="width:96%" />
-									</f:facet>
-								</p:cellEditor>
-						</p:column>
-						
-						<p:column headerText="Descrition">
-								<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{academy.description}"/>
-								</f:facet>
-								<f:facet name = "input">
-									<p:inputText id= "acdemyInput" value = "#{academy.description}" style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						
-						<p:column style="width:6%" exportable="false">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
-										
-					<p:commandButton styleClass="btn btn-submit" value="Remove"  action="#{academdsgsdyBean.editAcedemy}" ajax="false"/>
-						
-					
-				</h:form>
-			</ui:define>
-		</ui:composition>
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{academy.name}" style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Starting date">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.date}">
+								<f:convertDateTime pattern="MMM/dd/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="dateInput" value="#{academy.date}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Descrition">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="acdemyInput" value="#{academy.description}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column style="width:6%" exportable="false">
+					<p:rowEditor />
+				</p:column>
+			</p:dataTable>
+
+			<p:commandButton styleClass="btn btn-submit" value="Remove"
+				action="#{academyBean.removeAcademy(academyBean.academyService.selectedEdit, 'AcademyMenu')}" ajax="false" />
+
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputText value="Name" />
+				<p:inputText value="#{academyBean.academy.name}" />
+
+				<p:outputLabel for="german" value="Start Date:" />
+				<p:calendar id="german" value="#{academyBean.academy.date}"
+					locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+
+				<h:outputText value="Description" />
+				<p:inputTextarea value="#{academyBean.academy.description}" rows="6"
+					cols="33" />
+
+				<h:commandButton styleClass="btn btn-submit"
+					action="#{academyBean.createAcademy}" value="Create!" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

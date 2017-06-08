@@ -20,10 +20,9 @@ public class AcademyService {
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
 	
-	//private List<Academy> listEdit = new ArrayList<>();
-	//private List<Academy> selectedEdit;
+	private long academyId;
 	
-	
+	private List<Academy> selectedEdit;
 	
 	public void createAcademy(Academy academy){
 		em.persist(academy);
@@ -34,11 +33,36 @@ public class AcademyService {
 		return(List<Academy>) query.getResultList();
 	}
 	
-	public void removeAcademy (Academy academy){
-		academy = em.find(Academy.class, academy.getName());
-		em.remove(academy);
+	
+	public void updateAcademy(Academy academy){
+		em.find(Academy.class, academyId).setName(academy.getName());
+		em.find(Academy.class, academyId).setDate(academy.getDate());
+		em.find(Academy.class, academyId).setDescription(academy.getDescription());
+		
 	}
 	
+	public void remove(Academy academy){
+		em.remove(em.find(Academy.class, academy.getID()));
+	}
+
+	public long getAcademyId() {
+		return academyId;
+	}
+
+	public void setAcademyId(long academyId) {
+		this.academyId = academyId;
+	}
+
+	public List<Academy> getSelectedEdit() {
+		return selectedEdit;
+	}
+
+	public void setSelectedEdit(List<Academy> selectedEdit) {
+		this.selectedEdit = selectedEdit;
+	}
+	
+	
+
 	/*public void updateList(){
 		List<Academy> newList= new ArrayList<>();
 		for(int i=0; i<em size(); i++){
