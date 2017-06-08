@@ -43,9 +43,17 @@
 			<div style="float: right">
 				<p:panelGrid columns="3">
 
+
+
+
 					<p:outputLabel value="Data"></p:outputLabel>
 					<p:outputLabel value="Currente Informations"></p:outputLabel>
 					<p:outputLabel value="Update"></p:outputLabel>
+					
+					
+					<h:outputText value="Naame" />
+					<h:outputText value="#{personBean.person.name}" />
+					<h:inputText value="#{personBean.person.name}" />
 
 					<h:outputText value="Academy" />
 					<h:outputText value="#{personBean.person.academy}" />
