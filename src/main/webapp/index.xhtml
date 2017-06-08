@@ -17,11 +17,13 @@
 			<div id="logInBox">
 				<h:panelGrid id="logIn" columns="2" cellpadding="5">
 					<h:outputText value="User: " />
-					<p:inputText />
+					<!-- <p:inputText value="#{currentUserBean.username}"/> -->
+					
 					<h:outputText value="Password: " />
 					<p:inputText type="password"/>
-					<p:commandButton value="login" ajax="false" action="main-page"></p:commandButton>
-					<p:link value="forgot Password" action="forgotPassword"></p:link>
+					
+					<p:commandButton value="login" ajax="false" action="main-page"/>
+					<p:commandLink value="Forgot Password" action="forgotPassword" ajax="false"/>
 				</h:panelGrid>
 			</div>
 		</h:form>
