@@ -5,37 +5,32 @@ package service;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import model.Person;
+import repository.PersonRepository;
 
 @Named("personService")
 @Transactional
 @RequestScoped
 public class PersonService {
 	
-	@PersistenceContext(name="ProjectDataBase")
-	private EntityManager em;
+	@Inject
+	private PersonRepository personRepository;
 	
-
 	public void createPerson(Person person){
-		em.persist(person);
+		personRepository.createPerson(person);
 	}
-	
 	public List<Person> readPerson(){
-		Query query = em.createQuery("Select e from Person e");
-		return (List<Person>) query.getResultList();
+		return personRepository.readPerson();
 	}
 	public void updatePerson(Person person){
-		em.merge(person);
+		personRepository.updatePerson(person);
 	}
 	public void removePerson(Person person){
-		person = em.find(Person.class,person.getID());
-		em.remove(person);
+		personRepository.removePerson(person);
 	}
 }
 
