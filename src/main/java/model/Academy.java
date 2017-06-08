@@ -9,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-
 @Entity
 public class Academy implements Serializable {
 	private static final Long serialVersionUID = 1L;
 	
-
 	@Id
 	@GeneratedValue
 
