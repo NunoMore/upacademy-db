@@ -16,6 +16,7 @@ public class Person implements Serializable{
 	private long ID;
 	
 	private String name;
+	private String username;
 	private String dateOfBirth;
 	private String academicCourse;
 	private String gender;
@@ -28,11 +29,17 @@ public class Person implements Serializable{
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
-	private String curriculum;
+	private byte[] curriculum;
 	private String securityQuestion;
 	private String securityAnswer;
 	
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -114,10 +121,10 @@ public class Person implements Serializable{
 	public void setWorkPlace(String workPlace) {
 		this.workPlace = workPlace;
 	}
-	public String getCurriculum() {
+	public byte[] getCurriculum() {
 		return curriculum;
 	}
-	public void setCurriculum(String curriculum) {
+	public void setCurriculum(byte[] curriculum) {
 		this.curriculum = curriculum;
 	}
 	public String getSecurityQuestion() {
