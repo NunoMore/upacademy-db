@@ -44,4 +44,19 @@ public class PersonRepository {
 		em.remove(person);
 	}
 	
+	public void updateUser(Person person){
+		Query query = em.createQuery("Select e.username from Person e");
+		List<Person> username = query.getResultList();
+		 String User = person.getUsername();
+		if(username.contains(User)){
+			for(int i =0 ; i<username.size();i++){
+				Person posicao = username.get(i);
+				if(User.equals(posicao.getUsername())){
+					updatePerson(person);
+				}
+			}
+		}
+	}
+		
+	
 }

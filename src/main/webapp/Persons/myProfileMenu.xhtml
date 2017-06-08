@@ -27,17 +27,18 @@
 				<!-- Panelgrid with photo -->
 				<p:panelGrid columns="2">
 					<f:facet name="header">
-						<p:graphicImage name="images/defaultUser.png" />
-					</f:facet>
+							<p:graphicImage value="#{currentUserBean.person.photo}" rendered="#{currentUserBean.person.photo != null}" style="width:100px"/>
+							<p:graphicImage name="images/defaultUser.png" rendered="#{currentUserBean.person.photo == null}" style="width:100px"/>
+						</f:facet>
 
 					<h:outputText value="Name:" />
-					<h:outputText value="#{personBean.person.name}" />
+					<h:outputText value="#{currentUserBean.person.name}" />
 
 					<h:outputText value="Date Of Birth" />
-					<h:outputText value="#{personBean.person.dateOfBirth}" />
+					<h:outputText value="#{currentUserBean.person.dateOfBirth}" />
 
 					<h:outputText value="Academic Course" />
-					<h:outputText value="#{personBean.person.academicCourse}" />
+					<h:outputText value="#{currentUserBean.person.academicCourse}" />
 				</p:panelGrid>
 			</div>
 			<div style="float: right">
@@ -51,12 +52,12 @@
 					<p:outputLabel value="Update"></p:outputLabel>
 					
 					
-					<h:outputText value="Naame" />
-					<h:outputText value="#{personBean.person.name}" />
-					<h:inputText value="#{personBean.person.name}" />
+					<h:outputText value="Name" />
+					<h:outputText value="#{currentUserBean.person.name}" />
+					<h:inputText value="#{currentUserBean.person.name}" />
 
 					<h:outputText value="Academy" />
-					<h:outputText value="#{personBean.person.academy}" />
+					<h:outputText value="#{currentUserBean.person.academy}" />
 					<p:selectOneMenu onchange="PF('personsTable').filter()"
 						style="width:150px;">
 						<f:selectItem itemLabel="Academias" itemValue="#{null}"
@@ -66,35 +67,35 @@
 					</p:selectOneMenu>
 
 					<h:outputText value="Telephone Number" />
-					<h:outputText value="#{personBean.person.numTelephone}" />
-					<h:inputText value="#{personBean.person.numTelephone}" />
+					<h:outputText value="#{currentUserBean.person.numTelephone}" />
+					<h:inputText value="#{currentUserBean.person.numTelephone}" />
 
 
 					<h:outputText value="Email" />
-					<h:outputText value="#{personBean.person.email}" />
-					<h:inputText value="#{personBean.person.email}" />
+					<h:outputText value="#{currentUserBean.person.email}" />
+					<h:inputText value="#{currentUserBean.person.email}" />
 
 
 					<h:outputText value="Facebook" />
-					<h:outputText value="#{personBean.person.facebookLink}" />
-					<h:inputText value="#{personBean.person.facebookLink}" />
+					<h:outputText value="#{currentUserBean.person.facebookLink}" />
+					<h:inputText value="#{currentUserBean.person.facebookLink}" />
 
 					<h:outputText value="LinkedIn" />
-					<h:outputText value="#{personBean.person.linkedInLink}" />
-					<h:inputText value="#{personBean.person.linkedInLink}" />
+					<h:outputText value="#{currentUserBean.person.linkedInLink}" />
+					<h:inputText value="#{currentUserBean.person.linkedInLink}" />
 
 					<h:outputText value="Git" />
-					<h:outputText value="#{personBean.person.gitHubLink}" />
-					<h:inputText value="#{personBean.person.gitHubLink}" />
+					<h:outputText value="#{currentUserBean.person.gitHubLink}" />
+					<h:inputText value="#{currentUserBean.person.gitHubLink}" />
 
 
 					<h:outputText value="WorkPlace" />
-					<h:outputText value="#{personBean.person.workPlace}" />
-					<h:inputText value="#{personBean.person.workPlace}" />
+					<h:outputText value="#{currentUserBean.person.workPlace}" />
+					<h:inputText value="#{currentUserBean.person.workPlace}" />
 
 					<h:outputText value="Curriculum" />
-					<h:outputText value="#{personBean.person.curriculum}" />
-					<p:fileUpload value="#{personBean.person.curriculum}" mode="simple"
+					<h:outputText value="#{currentUserBean.person.curriculum}" />
+					<p:fileUpload value="#{currentUserBean.person.curriculum}" mode="simple"
 						skinSimple="true" />
 
 
@@ -103,7 +104,7 @@
 				</p:panelGrid>
 
 				<p:commandButton value="Submit Changes"
-					action="#{personBean.updatePerson()}"></p:commandButton>
+					action="#{currentUserBean.updateUser}"></p:commandButton>
 			</div>
 
 		</h:form>
