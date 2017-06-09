@@ -21,17 +21,18 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void removeAcademy(Academy academy){
-		academyRepository.readAcademy();
+	public void editAcademy(Long ID){
+		academyRepository.edit(ID);
+	}
+	
+	public void removeAcademy(Long ID){
+		academyRepository.remove(ID);
 	}
 	
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
 	}
-	
-	public void updateAcademy(Academy academy){
-		academyRepository.update(academy);
-	}
+
 
 	public AcademyRepository getAcademyRepository() {
 		return academyRepository;

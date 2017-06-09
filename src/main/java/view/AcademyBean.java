@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,25 +18,33 @@ import service.AcademyService;
 public class AcademyBean {
 
 	private Academy academy = new Academy();
+	
+	private List<Academy> selectedAcademy;
+	
 	@Inject
 	private AcademyService academyService;
-	
-	
+
 	private List<Academy> editAcademy = new ArrayList<>();
 	
 	public String createAcademy(){
 		academyService.createAcademy(academy);
-		return "AcademyMenu";
+		return "readAcademies";
+	}
+	
+	public String editAcademy(Long ID){
+		academyService.editAcademy(ID);
+		return "readAcademies";
 	}
 	
 	public Collection<Academy> readAcademy(){
 		return academyService.readAcademy();
 		
 	}
-	public String removeAcademy(List<Academy> editAcademy, String nextPage){
-		academyService.removeAcademy(academy);
-		academyService.updateAcademy(academy);
-		return nextPage;
+	public String removeAcademy(Long ID){
+		//setId(Id);
+		academyService.removeAcademy(ID);
+		//academyService.updateAcademy(academy);
+		return "readAcademies";
 		
 	}
 	
@@ -63,6 +72,13 @@ public class AcademyBean {
 		this.editAcademy = editAcademy;
 	}
 
+	public List<Academy> getSelectedAcademy() {
+		return selectedAcademy;
+	}
+
+	public void setSelectedAcademy(List<Academy> selectedAcademy) {
+		this.selectedAcademy = selectedAcademy;
+	}
 	
 	
 }

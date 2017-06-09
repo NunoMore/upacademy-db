@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import model.Academy;
@@ -28,20 +29,20 @@ public class AcademyRepository {
 		em.persist(academy);
 	}
 	
+	public void edit(Long ID){
+		Academy academy = em.find(Academy.class, ID);
+		em.merge(academy);
+	}
+	
 	public List<Academy> readAcademy(){
 		Query query = em.createQuery("Select e from Academy e");
 		return (List<Academy>)query.getResultList();
 	}
 	
-	public void update(Academy academy){
-		em.find(Academy.class, academyId).setName(academy.getName());
-		em.find(Academy.class, academyId).setDate(academy.getDate());
-		em.find(Academy.class, academyId).setDescription(academy.getDescription());
-		
-	}
-	
-	public void remove(Academy academy){
-		em.remove(em.find(Academy.class, academy.getID()));
+	public void remove(Long ID){
+		System.out.println(ID);
+		Academy academy = em.find(Academy.class, ID);
+		em.remove(academy);
 	}
 
 	public long getAcademyId() {

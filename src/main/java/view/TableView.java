@@ -17,7 +17,7 @@ import model.Person;
 public class TableView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private List<Academy> selectedList = new ArrayList<>(); // atributo para guardar academy na tabela Academy
+	private List<Academy> selectedList; // atributo para guardar academy na tabela Academy
 	
 	private Person selectedPerson; //atributo para guardar person que sera selecionada na tabela do main
 	private List<Person> filteredPersons; //atributo para guardar a seleccao de filtragem
@@ -62,5 +62,6 @@ public class TableView implements Serializable {
 	public void setSelectedList(List<Academy> selectedList) {
 		this.selectedList = selectedList;
 	}
+
 
 }
