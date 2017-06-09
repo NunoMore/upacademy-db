@@ -1,21 +1,36 @@
 package personsAndAcademies.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
 @Entity
 public class Academy implements Serializable {
-	private static final Long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
+	private Long ID;
+	
+	public Long getID() {
+		return ID;
+	}
+	public void setID(Long iD) {
+		ID = iD;
+	}
 
 	private String name;
 	private String description;
-	private String startDate;
+	private Date date;
 	
 	//@Lob
 	//@Column(name="ACADEMY_PDF", nullable=false, columnDefinition="mediumblob")
@@ -34,12 +49,14 @@ public class Academy implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getStartDate() {
-		return startDate;
+	
+	public Date getDate() {
+		return date;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
+
 	/*public byte[] getPdf() {
 		return pdf;
 	}
@@ -49,5 +66,21 @@ public class Academy implements Serializable {
 	public static Long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	// Metodo para o selecionar data de inicio da academia no menu create academy
+	public void onDateSelect(SelectEvent event){
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+	}
+	
+	public void click(){
+		RequestContext requestContext = RequestContext.getCurrentInstance();
+		
+		requestContext.update("form:display");
+		requestContext.execute("PF('dlg').show()");
+	}
+
 	
 }

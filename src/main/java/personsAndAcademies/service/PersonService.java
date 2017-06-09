@@ -37,5 +37,8 @@ public class PersonService {
 	public void updateUser(Person person){
 		personRepository.updateUser(person);
 	}
+	public void removePersonId(long ID){
+		personRepository.removePersonId(ID);
+	}
 }
 

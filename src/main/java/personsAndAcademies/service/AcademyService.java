@@ -16,16 +16,30 @@ public class AcademyService {
 	@Inject
 	private AcademyRepository academyRepository;
 	
+	
 	public void createAcademy(Academy academy){
 		academyRepository.createAcademy(academy);
+	}
+	
+	public void editAcademy(Long ID){
+		academyRepository.edit(ID);
+	}
+	
+	public void removeAcademy(Long ID){
+		academyRepository.remove(ID);
 	}
 	
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
 	}
-	
-	public void removeAcademy(Academy academy){
-		academyRepository.removeAcademy(academy);
+
+
+	public AcademyRepository getAcademyRepository() {
+		return academyRepository;
 	}
-	
+
+	public void setAcademyRepository(AcademyRepository academyRepository) {
+		this.academyRepository = academyRepository;
+	}
+
 }

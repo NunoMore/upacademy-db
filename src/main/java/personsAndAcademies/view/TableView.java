@@ -6,12 +6,15 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import personsAndAcademies.model.Academy;
 import personsAndAcademies.model.Person;
 
 @Named("tableView")
 @SessionScoped
 public class TableView implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private List<Academy> selectedList; // atributo para guardar academy na tabela Academy
 	
 	private Person selectedPerson; //atributo para guardar person que sera selecionada na tabela do main
 	private List<Person> filteredPersons; //atributo para guardar a seleccao de filtragem
@@ -48,4 +51,14 @@ public class TableView implements Serializable {
 	public void setSelectedPerson(Person selectedPerson) {
 		this.selectedPerson = selectedPerson;
 	}
+
+	public List<Academy> getSelectedList() {
+		return selectedList;
+	}
+
+	public void setSelectedList(List<Academy> selectedList) {
+		this.selectedList = selectedList;
+	}
+
+
 }
