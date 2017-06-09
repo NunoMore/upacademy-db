@@ -49,5 +49,9 @@ public class PersonBean {
 		personService.removePerson(person);
 		return "index";
 	}
+	public String removePersonId(long ID){
+		personService.removePersonId(ID);
+		return "index";
+	}
 }
 
