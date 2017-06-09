@@ -1,5 +1,5 @@
 
-package service;
+package personsAndAcademies.service;
 
 
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import model.Person;
-import repository.PersonRepository;
+import personsAndAcademies.model.Person;
+import personsAndAcademies.repository.PersonRepository;
 
 @Named("personService")
 @Transactional

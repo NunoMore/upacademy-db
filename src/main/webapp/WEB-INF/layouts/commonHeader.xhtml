@@ -7,21 +7,32 @@
 <body>
 	<ui:composition>
 
-		<div class="row">
-			<div class="col-md-12">
-				<ul id="menu-bar">
-					<li class="active"><a href="main-page.xhtml">Home</a></li>
-					<li><a href="#">ADMIN</a>
-						<ul>
-							<li><a href="#">Gerir Utilizadores</a></li>
-							<li><a href="#">Gerir Academias</a></li>
-						</ul></li>
-					<li><a href="#">My Profile</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact Us</a></li>
-				</ul>
+		<header id="header_bar" class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
+			role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse"
+						data-target=".bs-navbar-collapse">
+					</button>
+					<a id="homeBtn" href="/UPACADEMY_DB/main-page.xhtml" class="navbar-brand">Home</a>
+				</div>
+				<nav class="collapse navbar-collapse bs-navbar-collapse"
+					role="navigation">
+					<ul class="nav navbar-nav">
+						<li><a id="myProfileBtn" href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">My Profile</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown">Admin <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a id="gerirAcademiasBtn" href="/UPACADEMY_DB/Admin/readAcademies.xhtml">Gerir Academias</a></li>
+								<li><a id="gerirUtilizadoresBtn" href="/UPACADEMY_DB/Admin/readUsers.xhtml">Gerir Utilizadores</a></li>
+							</ul></li>
+						<li><a id="aboutBtn" href="#">About</a></li>
+						<li><a id="contactsBtn" href="#">Contacts</a></li>
+					</ul>
+				</nav>
 			</div>
-		</div>
+		</header>
+		
 
 	</ui:composition>
 </body>

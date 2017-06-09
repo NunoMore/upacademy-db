@@ -1,4 +1,4 @@
-package repository;
+package personsAndAcademies.repository;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import model.Person;
+import personsAndAcademies.model.Person;
 
 @Named("personRepo")
 @Transactional

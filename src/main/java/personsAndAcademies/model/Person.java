@@ -1,4 +1,4 @@
-package model;
+package personsAndAcademies.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package view;
+package personsAndAcademies.view;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import model.Person;
+import personsAndAcademies.model.Person;
 
 @Named("tableView")
 @SessionScoped

@@ -1,4 +1,4 @@
-package view;
+package personsAndAcademies.view;
 
 import java.util.Collection;
 
@@ -7,8 +7,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import model.Person;
-import service.PersonService;
+import personsAndAcademies.model.Person;
+import personsAndAcademies.service.PersonService;
+
 import java.io.Serializable;
 
 @Named("userBean")
