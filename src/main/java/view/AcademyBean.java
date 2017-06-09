@@ -28,7 +28,7 @@ public class AcademyBean {
 	
 	public String createAcademy(){
 		academyService.createAcademy(academy);
-		return "readAcademies";
+		return "readAcademies?faces-redirect=true";
 	}
 	
 	public String editAcademy(Long ID){
@@ -44,7 +44,7 @@ public class AcademyBean {
 		//setId(Id);
 		academyService.removeAcademy(ID);
 		//academyService.updateAcademy(academy);
-		return "readAcademies";
+		return "readAcademies?faces-redirect=true";
 		
 	}
 	

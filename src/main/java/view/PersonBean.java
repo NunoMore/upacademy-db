@@ -3,6 +3,7 @@ package view;
 
 import java.util.Collection;
 
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,7 +15,9 @@ import service.PersonService;
 @Named("personBean")
 @RequestScoped
 public class PersonBean {
-
+	
+	
+	
 	private Person person = new Person();
 	@Inject
 	private PersonService personService;

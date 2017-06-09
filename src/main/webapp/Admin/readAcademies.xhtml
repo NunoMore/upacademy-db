@@ -8,46 +8,66 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="Manage Academies" action="createAcademyMenu"
-				ajax="false" styleClass="btn btn-default" />
 
-			<p:commandButton value="Back to Main Menu"
-				action="/Persons/myProfileMenu" ajax="false"
-				styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
 
 	<ui:define name="display">
 		<h:form>
-			<p:dataTable id="academyTable" var="academy" value="#{academyBean.readAcademy()}" >
-				
+		
+					<p:commandButton value="Back to Main Menu"
+				action="/Persons/myProfileMenu" ajax="false" />
+			
+			<p:dataTable id="academyTable" var="academy" value="#{academyBean.readAcademy()}" editable="true" editMode="cell" >
 				<f:facet name="header">
 					Academies
 				</f:facet>
-				
+
 				<p:column headerText="Name">
-					<h:outputText value="#{academy.name}" />
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{academy.name}" style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
 
 				<p:column headerText="Starting date">
-					<h:outputText value="#{academy.date}">
-						<f:convertDateTime pattern="MMM/dd/yyyy" />
-					</h:outputText>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.date}">
+								<f:convertDateTime pattern="MMM/dd/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+				
+								<p:calendar id="dateInput" value="#{academy.date}"
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+						
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
 
 				<p:column headerText="Descrition">
-					<h:outputText value="#{academy.description}" />
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="acdemyInput" value="#{academy.description}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
 				
-				<p:column headerText="Action">
-					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update="j_idt14:academyTable" />
-					<p:commandButton value="Edit" action="#{academyBean.editAcademy(academy.ID)}" update="j_idt14:academyTable" />
+				<p:column>
+					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update="j_idt10:academyTable" />
+					<p:commandButton value="Edit" action="#{academyBean.editAcademy(academy.ID)}" update="j_idt10:academyTable" />
+					
 				</p:column>
 
 			</p:dataTable>
-
+			
 			<br></br>
 
 			<p:panel id="panel">
@@ -76,3 +96,5 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
+
+
