@@ -17,6 +17,7 @@ import personsAndAcademies.repository.PersonRepository;
 @RequestScoped
 public class PersonService {
 	
+	
 	@Inject
 	private PersonRepository personRepository;
 	
@@ -31,6 +32,10 @@ public class PersonService {
 	}
 	public void removePerson(Person person){
 		personRepository.removePerson(person);
+	}
+	
+	public void updateUser(Person person){
+		personRepository.updateUser(person);
 	}
 }
 

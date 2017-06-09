@@ -1,4 +1,4 @@
-package personsAndAcademies.view;
+package view;
 
 import java.util.Collection;
 
@@ -12,12 +12,13 @@ import personsAndAcademies.service.PersonService;
 
 import java.io.Serializable;
 
-@Named("userBean")
+@Named("currentUserBean")
 @SessionScoped
-public class UserBean implements Serializable {
+public class CurrentUserBean implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private Person person = new Person();
+		
 		@Inject
 		private PersonService personService;
 
@@ -47,5 +48,9 @@ public class UserBean implements Serializable {
 		public String removePerson(){
 			personService.removePerson(person);
 			return "index";
+		}
+		public String updateUser(){
+			personService.updateUser(person);
+			return "myProfileMenu";
 		}
 	}
