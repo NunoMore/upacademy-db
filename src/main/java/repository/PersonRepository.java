@@ -68,22 +68,13 @@ public class PersonRepository {
 			userNameList.setGender(person.getGender());
 			userNameList.setPhoto(person.getPhoto());
 
-			
-			
-			updatePerson(userNameList);
-		
-		
 
-//			
-//			for(int i =0 ; i<userNameList.size();i++){
-//				Person personPosition = userNameList.get(i);
-//				if(User.equals(personPosition.getUsername())){	
-//					
-//					personPosition=person;
-//					updatePerson(personPosition);	
-//				}		
-//			}
+			updatePerson(userNameList);
+
 	}
-		
+	public void removePersonId(Long ID){
+		Person person = em.find(Person.class,ID);
+		em.remove(person);
+	}
 	
 }
