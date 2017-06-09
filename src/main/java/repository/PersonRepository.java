@@ -6,11 +6,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import model.Person;
+import view.CurrentUserBean;
 
 @Named("personRepo")
 @Transactional
@@ -45,17 +47,51 @@ public class PersonRepository {
 	}
 	
 	public void updateUser(Person person){
-		Query query = em.createQuery("Select e.username from Person e");
-		List<Person> username = query.getResultList();
-		 String User = person.getUsername();
-		if(username.contains(User)){
-			for(int i =0 ; i<username.size();i++){
-				Person posicao = username.get(i);
-				if(User.equals(posicao.getUsername())){
-					updatePerson(person);
-				}
-			}
-		}
+		String User = person.getUsername();
+		
+		Query query = em.createQuery(("Select e from Person e where e.username = '"+ User + "'"));
+
+		
+			Person userNameList = (Person) query.getSingleResult();
+			
+			userNameList.setName(person.getName());
+			userNameList.setAcademicCourse(person.getAcademicCourse());
+			userNameList.setAcademy(person.getAcademy());
+			userNameList.setNumTelephone(person.getNumTelephone());
+			userNameList.setEmail(person.getEmail());
+			userNameList.setFacebookLink(person.getFacebookLink());
+			userNameList.setLinkedInLink(person.getLinkedInLink());
+			userNameList.setGitHubLink(person.getGitHubLink());
+			userNameList.setWorkPlace(person.getWorkPlace());
+			userNameList.setCurriculum(person.getCurriculum());
+			userNameList.setDateOfBirth(person.getDateOfBirth());
+			userNameList.setGender(person.getGender());
+			userNameList.setPhoto(person.getPhoto());
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			updatePerson(userNameList);
+		
+		
+
+//			
+//			for(int i =0 ; i<userNameList.size();i++){
+//				Person personPosition = userNameList.get(i);
+//				if(User.equals(personPosition.getUsername())){	
+//					
+//					personPosition=person;
+//					updatePerson(personPosition);	
+//				}		
+//			}
 	}
 		
 	

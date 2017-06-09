@@ -25,7 +25,7 @@
 
 			<div style="float: left;">
 				<!-- Panelgrid with photo -->
-				<p:panelGrid columns="2">
+				<p:panelGrid id="ProfileCol" columns="2">
 					<f:facet name="header">
 							<p:graphicImage value="#{currentUserBean.person.photo}" rendered="#{currentUserBean.person.photo != null}" style="width:100px"/>
 							<p:graphicImage name="images/defaultUser.png" rendered="#{currentUserBean.person.photo == null}" style="width:100px"/>
@@ -42,9 +42,7 @@
 				</p:panelGrid>
 			</div>
 			<div style="float: right">
-				<p:panelGrid columns="3">
-
-
+				<p:panelGrid id="EditCol" columns="3">
 
 
 					<p:outputLabel value="Data"></p:outputLabel>
@@ -66,6 +64,19 @@
 						<!-- falta criar academyService -->
 					</p:selectOneMenu>
 
+					<h:outputText value="Date of Birth" />
+					<h:outputText value="#{currentUserBean.person.dateOfBirth}" />
+					<h:inputText value="#{currentUserBean.person.dateOfBirth}" />
+					
+					<h:outputText value="Gender" />
+					<h:outputText value="#{currentUserBean.person.gender}" />
+					<h:inputText value="#{currentUserBean.person.gender}" />
+					
+					<h:outputText value="Academic Course" />
+					<h:outputText value="#{currentUserBean.person.academicCourse}" />
+					<h:inputText value="#{currentUserBean.person.academicCourse}" />
+					
+					
 					<h:outputText value="Telephone Number" />
 					<h:outputText value="#{currentUserBean.person.numTelephone}" />
 					<h:inputText value="#{currentUserBean.person.numTelephone}" />
@@ -97,14 +108,16 @@
 					<h:outputText value="#{currentUserBean.person.curriculum}" />
 					<p:fileUpload value="#{currentUserBean.person.curriculum}" mode="simple"
 						skinSimple="true" />
-
-
-
-
+					
+					<h:outputText value="Photo" />
+					<h:outputText value="#{currentUserBean.person.photo}" />
+					<p:fileUpload value="#{currentUserBean.person.photo}" mode="simple"
+						skinSimple="true" />
+					
+					
 				</p:panelGrid>
 
-				<p:commandButton value="Submit Changes"
-					action="#{currentUserBean.updateUser}"></p:commandButton>
+				<p:commandButton value="Submit Changes" action="#{currentUserBean.updateUser}" update="j_idt15:EditCol,ProfileCol"></p:commandButton>
 			</div>
 
 		</h:form>
