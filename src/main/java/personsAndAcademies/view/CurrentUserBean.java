@@ -1,4 +1,4 @@
-package view;
+package personsAndAcademies.view;
 
 import java.util.Collection;
 
