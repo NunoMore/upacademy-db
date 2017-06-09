@@ -1,7 +1,7 @@
 /* Conteudo central */
 #content{
-	margin-top: 50px;
-	height: 600px;
+	/* margin-top: 50px; */
+	height: 100%;
 	color: white;
 	background-color: silver;
 }

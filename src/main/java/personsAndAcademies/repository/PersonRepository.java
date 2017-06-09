@@ -23,6 +23,7 @@ public class PersonRepository {
 	@PostConstruct
 	public void initAdmim(){
 		final Person admin = new Person();
+		admin.setName("Admin");
 		admin.setPassword("admin");
 		admin.setUsername("admin");
 		createPerson(admin);
