@@ -20,6 +20,8 @@ public class CurrentUserBean implements Serializable {
 		
 		@Inject
 		private PersonService personService;
+		private Boolean editMode = true;
+		private String editState;
 
 		public Person getPerson() {
 			return person;
@@ -27,6 +29,23 @@ public class CurrentUserBean implements Serializable {
 
 		public void setPerson(Person person) {
 			this.person = person;
+		}
+
+		
+		public String getEditMode() {
+			return editMode.toString();
+		}
+
+		public void setEditMode(boolean editMode) {
+			this.editMode = editMode;
+		}
+
+		public String getEditState() {
+			return editState;
+		}
+
+		public void setEditState(String editState) {
+			this.editState = editState;
 		}
 
 		public  String createPerson(){
@@ -51,5 +70,15 @@ public class CurrentUserBean implements Serializable {
 		public String updateUser(){
 			personService.updateUser(person);
 			return "myProfileMenu";
+		}
+		public boolean changeEditMode(){
+			if(editMode==true){
+				editState="Modo Editar ativado";
+				return editMode=false;
+			}else{
+				editState="Modo Editar ativado";
+
+				return editMode=true;
+			}
 		}
 	}
