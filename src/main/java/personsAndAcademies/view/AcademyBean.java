@@ -8,6 +8,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.CellEditEvent;
+
 import personsAndAcademies.model.Academy;
 import personsAndAcademies.service.AcademyService;
 
@@ -29,9 +31,14 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 	}
 	
-	public String editAcademy(Long ID){
-		academyService.editAcademy(ID);
-		return "readAcademies";
+	public String updateAcademy(){
+		academyService.update(academy);
+		return "readAcademies?faces-redirect=true";
+	}
+	
+	public void onCellEdit(CellEditEvent event){
+		Object oldValue = event.getOldValue();
+		Object newValue = event.getNewValue();
 	}
 	
 	public Collection<Academy> readAcademy(){
