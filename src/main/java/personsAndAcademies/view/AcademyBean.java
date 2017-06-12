@@ -31,7 +31,7 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 	}
 	
-	public String updateAcademy(){
+	public String updateAcademy(Academy academy){
 		academyService.update(academy);
 		return "readAcademies?faces-redirect=true";
 	}

@@ -13,10 +13,14 @@
 	<ui:define name="display">
 		<h:form id="formReadAcademies">
 		
-					<p:commandButton value="Back to Main Menu"
-				action="/Persons/myProfileMenu" ajax="false" />
+			<p:commandButton value="Back to Main Menu"
+				action="/Admin/academyMenu" ajax="false" />
 			
-			<p:dataTable id="academyTable" var="academy" value="#{academyBean.readAcademy()}" editable="true" editMode="cell" >
+			<p:commandButton value="edit"
+				action="/Admin/manageAcademy" ajax="false" />
+				
+				
+			<p:dataTable id="academyTable" var="academy" value="#{academyBean.readAcademy()}" editable="true" editMode="cell" widgetVar="cellAcademy" >
 				<f:facet name="header">
 					Academies
 				</f:facet>
@@ -62,44 +66,21 @@
 					</p:cellEditor>
 				</p:column>
 				
-				<p:column>
+				<p:column headerText="Action">
 					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update=":formReadAcademies:academyTable" />
-					<p:commandButton value="Edit" action="#{academyBean.updateAcademy}" update=":formReadAcademies:academyTable" />
+					<p:commandButton value="Edit" action="#{academyBean.updateAcademy(academy)}" update=":formReadAcademies:academyTable" />
 					
 				</p:column>
-
+				
+				
 			</p:dataTable>
 			
-			 <p:contextMenu for="academyTable" widgetVar="cMenu">   
-       			<p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellAcademies').showCellEditor();return false;"/>  
-       			<p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-   			</p:contextMenu> 
 			
-			<br></br>
-
-			<p:panel id="panel">
-				<h:panelGrid columns="2" cellpadding="5">
-	
-					<h:outputText value="Name" />
-					<p:inputText value="#{academyBean.academy.name}" />
-	
-					<p:outputLabel for="german" value="Start Date:" />
-					<p:calendar id="german" value="#{academyBean.academy.date}"
-						locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
-	
-					<h:outputText value="Description" />
-					<p:inputTextarea value="#{academyBean.academy.description}" rows="6"
-						cols="33" />
-	
-					<h:commandButton styleClass="btn btn-submit"
-						action="#{academyBean.createAcademy}" value="Create!" />
-						
-					<h:commandButton value="Reset" StyleClass="btn btn-submit" >
-						<p:ajax update="panel" resetValues="true" />	
-					</h:commandButton> 
-	
-				</h:panelGrid>
-			</p:panel>
+			
+			   <p:contextMenu for="academyTable" widgetVar="cMenu">   
+       				<p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellAcademy').showCellEditor();return false;"/>  
+       				<p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+   </p:contextMenu> 
 		</h:form>
 	</ui:define>
 </ui:composition>

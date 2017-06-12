@@ -28,7 +28,7 @@ public class AcademyService {
 	}
 	
 	public void update(Academy academy){
-		academyRepository.edit(academy);
+		academyRepository.update(academy);
 	}
 	
 	public void removeAcademy(Long ID){
