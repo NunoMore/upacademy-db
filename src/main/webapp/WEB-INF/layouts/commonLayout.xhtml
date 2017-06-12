@@ -13,35 +13,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<title><ui:insert name="title">Some title</ui:insert></title>
-	
+
 	<!-- BOOTSTRAP -->
 	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
-	
+
 	<!-- css only -->
 	<h:outputStylesheet name="css/commonLayout.css" />
 	<h:outputStylesheet name="css/commonHeader.css" />
-	
+	<h:outputStylesheet name="css/commonFooter.css" />
+
 	<ui:insert name="css" />
 
 </h:head>
 <body>
-	<!--  Header -->
-	<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
+	<div class="wrap">
+		<!--  Header -->
+		<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
 
-	<div class="row">
 		<!-- Conteudo central -->
-		<div id="content" class="col-md-12">
-			<div id="contendDisplay" class="col-md-12">
+		<div class="row ">
+			<div id="content" class="container2">
 				<ui:insert name="display">
 				</ui:insert>
 			</div>
 		</div>
+
+		<!-- footer -->
+		<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
+
 	</div>
-
-
-	<!-- footer -->
-	<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
-	
 	
 	<h:outputScript name="bootstrap/js/bootstrap.js" />
 	<h:outputScript name="javascript/commonHeader.js" />

@@ -63,9 +63,6 @@ public class Academy implements Serializable {
 	public void setPdf(byte[] pdf) {
 		this.pdf = pdf;
 	}*/
-	public static Long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	
 
 	

@@ -4,38 +4,79 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <body>
 	<ui:composition>
 
-		<header id="header_bar" class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
+		<header id="header_bar"
+			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 			role="banner">
 			<div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggle" type="button" data-toggle="collapse"
-						data-target=".bs-navbar-collapse">
-					</button>
-					<a id="homeBtn" href="/UPACADEMY_DB/main-page.xhtml" class="navbar-brand">Home</a>
+				<div class="col-md-8">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse"
+							data-target=".bs-navbar-collapse"></button>
+						<a id="homeBtn" href="/UPACADEMY_DB/main-page.xhtml"
+							class="navbar-brand">Home</a>
+					</div>
+					<nav class="collapse navbar-collapse bs-navbar-collapse"
+						role="navigation">
+						<ul class="nav navbar-nav">
+							<li><a id="myProfileBtn"
+								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">My Profile</a></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">Admin <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-level">
+									<li class="dropdown-submenu"><a id="gerirAcademiasBtn"
+										class="dropdown-toggle" data-toggle="dropdown">Gerir
+											Academias</a>
+										<ul class="dropdown-menu">
+											<li><a id="criarAcademiasBtn"
+												href="/UPACADEMY_DB/Admin/readAcademies.xhtml">Criar
+													Academias</a></li>
+											<li><a id="consultarAcademiasBtn"
+												href="/UPACADEMY_DB/Admin/readAcademies.xhtml">Consultar
+													Academias</a></li>
+										</ul></li>
+									<li  class="dropdown-submenu"><a id="gerirUtilizadoresBtn" class="dropdown-toggle"
+										data-toggle="dropdown">Gerir Utilizadores</a>
+										<ul class="dropdown-menu">
+											<li><a id="criarUtilizadoresBtn"
+												href="/UPACADEMY_DB/Admin/readUsers.xhtml">Criar
+													Utilizadores</a></li>
+											<li><a id="consultarUtilizadoresBtn"
+												href="/UPACADEMY_DB/Admin/readUsers.xhtml">Consultar
+													Utilizadores</a></li>
+										</ul></li>
+								</ul></li>
+							<li><a id="aboutBtn" href="#">About</a></li>
+							<li><a id="contactsBtn" href="#">Contacts</a></li>
+						</ul>
+						<!-- tentar meter isto do lado direito mais a direita -->
+						<ul id="logOutHeader" class="nav navbar-nav">
+							<li><a id="usernameHeader">#{currentUserBean.person.username}</a></li>
+							<li><a id="logOutLink" href="#">Logout</a></li>
+						</ul>
+						<!-- 
+						<form action="" id="search-form">
+							<fieldset>
+								<div class="rowElem">
+									<input type="text" /> <a href="#"
+										onClick="document.getElementById('search-form').submit()">Search</a>
+								</div>
+							</fieldset>
+						</form> -->
+					</nav>
 				</div>
-				<nav class="collapse navbar-collapse bs-navbar-collapse"
-					role="navigation">
-					<ul class="nav navbar-nav">
-						<li><a id="myProfileBtn" href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">My Profile</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">Admin <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a id="gerirAcademiasBtn" href="/UPACADEMY_DB/Admin/readAcademies.xhtml">Gerir Academias</a></li>
-								<li><a id="gerirUtilizadoresBtn" href="/UPACADEMY_DB/Admin/readUsers.xhtml">Gerir Utilizadores</a></li>
-							</ul></li>
-						<li><a id="aboutBtn" href="#">About</a></li>
-						<li><a id="contactsBtn" href="#">Contacts</a></li>
-					</ul>
-				</nav>
+				<div class="col-md-4">
+					<div id="upAcademyHeader" class="container2">
+						<h1>
+							<a href="index.html">up academy</a>
+						</h1>
+					</div>
+				</div>
+
 			</div>
 		</header>
-		<p:graphicImage value="/resources/images/large_drawn_rain_drops.jpg" style="height:400px;" />
-		
-
 	</ui:composition>
 </body>
 </html>
