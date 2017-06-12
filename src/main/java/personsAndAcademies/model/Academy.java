@@ -63,9 +63,6 @@ public class Academy implements Serializable {
 	public void setPdf(byte[] pdf) {
 		this.pdf = pdf;
 	}*/
-	public static Long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy
 	public void onDateSelect(SelectEvent event){
