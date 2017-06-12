@@ -1,4 +1,4 @@
-package repository;
+package personsAndAcademies.repository;
 
 import java.util.List;
 
@@ -6,13 +6,11 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import model.Person;
-import view.CurrentUserBean;
+import personsAndAcademies.model.Person;
 
 @Named("personRepo")
 @Transactional
@@ -25,6 +23,7 @@ public class PersonRepository {
 	@PostConstruct
 	public void initAdmim(){
 		final Person admin = new Person();
+		admin.setName("Admin");
 		admin.setPassword("admin");
 		admin.setUsername("admin");
 		createPerson(admin);

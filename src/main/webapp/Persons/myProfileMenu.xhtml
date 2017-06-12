@@ -21,7 +21,7 @@
 	</ui:define>
 
 	<ui:define name="display">
-		<h:form>
+		<h:form id="formMyProfile">
 
 			<div style="float: left;">
 				<!-- Panelgrid with photo -->
@@ -117,7 +117,7 @@
 					
 				</p:panelGrid>
 
-				<p:commandButton value="Submit Changes" action="#{currentUserBean.updateUser}" update="j_idt15:EditCol,ProfileCol"></p:commandButton>
+				<p:commandButton value="Submit Changes" action="#{currentUserBean.updateUser}" update=":formMyProfile:EditCol,ProfileCol"></p:commandButton>
 			</div>
 
 		</h:form>

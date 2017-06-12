@@ -11,7 +11,7 @@
 
 
 	<ui:define name="display">
-		<h:form>
+		<h:form id="formReadAcademies">
 		
 					<p:commandButton value="Back to Main Menu"
 				action="/Persons/myProfileMenu" ajax="false" />
@@ -61,8 +61,8 @@
 				</p:column>
 				
 				<p:column>
-					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update="j_idt11:academyTable" />
-					<p:commandButton value="Edit" action="#{academyBean.editAcademy(academy.ID)}" update="j_idt11:academyTable" />
+					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update=":formReadAcademies:academyTable" />
+					<p:commandButton value="Edit" action="#{academyBean.editAcademy(academy.ID)}" update=":formReadAcademies:academyTable" />
 					
 				</p:column>
 

@@ -10,20 +10,20 @@
 
 
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
-
-
+	<!-- ver p:pannelgrid com p:row ?? -->
 	<ui:define name="display">
 		<h:form>
 			<div id="logInBox">
 				<h:panelGrid id="logIn" columns="2" cellpadding="5">
+
 					<h:outputText value="Username: " />
 					<p:inputText value="#{currentUserBean.person.username}"/>
 					
 					<h:outputText value="Password: " />
 					<p:inputText type="password"/>
 					
-					<p:commandButton value="login" ajax="false" action="main-page"/>
-					<p:commandLink value="Forgot Password" ajax="false" action="forgotPassword"/>
+					<p:commandButton value="login" action="main-page" />
+					<p:link value="Forgot Password" outcome="forgotPassword"/>
 				</h:panelGrid>
 			</div>
 		</h:form>

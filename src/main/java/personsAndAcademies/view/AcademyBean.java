@@ -1,17 +1,15 @@
-package view;
+package personsAndAcademies.view;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import model.Academy;
-import model.Person;
-import service.AcademyService;
+import personsAndAcademies.model.Academy;
+import personsAndAcademies.service.AcademyService;
 
 @Named("academyBean")
 @RequestScoped

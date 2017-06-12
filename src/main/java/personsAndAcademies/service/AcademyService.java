@@ -1,4 +1,4 @@
-package service;
+package personsAndAcademies.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import model.Academy;
-import repository.AcademyRepository;
+import personsAndAcademies.model.Academy;
+import personsAndAcademies.repository.AcademyRepository;
 
 @Named("academyService")
 @RequestScoped
