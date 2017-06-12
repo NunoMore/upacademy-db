@@ -32,6 +32,7 @@ public class AcademyRepository {
 	public void edit(Long ID){
 		Academy academy = em.find(Academy.class, ID);
 		em.merge(academy);
+		
 	}
 	
 	public List<Academy> readAcademy(){
