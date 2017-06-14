@@ -27,6 +27,9 @@ public class PersonService {
 	public List<Person> readPerson(){
 		return personRepository.readPerson();
 	}
+	public Person readPerson(String user){
+		return personRepository.readPerson(user);
+	}
 	public void updatePerson(Person person){
 		personRepository.updatePerson(person);
 	}

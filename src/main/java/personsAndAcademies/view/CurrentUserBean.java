@@ -2,7 +2,8 @@ package personsAndAcademies.view;
 
 import java.util.Collection;
 
-
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,6 +22,17 @@ public class CurrentUserBean implements Serializable {
 		
 		@Inject
 		private PersonService personService;
+		
+		@PreDestroy
+		public void logOut(){
+			person.setOnline(false); 
+		}
+	
+		public void initCurrentUser(){
+			person = personService.readPerson(person.getUsername());
+			person.setOnline(true);
+			personService.updatePerson(person);
+		}
 
 		public Person getPerson() {
 			return person;

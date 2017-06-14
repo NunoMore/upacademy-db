@@ -8,15 +8,8 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/layouts/commonLayout.xhtml">
 
-	<!-- menu lateral - botao remete para area de perfil pessoal -->
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="My Profile" ajax="false"
-				action="Persons/myProfileMenu" styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
-
 	<ui:define name="display">
+	#{currentUserBean.initCurrentUser()}
 		<h:form id="formTable">
 			<p:dataTable id="consultAll" var="person"
 				value="#{personBean.readPerson()}" widgetVar="personsTable"
@@ -39,8 +32,10 @@
 				<p:ajax event="rowSelect" update=":formTable:personDetail"
 					oncomplete="PF('personDialog').show()" />
 					
-					<p:column headerText="Online/Offline">
-					</p:column>
+				<p:column headerText="Online/Offline">
+					<p:graphicImage name="images/offline-red.png" rendered="#{person.online == false}" style="width:30px" />
+					<p:graphicImage name="images/online-green.png" rendered="#{person.online == true}" style="width:30px" />
+				</p:column>
 
 				<p:column headerText="Foto">
 					<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}" style="width:30px"/>
