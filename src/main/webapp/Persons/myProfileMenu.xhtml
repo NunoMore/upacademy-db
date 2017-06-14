@@ -8,35 +8,25 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-	<!--  Create Columns with products -->
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="Read Users" action="/Admin/readUsers"
-				ajax="false" />
-			<p:commandButton value="Read Academies" action="/Admin/readAcademies"
-				ajax="false" />
-			<p:commandButton value="Back to Main Menu" action="/main-page"
-				ajax="false" />
-		</h:form>
-	</ui:define>
 
 	<ui:define name="display">
 		<h:form id="myProfile">
-
-			<div style="float: center;">
-				<!-- Panelgrid with photo -->
+		<div class="row">
+			<div class="col-md-4">
+			<!-- Panelgrid with photo -->
 				<p:panelGrid id="ProfileCol" columns="2">
 					<f:facet name="header">
 						<p:graphicImage value="#{currentUserBean.person.photo}"
 							rendered="#{currentUserBean.person.photo != null}"
-							style="width:100px" />
+							style="width:200px" />
 						<p:graphicImage name="images/defaultUser.png"
 							rendered="#{currentUserBean.person.photo == null}"
-							style="width:100px" />
+							style="width:200px" />
 					</f:facet>
 				</p:panelGrid>
 			</div>
-			<div style="float: left">
+			
+			<div class="col-md-4">
 				<p:commandButton value="Modo Edicao"
 					action="#{currentUserBean.changeEditMode()}"
 					update=":myProfile:ProfileCol,EditColVital,EditColNotVital"></p:commandButton>
@@ -121,6 +111,7 @@
 					action="#{currentUserBean.updateUser}"
 					update=":myProfile:ProfileCol,EditColVital,EditColNotVital"></p:commandButton>
 			</div>
+		</div>
 
 		</h:form>
 	</ui:define>
