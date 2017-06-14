@@ -14,6 +14,7 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.Person;
 import personsAndAcademies.repository.AcademyRepository;
 
 @Named("academyService")
@@ -28,16 +29,16 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void update(Long ID){
-		academyRepository.edit(ID);
-	}
-	
 	public void removeAcademy(Long ID){
 		academyRepository.remove(ID);
 	}
 	
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
+	}
+	
+	public void updateAcademy(Academy academy){
+		academyRepository.updateAcademy(academy);
 	}
 
 

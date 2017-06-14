@@ -35,10 +35,10 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 	}
 	
-	public String updateAcademy(Long ID){
-		academyService.update(ID);
-		return "readAcademies?faces-redirect=true";
-	}
+//	public String updateAcademy(Long ID){
+//		academyService.update(ID);
+//		return "readAcademies?faces-redirect=true";
+//	}
 	
 	
 	

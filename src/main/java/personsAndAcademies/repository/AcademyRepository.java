@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.Person;
 
 
 @Named("academyRepo")
@@ -27,17 +28,9 @@ public class AcademyRepository {
 	
 	private long academyId;
 	
-	private List<Academy> selectedEdit;
-	
-	private ArrayList<Academy> removedList = new ArrayList<>();
-	
 
 	public void createAcademy(Academy academy){
 		em.persist(academy);
-	}
-	
-	public void edit(Long ID){
-		em.merge(ID);
 	}
 	
 	public List<Academy> readAcademy(){
@@ -51,19 +44,11 @@ public class AcademyRepository {
 		em.remove(academy);
 	}
 	
+	public void updateAcademy(Academy academy){
+		academy = em.find(Academy.class,academy.getID());
+		em.merge(academy);
+	}	
 
-	public void update(Long ID){
-		
-		Academy academy = em.find(Academy.class, ID);
-				
-		academy.setName(academy.getName());
-		academy.setDate(academy.getDate());
-		academy.setDescription(academy.getDescription());
-
-		edit(ID);
-		
-	}
-	
 	public long getAcademyId() {
 		return academyId;
 	}
@@ -72,15 +57,6 @@ public class AcademyRepository {
 		this.academyId = academyId;
 	}
 
-	public List<Academy> getSelectedEdit() {
-		return selectedEdit;
-	}
-
-	public void setSelectedEdit(List<Academy> selectedEdit) {
-		this.selectedEdit = selectedEdit;
-	}
-	
-
 	public Academy getAcademy() {
 		return academy;
 	}
@@ -88,8 +64,5 @@ public class AcademyRepository {
 	public void setAcademy(Academy academy) {
 		this.academy = academy;
 	}
-
-
-	
 	
 }
