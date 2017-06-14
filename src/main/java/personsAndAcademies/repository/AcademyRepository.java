@@ -29,9 +29,9 @@ public class AcademyRepository {
 		em.persist(academy);
 	}
 	
-	public void edit(Long ID){
-		Academy academy = em.find(Academy.class, ID);
+	public void edit(Academy academy){
 		em.merge(academy);
+		
 	}
 	
 	public List<Academy> readAcademy(){
@@ -43,6 +43,22 @@ public class AcademyRepository {
 		System.out.println(ID);
 		Academy academy = em.find(Academy.class, ID);
 		em.remove(academy);
+	}
+	
+	public void update(Academy academy){
+		
+		String currentAcademy = academy.getName();
+		
+		Query query = em.createQuery(("Select e from Academy e where e.name = '"+ currentAcademy + "'"));
+		
+		Academy academyUpdate  = (Academy) query.getSingleResult();
+		
+		academyUpdate.setName(academy.getName());
+		academyUpdate.setDate(academy.getDate());
+		academyUpdate.setDescription(academy.getDescription());
+
+		edit(academyUpdate);
+		
 	}
 
 	public long getAcademyId() {

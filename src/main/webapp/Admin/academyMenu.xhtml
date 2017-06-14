@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+	<ui:define name="display">
+		<h:form id="formReadAcademies">
+		
+			<p:commandButton value="create"
+				action="/Admin/createAcademy" ajax="false" />
+			
+			<p:commandButton value="edit"
+				action="/Admin/manageAcademy" ajax="false" />
+		
+					<p:commandButton value="Back to Main Menu"
+				action="/Persons/myProfileMenu" ajax="false" />
+			
+			<p:dataTable id="academyTable" var="academy" value="#{academyBean.readAcademy()}" editable="true" editMode="cell" >
+				<f:facet name="header">
+					Academies
+				</f:facet>
+				
+				<p:ajax event="cellEdit" listner="#{academyBean.onCellEdit}" update=":formReadAcademies:academyTable" />
+
+				<p:column headerText="Name">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nameInput" value="#{academy.name}" style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Starting date">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.date}">
+								<f:convertDateTime pattern="MMM/dd/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+				
+								<p:calendar id="dateInput" value="#{academy.date}"
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+						
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Descrition">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{academy.description}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="acdemyInput" value="#{academy.description}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+

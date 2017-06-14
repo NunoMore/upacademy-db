@@ -64,20 +64,6 @@ public class Academy implements Serializable {
 		this.pdf = pdf;
 	}*/
 	
-	// Metodo para o selecionar data de inicio da academia no menu create academy
-	public void onDateSelect(SelectEvent event){
-		
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
-	}
-	
-	public void click(){
-		RequestContext requestContext = RequestContext.getCurrentInstance();
-		
-		requestContext.update("form:display");
-		requestContext.execute("PF('dlg').show()");
-	}
 
 	
 }
