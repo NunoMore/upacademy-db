@@ -16,26 +16,37 @@
 				<h:form id="formDisplayPersons">
 					<p:dataTable id="persons" var="person"
 						value="#{personBean.readPerson()}" selectionMode="single"
-						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}">
+						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}" scrollable="true" scrollHeight="500">
 
-						<p:ajax event="rowSelect" update=":formEditPerson:editPerson"/>
+						<p:ajax event="rowSelect" update=":formEditPerson:editPerson" />
 
 						<f:facet name="header">
 				            Single with Row Click
 				        </f:facet>
+				        <p:column headerText="Photo">
+							<h:outputText value="#{person.photo}" />
+						</p:column>
 						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
 						</p:column>
 						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
 						</p:column>
-						<p:column>remover</p:column>
+						<p:column headerText="Email">
+							<h:outputText value="#{person.email}" />
+						</p:column>
+						<p:column headerText="Academy">
+							<h:outputText value="#{person.academy}" />
+						</p:column>
+						<p:column>
+							<p:commandButton value="remover" action="#{personService.removePerson(person)}" update=":formDisplayPersons:persons"></p:commandButton>
+						</p:column>
 					</p:dataTable>
 				</h:form>
 			</div>
 			<div class="col-md-4">
 				<h:form id="formEditPerson">
-					<p:panelGrid id="editPerson" columns="2" >
+					<p:panelGrid id="editPerson" columns="2">
 
 						<p:outputLabel value="Data" />
 						<p:outputLabel value="Edit" />
@@ -71,39 +82,36 @@
 
 						<h:outputText value="Email" />
 						<h:inputText value="#{tableView.selectedPerson.email}" />
+
+						<h:outputText value="Facebook" />
+						<h:inputText value="#{tableView.selectedPerson.facebookLink}" />
+
+						<h:outputText value="LinkedIn" />
+						<h:inputText value="#{tableView.selectedPerson.linkedInLink}"/>
+
+						<h:outputText value="Git" />
+						<h:inputText value="#{tableView.selectedPerson.gitHubLink}"/>
+
+
+						<h:outputText value="WorkPlace" />
+						<h:inputText value="#{tableView.selectedPerson.workPlace}"/>
+
+						<h:outputText value="Curriculum" />
+						<p:fileUpload value="#{tableView.selectedPerson.curriculum}"
+							mode="simple" skinSimple="true"/>
+
+						<h:outputText value="Photo" />
+						<p:fileUpload value="#{tableView.selectedPerson.photo}"
+							mode="simple" skinSimple="true"/>
+
+
 					</p:panelGrid>
 					<p:commandButton value="Submit Changes" style="center"
-					action="#{personService.updatePerson(tableView.selectedPerson)}"
-					update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
+						action="#{personService.updatePerson(tableView.selectedPerson)}"
+						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
 				</h:form>
 			</div>
 		</div>
-		<h:form>
-
-			<p:commandButton value="Return My Profile"
-				action="/Persons/myProfileMenu"></p:commandButton>
-			<br />
-			<p:outputLabel value=" Insert newUser's email"></p:outputLabel>
-			<p:inputText value="#{personBean.person.email}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Username "></p:outputLabel>
-			<p:inputText value="#{personBean.person.username}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Password "></p:outputLabel>
-			<p:inputText value="#{personBean.person.password}"></p:inputText>
-			<br />
-			<br />
-			<p:commandButton value="Create User"
-				action="#{personBean.createPerson}" update=":formDisplayPersons:persons">
-			</p:commandButton>
-
-		</h:form>
-
-
-
-
 
 	</ui:define>
 
