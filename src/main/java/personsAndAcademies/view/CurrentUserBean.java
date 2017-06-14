@@ -1,8 +1,8 @@
 package personsAndAcademies.view;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -10,8 +10,6 @@ import javax.inject.Named;
 
 import personsAndAcademies.model.Person;
 import personsAndAcademies.service.PersonService;
-
-import java.io.Serializable;
 
 @Named("currentUserBean")
 @SessionScoped

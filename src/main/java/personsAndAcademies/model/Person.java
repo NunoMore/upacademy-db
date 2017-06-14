@@ -1,6 +1,9 @@
 package personsAndAcademies.model;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -83,7 +86,9 @@ public class Person implements Serializable{
 	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(byte[] photo) throws IOException { 
+//		File fi = new File(file);
+//		byte[] fileContent = Files.readAllBytes(fi.toPath());
 		this.photo = photo;
 	}
 	public long getID() {
