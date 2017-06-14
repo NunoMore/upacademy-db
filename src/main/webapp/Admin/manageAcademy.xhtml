@@ -25,7 +25,7 @@
 					Academies
 				</f:facet>
 				
-				<p:ajax event="cellEdit" listner="#{academyBean.onCellEdit}" update=":formReadAcademies:academyTable" />
+				<p:ajax event="cellEdit" listner="#{academyBean.editCellnow}" update=":formReadAcademies:academyTable" />
 
 				<p:column headerText="Name">
 					<p:cellEditor>
@@ -68,7 +68,7 @@
 				
 				<p:column headerText="Action">
 					<p:commandButton value="Remove" action="#{academyBean.removeAcademy(academy.ID)}" update=":formReadAcademies:academyTable" />
-					<p:commandButton value="Edit" action="#{academyBean.updateAcademy(academy)}" update=":formReadAcademies:academyTable" />
+					<p:commandButton value="Edit" action="#{academyBean.updateLast}" update=":formReadAcademies:academyTable" />
 					
 				</p:column>
 				
@@ -84,5 +84,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-
-

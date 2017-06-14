@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 
 import personsAndAcademies.model.Academy;
@@ -27,8 +28,12 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void update(Academy academy){
-		academyRepository.update(academy);
+	public void update(Long ID){
+		academyRepository.edit(ID);
+	}
+	
+	public void lastUpdate(){
+		academyRepository.lastUpdate();
 	}
 	
 	public void removeAcademy(Long ID){
@@ -47,6 +52,11 @@ public class AcademyService {
 	public void setAcademyRepository(AcademyRepository academyRepository) {
 		this.academyRepository = academyRepository;
 	}
+	
+	
+	  public void editCell(CellEditEvent event) {
+	       academyRepository.editCell(event);
+	    }
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy
 	public void onDateSelect(SelectEvent event){
