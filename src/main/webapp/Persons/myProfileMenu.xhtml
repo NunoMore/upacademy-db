@@ -49,7 +49,8 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Date of Birth" />
-						<h:inputText value="#{currentUserBean.person.dateOfBirth}"/>
+						<p:calendar  value="#{currentUserBean.person.dateOfBirth}" 
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
 
 						<h:outputText value="Gender" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
@@ -97,7 +98,6 @@
 						<h:outputText value="Photo" />
 						<p:fileUpload value="#{currentUserBean.person.photo}"
 							mode="simple" skinSimple="true" />
-
 
 					</p:panelGrid>
 
