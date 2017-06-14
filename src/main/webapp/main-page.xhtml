@@ -61,8 +61,8 @@
 				</p:column>
 			</p:dataTable>
 
-			<p:dialog header="helooooo" widgetVar="personDialog" modal="true"
-				showEffect="explode" hideEffect="bounce" resizable="false">
+			<p:dialog header="#{tableView.selectedPerson.username}" widgetVar="personDialog" modal="true"
+				showEffect="slide" hideEffect="explode" resizable="false">
 				<p:outputPanel id="personDetail" style="text-align:center;">
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
@@ -91,6 +91,14 @@
 
 						<h:outputText value="Academia" />
 						<h:outputText value="#{tableView.selectedPerson.academy}" />
+						
+						<h:outputText value="Trabalho" />
+						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
+						
+						<h:outputText value="Curriculum" />
+						<p:commandLink value="Download" >
+							<p:fileDownload value="#{tableView.selectedPerson.curriculum}"/>
+						</p:commandLink>
 
 						<h:outputText value="Facebook" />
 						<h:link value="#{tableView.selectedPerson.facebookLink}" />

@@ -3,11 +3,12 @@ h1 {
 }
 
 h1 a {
-	width: 473px;
+	width: 200px;
 	height: 100px;
 	position: absolute;
 	left: 5%;
 	background: url(/UPACADEMY_DB/resources/images/logo.jpg) no-repeat left;
+	background-size: 100%;
 }
 
 /* dropdowns... */

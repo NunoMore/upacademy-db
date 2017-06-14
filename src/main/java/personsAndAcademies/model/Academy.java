@@ -1,17 +1,11 @@
 package personsAndAcademies.model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
 
 @Entity
 public class Academy implements Serializable {
@@ -20,13 +14,6 @@ public class Academy implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long ID;
-	
-	public Long getID() {
-		return ID;
-	}
-	public void setID(Long iD) {
-		ID = iD;
-	}
 
 	private String name;
 	private String description;
@@ -35,8 +22,11 @@ public class Academy implements Serializable {
 	//@Lob
 	//@Column(name="ACADEMY_PDF", nullable=false, columnDefinition="mediumblob")
 	//private byte[] pdf;
+
 	
-	
+	public Long getID() {
+		return ID;
+	}
 	public String getName() {
 		return name;
 	}

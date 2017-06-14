@@ -31,9 +31,11 @@ public class CurrentUserBean implements Serializable {
 		}
 	
 		public void initCurrentUser(){
-			person = personService.readPerson(person.getUsername());
-			person.setOnline(true);
-			personService.updatePerson(person);
+			if(!person.getUsername().isEmpty()){
+				person = personService.readPerson(person.getUsername());
+				person.setOnline(true);
+				personService.updatePerson(person);
+			}
 		}
 
 		public Person getPerson() {
