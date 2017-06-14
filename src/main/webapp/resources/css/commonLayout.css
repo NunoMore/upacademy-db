@@ -1,7 +1,96 @@
 /* Conteudo central */
-#content{
-	/* margin-top: 50px; */
+#content {
+	margin-top: 200px;
+	color: black;
+}
+
+.wrap {
+	height: auto !important;
 	height: 100%;
-	color: white;
-	background-color: silver;
+	min-height: 100%;
+	background: url(/UPACADEMY_DB/resources/images/tail-middle.jpg) repeat-y
+		center 194px;
+	min-height: 700px;
+}
+
+.container2 {
+	margin: 0 auto;
+	width: 940px;
+	overflow: hidden;
+	font-size: .875em;
+	padding-bottom: 120px;
+}
+
+/*----- form defaults -----*/
+input, select, textarea {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	vertical-align: middle;
+	font-weight: normal;
+}
+
+/*----- lists -----*/
+.categories {
+	padding-bottom: 37px;
+}
+
+.categories li {
+	font-weight: bold;
+	font-size: .857em;
+	padding-bottom: 8px;
+	margin-bottom: 6px;
+	background: url(../images/divider1.gif) repeat-x left bottom;
+}
+
+.categories li.last {
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+.categories li span {
+	display: block;
+	padding-left: 15px;
+	height: 1%;
+	background: url(../images/marker.gif) no-repeat left 5px;
+}
+
+.categories li a {
+	text-decoration: none;
+	color: #008cc4;
+}
+
+.categories li a:hover {
+	color: #ff7b01;
+}
+
+/*----- forms -----*/
+#search-form .rowElem {
+	height:28px;
+	position:absolute;
+	right:0;
+	top:113px;
+}
+#search-form input {
+	width:205px;
+	background:#fff;
+	padding:4px 5px 4px 5px;
+	border:1px solid #d0d0d0;
+	border-right:0;
+	color:#454545;
+	line-height:1.2em;
+	float:left;
+	height:18px;
+}
+#search-form a {
+	text-transform:uppercase;
+	color:#fff;
+	text-decoration:none;
+	float:left;
+	background-color:#0087c1;
+	padding:6px 11px 0 11px;
+	height:22px;
+}
+#search-form a:hover {
+	background-color:#47b6e5;
 }

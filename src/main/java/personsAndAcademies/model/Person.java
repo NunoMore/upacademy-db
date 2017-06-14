@@ -16,6 +16,7 @@ public class Person implements Serializable{
 	private long ID;
 	
 	private String name;
+	private boolean online = false;
 	private String username;
 	private String dateOfBirth;
 	private String academicCourse;
@@ -34,6 +35,12 @@ public class Person implements Serializable{
 	private String securityAnswer;
 	
 	
+	public boolean isOnline() {
+		return online;
+	}
+	public void setOnline(boolean online) {
+		this.online = online;
+	}
 	public String getUsername() {
 		return username;
 	}

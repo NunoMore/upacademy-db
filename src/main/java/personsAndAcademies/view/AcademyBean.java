@@ -40,14 +40,6 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 	}
 	
-	public String updateLast(){
-		academyService.lastUpdate();
-		return "academyMenu";
-	}
-	
-	public void editCellnow(CellEditEvent event){
-		academyService.editCell(event);
-	}
 	
 	
 	public Collection<Academy> readAcademy(){

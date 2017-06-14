@@ -37,7 +37,12 @@ public class PersonRepository {
 		Query query = em.createQuery("Select e from Person e");
 		return (List<Person>) query.getResultList();
 	}
+	public Person readPerson(String user){
+		Query query = em.createQuery(("Select e from Person e where e.username = '"+ user + "'"));
+		return (Person)query.getResultList().get(0);
+	}
 	public void updatePerson(Person person){
+		person = em.find(Person.class,person.getID());
 		em.merge(person);
 	}
 	public void removePerson(Person person){

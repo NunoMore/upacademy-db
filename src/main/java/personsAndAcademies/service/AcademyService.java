@@ -32,10 +32,6 @@ public class AcademyService {
 		academyRepository.edit(ID);
 	}
 	
-	public void lastUpdate(){
-		academyRepository.lastUpdate();
-	}
-	
 	public void removeAcademy(Long ID){
 		academyRepository.remove(ID);
 	}
@@ -53,10 +49,6 @@ public class AcademyService {
 		this.academyRepository = academyRepository;
 	}
 	
-	
-	  public void editCell(CellEditEvent event) {
-	       academyRepository.editCell(event);
-	    }
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy
 	public void onDateSelect(SelectEvent event){
