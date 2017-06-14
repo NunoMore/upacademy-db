@@ -8,15 +8,8 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/layouts/commonLayout.xhtml">
 
-	<!-- menu lateral - botao remete para area de perfil pessoal -->
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="My Profile" ajax="false"
-				action="Persons/myProfileMenu" styleClass="btn btn-default" />
-		</h:form>
-	</ui:define>
-
 	<ui:define name="display">
+	#{currentUserBean.initCurrentUser()}
 		<h:form id="formTable">
 			<p:dataTable id="consultAll" var="person"
 				value="#{personBean.readPerson()}" widgetVar="personsTable"
@@ -39,8 +32,10 @@
 				<p:ajax event="rowSelect" update=":formTable:personDetail"
 					oncomplete="PF('personDialog').show()" />
 					
-					<p:column headerText="Online/Offline">
-					</p:column>
+				<p:column headerText="Online/Offline">
+					<p:graphicImage name="images/offline-red.png" rendered="#{person.online == false}" style="width:30px" />
+					<p:graphicImage name="images/online-green.png" rendered="#{person.online == true}" style="width:30px" />
+				</p:column>
 
 				<p:column headerText="Foto">
 					<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}" style="width:30px"/>
@@ -65,9 +60,8 @@
 					<h:outputText value="#{person.academy}" />
 				</p:column>
 			</p:dataTable>
-
-			<p:dialog header=" " widgetVar="personDialog" modal="true"
-				showEffect="explode" hideEffect="bounce" resizable="false">
+			<p:dialog header="#{tableView.selectedPerson.username}" widgetVar="personDialog" modal="true"
+				showEffect="slide" hideEffect="explode" resizable="false">
 				<p:outputPanel id="personDetail" style="text-align:center;">
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
@@ -96,6 +90,14 @@
 
 						<h:outputText value="Academia" />
 						<h:outputText value="#{tableView.selectedPerson.academy}" />
+						
+						<h:outputText value="Trabalho" />
+						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
+						
+						<h:outputText value="Curriculum" />
+						<p:commandLink value="Download" >
+							<p:fileDownload value="#{tableView.selectedPerson.curriculum}"/>
+						</p:commandLink>
 
 						<h:outputText value="Facebook" />
 						<h:link value="#{tableView.selectedPerson.facebookLink}" />
