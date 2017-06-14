@@ -42,6 +42,7 @@ public class PersonRepository {
 		return (Person)query.getResultList().get(0);
 	}
 	public void updatePerson(Person person){
+		person = em.find(Person.class,person.getID());
 		em.merge(person);
 	}
 	public void removePerson(Person person){

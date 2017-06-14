@@ -27,6 +27,7 @@ public class PersonBean {
 
 	public void setPerson(Person person) {
 		this.person = person;
+		personService.updatePerson(person); 
 	}
 
 	public  String createPerson(){
@@ -36,7 +37,6 @@ public class PersonBean {
 	
 	public Collection<Person> readPerson(){
 		return personService.readPerson();
-		
 	}
 	
 	public String updatePerson(){
