@@ -11,23 +11,23 @@
 
 
 	<ui:define name="display">
-	
+
 		<h:form>
 
-			<p:outputLabel value=" Insert newUser's email"></p:outputLabel>
-			<p:inputText value="#{personBean.person.email}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Username "></p:outputLabel>
-			<p:inputText value="#{personBean.person.username}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Password "></p:outputLabel>
-			<p:inputText value="#{personBean.person.password}"></p:inputText>
-			<br />
-			<br />
+			<p:panelGrid columns="2">
+
+				<h:outputText value=" Insert newUser's email"/>
+				<h:inputText value="#{personBean.person.email}"/>
+
+				<h:outputText value=" Insert newUser's Username "/>
+				<h:inputText value="#{personBean.person.username}"/>
+
+				<h:outputText value=" Insert newUser's Password "/>
+				<h:inputText value="#{personBean.person.password}"/>
+			</p:panelGrid>
+			<br/>
 			<p:commandButton value="Create User"
-				action="#{personBean.createPerson}" >
+				action="#{personBean.createPerson}">
 			</p:commandButton>
 
 		</h:form>
