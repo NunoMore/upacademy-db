@@ -1,75 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-		<!--  Create Columns with products -->
-			<ui:define name="buttons">
-				<h:form>
-					<p:commandButton value="Edit Profile" action="editProfileMenu" ajax="false" styleClass="btn btn-default" />
-		
-					<p:commandButton value="Create Profile" action="createProfileMenu" ajax="false" styleClass="btn btn-default" />
+	<!--  Create Columns with products -->
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="Read Users" action="/Admin/readUsers"
+				ajax="false" />
+			<p:commandButton value="Read Academies" action="/Admin/readAcademies"
+				ajax="false" />
+			<p:commandButton value="Back to Main Menu" action="/main-page"
+				ajax="false" />
+		</h:form>
+	</ui:define>
 
-					<p:commandButton value="My Conections" action="conectionsMenu" ajax="false" styleClass="btn btn-default" />
-		
-					<p:commandButton value="Back to Main Menu" action="/main-page" ajax="false" styleClass="btn btn-default" />
-				</h:form>
-			</ui:define>
-			
-			<ui:define name="display">
-				<h:form>
-					<div id="grid" class="col-md-12">
-						<div id="gridFoto" class="col-md-12">
-							<!-- Panelgrid with photo -->
-							<p:panelGrid columns="2">
-							    <f:facet name="header">
-							        <p:graphicImage name="images/defaultUser.png" />
-							    </f:facet>
-							 
-							    <h:outputText value="Name:" />
-							    <h:outputText value="#{personBean.person.name}" />
-							 
-							    <h:outputText value="Academy" />
-							    <h:outputText value="#{personBean.person.academy}" />
-							 
-							    <h:outputText value="Contact" />
-							    <h:outputText value="#{personBean.person.numTelephone}" />
-							 
-							</p:panelGrid>
-						</div>
-	
-						<div id="tableInfo" class="col-md-6">
-						<!-- Datatable with some extra info -->
-						<p:dataTable var="person" value="#{personBean.readPerson()}">
-							
-							<p:column headerText="Id">
-								<h:outputText value="#{person.ID}" />
-							</p:column>
-							
-							<p:column headerText="Current Job">
-								<h:outputText value="#{person.workPlace}" />
-							</p:column>
-							
-							<p:column headerText="Facebook">
-								<h:outputText value="#{person.facebookLink}" />
-							</p:column>
-							
-							<p:column headerText="LinkedIn">
-								<h:outputText value="#{person.linkedInLink}" />
-							</p:column>
-							
-							<p:column headerText="GitHub">
-								<h:outputText value="#{person.gitHubLink}" />
-							</p:column>
-													
-						</p:dataTable>
-					</div>
-					</div>
-				</h:form>
-			</ui:define>
-		</ui:composition>
+	<ui:define name="display">
+		<h:form id="formMyProfile">
+
+			<div style="float: left;">
+				<!-- Panelgrid with photo -->
+				<p:panelGrid id="ProfileCol" columns="2">
+					<f:facet name="header">
+							<p:graphicImage value="#{currentUserBean.person.photo}" rendered="#{currentUserBean.person.photo != null}" style="width:100px"/>
+							<p:graphicImage name="images/defaultUser.png" rendered="#{currentUserBean.person.photo == null}" style="width:100px"/>
+						</f:facet>
+
+					<h:outputText value="Name:" />
+					<h:outputText value="#{currentUserBean.person.name}" />
+
+					<h:outputText value="Date Of Birth" />
+					<h:outputText value="#{currentUserBean.person.dateOfBirth}" />
+
+					<h:outputText value="Academic Course" />
+					<h:outputText value="#{currentUserBean.person.academicCourse}" />
+				</p:panelGrid>
+			</div>
+			<div style="float: right">
+				<p:panelGrid id="EditCol" columns="3">
+
+
+					<p:outputLabel value="Data"></p:outputLabel>
+					<p:outputLabel value="Currente Informations"></p:outputLabel>
+					<p:outputLabel value="Update"></p:outputLabel>
+					
+					
+					<h:outputText value="Name" />
+					<h:outputText value="#{currentUserBean.person.name}" />
+					<h:inputText value="#{currentUserBean.person.name}" />
+
+					<h:outputText value="Academy" />
+					<h:outputText value="#{currentUserBean.person.academy}" />
+					<p:selectOneMenu onchange="PF('personsTable').filter()"
+						style="width:150px;">
+						<f:selectItem itemLabel="Academias" itemValue="#{null}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{AcademyService.academies}" />
+						<!-- falta criar academyService -->
+					</p:selectOneMenu>
+
+					<h:outputText value="Date of Birth" />
+					<h:outputText value="#{currentUserBean.person.dateOfBirth}" />
+					<h:inputText value="#{currentUserBean.person.dateOfBirth}" />
+					
+					<h:outputText value="Gender" />
+					<h:outputText value="#{currentUserBean.person.gender}" />
+					<h:inputText value="#{currentUserBean.person.gender}" />
+					
+					<h:outputText value="Academic Course" />
+					<h:outputText value="#{currentUserBean.person.academicCourse}" />
+					<h:inputText value="#{currentUserBean.person.academicCourse}" />
+					
+					
+					<h:outputText value="Telephone Number" />
+					<h:outputText value="#{currentUserBean.person.numTelephone}" />
+					<h:inputText value="#{currentUserBean.person.numTelephone}" />
+
+
+					<h:outputText value="Email" />
+					<h:outputText value="#{currentUserBean.person.email}" />
+					<h:inputText value="#{currentUserBean.person.email}" />
+
+
+					<h:outputText value="Facebook" />
+					<h:outputText value="#{currentUserBean.person.facebookLink}" />
+					<h:inputText value="#{currentUserBean.person.facebookLink}" />
+
+					<h:outputText value="LinkedIn" />
+					<h:outputText value="#{currentUserBean.person.linkedInLink}" />
+					<h:inputText value="#{currentUserBean.person.linkedInLink}" />
+
+					<h:outputText value="Git" />
+					<h:outputText value="#{currentUserBean.person.gitHubLink}" />
+					<h:inputText value="#{currentUserBean.person.gitHubLink}" />
+
+
+					<h:outputText value="WorkPlace" />
+					<h:outputText value="#{currentUserBean.person.workPlace}" />
+					<h:inputText value="#{currentUserBean.person.workPlace}" />
+
+					<h:outputText value="Curriculum" />
+					<h:outputText value="#{currentUserBean.person.curriculum}" />
+					<p:fileUpload value="#{currentUserBean.person.curriculum}" mode="simple"
+						skinSimple="true" />
+					
+					<h:outputText value="Photo" />
+					<h:outputText value="#{currentUserBean.person.photo}" />
+					<p:fileUpload value="#{currentUserBean.person.photo}" mode="simple"
+						skinSimple="true" />
+					
+					
+				</p:panelGrid>
+
+				<p:commandButton value="Submit Changes" action="#{currentUserBean.updateUser}" update=":formMyProfile:EditCol,ProfileCol"></p:commandButton>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
