@@ -24,11 +24,20 @@
 						<f:facet name="header">
 				           Persons List
 				        </f:facet>
+				        <p:column headerText="Photo">
+							<h:outputText value="#{person.photo}" />
+						</p:column>
 						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
 						</p:column>
 						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
+						</p:column>
+						<p:column headerText="Email">
+							<h:outputText value="#{person.email}" />
+						</p:column>
+						<p:column headerText="Remove">
+							<p:commandButton value="remove" action="#{personService.removePerson(person)}" update=":formDisplayPersons:persons"></p:commandButton>
 						</p:column>
 
 					</p:dataTable>
