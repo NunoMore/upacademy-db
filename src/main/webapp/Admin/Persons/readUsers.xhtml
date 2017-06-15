@@ -16,41 +16,26 @@
 				<h:form id="formDisplayPersons">
 					<p:dataTable id="persons" var="person"
 						value="#{personBean.readPerson()}" selectionMode="single"
-						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
-						scrollable="true" scrollHeight="500">
+						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}">
 
-						<p:ajax event="rowSelect" update=":formEditPerson:editPerson" />
+						<p:ajax event="rowSelect" update=":formEditPerson:editPerson"/>
 
 						<f:facet name="header">
-				           Persons List
+				            Single with Row Click
 				        </f:facet>
-						<p:column headerText="Photo">
-							<p:graphicImage value="#{person.photo}"
-								rendered="#{person.photo != null}" style="width:30px" />
-							<p:graphicImage name="images/defaultUser.png"
-								rendered="#{person.photo == null}" style="width:30px" />
-						</p:column>
 						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
 						</p:column>
 						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
 						</p:column>
-						<p:column headerText="Email">
-							<h:outputText value="#{person.email}" />
-						</p:column>
-						<p:column headerText="Remove">
-							<p:commandButton value="remove"
-								action="#{personService.removePerson(person)}"
-								update=":formEditPerson:editPerson,formDisplayPersons:persons" />
-						</p:column>
-
+						<p:column>remover</p:column>
 					</p:dataTable>
 				</h:form>
 			</div>
 			<div class="col-md-4">
 				<h:form id="formEditPerson">
-					<p:panelGrid id="editPerson" columns="2">
+					<p:panelGrid id="editPerson" columns="2" >
 
 						<p:outputLabel value="Data" />
 						<p:outputLabel value="Edit" />
@@ -67,7 +52,8 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Date of Birth" />
-						<h:inputText value="#{tableView.selectedPerson.dateOfBirth}" />
+						<p:calendar  value="#{tableView.selectedPerson.dateOfBirth}" 
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
 
 						<h:outputText value="Gender" />
 						<p:selectOneMenu value="#{tableView.selectedPerson.gender}">
@@ -86,41 +72,12 @@
 
 						<h:outputText value="Email" />
 						<h:inputText value="#{tableView.selectedPerson.email}" />
-
-						<h:outputText value="Facebook" />
-						<h:inputText value="#{tableView.selectedPerson.facebookLink}" />
-
-						<h:outputText value="LinkedIn" />
-						<h:inputText value="#{tableView.selectedPerson.linkedInLink}" />
-
-						<h:outputText value="Git" />
-						<h:inputText value="#{tableView.selectedPerson.gitHubLink}" />
-
-
-						<h:outputText value="WorkPlace" />
-						<h:inputText value="#{tableView.selectedPerson.workPlace}" />
-
-						<h:outputText value="Curriculum" />
-						<p:fileUpload value="#{tableView.selectedPerson.curriculum}"
-							mode="simple" skinSimple="true" />
-
-						<h:outputText value="Photo" />
-						<p:fileUpload value="#{tableView.selectedPerson.photo}"
-							mode="simple" skinSimple="true" />
-
 					</p:panelGrid>
-
-					<p:commandButton value="Submit Changes"
-						action="#{personService.updatePerson(tableView.selectedPerson)}"
-						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
+					<p:commandButton value="Submit Changes" style="center"
+					action="#{personService.updatePerson(tableView.selectedPerson)}"
+					update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
 				</h:form>
 			</div>
 		</div>
-
-
-
 	</ui:define>
-
-
-
 </ui:composition>

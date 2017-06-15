@@ -1,11 +1,13 @@
 package personsAndAcademies.model;
 
+import java.io.IOException;
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Person implements Serializable{
@@ -18,9 +20,10 @@ public class Person implements Serializable{
 	private String name;
 	private boolean online = false;
 	private String username;
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	private String academicCourse;
 	private String gender;
+	@Lob 
 	private byte[] photo;
 	private String academy;
 	private int numTelephone;
@@ -30,6 +33,7 @@ public class Person implements Serializable{
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
+	@Lob
 	private byte[] curriculum;
 	private String securityQuestion;
 	private String securityAnswer;
@@ -47,10 +51,10 @@ public class Person implements Serializable{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAcademicCourse() {
@@ -80,7 +84,9 @@ public class Person implements Serializable{
 	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(byte[] photo) throws IOException { 
+//		File fi = new File(file);
+//		byte[] fileContent = Files.readAllBytes(fi.toPath());
 		this.photo = photo;
 	}
 	public long getID() {
@@ -132,6 +138,7 @@ public class Person implements Serializable{
 		return curriculum;
 	}
 	public void setCurriculum(byte[] curriculum) {
+		
 		this.curriculum = curriculum;
 	}
 	public String getSecurityQuestion() {
