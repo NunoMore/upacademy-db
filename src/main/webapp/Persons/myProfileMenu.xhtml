@@ -25,7 +25,7 @@
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<p:commandButton id="saveBtn" value="Save"
+					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.updateUser}"
 						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"/>
 				</div>
@@ -34,34 +34,34 @@
 
 					<p:panelGrid id="EditColVital" columns="2">
 
-						<p:outputLabel value="Data" />
-						<p:outputLabel value="Informations" />
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Informacoes" />
 
-						<h:outputText value="Name" />
+						<h:outputText value="Nome" />
 						<h:inputText id="Name" value="#{currentUserBean.person.name}" required="true"/>
 
-						<h:outputText value="Academy" />
+						<h:outputText value="Academia" />
 						<p:selectOneMenu style="width:150px">
 							<f:selectItem itemLabel="Academias" itemValue="#{null}"
 								noSelectionOption="true" />
 							<f:selectItems value="#{AcademyService.academies}" />
 						</p:selectOneMenu>
 
-						<h:outputText value="Date of Birth" />
+						<h:outputText value="Data de Nascimento" />
 						<p:calendar  value="#{currentUserBean.person.dateOfBirth}" 
 						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
 
-						<h:outputText value="Gender" />
+						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
 
-						<h:outputText value="Academic Course" />
+						<h:outputText value="Curso Academico" />
 						<h:inputText value="#{currentUserBean.person.academicCourse}" />
 
 
-						<h:outputText value="Telephone Number" />
+						<h:outputText value="Numero Telefone" />
 						<h:inputText value="#{currentUserBean.person.numTelephone}"
 							maxlength="9" />
 
@@ -74,8 +74,8 @@
 				<div class="col-md-4">
 					<p:panelGrid id="EditColNotVital" columns="2">
 
-						<p:outputLabel value="Data" />
-						<p:outputLabel value="Informations" />
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Informacoes" />
 						
 						<h:outputText value="Facebook" />
 						<h:inputText value="#{currentUserBean.person.facebookLink}" />
@@ -87,14 +87,14 @@
 						<h:inputText value="#{currentUserBean.person.gitHubLink}" />
 
 
-						<h:outputText value="WorkPlace" />
+						<h:outputText value="Local de Trabalho" />
 						<h:inputText value="#{currentUserBean.person.workPlace}" />
 
-						<h:outputText value="Curriculum" />
+						<h:outputText value="Curriculo" />
 						<p:fileUpload value="#{currentUserBean.person.curriculum}"
 							mode="simple" skinSimple="true" />
 
-						<h:outputText value="Photo" />
+						<h:outputText value="Foto" />
 						<p:fileUpload value="#{currentUserBean.person.photo}"
 							mode="simple" skinSimple="true" />
 
