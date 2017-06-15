@@ -1,6 +1,5 @@
 package personsAndAcademies.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,7 +10,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import personsAndAcademies.model.Academy;
-import personsAndAcademies.model.Person;
 
 
 @Named("academyRepo")
