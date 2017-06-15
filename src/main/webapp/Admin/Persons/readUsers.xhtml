@@ -28,13 +28,15 @@
 						<f:facet name="header">
 				            Lista de Utilizadores
 				        </f:facet>
-						<p:column headerText="Name">
+						<p:column headerText="Nome">
 							<h:outputText value="#{person.name}" />
 						</p:column>
 						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
 						</p:column>
-						<p:column>remover</p:column>
+						<p:column>
+							<p:commandButton value="Remover" action="#{personService.removePerson(person)}" update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
+						</p:column>
 					</p:dataTable>
 				</h:form>
 			</div>
@@ -42,13 +44,13 @@
 				<h:form id="formEditPerson">
 					<p:panelGrid id="editPerson" columns="2">
 
-						<p:outputLabel value="Data" />
-						<p:outputLabel value="Edit" />
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Edicao" />
 
-						<h:outputText value="Name" />
+						<h:outputText value="Nome" />
 						<h:inputText value="#{tableView.selectedPerson.name}" />
 
-						<h:outputText value="Academy" />
+						<h:outputText value="Academia" />
 						<p:selectOneMenu style="width:150px">
 							<f:selectItem itemLabel="Academias" itemValue="#{null}"
 								noSelectionOption="true" />
@@ -56,31 +58,45 @@
 
 						</p:selectOneMenu>
 
-						<h:outputText value="Date of Birth" />
+						<h:outputText value="Data de Nascimento" />
 						<p:calendar value="#{tableView.selectedPerson.dateOfBirth}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
 
-						<h:outputText value="Gender" />
+						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{tableView.selectedPerson.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="M" />
 							<f:selectItem itemLabel="Feminino" itemValue="F" />
 						</p:selectOneMenu>
 
-						<h:outputText value="Academic Course" />
+						<h:outputText value="Curso Academico" />
 						<h:inputText value="#{tableView.selectedPerson.academicCourse}" />
 
 
-						<h:outputText value="Telephone Number" />
+						<h:outputText value="Numero Telemovel" />
 						<h:inputText value="#{tableView.selectedPerson.numTelephone}"
 							maxlength="9" />
 
 
 						<h:outputText value="Email" />
 						<h:inputText value="#{tableView.selectedPerson.email}" />
+						
+						<h:outputText value="Facebook" />
+						<h:inputText value="#{tableView.selectedPerson.facebookLink}" />
+
+						<h:outputText value="LinkedIn" />
+						<h:inputText value="#{tableView.selectedPerson.linkedInLink}" />
+
+						<h:outputText value="Git" />
+						<h:inputText value="#{tableView.selectedPerson.gitHubLink}" />
+
+
+						<h:outputText value="WorkPlace" />
+						<h:inputText value="#{tableView.selectedPerson.workPlace}" />
 					</p:panelGrid>
-					<p:commandButton value="Submit Changes" style="center"
+					<p:commandButton value="Salvar alteracoes" style="center"
 						action="#{personService.updatePerson(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
+						
 				</h:form>
 			</div>
 		</div>
