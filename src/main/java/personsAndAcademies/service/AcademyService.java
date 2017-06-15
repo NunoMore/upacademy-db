@@ -26,16 +26,16 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void update(Academy academy){
-		academyRepository.edit(academy);
-	}
-	
 	public void removeAcademy(Long ID){
 		academyRepository.remove(ID);
 	}
 	
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
+	}
+	
+	public void updateAcademy(Academy academy){
+		academyRepository.updateAcademy(academy);
 	}
 
 
@@ -46,6 +46,7 @@ public class AcademyService {
 	public void setAcademyRepository(AcademyRepository academyRepository) {
 		this.academyRepository = academyRepository;
 	}
+	
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy
 	public void onDateSelect(SelectEvent event){

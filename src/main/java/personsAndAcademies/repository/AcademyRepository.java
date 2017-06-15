@@ -1,5 +1,6 @@
 package personsAndAcademies.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -10,27 +11,26 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.Person;
+
 
 @Named("academyRepo")
 @Transactional
 @ApplicationScoped
 public class AcademyRepository {
 	
+	
+	
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
 	
+	private Academy academy;
+	
 	private long academyId;
 	
-	private List<Academy> selectedEdit;
-	
-	
+
 	public void createAcademy(Academy academy){
 		em.persist(academy);
-	}
-	
-	public void edit(Academy academy){
-		em.merge(academy);
-		
 	}
 	
 	public List<Academy> readAcademy(){
@@ -44,21 +44,9 @@ public class AcademyRepository {
 		em.remove(academy);
 	}
 	
-	public void update(Academy academy){
-		
-		String currentAcademy = academy.getName();
-		
-		Query query = em.createQuery(("Select e from Academy e where e.name = '"+ currentAcademy + "'"));
-		
-		Academy academyUpdate  = (Academy) query.getSingleResult();
-		
-		academyUpdate.setName(academy.getName());
-		academyUpdate.setDate(academy.getDate());
-		academyUpdate.setDescription(academy.getDescription());
-
-		edit(academyUpdate);
-		
-	}
+	public void updateAcademy(Academy academy){
+		em.merge(academy);
+	}	
 
 	public long getAcademyId() {
 		return academyId;
@@ -68,12 +56,12 @@ public class AcademyRepository {
 		this.academyId = academyId;
 	}
 
-	public List<Academy> getSelectedEdit() {
-		return selectedEdit;
+	public Academy getAcademy() {
+		return academy;
 	}
 
-	public void setSelectedEdit(List<Academy> selectedEdit) {
-		this.selectedEdit = selectedEdit;
+	public void setAcademy(Academy academy) {
+		this.academy = academy;
 	}
 	
 }
