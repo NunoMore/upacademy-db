@@ -11,197 +11,73 @@
 
 
 	<ui:define name="display">
-		<h:form>
+		<div class="row">
+			<div class="col-md-8">
+				<h:form id="formDisplayPersons">
+					<p:dataTable id="persons" var="person"
+						value="#{personBean.readPerson()}" selectionMode="single"
+						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}">
 
-			<p:commandButton value="Return My Profile"
-				action="/Persons/myProfileMenu"></p:commandButton>
-			<br />
-			<p:outputLabel value=" Insert newUser's email"></p:outputLabel>
-			<p:inputText value="#{personBean.person.email}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Username "></p:outputLabel>
-			<p:inputText value="#{personBean.person.username}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Password "></p:outputLabel>
-			<p:inputText value="#{personBean.person.password}"></p:inputText>
-			<br />
-			<br />
-			<p:commandButton value="Create User"
-				action="#{personBean.createPerson}" update=":formEditTable:persons">
-			</p:commandButton>
+						<p:ajax event="rowSelect" update=":formEditPerson:editPerson"/>
 
-		</h:form>
-
-		<h:form id="formEditTable">
-			<p:dataTable id="persons" var="person"
-				value="#{personBean.readPerson()}" editable="true" editMode="cell">
-				<f:facet name="header">
-           			Edit Person
-       			</f:facet>
-
-				<p:ajax event="cellEdit"  update=":formEditTable:persons"/> 
-
-
-				<p:column headerText="Name">
-					<p:cellEditor>
-						<f:facet name="output">
+						<f:facet name="header">
+				            Single with Row Click
+				        </f:facet>
+						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.name}" style="width:96%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Username">
-					<p:cellEditor>
-						<f:facet name="output">
+						</p:column>
+						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.username}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						</p:column>
+						<p:column>remover</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form id="formEditPerson">
+					<p:panelGrid id="editPerson" columns="2" >
 
-				<p:column headerText="Date Of Birth">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.dateOfBirth}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.dateOfBirth}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<p:outputLabel value="Data" />
+						<p:outputLabel value="Edit" />
 
-				<p:column headerText="Gender">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.gender}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.gender}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<h:outputText value="Name" />
+						<h:inputText value="#{tableView.selectedPerson.name}" />
 
-				<p:column headerText="Photo">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.photo}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.photo}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<h:outputText value="Academy" />
+						<p:selectOneMenu style="width:150px">
+							<f:selectItem itemLabel="Academias" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{AcademyService.academies}" />
 
-				<p:column headerText="Academy">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.academy}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.academy}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						</p:selectOneMenu>
 
-				<p:column headerText="Telephone Number">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.numTelephone}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.numTelephone}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<h:outputText value="Date of Birth" />
+						<p:calendar  value="#{tableView.selectedPerson.dateOfBirth}" 
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
 
-				<p:column headerText="Email">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.email}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.email}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<h:outputText value="Gender" />
+						<p:selectOneMenu value="#{tableView.selectedPerson.gender}">
+							<f:selectItem itemLabel="Masculino" itemValue="M" />
+							<f:selectItem itemLabel="Feminino" itemValue="F" />
+						</p:selectOneMenu>
+
+						<h:outputText value="Academic Course" />
+						<h:inputText value="#{tableView.selectedPerson.academicCourse}" />
 
 
-				<p:column headerText="Facebook">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.facebookLink}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.facebookLink}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="LinkedIn">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.linkedInLink}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.linkedInLink}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="GitHub">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.gitHubLink}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.gitHubLink}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Workplace">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.workPlace}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.workPlace}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Curriculum">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{person.curriculum}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{personBean.person.curriculum}" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+						<h:outputText value="Telephone Number" />
+						<h:inputText value="#{tableView.selectedPerson.numTelephone}"
+							maxlength="9" />
 
 
-				<!-- <p:column headerText="Edit">
-					<p:commandButton value="Save Changes"></p:commandButton>
-				</p:column> -->
-
-				<p:column headerText="Remove">
-					<p:commandButton value="remove"
-						action="#{personBean.removePersonId(person.ID)}" update=":formEditTable:persons" />
-				</p:column>
-			</p:dataTable>
-
-		</h:form>
+						<h:outputText value="Email" />
+						<h:inputText value="#{tableView.selectedPerson.email}" />
+					</p:panelGrid>
+					<p:commandButton value="Submit Changes" style="center"
+					action="#{personService.updatePerson(tableView.selectedPerson)}"
+					update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
+				</h:form>
+			</div>
+		</div>
 	</ui:define>
-
-
-
 </ui:composition>
