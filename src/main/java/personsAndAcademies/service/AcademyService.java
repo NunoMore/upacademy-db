@@ -9,12 +9,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 
 import personsAndAcademies.model.Academy;
-import personsAndAcademies.model.Person;
 import personsAndAcademies.repository.AcademyRepository;
 
 @Named("academyService")
@@ -58,13 +55,5 @@ public class AcademyService {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
 	}
-	
-	public void click(){
-		RequestContext requestContext = RequestContext.getCurrentInstance();
-		
-		requestContext.update("form:display");
-		requestContext.execute("PF('dlg').show()");
-	}
-
 
 }

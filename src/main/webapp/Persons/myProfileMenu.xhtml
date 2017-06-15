@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
+<<<<<<< HEAD
 	<!--  Create Columns with products -->
 	<ui:define name="buttons">
 		<h:form>
@@ -19,10 +20,49 @@
 				ajax="false" />
 		</h:form>
 	</ui:define>
+=======
+>>>>>>> myProfile2
 
 	<ui:define name="display">
 		<h:form id="myProfile">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- Panelgrid with photo -->
+					<p:panelGrid id="ProfileCol" columns="2" >
+						<f:facet name="header">
+							<p:graphicImage value="#{currentUserBean.person.photo}"
+								rendered="#{currentUserBean.person.photo != null}"
+								style="width:150px" />
+							<p:graphicImage name="images/defaultUser.png"
+								rendered="#{currentUserBean.person.photo == null}"
+								style="width:150px" />
+						</f:facet>
+					</p:panelGrid>
+					<br />
+					<p:commandButton id="saveBtn" value="Save"
+						action="#{currentUserBean.updateUser}"
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" 
+						actionListener="#{messagesView.info('Changes Submited!')}"/>
+				</div>
 
+				<div class="col-md-4">
+
+					<p:panelGrid id="EditColVital" columns="2">
+
+						<p:outputLabel value="Data" />
+						<p:outputLabel value="Informations" />
+
+						<h:outputText value="Name" />
+						<h:inputText id="Name" value="#{currentUserBean.person.name}" required="true"/>
+
+						<h:outputText value="Academy" />
+						<p:selectOneMenu style="width:150px">
+							<f:selectItem itemLabel="Academias" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{AcademyService.academies}" />
+						</p:selectOneMenu>
+
+<<<<<<< HEAD
 			<div style="float: center;">
 				<!-- Panelgrid with photo -->
 				<p:panelGrid id="ProfileCol" columns="2">
@@ -64,62 +104,62 @@
 					<h:outputText value="Date of Birth" />
 					<h:inputText value="#{currentUserBean.person.dateOfBirth}"
 						disabled="#{currentUserBean.editMode}" />
+=======
+						<h:outputText value="Date of Birth" />
+						<p:calendar  value="#{currentUserBean.person.dateOfBirth}" 
+						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
+>>>>>>> myProfile2
 
-					<h:outputText value="Gender" />
-						<p:selectOneMenu value="#{currentUserBean.person.gender}" disabled="#{currentUserBean.editMode}">
-							<f:selectItem itemLabel="Masculino" itemValue="M" />
-							<f:selectItem itemLabel="Feminino" itemValue="F" />
+						<h:outputText value="Gender" />
+						<p:selectOneMenu value="#{currentUserBean.person.gender}">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
 
 						<h:outputText value="Academic Course" />
-						<h:inputText value="#{currentUserBean.person.academicCourse}"
-							disabled="#{currentUserBean.editMode}" />
+						<h:inputText value="#{currentUserBean.person.academicCourse}" />
 
 
 						<h:outputText value="Telephone Number" />
 						<h:inputText value="#{currentUserBean.person.numTelephone}"
-							disabled="#{currentUserBean.editMode}" maxlength="9"/>
+							maxlength="9" />
 
 
 						<h:outputText value="Email" />
-						<h:inputText value="#{currentUserBean.person.email}"
-							disabled="#{currentUserBean.editMode}" />
-				</p:panelGrid>
+						<h:inputText value="#{currentUserBean.person.email}" />
+					</p:panelGrid>
+				</div>
 
-				<br />
-				<p:panelGrid id="EditColNotVital" columns="2" style="float:right">
-					<h:outputText value="Facebook" />
-					<h:inputText value="#{currentUserBean.person.facebookLink}"
-						disabled="#{currentUserBean.editMode}" />
+				<div class="col-md-4">
+					<p:panelGrid id="EditColNotVital" columns="2">
 
-					<h:outputText value="LinkedIn" />
-					<h:inputText value="#{currentUserBean.person.linkedInLink}"
-						disabled="#{currentUserBean.editMode}" />
+						<p:outputLabel value="Data" />
+						<p:outputLabel value="Informations" />
+						
+						<h:outputText value="Facebook" />
+						<h:inputText value="#{currentUserBean.person.facebookLink}" />
 
-					<h:outputText value="Git" />
-					<h:inputText value="#{currentUserBean.person.gitHubLink}"
-						disabled="#{currentUserBean.editMode}" />
+						<h:outputText value="LinkedIn" />
+						<h:inputText value="#{currentUserBean.person.linkedInLink}" />
 
-
-					<h:outputText value="WorkPlace" />
-					<h:inputText value="#{currentUserBean.person.workPlace}"
-						disabled="#{currentUserBean.editMode}" />
-
-					<h:outputText value="Curriculum" />
-					<p:fileUpload value="#{currentUserBean.person.curriculum}"
-						mode="simple" skinSimple="true"
-						disabled="#{currentUserBean.editMode}" />
-
-					<h:outputText value="Photo" />
-					<p:fileUpload value="#{currentUserBean.person.photo}" mode="simple"
-						skinSimple="true" disabled="#{currentUserBean.editMode}" />
+						<h:outputText value="Git" />
+						<h:inputText value="#{currentUserBean.person.gitHubLink}" />
 
 
-				</p:panelGrid>
+						<h:outputText value="WorkPlace" />
+						<h:inputText value="#{currentUserBean.person.workPlace}" />
 
-				<p:commandButton value="Submit Changes" style="center"
-					action="#{currentUserBean.updateUser}"
-					update=":myProfile:ProfileCol,EditColVital,EditColNotVital"></p:commandButton>
+						<h:outputText value="Curriculum" />
+						<p:fileUpload value="#{currentUserBean.person.curriculum}"
+							mode="simple" skinSimple="true" />
+
+						<h:outputText value="Photo" />
+						<p:fileUpload value="#{currentUserBean.person.photo}"
+							mode="simple" skinSimple="true" />
+
+					</p:panelGrid>
+
+				</div>
 			</div>
 
 		</h:form>

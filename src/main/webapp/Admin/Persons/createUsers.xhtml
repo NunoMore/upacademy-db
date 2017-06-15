@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+
+
+	<ui:define name="display">
+
+		<h:form>
+
+			<p:panelGrid columns="2">
+
+				<h:outputText value=" Insert newUser's email"/>
+				<h:inputText value="#{personBean.person.email}"/>
+
+				<h:outputText value=" Insert newUser's Username "/>
+				<h:inputText value="#{personBean.person.username}"/>
+
+				<h:outputText value=" Insert newUser's Password "/>
+				<h:inputText value="#{personBean.person.password}"/>
+			</p:panelGrid>
+			<br/>
+			<p:commandButton value="Create User"
+				action="#{personBean.createPerson}" ajax="false">
+			</p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+
+
+
+</ui:composition>

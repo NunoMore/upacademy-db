@@ -32,7 +32,7 @@ public class PersonBean {
 
 	public  String createPerson(){
 		personService.createPerson(person);
-		return "myProfileMenu";
+		return "readUsers";
 	}
 	
 	public Collection<Person> readPerson(){
