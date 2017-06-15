@@ -37,7 +37,16 @@
 						<p:column headerText="Remove">
 							<p:commandButton value="Remove"
 								action="#{academyBean.removeAcademy(academy.ID)}"
-								update=":formDisplayAcademy:academy" />
+								update=":formDisplayAcademy:academy">
+								<p:confirm header="Confirmacao de Remocao" message="Pretende avancar?" icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="#{personService.removePerson(person)}"/>
+								<p:commandButton value="Nao" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
 						</p:column>
 					</p:dataTable>
 				</h:form>
@@ -63,7 +72,13 @@
 					</p:panelGrid>
 					<p:commandButton value="Submit Changes" style="center"
 						action="#{academyService.updateAcademy(tableView.selectedAcademy)}"
-						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />	
+						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy"
+						onclick="PF('dlg1').show()" />
+
+					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
+						minHeight="40" resizable="false">
+						<h:outputText value="As alteracoes foram guardadas com sucesso" />
+					</p:dialog>
 				</h:form>
 			</div>
 		</div>

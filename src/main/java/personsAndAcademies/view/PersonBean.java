@@ -29,9 +29,8 @@ public class PersonBean {
 		this.person = person;
 	}
 
-	public  String createPerson(){
+	public void createPerson(){
 		personService.createPerson(person);
-		return "readUsers";
 	}
 	
 	public Collection<Person> readPerson(){

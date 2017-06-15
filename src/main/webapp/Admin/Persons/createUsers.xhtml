@@ -16,20 +16,22 @@
 
 			<p:panelGrid columns="2">
 
-				<h:outputText value=" Insert newUser's email"/>
+				<h:outputText value="Insere o email do novo utilizador"/>
 				<h:inputText value="#{personBean.person.email}"/>
 
-				<h:outputText value=" Insert newUser's Username "/>
+				<h:outputText value="Insere o username do novo utilizador"/>
 				<h:inputText value="#{personBean.person.username}"/>
 
-				<h:outputText value=" Insert newUser's Password "/>
+				<h:outputText value="Insere a password do novo utilizador"/>
 				<h:inputText value="#{personBean.person.password}"/>
 			</p:panelGrid>
 			<br/>
-			<p:commandButton value="Create User"
-				action="#{personBean.createPerson}" ajax="false">
-			</p:commandButton>
+			<p:commandButton value="Criar Utilizador"
+				action="#{personBean.createPerson}" onclick="PF('dlg1').show()"/>
 
+					<p:dialog header="Confirmacao criacao" widgetVar="dlg1" minHeight="40" resizable="false">
+						<h:outputText value="O utilizador foi criado com sucesso" />
+					</p:dialog>
 		</h:form>
 
 	</ui:define>

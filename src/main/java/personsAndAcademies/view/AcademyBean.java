@@ -30,9 +30,9 @@ public class AcademyBean {
 
 	private List<Academy> editAcademy = new ArrayList<>();
 	
-	public String createAcademy(){
+	public void createAcademy(){
 		academyService.createAcademy(academy);
-		return "readAcademies?faces-redirect=true";
+		
 	}
 	
 //	public String updateAcademy(Long ID){

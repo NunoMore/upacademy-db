@@ -27,9 +27,12 @@
 					<p:inputTextarea value="#{academyBean.academy.description}"
 						rows="6" cols="33" />
 
-					<h:commandButton styleClass="btn btn-submit"
-						action="#{academyBean.createAcademy}" value="Create!" />
+					<p:commandButton styleClass="btn btn-submit"
+						action="#{academyBean.createAcademy}" value="Create!" onclick="PF('dlg1').show()"/>
 
+					<p:dialog header="Confirmacao criacao" widgetVar="dlg1" minHeight="40" resizable="false">
+						<h:outputText value="A academia foi criada com sucesso" />
+					</p:dialog>
 					<h:commandButton value="Reset" StyleClass="btn btn-submit">
 						<p:ajax update="panel" resetValues="true" />
 					</h:commandButton>

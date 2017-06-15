@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<!-- Panelgrid with photo -->
-					<p:panelGrid id="ProfileCol" columns="2" >
+					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
 							<p:graphicImage value="#{currentUserBean.person.photo}"
 								rendered="#{currentUserBean.person.photo != null}"
@@ -27,7 +27,11 @@
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.updateUser}"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"/>
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" onclick="PF('dlg1').show()"/>
+
+					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1" minHeight="40" resizable="false">
+						<h:outputText value="As alteracoes foram guardadas com sucesso" />
+					</p:dialog>
 				</div>
 
 				<div class="col-md-4">
@@ -38,7 +42,8 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Nome" />
-						<h:inputText id="Name" value="#{currentUserBean.person.name}" required="true"/>
+						<h:inputText id="Name" value="#{currentUserBean.person.name}"
+							required="true" />
 
 						<h:outputText value="Academia" />
 						<p:selectOneMenu style="width:150px">
@@ -48,8 +53,8 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Data de Nascimento" />
-						<p:calendar  value="#{currentUserBean.person.dateOfBirth}" 
-						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
+						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
 
 						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
@@ -76,7 +81,7 @@
 
 						<p:outputLabel value="Dados" />
 						<p:outputLabel value="Informacoes" />
-						
+
 						<h:outputText value="Facebook" />
 						<h:inputText value="#{currentUserBean.person.facebookLink}" />
 
