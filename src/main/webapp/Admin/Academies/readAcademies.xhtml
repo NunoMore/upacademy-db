@@ -8,8 +8,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-
-
 	<ui:define name="display">
 		<div class="row">
 			<div class="col-md-8">
@@ -21,24 +19,31 @@
 						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
 
 						<f:facet name="header">
-				            Single with Row Click
-				        </f:facet>
+					Single row selection
+					</f:facet>
+
 						<p:column headerText="Name">
 							<h:outputText value="#{academy.name}" />
 						</p:column>
+						
+						
 						<p:column headerText="Date">
 							<h:outputText value="#{academy.date}">
 								<f:convertDateTime pattern="MMM/dd/yyyy" />
 							</h:outputText>
 						</p:column>
+
+
 						<p:column headerText="Description">
 							<h:outputText value="#{academy.description}" />
 						</p:column>
+						
 						<p:column headerText="Remove">
 							<p:commandButton value="Remove"
 								action="#{academyBean.removeAcademy(academy.ID)}"
 								update=":formDisplayAcademy:academy" />
 						</p:column>
+
 					</p:dataTable>
 				</h:form>
 			</div>
@@ -51,27 +56,24 @@
 
 						<h:outputText value="Name" />
 						<h:inputText value="#{tableView.selectedAcademy.name}" />
-
+						
 						<p:outputLabel for="german" value="Start Date:" />
 						<p:calendar id="german" value="#{tableView.selectedAcademy.date}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
-
 
 						<h:outputText value="Description" />
 						<h:inputText value="#{tableView.selectedAcademy.description}" />
 
 					</p:panelGrid>
-					<p:commandButton value="Submit Changes" style="center"
+
+					<p:commandButton value="submit" style="center"
 						action="#{academyService.updateAcademy(tableView.selectedAcademy)}"
-						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
-					<h:commandButton value="Reset" Style="center" >
-						<p:ajax update="editAcademy" resetValues="true" />	
-					</h:commandButton> 
+						update=":formEditAcademy:editAcademy, formDisplayAcademy:academy" />
+
 				</h:form>
 			</div>
 		</div>
 
+
 	</ui:define>
 </ui:composition>
-
-
