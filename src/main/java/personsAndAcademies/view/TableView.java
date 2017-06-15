@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import personsAndAcademies.model.Academy;
@@ -18,6 +19,9 @@ public class TableView implements Serializable {
 	
 	private Person selectedPerson; //atributo para guardar person que sera selecionada na tabela do main
 	private List<Person> filteredPersons; //atributo para guardar a seleccao de filtragem
+	
+	@Inject
+	private CurrentUserBean currentUser;
 
 	private static String[] academies; //lista de academias
 	
@@ -50,6 +54,9 @@ public class TableView implements Serializable {
 
 	public void setSelectedPerson(Person selectedPerson) {
 		this.selectedPerson = selectedPerson;
+		if (selectedPerson.getUsername() == currentUser.getPerson().getUsername()) {
+			currentUser.setPerson(selectedPerson); 
+		}
 	}
 
 	public List<Academy> getSelectedList() {
