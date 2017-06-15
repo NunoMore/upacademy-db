@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+
+
+	<ui:define name="display">
+		<div class="row">
+			<div class="col-md-8">
+				<h:form id="formDisplayPersons">
+					<p:dataTable id="persons" var="person"
+						value="#{personBean.readPerson()}" widgetVar="personsTable"
+						multiViewState="true" rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10" selectionMode="single"
+						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
+						emptyMessage="No persons found with that search criteria"
+						filteredValue="#{tableView.filteredPersons}">
+
+						<p:ajax event="rowSelect" update=":formEditPerson:editPerson" />
+
+						<f:facet name="header">
+				            Lista de Utilizadores
+				        </f:facet>
+						<p:column headerText="Nome">
+							<h:outputText value="#{person.name}" />
+						</p:column>
+						<p:column headerText="Username">
+							<h:outputText value="#{person.username}" />
+						</p:column>
+						<p:column>
+							<p:commandButton value="Remover" action="#{personService.removePerson(person)}" update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form id="formEditPerson">
+					<p:panelGrid id="editPerson" columns="2">
+
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Edicao" />
+
+						<h:outputText value="Nome" />
+						<h:inputText value="#{tableView.selectedPerson.name}" />
+
+						<h:outputText value="Academia" />
+						<p:selectOneMenu style="width:150px">
+							<f:selectItem itemLabel="Academias" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{AcademyService.academies}" />
+
+						</p:selectOneMenu>
+
+						<h:outputText value="Data de Nascimento" />
+						<p:calendar value="#{tableView.selectedPerson.dateOfBirth}"
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+
+						<h:outputText value="Genero" />
+						<p:selectOneMenu value="#{tableView.selectedPerson.gender}">
+							<f:selectItem itemLabel="Masculino" itemValue="M" />
+							<f:selectItem itemLabel="Feminino" itemValue="F" />
+						</p:selectOneMenu>
+
+						<h:outputText value="Curso Academico" />
+						<h:inputText value="#{tableView.selectedPerson.academicCourse}" />
+
+
+						<h:outputText value="Numero Telemovel" />
+						<h:inputText value="#{tableView.selectedPerson.numTelephone}"
+							maxlength="9" />
+
+
+						<h:outputText value="Email" />
+						<h:inputText value="#{tableView.selectedPerson.email}" />
+						
+						<h:outputText value="Facebook" />
+						<h:inputText value="#{tableView.selectedPerson.facebookLink}" />
+
+						<h:outputText value="LinkedIn" />
+						<h:inputText value="#{tableView.selectedPerson.linkedInLink}" />
+
+						<h:outputText value="Git" />
+						<h:inputText value="#{tableView.selectedPerson.gitHubLink}" />
+
+
+						<h:outputText value="WorkPlace" />
+						<h:inputText value="#{tableView.selectedPerson.workPlace}" />
+					</p:panelGrid>
+					<p:commandButton value="Salvar alteracoes" style="center"
+						action="#{personService.updatePerson(tableView.selectedPerson)}"
+						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
+						
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

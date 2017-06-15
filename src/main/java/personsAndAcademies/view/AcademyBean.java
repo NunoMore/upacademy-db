@@ -5,10 +5,13 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 import personsAndAcademies.model.Academy;
 import personsAndAcademies.service.AcademyService;
@@ -19,7 +22,8 @@ public class AcademyBean {
 
 	private Academy academy = new Academy();
 	
-	private List<Academy> selectedAcademy;
+	private List<Academy> forEdit = new ArrayList<>();
+	
 	
 	@Inject
 	private AcademyService academyService;
@@ -31,18 +35,17 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 	}
 	
-	public String updateAcademy(){
-		academyService.update(academy);
-		return "readAcademies?faces-redirect=true";
-	}
+//	public String updateAcademy(Long ID){
+//		academyService.update(ID);
+//		return "readAcademies?faces-redirect=true";
+//	}
 	
-	public void onCellEdit(CellEditEvent event){
-		Object oldValue = event.getOldValue();
-		Object newValue = event.getNewValue();
-	}
+	
 	
 	public Collection<Academy> readAcademy(){
-		return academyService.readAcademy();
+		List<Academy> newList = academyService.readAcademy();
+		return newList;
+		
 		
 	}
 	public String removeAcademy(Long ID){
@@ -52,6 +55,8 @@ public class AcademyBean {
 		return "readAcademies?faces-redirect=true";
 		
 	}
+
+	
 	
 	public Academy getAcademy() {
 		return academy;
@@ -77,13 +82,14 @@ public class AcademyBean {
 		this.editAcademy = editAcademy;
 	}
 
-	public List<Academy> getSelectedAcademy() {
-		return selectedAcademy;
+	public List<Academy> getForEdit() {
+		return forEdit;
 	}
 
-	public void setSelectedAcademy(List<Academy> selectedAcademy) {
-		this.selectedAcademy = selectedAcademy;
+	public void setForEdit(List<Academy> forEdit) {
+		this.forEdit = forEdit;
 	}
-	
+
+
 	
 }

@@ -69,7 +69,7 @@ public class PersonRepository {
 			userNameList.setCurriculum(person.getCurriculum());
 			userNameList.setDateOfBirth(person.getDateOfBirth());
 			userNameList.setGender(person.getGender());
-			userNameList.setPhoto(person.getPhoto());
+//			userNameList.setPhoto(person.getPhoto());
 
 
 			updatePerson(userNameList);

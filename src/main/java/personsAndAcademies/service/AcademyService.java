@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import personsAndAcademies.model.Academy;
@@ -27,16 +26,16 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void update(Academy academy){
-		academyRepository.edit(academy);
-	}
-	
 	public void removeAcademy(Long ID){
 		academyRepository.remove(ID);
 	}
 	
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
+	}
+	
+	public void updateAcademy(Academy academy){
+		academyRepository.updateAcademy(academy);
 	}
 
 
@@ -48,20 +47,13 @@ public class AcademyService {
 		this.academyRepository = academyRepository;
 	}
 	
+	
 	// Metodo para o selecionar data de inicio da academia no menu create academy
 	public void onDateSelect(SelectEvent event){
 		
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MMM-dd");
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
 	}
-	
-	public void click(){
-		RequestContext requestContext = RequestContext.getCurrentInstance();
-		
-		requestContext.update("form:display");
-		requestContext.execute("PF('dlg').show()");
-	}
-
 
 }

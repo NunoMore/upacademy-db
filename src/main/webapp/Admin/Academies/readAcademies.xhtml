@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+
+
+	<ui:define name="display">
+		<div class="row">
+			<div class="col-md-8">
+				<h:form id="formDisplayAcademy">
+					<p:dataTable id="academy" var="academy"
+						value="#{academyBean.readAcademy()}" selectionMode="single"
+						selection="#{tableView.selectedAcademy}" rowKey="#{academy.ID}">
+
+						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
+
+						<f:facet name="header">
+				            Single with Row Click
+				        </f:facet>
+						<p:column headerText="Name">
+							<h:outputText value="#{academy.name}" />
+						</p:column>
+						<p:column headerText="Date">
+							<h:outputText value="#{academy.date}">
+								<f:convertDateTime pattern="yyyy-MMM-dd" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Description">
+							<h:outputText value="#{academy.description}" />
+						</p:column>
+						<p:column headerText="Remove">
+							<p:commandButton value="Remove"
+								action="#{academyBean.removeAcademy(academy.ID)}"
+								update=":formDisplayAcademy:academy" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form id="formEditAcademy">
+					<p:panelGrid id="editAcademy" columns="2">
+
+						<p:outputLabel value="Data" />
+						<p:outputLabel value="Edit" />
+
+						<h:outputText value="Name" />
+						<h:inputText value="#{tableView.selectedAcademy.name}" />
+
+						<p:outputLabel for="german" value="Start Date:" />
+						<p:calendar id="german" value="#{tableView.selectedAcademy.date}"
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+
+
+						<h:outputText value="Description" />
+						<h:inputText value="#{tableView.selectedAcademy.description}" />
+
+					</p:panelGrid>
+					<p:commandButton value="Submit Changes" style="center"
+						action="#{academyService.updateAcademy(tableView.selectedAcademy)}"
+						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />	
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+
