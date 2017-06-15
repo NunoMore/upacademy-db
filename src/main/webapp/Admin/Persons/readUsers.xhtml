@@ -14,16 +14,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h:form id="formDisplayPersons">
-					<p:dataTable id="persons" var="person"
-<<<<<<< HEAD
-						value="#{personBean.readPerson()}" selectionMode="single"
-						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}">
-
-						<p:ajax event="rowSelect" update=":formEditPerson:editPerson"/>
-
-						<f:facet name="header">
-				            Single with Row Click
-=======
+					<p:dataTable
 						value="#{personBean.readPerson()}" widgetVar="personsTable"
 						multiViewState="true" rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -36,7 +27,6 @@
 
 						<f:facet name="header">
 				            Lista de Utilizadores
->>>>>>> myProfile2
 				        </f:facet>
 						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
@@ -50,11 +40,8 @@
 			</div>
 			<div class="col-md-4">
 				<h:form id="formEditPerson">
-<<<<<<< HEAD
-					<p:panelGrid id="editPerson" columns="2" >
-=======
+
 					<p:panelGrid id="editPerson" columns="2">
->>>>>>> myProfile2
 
 						<p:outputLabel value="Data" />
 						<p:outputLabel value="Edit" />
@@ -71,12 +58,9 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Date of Birth" />
-<<<<<<< HEAD
-						<h:inputText value="#{tableView.selectedPerson.dateOfBirth}" />
-=======
+
 						<p:calendar value="#{tableView.selectedPerson.dateOfBirth}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
->>>>>>> myProfile2
 
 						<h:outputText value="Gender" />
 						<p:selectOneMenu value="#{tableView.selectedPerson.gender}">
@@ -97,49 +81,10 @@
 						<h:inputText value="#{tableView.selectedPerson.email}" />
 					</p:panelGrid>
 					<p:commandButton value="Submit Changes" style="center"
-<<<<<<< HEAD
-					action="#{personService.updatePerson(tableView.selectedPerson)}"
-					update=":formEditPerson:editPerson,formDisplayPersons:persons"/>
-				</h:form>
-			</div>
-		</div>
-		<h:form>
-
-			<p:commandButton value="Return My Profile"
-				action="/Persons/myProfileMenu"></p:commandButton>
-			<br />
-			<p:outputLabel value=" Insert newUser's email"></p:outputLabel>
-			<p:inputText value="#{personBean.person.email}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Username "></p:outputLabel>
-			<p:inputText value="#{personBean.person.username}"></p:inputText>
-			<br />
-			<br />
-			<p:outputLabel value=" Insert newUser's Password "></p:outputLabel>
-			<p:inputText value="#{personBean.person.password}"></p:inputText>
-			<br />
-			<br />
-			<p:commandButton value="Create User"
-				action="#{personBean.createPerson}" update=":formDisplayPersons:persons">
-			</p:commandButton>
-
-		</h:form>
-
-
-
-
-
-	</ui:define>
-
-
-
-=======
 						action="#{personService.updatePerson(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
 				</h:form>
 			</div>
 		</div>
 	</ui:define>
->>>>>>> myProfile2
 </ui:composition>

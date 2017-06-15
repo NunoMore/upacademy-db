@@ -8,20 +8,8 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
-<<<<<<< HEAD
-	<!--  Create Columns with products -->
-	<ui:define name="buttons">
-		<h:form>
-			<p:commandButton value="Read Users" action="/Admin/readUsers"
-				ajax="false" />
-			<p:commandButton value="Read Academies" action="/Admin/academyMenu"
-				ajax="false" />
-			<p:commandButton value="Back to Main Menu" action="/main-page"
-				ajax="false" />
-		</h:form>
-	</ui:define>
-=======
->>>>>>> myProfile2
+
+
 
 	<ui:define name="display">
 		<h:form id="myProfile">
@@ -62,53 +50,10 @@
 							<f:selectItems value="#{AcademyService.academies}" />
 						</p:selectOneMenu>
 
-<<<<<<< HEAD
-			<div style="float: center;">
-				<!-- Panelgrid with photo -->
-				<p:panelGrid id="ProfileCol" columns="2">
-					<f:facet name="header">
-						<p:graphicImage value="#{currentUserBean.person.photo}"
-							rendered="#{currentUserBean.person.photo != null}"
-							style="width:100px" />
-						<p:graphicImage name="images/defaultUser.png"
-							rendered="#{currentUserBean.person.photo == null}"
-							style="width:100px" />
-					</f:facet>
-				</p:panelGrid>
-			</div>
-			<div style="float: left">
-				<p:commandButton value="Modo Edicao"
-					action="#{currentUserBean.changeEditMode()}"
-					update=":myProfile:ProfileCol,EditColVital,EditColNotVital"/>
-
-				<p:panelGrid id="EditColVital" columns="2">
-
-					<p:outputLabel value="Data"/>
-					<p:outputLabel value="Currente Informations"/>
-
-
-
-					<h:outputText value="Name" />
-					<h:inputText value="#{currentUserBean.person.name}"
-						disabled="#{currentUserBean.editMode}" />
-
-					<h:outputText value="Academy" />
-					<p:selectOneMenu onchange="PF('personsTable').filter()"
-						style="width:150px" disabled="#{currentUserBean.editMode}">
-						<f:selectItem itemLabel="Academias" itemValue="#{null}"
-							noSelectionOption="true" />
-						<f:selectItems value="#{AcademyService.academies}" />
-
-					</p:selectOneMenu>
-
-					<h:outputText value="Date of Birth" />
-					<h:inputText value="#{currentUserBean.person.dateOfBirth}"
-						disabled="#{currentUserBean.editMode}" />
-=======
 						<h:outputText value="Date of Birth" />
 						<p:calendar  value="#{currentUserBean.person.dateOfBirth}" 
 						locate="pt" navigator="true" pattern="yyyy-MMM-dd"/>
->>>>>>> myProfile2
+
 
 						<h:outputText value="Gender" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
