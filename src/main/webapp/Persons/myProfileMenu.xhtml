@@ -6,10 +6,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
 
 	<ui:define name="display">
+	<p:tooltip />	
 		<h:form id="myProfile">
 			<div class="row">
 				<div class="col-md-4">
@@ -27,7 +29,7 @@
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.updateUser}"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" onclick="PF('dlg1').show()"/>
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" onclick="PF('dlg1').show()" />
 
 					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1" minHeight="40" resizable="false">
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
@@ -43,7 +45,7 @@
 
 						<h:outputText value="Nome" />
 						<h:inputText id="Name" value="#{currentUserBean.person.name}"
-							required="true" />
+							required="true" pt:data-tooltip="Campo Obrigatorio" />
 
 						<h:outputText value="Academia" />
 						<p:selectOneMenu style="width:150px">
@@ -54,7 +56,7 @@
 
 						<h:outputText value="Data de Nascimento" />
 						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
-							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd" pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
@@ -63,16 +65,16 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Curso Academico" />
-						<h:inputText value="#{currentUserBean.person.academicCourse}" />
+						<h:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 
 
 						<h:outputText value="Numero Telefone" />
 						<h:inputText value="#{currentUserBean.person.numTelephone}"
-							maxlength="9" />
+							maxlength="9" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 
 
 						<h:outputText value="Email" />
-						<h:inputText value="#{currentUserBean.person.email}" />
+						<h:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 					</p:panelGrid>
 				</div>
 
