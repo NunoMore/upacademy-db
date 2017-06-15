@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<!-- Panelgrid with photo -->
-					<p:panelGrid id="ProfileCol" columns="2">
+					<p:panelGrid id="ProfileCol" columns="2" >
 						<f:facet name="header">
 							<p:graphicImage value="#{currentUserBean.person.photo}"
 								rendered="#{currentUserBean.person.photo != null}"
@@ -25,9 +25,10 @@
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<p:commandButton value="Save"
+					<p:commandButton id="saveBtn" value="Save"
 						action="#{currentUserBean.updateUser}"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" />
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" 
+						actionListener="#{messagesView.info('Changes Submited!')}"/>
 				</div>
 
 				<div class="col-md-4">
@@ -38,7 +39,7 @@
 						<p:outputLabel value="Informations" />
 
 						<h:outputText value="Name" />
-						<h:inputText value="#{currentUserBean.person.name}" />
+						<h:inputText id="Name" value="#{currentUserBean.person.name}" required="true"/>
 
 						<h:outputText value="Academy" />
 						<p:selectOneMenu style="width:150px">
