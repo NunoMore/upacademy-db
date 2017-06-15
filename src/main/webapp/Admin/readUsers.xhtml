@@ -16,12 +16,13 @@
 				<h:form id="formDisplayPersons">
 					<p:dataTable id="persons" var="person"
 						value="#{personBean.readPerson()}" selectionMode="single"
-						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}">
+						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
+						scrollable="true" scrollHeight="500">
 
 						<p:ajax event="rowSelect" update=":formEditPerson:editPerson"/>
 
 						<f:facet name="header">
-				            Single with Row Click
+				            Lista de Utilizadores
 				        </f:facet>
 						<p:column headerText="Name">
 							<h:outputText value="#{person.name}" />
