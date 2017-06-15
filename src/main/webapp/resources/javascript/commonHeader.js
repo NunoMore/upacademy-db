@@ -17,7 +17,19 @@
 $(function(){
 	  $('#header_bar').data('size','big');
 	});
-
+	
+	// on key press
+	$(document).ready(function(){
+	    $(document).keypress(function(){
+	    	$('#header_bar').data('size','small');
+	        $('#header_bar').stop().animate({
+	            height:'40px'
+	        },600);
+	        $('#upAcademyHeader').hide();
+	    });
+	});
+	
+	// scroll
 	$(window).scroll(function(){
 	  if($(document).scrollTop() > 0)
 	{
