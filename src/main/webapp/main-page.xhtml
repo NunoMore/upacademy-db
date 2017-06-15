@@ -61,9 +61,9 @@
 				</p:column>
 			</p:dataTable>
 
-			<p:dialog header="Utilizador" widgetVar="personDialog" modal="true"
-				showEffect="slide" hideEffect="explode" resizable="false">
-				<p:outputPanel id="personDetail" style="text-align:center;">
+			<p:dialog id="dialogUser" header="Utilizador" widgetVar="personDialog"
+				showEffect="explode" hideEffect="explode" resizable="false">
+				<p:outputPanel id="personDetail">
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
 						<f:facet name="header">
