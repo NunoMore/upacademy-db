@@ -37,13 +37,15 @@
 						<p:column>
 							<p:commandButton value="Remover"
 								action="#{personService.removePerson(person)}"
-								update=":formEditPerson:editPerson,formDisplayPersons:persons" >
-								<p:confirm header="Confirmacao de Remocao" message="Pretende avancar?" icon="ui-icon-alert" />
-								</p:commandButton>
+								update=":formEditPerson:editPerson,formDisplayPersons:persons">
+								<p:confirm header="Confirmacao de Remocao"
+									message="Pretende avancar?" icon="ui-icon-alert" />
+							</p:commandButton>
 							<p:confirmDialog global="true" showEffect="fade"
 								hideEffect="fade">
 								<p:commandButton value="Sim" type="button"
-									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="#{personService.removePerson(person)}"/>
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+									action="#{personService.removePerson(person)}" />
 								<p:commandButton value="Nao" type="button"
 									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 							</p:confirmDialog>
