@@ -1,5 +1,7 @@
 package personsAndAcademies.view;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -17,6 +19,7 @@ public class CurrentUserBean implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private Person person = new Person();
+		private BufferedImage img;
 		
 		@Inject
 		private PersonService personService;
@@ -42,6 +45,13 @@ public class CurrentUserBean implements Serializable {
 
 		public void setPerson(Person person) {
 			this.person = person;
+		}
+		
+		public BufferedImage getImg() {
+			return img;
+		}
+		public void setImg(BufferedImage img) {
+			this.img = img;
 		}
 
 		
@@ -80,7 +90,7 @@ public class CurrentUserBean implements Serializable {
 			personService.removePerson(person);
 			return "index";
 		}
-		public String updateUser(){
+		public String updateUser() throws IOException{
 			personService.updateUser(person);
 			return "myProfileMenu";
 		}

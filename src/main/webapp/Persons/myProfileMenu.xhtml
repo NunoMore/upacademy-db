@@ -11,14 +11,15 @@
 
 
 	<ui:define name="display">
-	<p:tooltip />	
-		<h:form id="myProfile">
+		<p:tooltip />
+		<h:form id="myProfile" enctype="multipart/form-data">
+			<p:growl id="msg" showDetail="true" />
 			<div class="row">
 				<div class="col-md-4">
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage value="#{currentUserBean.person.photo}"
+							<p:graphicImage value="#{currentUserBean.img}"
 								rendered="#{currentUserBean.person.photo != null}"
 								style="width:150px" />
 							<p:graphicImage name="images/defaultUser.png"
@@ -29,9 +30,11 @@
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.updateUser}"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" onclick="PF('dlg1').show()" />
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"
+						onclick="PF('dlg1').show()" />
 
-					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1" minHeight="40" resizable="false">
+					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
+						minHeight="40" resizable="false">
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
 					</p:dialog>
 				</div>
@@ -56,7 +59,8 @@
 
 						<h:outputText value="Data de Nascimento" />
 						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
-							locate="pt" navigator="true" pattern="yyyy-MMM-dd" pt:data-tooltip="Campo Obrigatorio" required="true" />
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd"
+							pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
@@ -65,16 +69,18 @@
 						</p:selectOneMenu>
 
 						<h:outputText value="Curso Academico" />
-						<h:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<h:inputText value="#{currentUserBean.person.academicCourse}"
+							pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 
 						<h:outputText value="Numero Telefone" />
 						<h:inputText value="#{currentUserBean.person.numTelephone}"
-							maxlength="9" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+							maxlength="9" pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 
 						<h:outputText value="Email" />
-						<h:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<h:inputText value="#{currentUserBean.person.email}"
+							pt:data-tooltip="Campo Obrigatorio" required="true" />
 					</p:panelGrid>
 				</div>
 
@@ -102,8 +108,9 @@
 							mode="simple" skinSimple="true" />
 
 						<h:outputText value="Foto" />
-						<p:fileUpload value="#{currentUserBean.person.photo}"
-							mode="simple" skinSimple="true" />
+						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadImg}" update=":myProfile:ProfileCol" />
 
 					</p:panelGrid>
 

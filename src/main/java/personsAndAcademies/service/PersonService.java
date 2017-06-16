@@ -2,6 +2,7 @@
 package personsAndAcademies.service;
 
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class PersonService {
 		personRepository.removePerson(person);
 	}
 	
-	public void updateUser(Person person){
+	public void updateUser(Person person) throws IOException{
 		personRepository.updateUser(person);
 	}
 	public void removePersonId(long ID){

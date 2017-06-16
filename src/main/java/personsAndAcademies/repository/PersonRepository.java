@@ -1,5 +1,6 @@
 package personsAndAcademies.repository;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -49,7 +50,7 @@ public class PersonRepository {
 		em.remove(person);
 	}
 	
-	public void updateUser(Person person){
+	public void updateUser(Person person) throws IOException{
 		String User = person.getUsername();
 		
 		Query query = em.createQuery(("Select e from Person e where e.username = '"+ User + "'"));
@@ -69,7 +70,7 @@ public class PersonRepository {
 			userNameList.setCurriculum(person.getCurriculum());
 			userNameList.setDateOfBirth(person.getDateOfBirth());
 			userNameList.setGender(person.getGender());
-//			userNameList.setPhoto(person.getPhoto());
+			userNameList.setPhoto(person.getPhoto());
 
 
 			updatePerson(userNameList);
