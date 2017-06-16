@@ -47,12 +47,6 @@
 						<h:inputText id="Name" value="#{currentUserBean.person.name}"
 							required="true" pt:data-tooltip="Campo Obrigatorio" />
 
-						<h:outputText value="Academia" />
-						<p:selectOneMenu style="width:150px">
-							<f:selectItem itemLabel="Academias" itemValue="#{null}"
-								noSelectionOption="true" />
-							<f:selectItems value="#{AcademyService.academies}" />
-						</p:selectOneMenu>
 
 						<h:outputText value="Data de Nascimento" />
 						<p:calendar value="#{currentUserBean.person.dateOfBirth}"

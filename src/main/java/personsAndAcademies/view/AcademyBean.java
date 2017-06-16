@@ -5,13 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
 
 import personsAndAcademies.model.Academy;
 import personsAndAcademies.service.AcademyService;
@@ -39,7 +36,6 @@ public class AcademyBean {
 //		academyService.update(ID);
 //		return "readAcademies?faces-redirect=true";
 //	}
-	
 	
 	
 	public Collection<Academy> readAcademy(){

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -18,7 +20,8 @@ public class Academy implements Serializable {
 	private String name;
 	private String description;
 	private Date date;
-	
+	@Enumerated(EnumType.STRING)
+
 	//@Lob
 	//@Column(name="ACADEMY_PDF", nullable=false, columnDefinition="mediumblob")
 	//private byte[] pdf;
