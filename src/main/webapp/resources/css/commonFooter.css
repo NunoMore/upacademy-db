@@ -1,8 +1,7 @@
 #footer {
-   position:fixed;
-   color: silver;
-   left:0px;
-   bottom:0px;
-   width:100%;
-   background:black;
+	color: silver;
+	bottom: 0;
+	height: 100%;
+	background: black;
+	text-align: center;
 }

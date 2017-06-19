@@ -1,7 +1,7 @@
 
-// on key press
+// on click
 $(document).ready(function(){
     $(document).click(function(){
-        $('#dialogUser').hide();
+        PF('personDialog').hide();
     });
 });

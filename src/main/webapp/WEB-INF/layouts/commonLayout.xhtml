@@ -31,17 +31,16 @@
 		<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
 
 		<!-- Conteudo central -->
-		<div class="row ">
+		<div class="row rowContent">
 			<div id="content" class="container2">
 				<ui:insert name="display">
 				</ui:insert>
 			</div>
 		</div>
-
-		<!-- footer -->
-		<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
-
 	</div>
+	
+		<!--  Footer -->
+		<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
 	
 	<h:outputScript name="bootstrap/js/bootstrap.js" />
 	<h:outputScript name="javascript/commonHeader.js" />
