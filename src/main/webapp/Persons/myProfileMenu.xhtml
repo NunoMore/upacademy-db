@@ -19,9 +19,9 @@
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage value="#{currentUserBean.img}"
+							<p:graphicImage name="temp_user_photos/imageTester.png"
 								rendered="#{currentUserBean.person.photo != null}"
-								style="width:150px" />
+								style="width:300px" />
 							<p:graphicImage name="images/defaultUser.png"
 								rendered="#{currentUserBean.person.photo == null}"
 								style="width:150px" />
@@ -120,4 +120,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-

@@ -23,8 +23,7 @@ public class Person implements Serializable{
 	private Date dateOfBirth;
 	private String academicCourse;
 	private String gender;
-	@Lob 
-	private byte[] photo;
+	private String photo;
 	private String academy;
 	private int numTelephone;
 	private String email;
@@ -81,10 +80,10 @@ public class Person implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) throws IOException { 
+	public void setPhoto(String photo) { 
 //		File fi = new File(file);
 //		byte[] fileContent = Files.readAllBytes(fi.toPath());
 		this.photo = photo;

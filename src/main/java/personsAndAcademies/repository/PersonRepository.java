@@ -1,5 +1,6 @@
 package personsAndAcademies.repository;
 
+import java.awt.Image;
 import java.io.IOException;
 import java.util.List;
 
@@ -80,5 +81,6 @@ public class PersonRepository {
 		Person person = em.find(Person.class,ID);
 		em.remove(person);
 	}
+	
 	
 }
