@@ -26,14 +26,18 @@ public class UploadBean {
 	
 	private StreamedContent userImage;
 	
+	
 	public void uploadImg(FileUploadEvent event) throws IOException{
 		
 		UploadedFile file = event.getFile();
 		currentUser.getPerson().setPhoto(file.getFileName());
 		BufferedImage img = ImageIO.read(new ByteArrayInputStream(file.getContents()));
-		ImageIO.write(img, "jpg", new File("C:/Users/Utilizador/Desktop/Projeto/repositorioGit/src/main/webapp/resources/temp_user_photos/imageTester.png"));
-	
+		ImageIO.write(img, "jpg", new File("//C:/Users/Utilizador/Desktop/Projeto/repositorioGit/src/main/webapp/resources/temp_user_photos/testImage.png"));
+										//C:/Users/Utilizador/Desktop/Projeto/repositorioGit/src/main/webapp/resources/temp_user_photos/"
+		
 	}
+	
+	
 /*	public void displayImg (){
 		
 
@@ -54,7 +58,7 @@ public class UploadBean {
 	public void setUserImage(StreamedContent userImage) {
 		this.userImage = userImage;
 	}
-	
+
 	
 
 }
