@@ -30,23 +30,9 @@
 							<h:outputText value="#{academy.date}">
 								<f:convertDateTime pattern="yyyy-MMM-dd" />
 							</h:outputText>
-						</p:column>	
-						<p:column headerText="Description">
-							<h:outputText value="#{academy.description}" />
 						</p:column>
-						<p:column headerText="Remove">
-							<p:commandButton value="Remove"
-								action="#{academyBean.removeAcademy(academy.ID)}"
-								update=":formDisplayAcademy:academy">
-								<p:confirm header="Confirmacao de Remocao" message="Pretende avancar?" icon="ui-icon-alert" />
-							</p:commandButton>
-							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade">
-								<p:commandButton value="Sim" type="button"
-									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="#{personService.removePerson(person)}"/>
-								<p:commandButton value="Nao" type="button"
-									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-							</p:confirmDialog>
+						<p:column headerText="linguagem Programacao">
+							<h:outputText value="#{academy.programmingLanguage}" />
 						</p:column>
 					</p:dataTable>
 				</h:form>
@@ -55,22 +41,30 @@
 				<h:form id="formEditAcademy">
 					<p:panelGrid id="editAcademy" columns="2">
 
-						<p:outputLabel value="Data" />
-						<p:outputLabel value="Edit" />
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Edicao" />
 
-						<h:outputText value="Name" />
-						<h:inputText value="#{tableView.selectedAcademy.name}" />
+						<p:outputLabel value="Nome" />
+						<p:inputText value="#{tableView.selectedAcademy.name}" />
 
-						<p:outputLabel for="german" value="Start Date:" />
+						<p:outputLabel for="german" value="Data de Inicio" />
 						<p:calendar id="german" value="#{tableView.selectedAcademy.date}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
 
 
-						<h:outputText value="Description" />
-						<h:inputText value="#{tableView.selectedAcademy.description}" />
+						<p:outputLabel value="Descricao" />
+						<p:inputText value="#{tableView.selectedAcademy.description}" />
+
+						<p:outputLabel value="Linguagem Programacao" />
+						<p:selectOneMenu
+							value="#{academyBean.academy.programmingLanguage}">
+							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
+							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
+							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+						</p:selectOneMenu>
 
 					</p:panelGrid>
-					<p:commandButton value="Submit Changes" style="center"
+					<p:commandButton value="Guardar alteracoes" style="center"
 						action="#{academyService.updateAcademy(tableView.selectedAcademy)}"
 						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy"
 						onclick="PF('dlg1').show()" />
@@ -79,6 +73,20 @@
 						minHeight="40" resizable="false">
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
 					</p:dialog>
+
+					<p:commandButton value="Remover"
+						action="#{academyService.removeAcademy(tableView.selectedAcademy)}"
+						update=":formDisplayAcademy:academy">
+						<p:confirm header="Confirmacao de Remocao"
+							message="Pretende avancar?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+							action="#{academyService.removeAcademy(tableView.selectedAcademy)}" />
+						<p:commandButton value="Nao" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
 				</h:form>
 			</div>
 		</div>

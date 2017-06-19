@@ -34,21 +34,8 @@
 						<p:column headerText="Username">
 							<h:outputText value="#{person.username}" />
 						</p:column>
-						<p:column>
-							<p:commandButton value="Remover"
-								action="#{personService.removePerson(person)}"
-								update=":formEditPerson:editPerson,formDisplayPersons:persons">
-								<p:confirm header="Confirmacao de Remocao"
-									message="Pretende avancar?" icon="ui-icon-alert" />
-							</p:commandButton>
-							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade">
-								<p:commandButton value="Sim" type="button"
-									styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-									action="#{personService.removePerson(person)}" />
-								<p:commandButton value="Nao" type="button"
-									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-							</p:confirmDialog>
+						<p:column headerText="Academia">
+							<p:outputLabel value="#{person.academy}" />
 						</p:column>
 					</p:dataTable>
 				</h:form>
@@ -106,6 +93,8 @@
 						<h:outputText value="WorkPlace" />
 						<h:inputText value="#{tableView.selectedPerson.workPlace}" />
 					</p:panelGrid>
+
+
 					<p:commandButton value="Guardar alteracoes" style="center"
 						action="#{personService.updatePerson(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons"
@@ -116,6 +105,19 @@
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
 					</p:dialog>
 
+					<p:commandButton value="Remover"
+						action="#{personService.removePerson(tableView.selectedPerson)}"
+						update=":formEditPerson:editPerson,formDisplayPersons:persons">
+						<p:confirm header="Confirmacao de Remocao"
+							message="Pretende avancar?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+							action="#{personService.removePerson(tableView.selectedPerson)}" />
+						<p:commandButton value="Nao" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
 				</h:form>
 			</div>
 		</div>

@@ -26,7 +26,7 @@ public class Person implements Serializable{
 	@Lob 
 	private byte[] photo;
 	private String academy;
-	private int numTelephone;
+	private String numTelephone;
 	private String email;
 	private String password;
 	private String facebookLink;
@@ -98,10 +98,10 @@ public class Person implements Serializable{
 	public void setAcademy(String academy) {
 		this.academy = academy;
 	}
-	public int getNumTelephone() {
+	public String getNumTelephone() {
 		return numTelephone;
 	}
-	public void setNumTelephone(int numTelephone) {
+	public void setNumTelephone(String numTelephone) {
 		this.numTelephone = numTelephone;
 	}
 	public String getEmail() {

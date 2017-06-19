@@ -26,6 +26,7 @@ public class AcademyBean {
 	private AcademyService academyService;
 
 	private List<Academy> editAcademy = new ArrayList<>();
+
 	
 	public void createAcademy(){
 		academyService.createAcademy(academy);
@@ -41,18 +42,19 @@ public class AcademyBean {
 	public Collection<Academy> readAcademy(){
 		List<Academy> newList = academyService.readAcademy();
 		return newList;
-		
-		
 	}
-	public String removeAcademy(Long ID){
-		//setId(Id);
-		academyService.removeAcademy(ID);
-		//academyService.updateAcademy(academy);
+	public String removeAcademyID(Long ID){
+
+		academyService.removeAcademyID(ID);
 		return "readAcademies?faces-redirect=true";
 		
 	}
-
 	
+	public String removeAcademy(){
+		academyService.removeAcademy(academy);
+		return "readAcademies?faces-redirect=true";
+	}
+
 	
 	public Academy getAcademy() {
 		return academy;
@@ -86,6 +88,4 @@ public class AcademyBean {
 		this.forEdit = forEdit;
 	}
 
-
-	
 }

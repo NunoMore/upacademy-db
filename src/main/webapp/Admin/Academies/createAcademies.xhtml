@@ -6,37 +6,45 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
 
 
 	<ui:define name="display">
-		<h:form id="formReadAcademies">
+		<h:form id="formCreateAcademies">
 
 			<p:panel id="panel">
-				<h:panelGrid columns="2" cellpadding="5">
+				<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
 
-					<h:outputText value="Name" />
-					<p:inputText value="#{academyBean.academy.name}" />
+					<p:outputLabel value="Nome" />
+					<p:inputText value="#{academyBean.academy.name}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
 
-					<p:outputLabel for="german" value="Start Date:" />
+					<p:outputLabel for="german" value="Data Inicio" />
 					<p:calendar id="german" value="#{academyBean.academy.date}"
 						locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
 
-					<h:outputText value="Description" />
+					<p:outputLabel value="Descricao" />
 					<p:inputTextarea value="#{academyBean.academy.description}"
-						rows="6" cols="33" />
+						rows="6" cols="33"/>
+					
+					<p:outputLabel value="Linguagem Programacao"/>
+					<p:selectOneListbox value="#{academyBean.academy.programmingLanguage}">
+						<f:selectItem itemLabel="JAVA" itemValue="JAVA"/>
+						<f:selectItem itemLabel="OutSystem" itemValue="OutSystem"/>
+						<f:selectItem itemLabel=".NET" itemValue=".NET"/>
+					</p:selectOneListbox>
 
 					<p:commandButton styleClass="btn btn-submit"
 						action="#{academyBean.createAcademy}" value="Create!"
-						onclick="PF('dlg1').show()" />
+						oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreateAcademies:createAcademyGrid"/>
 
 					<p:dialog header="Confirmacao criacao" widgetVar="dlg1"
 						minHeight="40" resizable="false">
 						<h:outputText value="A academia foi criada com sucesso" />
 					</p:dialog>
 
-				</h:panelGrid>
+				</p:panelGrid>
 			</p:panel>
 		</h:form>
 	</ui:define>

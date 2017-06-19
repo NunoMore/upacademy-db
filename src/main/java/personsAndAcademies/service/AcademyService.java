@@ -26,10 +26,13 @@ public class AcademyService {
 		academyRepository.createAcademy(academy);
 	}
 	
-	public void removeAcademy(Long ID){
-		academyRepository.remove(ID);
+	public void removeAcademyID(Long ID){
+		academyRepository.removeAcademyID(ID);
 	}
 	
+	public void removeAcademy(Academy academy){
+		academyRepository.removeAcademy(academy);
+	}
 	public List<Academy> readAcademy(){
 		return academyRepository.readAcademy();
 	}

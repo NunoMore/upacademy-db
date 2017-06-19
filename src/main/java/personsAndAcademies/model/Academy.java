@@ -20,7 +20,7 @@ public class Academy implements Serializable {
 	private String name;
 	private String description;
 	private Date date;
-	@Enumerated(EnumType.STRING)
+	private String programmingLanguage;
 
 	//@Lob
 	//@Column(name="ACADEMY_PDF", nullable=false, columnDefinition="mediumblob")
@@ -48,6 +48,12 @@ public class Academy implements Serializable {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getProgrammingLanguage() {
+		return programmingLanguage;
+	}
+	public void setProgrammingLanguage(String programmingLanguage) {
+		this.programmingLanguage = programmingLanguage;
 	}
 
 	/*public byte[] getPdf() {

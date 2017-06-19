@@ -6,28 +6,29 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
 
 
 	<ui:define name="display">
 
-		<h:form>
+		<h:form id="formCreatePerson">
 
-			<p:panelGrid columns="2">
+			<p:panelGrid id="createPersonGrid" columns="2">
 
-				<h:outputText value="Insere o email do novo utilizador" />
-				<h:inputText value="#{personBean.person.email}" />
+				<p:outputLabel value="Insere o email do novo utilizador" />
+				<p:inputText value="#{personBean.person.email}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
 
-				<h:outputText value="Insere o username do novo utilizador" />
-				<h:inputText value="#{personBean.person.username}" />
+				<h:outputLabel value="Insere o username do novo utilizador" />
+				<p:inputText value="#{personBean.person.username}" />
 
-				<h:outputText value="Insere a password do novo utilizador" />
-				<h:inputText value="#{personBean.person.password}" />
+				<h:outputLabel value="Insere a password do novo utilizador" />
+				<p:inputText value="#{personBean.person.password}" />
 			</p:panelGrid>
 			<br />
 			<p:commandButton value="Criar Utilizador"
-				action="#{personBean.createPerson}" onclick="PF('dlg1').show()" />
+				action="#{personBean.createPerson}" oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreatePerson:createPersonGrid"/>
 
 			<p:dialog header="Confirmacao criacao" widgetVar="dlg1"
 				minHeight="40" resizable="false">

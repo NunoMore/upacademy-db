@@ -29,7 +29,8 @@
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.updateUser}"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital" onclick="PF('dlg1').show()" />
+						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
+						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"  />
 
 					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1" minHeight="40" resizable="false">
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
@@ -43,32 +44,40 @@
 						<p:outputLabel value="Dados" />
 						<p:outputLabel value="Informacoes" />
 
-						<h:outputText value="Nome" />
-						<h:inputText id="Name" value="#{currentUserBean.person.name}"
+						<p:outputLabel  value="Nome" />
+						<p:inputText id="Name" value="#{currentUserBean.person.name}"
 							required="true" pt:data-tooltip="Campo Obrigatorio" />
 
 
-						<h:outputText value="Data de Nascimento" />
+						<p:outputLabel value="Data de Nascimento" />
 						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" pt:data-tooltip="Campo Obrigatorio" required="true" />
 
-						<h:outputText value="Genero" />
+						<p:outputLabel value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
 
-						<h:outputText value="Curso Academico" />
-						<h:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<p:outputLabel value="Curso Academico" />
+						<p:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 
 
-						<h:outputText value="Numero Telefone" />
-						<h:inputText value="#{currentUserBean.person.numTelephone}"
-							maxlength="9" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<p:outputLabel value="Numero Telefone" />
+						<p:inputMask mask="999999999" value="#{currentUserBean.person.numTelephone}"
+							 pt:data-tooltip="Campo Obrigatorio" required="true"  />
 
 
-						<h:outputText value="Email" />
-						<h:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+
+						<p:outputLabel value="Email" />
+						<p:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<p:outputLabel value="Academia"/>
+						<p:selectOneMenu
+							value="#{academyBean.academy.programmingLanguage}">
+							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
+							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
+							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+						</p:selectOneMenu>
 					</p:panelGrid>
 				</div>
 

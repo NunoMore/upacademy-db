@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.Person;
 
 
 @Named("academyRepo")
@@ -21,11 +22,7 @@ public class AcademyRepository {
 	
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
-	
-	private Academy academy;
-	
-	private long academyId;
-	
+
 
 	public void createAcademy(Academy academy){
 		em.persist(academy);
@@ -36,30 +33,17 @@ public class AcademyRepository {
 		return (List<Academy>)query.getResultList();
 	}
 	
-	public void remove(Long ID){
-		System.out.println(ID);
+	public void removeAcademyID(Long ID){
 		Academy academy = em.find(Academy.class, ID);
+		em.remove(academy);
+	}
+	
+	public void removeAcademy(Academy academy){
+		academy = em.find(Academy.class,academy.getID());
 		em.remove(academy);
 	}
 	
 	public void updateAcademy(Academy academy){
 		em.merge(academy);
-	}	
-
-	public long getAcademyId() {
-		return academyId;
-	}
-
-	public void setAcademyId(long academyId) {
-		this.academyId = academyId;
-	}
-
-	public Academy getAcademy() {
-		return academy;
-	}
-
-	public void setAcademy(Academy academy) {
-		this.academy = academy;
-	}
-	
+	}		
 }
