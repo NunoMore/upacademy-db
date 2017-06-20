@@ -11,6 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.primefaces.event.SelectEvent;
@@ -48,6 +49,9 @@ public class PersonService {
 	}
 	public void removePersonId(long ID){
 		personRepository.removePersonId(ID);
+	}
+	public List<String> readPhotos(){
+		return personRepository.readPhotos();
 	}
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy

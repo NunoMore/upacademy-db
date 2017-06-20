@@ -30,10 +30,14 @@ public class PersonRepository {
 		createPerson(admin);
 	}
 	
-	public void createPerson(Person person){
-		em.persist(person);
+	public List<String> readPhotos(){
+		Query query = em.createQuery("Select photo from Person");
+		return (List<String>) query.getResultList();
 	}
 	
+	public void createPerson(Person person){
+		em.persist(person);
+	}	
 	public List<Person> readPerson(){
 		Query query = em.createQuery("Select e from Person e");
 		return (List<Person>) query.getResultList();

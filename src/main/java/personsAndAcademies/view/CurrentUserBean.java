@@ -1,13 +1,16 @@
 package personsAndAcademies.view;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,18 +33,27 @@ public class CurrentUserBean implements Serializable {
 		private String editState;
 		
 		@PostConstruct
-		public void createFolder(){
-			String filename = "Uploads";
-			String workingDirectory = System.getProperty("user.dir");
-			String absolutPath = workingDirectory + File.separator + filename;
-			tempFolder = new File(absolutPath);
-			tempFolder.mkdir();
-		} 
+		public void createFolder() throws IOException{
+			try {
+				String filename = "Uploads"; //nao mudar este nome!!!!!!!!!!!
+				String workingDirectory = System.getProperty("jboss.server.data.dir"); //vai buscar directory mas com um extra "/data"
+				workingDirectory = workingDirectory.replace(File.separator+"data", ""); //elimina "/data" - substitui por vazio
+				String absolutPath = workingDirectory + File.separator + "deployments"+ File.separator + "UPACADEMY_DB.war"+ File.separator + "resources" + File.separator + filename; //ATENCAO!!!!!!! perguntar ao luis se isto vai funcionaar XD
+				tempFolder = new File(absolutPath);
+				tempFolder.mkdir();
+				
+//				uploadPhotos();
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		
 		@PreDestroy
 		public void logOut() throws IOException{
 			person.setOnline(false);
-			FileUtils.cleanDirectory(tempFolder);
+			this.updateUser();
+//			FileUtils.cleanDirectory(tempFolder);
 		}
 	
 		public void initCurrentUser(){
@@ -110,6 +122,18 @@ public class CurrentUserBean implements Serializable {
 				return editMode=true;
 			}
 		}
+		
+//		private void uploadPhotos() throws IOException{ //nao testado
+//			
+//			List<String> photosList = personService.readPhotos();
+//			for (int i = 0; i < photosList.size(); i++) {
+//				String photo = photosList.get(i);
+//				File file = new File(tempFolder, photo);
+//				BufferedImage img = ImageIO.read(file);
+//				String extension = photo.substring(photo.length() - 4);
+//				ImageIO.write(img, extension, file);
+//			}
+//		}
 
 		public File getTempFolder() {
 			return tempFolder;

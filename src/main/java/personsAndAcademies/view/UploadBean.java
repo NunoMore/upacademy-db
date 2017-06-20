@@ -39,14 +39,14 @@ public class UploadBean {
 		String extension = FilenameUtils.getExtension(filePath);
 		
 		//obtem o caminho necessário
-		String tempFolderPath = currentUser.getTempFolder().getAbsolutePath();
+		File tempFolder = currentUser.getTempFolder();
 		
 		//guarda numa pasta
-		File photo = new File(tempFolderPath+File.separator+filePath);
+		File photo = new File(tempFolder, filePath);
 		ImageIO.write(img, extension, photo);
 		
 		// mete caminho na base de dados
-		currentUser.getPerson().setPhoto(photo.toURI().toURL().toString());
+		currentUser.getPerson().setPhoto(File.separator+filePath);
 		currentUser.updateUser();
 		
 	}

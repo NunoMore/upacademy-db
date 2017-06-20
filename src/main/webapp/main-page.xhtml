@@ -38,7 +38,7 @@
 				</p:column>
 
 				<p:column headerText="Foto">
-					<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}" style="width:30px"/>
+					<p:graphicImage name="Uploads#{person.photo}" rendered="#{person.photo != null}" style="width:30px"/>
 					<p:graphicImage name="images/defaultUser.png" rendered="#{person.photo == null}" style="width:30px"/>
 				</p:column>
 
@@ -67,8 +67,8 @@
 					<p:panelGrid columns="2"
 						rendered="#{not empty tableView.selectedPerson}">
 						<f:facet name="header">
-							<p:graphicImage value="#{person.photo}" rendered="#{person.photo != null}" style="width:100px"/>
-							<p:graphicImage name="images/defaultUser.png" rendered="#{person.photo == null}" style="width:100px"/>
+							<p:graphicImage name="Uploads#{tableView.selectedPerson.photo}" rendered="#{tableView.selectedPerson.photo != null}" style="width:100px"/>
+							<p:graphicImage name="images/defaultUser.png" rendered="#{tableView.selectedPerson.photo == null}" style="width:100px"/>
 						</f:facet>
 
 						<h:outputText value="Nome" />
