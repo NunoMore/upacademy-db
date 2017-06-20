@@ -1,6 +1,5 @@
 package personsAndAcademies.repository;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -52,33 +51,6 @@ public class PersonRepository {
 	public void removePerson(Person person){
 		person = em.find(Person.class,person.getID());
 		em.remove(person);
-	}
-	
-	public void updateUser(Person person) throws IOException{
-		String User = person.getUsername();
-		
-		Query query = em.createQuery(("Select e from Person e where e.username = '"+ User + "'"));
-
-		
-			Person userNameList = (Person) query.getSingleResult();
-			
-			userNameList.setName(person.getName());
-			userNameList.setAcademicCourse(person.getAcademicCourse());
-			userNameList.setAcademy(person.getAcademy());
-			userNameList.setNumTelephone(person.getNumTelephone());
-			userNameList.setEmail(person.getEmail());
-			userNameList.setFacebookLink(person.getFacebookLink());
-			userNameList.setLinkedInLink(person.getLinkedInLink());
-			userNameList.setGitHubLink(person.getGitHubLink());
-			userNameList.setWorkPlace(person.getWorkPlace());
-			userNameList.setCurriculum(person.getCurriculum());
-			userNameList.setDateOfBirth(person.getDateOfBirth());
-			userNameList.setGender(person.getGender());
-			userNameList.setPhoto(person.getPhoto());
-
-
-			updatePerson(userNameList);
-
 	}
 	public void removePersonId(Long ID){
 		Person person = em.find(Person.class,ID);

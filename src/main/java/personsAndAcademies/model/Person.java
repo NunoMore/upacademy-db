@@ -1,13 +1,11 @@
 package personsAndAcademies.model;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class Person implements Serializable{
@@ -32,8 +30,7 @@ public class Person implements Serializable{
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
-	@Lob
-	private byte[] curriculum;
+	private String curriculum;
 	private String securityQuestion;
 	private String securityAnswer;
 	
@@ -133,11 +130,10 @@ public class Person implements Serializable{
 	public void setWorkPlace(String workPlace) {
 		this.workPlace = workPlace;
 	}
-	public byte[] getCurriculum() {
-		return curriculum;
+	public String getCurriculum() {
+		return curriculum; 
 	}
-	public void setCurriculum(byte[] curriculum) {
-		
+	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
 	public String getSecurityQuestion() {

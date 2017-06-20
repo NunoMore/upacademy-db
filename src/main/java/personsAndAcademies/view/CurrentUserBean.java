@@ -1,20 +1,15 @@
 package personsAndAcademies.view;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.apache.commons.io.FileUtils;
 
 import personsAndAcademies.model.Person;
 import personsAndAcademies.service.PersonService;
@@ -52,7 +47,7 @@ public class CurrentUserBean implements Serializable {
 		@PreDestroy
 		public void logOut() throws IOException{
 			person.setOnline(false);
-			this.updateUser();
+			this.updatePerson();
 //			FileUtils.cleanDirectory(tempFolder);
 		}
 	
@@ -108,10 +103,10 @@ public class CurrentUserBean implements Serializable {
 			personService.removePerson(person);
 			return "index";
 		}
-		public String updateUser() throws IOException{
-			personService.updateUser(person);
-			return "myProfileMenu";
-		}
+//		public String updateUser() throws IOException{
+//			personService.updateUser(person);
+//			return "myProfileMenu";
+//		}
 		public boolean changeEditMode(){
 			if(editMode==true){
 				editState="Modo Editar ativado";

@@ -3,6 +3,7 @@ package personsAndAcademies.view;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.faces.bean.ManagedBean;
@@ -47,7 +48,30 @@ public class UploadBean {
 		
 		// mete caminho na base de dados
 		currentUser.getPerson().setPhoto(File.separator+filePath);
-		currentUser.updateUser();
+		currentUser.updatePerson();
+	}
+	
+	public void uploadCurriculum(FileUploadEvent event) throws IOException{
+
+		//obter ficheiro
+		UploadedFile file = event.getFile();
 		
+		//byte[] - array de bytes
+		byte[] fileBytes = file.getContents();
+		
+		//caminho de ficheiro
+		String filePath = file.getFileName();
+		
+		//obtem o caminho necessário
+		File tempFolder = currentUser.getTempFolder();
+		
+		//guarda numa pasta
+		FileOutputStream fos = new FileOutputStream(tempFolder.getAbsolutePath()+File.separator+filePath);
+		fos.write(fileBytes); 
+		fos.close();
+		
+		// mete caminho na base de dados
+		currentUser.getPerson().setCurriculum(File.separator+filePath);
+		currentUser.updatePerson();
 	}
 }

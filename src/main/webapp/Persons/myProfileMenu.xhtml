@@ -29,7 +29,7 @@
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
-						action="#{currentUserBean.updateUser}"
+						action="#{currentUserBean.updatePerson()}"
 						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"
 						onclick="PF('dlg1').show()" />
 
@@ -104,8 +104,9 @@
 						<h:inputText value="#{currentUserBean.person.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<p:fileUpload value="#{currentUserBean.person.curriculum}"
-							mode="simple" skinSimple="true" />
+						<p:fileUpload  mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadCurriculum}" update=":myProfile:ProfileCol" />
 
 						<h:outputText value="Foto" />
 						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
