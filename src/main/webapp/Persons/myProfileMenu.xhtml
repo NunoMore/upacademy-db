@@ -11,16 +11,17 @@
 
 
 	<ui:define name="display">
-	<p:tooltip />	
-		<h:form id="myProfile">
+		<p:tooltip />
+		<h:form id="myProfile" enctype="multipart/form-data">
+			<p:growl id="msg" showDetail="true" />
 			<div class="row">
 				<div class="col-md-4">
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage value="#{currentUserBean.person.photo}"
+							<p:graphicImage name="Uploads#{currentUserBean.person.photo}"
 								rendered="#{currentUserBean.person.photo != null}"
-								style="width:150px" />
+								style="width:300px" />
 							<p:graphicImage name="images/defaultUser.png"
 								rendered="#{currentUserBean.person.photo == null}"
 								style="width:150px" />
@@ -28,11 +29,12 @@
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
-						action="#{currentUserBean.updateUser}"
+						action="#{currentUserBean.updatePerson()}"
 						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
 						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"  />
 
-					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1" minHeight="40" resizable="false">
+					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
+						minHeight="40" resizable="false">
 						<h:outputText value="As alteracoes foram guardadas com sucesso" />
 					</p:dialog>
 				</div>
@@ -51,26 +53,24 @@
 
 						<p:outputLabel value="Data de Nascimento" />
 						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
-							locate="pt" navigator="true" pattern="yyyy-MMM-dd" pt:data-tooltip="Campo Obrigatorio" required="true" />
+							locate="pt" navigator="true" pattern="yyyy-MMM-dd"
+							pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 						<p:outputLabel value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.person.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
-
 						<p:outputLabel value="Curso Academico" />
 						<p:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
-
 
 						<p:outputLabel value="Numero Telefone" />
 						<p:inputMask mask="999999999" value="#{currentUserBean.person.numTelephone}"
 							 pt:data-tooltip="Campo Obrigatorio" required="true"  />
-
-
-
+							 
 						<p:outputLabel value="Email" />
 						<p:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						
 						<p:outputLabel value="Academia"/>
 						<p:selectOneMenu
 							value="#{academyBean.academy.programmingLanguage}">
@@ -78,6 +78,7 @@
 							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
 						</p:selectOneMenu>
+						
 					</p:panelGrid>
 				</div>
 
@@ -101,12 +102,14 @@
 						<h:inputText value="#{currentUserBean.person.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<p:fileUpload value="#{currentUserBean.person.curriculum}"
-							mode="simple" skinSimple="true" />
+						<p:fileUpload  mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadCurriculum}" update=":myProfile:ProfileCol" />
 
 						<h:outputText value="Foto" />
-						<p:fileUpload value="#{currentUserBean.person.photo}"
-							mode="simple" skinSimple="true" />
+						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadImg}" update=":myProfile:ProfileCol" />
 
 					</p:panelGrid>
 
@@ -116,4 +119,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-

@@ -29,10 +29,14 @@ public class PersonRepository {
 		createPerson(admin);
 	}
 	
-	public void createPerson(Person person){
-		em.persist(person);
+	public List<String> readPhotos(){
+		Query query = em.createQuery("Select photo from Person");
+		return (List<String>) query.getResultList();
 	}
 	
+	public void createPerson(Person person){
+		em.persist(person);
+	}	
 	public List<Person> readPerson(){
 		Query query = em.createQuery("Select e from Person e");
 		return (List<Person>) query.getResultList();
@@ -48,36 +52,10 @@ public class PersonRepository {
 		person = em.find(Person.class,person.getID());
 		em.remove(person);
 	}
-	
-	public void updateUser(Person person){
-		String User = person.getUsername();
-		
-		Query query = em.createQuery(("Select e from Person e where e.username = '"+ User + "'"));
-
-		
-			Person userNameList = (Person) query.getSingleResult();
-			
-			userNameList.setName(person.getName());
-			userNameList.setAcademicCourse(person.getAcademicCourse());
-			userNameList.setAcademy(person.getAcademy());
-			userNameList.setNumTelephone(person.getNumTelephone());
-			userNameList.setEmail(person.getEmail());
-			userNameList.setFacebookLink(person.getFacebookLink());
-			userNameList.setLinkedInLink(person.getLinkedInLink());
-			userNameList.setGitHubLink(person.getGitHubLink());
-			userNameList.setWorkPlace(person.getWorkPlace());
-			userNameList.setCurriculum(person.getCurriculum());
-			userNameList.setDateOfBirth(person.getDateOfBirth());
-			userNameList.setGender(person.getGender());
-//			userNameList.setPhoto(person.getPhoto());
-
-
-			updatePerson(userNameList);
-
-	}
 	public void removePersonId(Long ID){
 		Person person = em.find(Person.class,ID);
 		em.remove(person);
 	}
+	
 	
 }

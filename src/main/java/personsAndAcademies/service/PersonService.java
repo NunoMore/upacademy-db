@@ -41,12 +41,11 @@ public class PersonService {
 	public void removePerson(Person person){
 		personRepository.removePerson(person);
 	}
-	
-	public void updateUser(Person person){
-		personRepository.updateUser(person);
-	}
 	public void removePersonId(long ID){
 		personRepository.removePersonId(ID);
+	}
+	public List<String> readPhotos(){
+		return personRepository.readPhotos();
 	}
 	
 	// Metodo para o selecionar data de inicio da academia no menu create academy

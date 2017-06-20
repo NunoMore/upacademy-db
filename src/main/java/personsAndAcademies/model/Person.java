@@ -1,13 +1,11 @@
 package personsAndAcademies.model;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class Person implements Serializable{
@@ -23,8 +21,7 @@ public class Person implements Serializable{
 	private Date dateOfBirth;
 	private String academicCourse;
 	private String gender;
-	@Lob 
-	private byte[] photo;
+	private String photo;
 	private String academy;
 	private String numTelephone;
 	private String email;
@@ -33,8 +30,7 @@ public class Person implements Serializable{
 	private String linkedInLink;
 	private String gitHubLink;
 	private String workPlace;
-	@Lob
-	private byte[] curriculum;
+	private String curriculum;
 	private String securityQuestion;
 	private String securityAnswer;
 	
@@ -81,10 +77,10 @@ public class Person implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) throws IOException { 
+	public void setPhoto(String photo) { 
 //		File fi = new File(file);
 //		byte[] fileContent = Files.readAllBytes(fi.toPath());
 		this.photo = photo;
@@ -134,11 +130,10 @@ public class Person implements Serializable{
 	public void setWorkPlace(String workPlace) {
 		this.workPlace = workPlace;
 	}
-	public byte[] getCurriculum() {
-		return curriculum;
+	public String getCurriculum() {
+		return curriculum; 
 	}
-	public void setCurriculum(byte[] curriculum) {
-		
+	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
 	public String getSecurityQuestion() {
