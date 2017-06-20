@@ -58,8 +58,9 @@
 							style="width:150px;">
 							<f:selectItem itemLabel="Academias" itemValue="#{null}"
 								noSelectionOption="true" />
-							<f:selectItems value="#{AcademyService.academies}" />
-							<!-- falta criar academyService -->
+							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
+							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
+							<f:selectItem itemLabel=".NET" itemValue=".NET" />
 						</p:selectOneMenu>
 					</f:facet>
 					<h:outputText value="#{person.academy}" />
