@@ -1,6 +1,5 @@
 package personsAndAcademies.repository;
 
-import java.awt.Image;
 import java.io.IOException;
 import java.util.List;
 

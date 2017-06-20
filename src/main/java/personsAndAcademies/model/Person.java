@@ -1,6 +1,6 @@
 package personsAndAcademies.model;
 
-import java.io.IOException;
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 

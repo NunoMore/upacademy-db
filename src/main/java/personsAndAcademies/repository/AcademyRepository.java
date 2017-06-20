@@ -17,8 +17,6 @@ import personsAndAcademies.model.Academy;
 @ApplicationScoped
 public class AcademyRepository {
 	
-	
-	
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
 	

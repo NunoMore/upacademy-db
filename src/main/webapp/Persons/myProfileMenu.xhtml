@@ -19,7 +19,8 @@
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage name="temp_user_photos/testImage.png"
+						<img src="#{currentUserBean.person.photo}" style="max-width:300px"/>
+							<p:graphicImage name="#{currentUserBean.tempFolder.toURI().toURL()}#{currentUserBean.person.photo}"
 								rendered="#{currentUserBean.person.photo != null}"
 								style="width:300px" />
 							<p:graphicImage name="images/defaultUser.png"
