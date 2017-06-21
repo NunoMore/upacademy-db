@@ -4,16 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
-public class Person implements Serializable{
+public class Person extends Entities implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
-	private long ID;
 	
 	private String name;
 	private boolean online = false;
@@ -32,8 +26,7 @@ public class Person implements Serializable{
 	private String workPlace;
 	private String curriculum;
 	private String securityQuestion;
-	private String securityAnswer;
-	
+	private String securityAnswer;	
 	
 	public boolean isOnline() {
 		return online;
@@ -84,9 +77,6 @@ public class Person implements Serializable{
 //		File fi = new File(file);
 //		byte[] fileContent = Files.readAllBytes(fi.toPath());
 		this.photo = photo;
-	}
-	public long getID() {
-		return ID;
 	}
 	public String getAcademy() {
 		return academy;

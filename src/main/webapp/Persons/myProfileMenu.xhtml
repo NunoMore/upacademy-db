@@ -19,17 +19,17 @@
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage name="Uploads#{currentUserBean.person.photo}"
-								rendered="#{currentUserBean.person.photo != null}"
+							<p:graphicImage name="Uploads#{currentUserBean.e.photo}"
+								rendered="#{currentUserBean.e.photo != null}"
 								style="width:300px" />
 							<p:graphicImage name="images/defaultUser.png"
-								rendered="#{currentUserBean.person.photo == null}"
+								rendered="#{currentUserBean.e.photo == null}"
 								style="width:150px" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
-						action="#{currentUserBean.updatePerson()}"
+						action="#{currentUserBean.update()}"
 						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
 						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"  />
 
@@ -47,33 +47,33 @@
 						<p:outputLabel value="Informacoes" />
 
 						<p:outputLabel  value="Nome" />
-						<p:inputText id="Name" value="#{currentUserBean.person.name}"
+						<p:inputText id="Name" value="#{currentUserBean.e.name}"
 							required="true" pt:data-tooltip="Campo Obrigatorio" />
 
 
 						<p:outputLabel value="Data de Nascimento" />
-						<p:calendar value="#{currentUserBean.person.dateOfBirth}"
+						<p:calendar value="#{currentUserBean.e.dateOfBirth}"
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd"
 							pt:data-tooltip="Campo Obrigatorio" required="true" />
 
 						<p:outputLabel value="Genero" />
-						<p:selectOneMenu value="#{currentUserBean.person.gender}">
+						<p:selectOneMenu value="#{currentUserBean.e.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
 						<p:outputLabel value="Curso Academico" />
-						<p:inputText value="#{currentUserBean.person.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<p:inputText value="#{currentUserBean.e.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 
 						<p:outputLabel value="Numero Telefone" />
-						<p:inputMask mask="999999999" value="#{currentUserBean.person.numTelephone}"
+						<p:inputMask mask="999999999" value="#{currentUserBean.e.numTelephone}"
 							 pt:data-tooltip="Campo Obrigatorio" required="true"  />
 							 
 						<p:outputLabel value="Email" />
-						<p:inputText value="#{currentUserBean.person.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
+						<p:inputText value="#{currentUserBean.e.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 						
 						<p:outputLabel value="Academia"/>
 						<p:selectOneMenu
-							value="#{academyBean.academy.programmingLanguage}">
+							value="#{academyBean.e.programmingLanguage}">
 							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
 							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
@@ -89,17 +89,17 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Facebook" />
-						<h:inputText value="#{currentUserBean.person.facebookLink}" />
+						<h:inputText value="#{currentUserBean.e.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<h:inputText value="#{currentUserBean.person.linkedInLink}" />
+						<h:inputText value="#{currentUserBean.e.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<h:inputText value="#{currentUserBean.person.gitHubLink}" />
+						<h:inputText value="#{currentUserBean.e.gitHubLink}" />
 
 
 						<h:outputText value="Local de Trabalho" />
-						<h:inputText value="#{currentUserBean.person.workPlace}" />
+						<h:inputText value="#{currentUserBean.e.workPlace}" />
 
 						<h:outputText value="Curriculo" />
 						<p:fileUpload  mode="advanced" cancelLabel="Cancelar"

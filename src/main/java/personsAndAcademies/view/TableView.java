@@ -15,8 +15,8 @@ import personsAndAcademies.model.Person;
 public class TableView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private List<Academy> selectedList; // atributo para guardar academy na tabela Academy
-	private Academy selectedAcademy; 
+	private Academy selectedAcademy;
+	private List<Academy> filteredAcademies; 
 	
 	private Person selectedPerson; //atributo para guardar person que sera selecionada na tabela do main
 	private List<Person> filteredPersons; //atributo para guardar a seleccao de filtragem
@@ -30,6 +30,11 @@ public class TableView implements Serializable {
 		academies = new String[2];
 		academies[0] = "Java";
 		academies[1] = "OutSystems";
+	}
+	
+	public void erase(){
+		selectedPerson = new Person();
+		selectedAcademy = new Academy();
 	}
 	
 	public void setAcademies(String[] academies) {
@@ -55,17 +60,17 @@ public class TableView implements Serializable {
 
 	public void setSelectedPerson(Person selectedPerson) {
 		this.selectedPerson = selectedPerson;
-		if (selectedPerson.getUsername() == currentUser.getPerson().getUsername()) {
-			currentUser.setPerson(selectedPerson); 
+		if (selectedPerson.getUsername() == currentUser.getE().getUsername()) {
+			currentUser.setE(selectedPerson); 
 		}
 	}
 
-	public List<Academy> getSelectedList() {
-		return selectedList;
+	public List<Academy> getFilteredAcademies() {
+		return filteredAcademies;
 	}
 
-	public void setSelectedList(List<Academy> selectedList) {
-		this.selectedList = selectedList;
+	public void setFilteredAcademies(List<Academy> filteredAcademies) {
+		this.filteredAcademies = filteredAcademies;
 	}
 
 	public Academy getSelectedAcademy() {

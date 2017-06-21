@@ -47,8 +47,8 @@ public class UploadBean {
 		ImageIO.write(img, extension, photo);
 		
 		// mete caminho na base de dados
-		currentUser.getPerson().setPhoto(File.separator+filePath);
-		currentUser.updatePerson();
+		currentUser.getE().setPhoto(File.separator+filePath);
+		currentUser.update();
 	}
 	
 	public void uploadCurriculum(FileUploadEvent event) throws IOException{
@@ -71,7 +71,7 @@ public class UploadBean {
 		fos.close();
 		
 		// mete caminho na base de dados
-		currentUser.getPerson().setCurriculum(File.separator+filePath);
-		currentUser.updatePerson();
+		currentUser.getE().setCurriculum(File.separator+filePath);
+		currentUser.update();
 	}
 }

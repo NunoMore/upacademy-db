@@ -15,7 +15,7 @@ import personsAndAcademies.model.Person;
 @Named("personRepo")
 @Transactional
 @ApplicationScoped
-public class PersonRepository {
+public class PersonRepository extends Repository<Person>{
 	
 	@PersistenceContext(name="ProjectDataBase")
 	private EntityManager em;
@@ -26,36 +26,21 @@ public class PersonRepository {
 		admin.setName("Admin");
 		admin.setPassword("admin");
 		admin.setUsername("admin");
-		createPerson(admin);
+		create(admin);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<String> readPhotos(){
 		Query query = em.createQuery("Select photo from Person");
 		return (List<String>) query.getResultList();
 	}
 	
-	public void createPerson(Person person){
-		em.persist(person);
-	}	
-	public List<Person> readPerson(){
-		Query query = em.createQuery("Select e from Person e");
-		return (List<Person>) query.getResultList();
-	}
-	public Person readPerson(String user){
-		Query query = em.createQuery(("Select e from Person e where e.username = '"+ user + "'"));
+	public Person read(Person person){
+		Query query = em.createQuery(("Select e from Person e where e.username = '"+ person.getUsername() + "'"));
 		return (Person)query.getResultList().get(0);
 	}
-	public void updatePerson(Person person){
-		em.merge(person);
-	}
-	public void removePerson(Person person){
+	public void remove(Person person){
 		person = em.find(Person.class,person.getID());
 		em.remove(person);
 	}
-	public void removePersonId(Long ID){
-		Person person = em.find(Person.class,ID);
-		em.remove(person);
-	}
-	
-	
 }

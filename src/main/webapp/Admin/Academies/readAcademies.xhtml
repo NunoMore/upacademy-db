@@ -15,7 +15,7 @@
 			<div class="col-md-8">
 				<h:form id="formDisplayAcademy">
 					<p:dataTable id="academy" var="academy"
-						value="#{academyBean.readAcademy()}" selectionMode="single"
+						value="#{academyBean.readAll()}" selectionMode="single"
 						selection="#{tableView.selectedAcademy}" rowKey="#{academy.ID}">
 
 						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
@@ -57,7 +57,7 @@
 
 						<p:outputLabel value="Linguagem Programacao" />
 						<p:selectOneMenu
-							value="#{academyBean.academy.programmingLanguage}">
+							value="#{academyBean.e.programmingLanguage}">
 							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
 							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
@@ -65,7 +65,7 @@
 
 					</p:panelGrid>
 					<p:commandButton value="Guardar alteracoes" style="center"
-						action="#{academyService.updateAcademy(tableView.selectedAcademy)}"
+						action="#{academyService.update(tableView.selectedAcademy)}"
 						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy"
 						onclick="PF('dlg1').show()" />
 
@@ -75,15 +75,15 @@
 					</p:dialog>
 
 					<p:commandButton value="Remover"
-						action="#{academyService.removeAcademy(tableView.selectedAcademy)}"
-						update=":formDisplayAcademy:academy">
+						action="#{academyService.remove(tableView.selectedAcademy)}"
+						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
 					</p:commandButton>
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{academyService.removeAcademy(tableView.selectedAcademy)}" />
+							action="#{academyService.remove(tableView.selectedAcademy)}" />
 						<p:commandButton value="Nao" type="button"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>

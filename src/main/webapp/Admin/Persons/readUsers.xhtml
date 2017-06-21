@@ -15,7 +15,7 @@
 			<div class="col-md-8">
 				<h:form id="formDisplayPersons">
 					<p:dataTable id="persons" var="person"
-						value="#{personBean.readPerson()}" widgetVar="personsTable"
+						value="#{personBean.readAll()}" widgetVar="personsTable"
 						multiViewState="true" rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10" selectionMode="single"
@@ -96,7 +96,7 @@
 
 
 					<p:commandButton value="Guardar alteracoes" style="center"
-						action="#{personService.updatePerson(tableView.selectedPerson)}"
+						action="#{personService.update(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons"
 						onclick="PF('dlg1').show()" />
 
@@ -106,7 +106,7 @@
 					</p:dialog>
 
 					<p:commandButton value="Remover"
-						action="#{personService.removePerson(tableView.selectedPerson)}"
+						action="#{personService.remove(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
@@ -114,7 +114,7 @@
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{personService.removePerson(tableView.selectedPerson)}" />
+							action="#{personService.remove(tableView.selectedPerson)}" />
 						<p:commandButton value="Nao" type="button"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>

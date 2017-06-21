@@ -18,17 +18,17 @@
 			<p:panelGrid id="createPersonGrid" columns="2">
 
 				<p:outputLabel value="Insere o email do novo utilizador" />
-				<p:inputText value="#{personBean.person.email}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
+				<p:inputText value="#{personBean.e.email}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
 
 				<h:outputLabel value="Insere o username do novo utilizador" />
-				<p:inputText value="#{personBean.person.username}" />
+				<p:inputText value="#{personBean.e.username}" />
 
 				<h:outputLabel value="Insere a password do novo utilizador" />
-				<p:inputText value="#{personBean.person.password}" />
+				<p:inputText value="#{personBean.e.password}" />
 			</p:panelGrid>
 			<br />
 			<p:commandButton value="Criar Utilizador"
-				action="#{personBean.createPerson}" oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreatePerson:createPersonGrid"/>
+				action="#{personBean.create()}" oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreatePerson:createPersonGrid"/>
 
 			<p:dialog header="Confirmacao criacao" widgetVar="dlg1"
 				minHeight="40" resizable="false">

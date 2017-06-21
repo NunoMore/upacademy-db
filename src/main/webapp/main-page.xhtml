@@ -12,7 +12,7 @@
 	#{currentUserBean.initCurrentUser()}
 		<h:form id="formTable">
 			<p:dataTable id="consultAll" var="person"
-				value="#{personBean.readPerson()}" widgetVar="personsTable"
+				value="#{personBean.readAll()}" widgetVar="personsTable"
 				multiViewState="true" rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" selectionMode="single"
