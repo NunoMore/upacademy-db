@@ -17,85 +17,75 @@ import org.apache.commons.io.FilenameUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
-@ManagedBean(name="uploadBean")
+@ManagedBean(name = "uploadBean")
 @RequestScoped
 public class UploadBean {
 
 	@Inject
 	private CurrentUserBean currentUser;
-	
-	private UploadedFile file;
-	
-	public void uploadImg(FileUploadEvent event) throws IOException{
-		
-		//obter ficheiro
-		file = event.getFile();
-		
-		//byte[] - array de bytes
+
+	public void uploadImg(FileUploadEvent event) throws IOException {
+
+		// obter ficheiro
+		UploadedFile file = event.getFile();
+
+		// byte[] - array de bytes
 		byte[] fileBytes = file.getContents();
-		
-		//byte[] to bufferedImage
+
+		// byte[] to bufferedImage
 		BufferedImage img = ImageIO.read(new ByteArrayInputStream(fileBytes));
-		
-		//caminho de ficheiro
+
+		// caminho de ficheiro
 		String filePath = file.getFileName();
-		
-		//guarda extensao de ficheiro
+
+		// guarda extensao de ficheiro
 		String extension = FilenameUtils.getExtension(filePath);
-		
-		//obtem o caminho necessário
+
+		// obtem o caminho necessário
 		File tempFolder = currentUser.getTempFolder();
-		
-		//guarda numa pasta
+
+		// guarda numa pasta
 		File photo = new File(tempFolder, filePath);
 		ImageIO.write(img, extension, photo);
-		
-		// mete caminho na base de dados
-		currentUser.getE().setPhoto(File.separator+filePath);
-		currentUser.update();
-		
-		displayMsg();
-	}
-	
-	public void uploadCurriculum(FileUploadEvent event) throws IOException{
 
-		//obter ficheiro
-		file = event.getFile();
-		
-		//byte[] - array de bytes
+		// mete caminho na base de dados
+		currentUser.getE().setPhoto(File.separator + filePath);
+		currentUser.update();
+
+		if (file != null) {
+			FacesMessage message = new FacesMessage("Success! ", file.getFileName() + " is uploaded!");
+			FacesContext.getCurrentInstance().addMessage("uploads", message);
+		}
+
+	}
+
+	public void uploadCurriculum(FileUploadEvent event) throws IOException {
+
+		// obter ficheiro
+		UploadedFile file = event.getFile();
+
+		// byte[] - array de bytes
 		byte[] fileBytes = file.getContents();
-		
-		//caminho de ficheiro
-		String filePath = file.getFileName();
-		
-		//obtem o caminho necessário
-		File tempFolder = currentUser.getTempFolder();
-		
-		//guarda numa pasta
-		FileOutputStream fos = new FileOutputStream(tempFolder.getAbsolutePath()+File.separator+filePath);
-		fos.write(fileBytes); 
-		fos.close();
-		
-		// mete caminho na base de dados
-		currentUser.getE().setCurriculum(File.separator+filePath);
-		currentUser.update();
-        FacesContext context = FacesContext.getCurrentInstance();
-        if(file != null) {
-            context.addMessage(null, new FacesMessage("Succesful", file.getFileName() + " is uploaded."));
-        } else {
-            context.addMessage(null, new FacesMessage("File not uploaded!"));
-        }
-		
-		displayMsg();
-		
-	}
 
-    public void displayMsg() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if(file != null) {
-            context.addMessage(null, new FacesMessage("Succesful", file.getFileName() + " is uploaded."));
-        } else {
-            context.addMessage(null, new FacesMessage("File not uploaded!"));
-        }
-    }
+		// caminho de ficheiro
+		String filePath = file.getFileName();
+
+		// obtem o caminho necessário
+		File tempFolder = currentUser.getTempFolder();
+
+		// guarda numa pasta
+		FileOutputStream fos = new FileOutputStream(tempFolder.getAbsolutePath() + File.separator + filePath);
+		fos.write(fileBytes);
+		fos.close();
+
+		// mete caminho na base de dados
+		currentUser.getE().setCurriculum(File.separator + filePath);
+		currentUser.update();
+
+		if (file != null) {
+			FacesMessage message = new FacesMessage("Success! ", file.getFileName() + " is uploaded!");
+			FacesContext.getCurrentInstance().addMessage("uploads", message);
+		}
+
+	}
 }
