@@ -6,8 +6,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
@@ -22,10 +24,12 @@ public class UploadBean {
 	@Inject
 	private CurrentUserBean currentUser;
 	
+	private UploadedFile file;
+	
 	public void uploadImg(FileUploadEvent event) throws IOException{
 		
 		//obter ficheiro
-		UploadedFile file = event.getFile();
+		file = event.getFile();
 		
 		//byte[] - array de bytes
 		byte[] fileBytes = file.getContents();
@@ -49,12 +53,14 @@ public class UploadBean {
 		// mete caminho na base de dados
 		currentUser.getE().setPhoto(File.separator+filePath);
 		currentUser.update();
+		
+		displayMsg();
 	}
 	
 	public void uploadCurriculum(FileUploadEvent event) throws IOException{
 
 		//obter ficheiro
-		UploadedFile file = event.getFile();
+		file = event.getFile();
 		
 		//byte[] - array de bytes
 		byte[] fileBytes = file.getContents();
@@ -73,5 +79,23 @@ public class UploadBean {
 		// mete caminho na base de dados
 		currentUser.getE().setCurriculum(File.separator+filePath);
 		currentUser.update();
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(file != null) {
+            context.addMessage(null, new FacesMessage("Succesful", file.getFileName() + " is uploaded."));
+        } else {
+            context.addMessage(null, new FacesMessage("File not uploaded!"));
+        }
+		
+		displayMsg();
+		
 	}
+
+    public void displayMsg() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(file != null) {
+            context.addMessage(null, new FacesMessage("Succesful", file.getFileName() + " is uploaded."));
+        } else {
+            context.addMessage(null, new FacesMessage("File not uploaded!"));
+        }
+    }
 }

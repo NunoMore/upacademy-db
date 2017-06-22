@@ -39,7 +39,7 @@ public class EntityBean<E extends Entities> {
 		service.update(e);
 	}
 	
-	public void remove(E e){
+	public void remove(){
 		service.remove(e);
 	}
 
