@@ -51,7 +51,7 @@ public class uploadImgTest {
 	    Mockito.when(uploadedFile.getFileName()).thenReturn(file.getName());
 	    Mockito.when(uploadedFile.getContentType()).thenReturn("application/octet-stream");
 	    Mockito.when(uploadedFile.getContents()).thenReturn(Files.readAllBytes(file.toPath())); // file to byte array
-	    Mockito.when(user.getE()).thenReturn());
+	  //  Mockito.when(user.getE()).thenReturn());
 	    
 	   
 	    //current user em falta
