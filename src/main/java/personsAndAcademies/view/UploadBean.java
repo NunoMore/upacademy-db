@@ -22,7 +22,7 @@ public class UploadBean {
 	@Inject
 	private CurrentUserBean currentUser;
 	
-	public void uploadImg(FileUploadEvent event) throws IOException{
+	public String uploadImg(FileUploadEvent event) throws IOException{
 		
 		//obter ficheiro
 		UploadedFile file = event.getFile();
@@ -49,6 +49,8 @@ public class UploadBean {
 		// mete caminho na base de dados
 		currentUser.getE().setPhoto(File.separator+filePath);
 		currentUser.update();
+		
+		return photo.getAbsolutePath();
 	}
 	
 	public void uploadCurriculum(FileUploadEvent event) throws IOException{
