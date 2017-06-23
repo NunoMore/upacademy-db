@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import javax.enterprise.inject.New;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner.Silent;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
+import personsAndAcademies.model.Person;
 import personsAndAcademies.view.CurrentUserBean;
 import personsAndAcademies.view.UploadBean;
 
@@ -20,11 +24,7 @@ import personsAndAcademies.view.UploadBean;
 @RunWith(Silent.class)
 public class uploadImgTest {
 	
-//	@Mock
-//	private Repository repositiry;
-	
-//	@Mock
-//	private UploadBean bean;
+	private File tempFolder;
 
 	@Test
 	public void test() throws IOException {
@@ -33,7 +33,7 @@ public class uploadImgTest {
 		String filename = "Uploads"; //nao mudar este nome!!!!!!!!!!!
 		String workingDirectory = System.getProperty("user.dir");
 		String absolutPath = workingDirectory + File.separator + filename; 
-		File tempFolder = new File(absolutPath);
+		tempFolder = new File(absolutPath);
 		tempFolder.mkdir();
 		
 		//Setup
@@ -43,17 +43,12 @@ public class uploadImgTest {
 	    FileUploadEvent event = Mockito.mock(FileUploadEvent.class);
 	    UploadedFile uploadedFile = Mockito.mock(UploadedFile.class);
 	    CurrentUserBean currentUser = Mockito.mock(CurrentUserBean.class);
-	    
-//	    RuntimeException e = new RuntimeException();
-	    
+	    	    
 	    Mockito.when(event.getFile()).thenReturn(uploadedFile);
 	    Mockito.when(uploadedFile.getContents()).thenReturn(Files.readAllBytes(file.toPath())); // file to byte array
 	    Mockito.when(uploadedFile.getFileName()).thenReturn(file.getName());
 	    Mockito.when(currentUser.getTempFolder()).thenReturn(tempFolder);
-	    
-	    //tratar disto
-	    Mockito.doNothing().when(currentUser.getE()).setPhoto(null);
-	    Mockito.doNothing().when(currentUser).update();
+	    Mockito.doReturn(new Person()).when(currentUser).getE();
 
 	    bean.setCurrentUser(currentUser);
 	    
@@ -64,8 +59,9 @@ public class uploadImgTest {
 	}
 	
 	@After
-	public void end(){
-		//fazer delete à pasta Uploads
+	public void end() throws IOException{
+
+		FileUtils.deleteDirectory(tempFolder);
 	}
 }
 
