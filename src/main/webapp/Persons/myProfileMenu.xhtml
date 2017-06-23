@@ -11,32 +11,28 @@
 
 
 	<ui:define name="display">
+
 		<p:tooltip />
+		<p:growl id="growl" for="uploads" showDetail="true" autoUpdate="true" />
+		<p:growl id="msg"/>
+
 		<h:form id="myProfile" enctype="multipart/form-data">
-			<p:growl id="msg" showDetail="true" />
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
 							<p:graphicImage name="Uploads#{currentUserBean.e.photo}"
-								rendered="#{currentUserBean.e.photo != null}"
-								style="width:300px" />
+								rendered="#{currentUserBean.e.photo != null}" style="width:100%" />
 							<p:graphicImage name="images/defaultUser.png"
-								rendered="#{currentUserBean.e.photo == null}"
-								style="width:150px" />
+								rendered="#{currentUserBean.e.photo == null}" style="width:100%" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.update()}"
 						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
-						update=":myProfile:ProfileCol,EditColVital,EditColNotVital"  />
-
-					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
-						minHeight="40" resizable="false">
-						<h:outputText value="As alteracoes foram guardadas com sucesso" />
-					</p:dialog>
+						update="myProfile,msg" />
 				</div>
 
 				<div class="col-md-4">
@@ -46,70 +42,79 @@
 						<p:outputLabel value="Dados" />
 						<p:outputLabel value="Informacoes" />
 
-						<p:outputLabel  value="Nome" />
+						<h:outputText value="Nome" />
 						<p:inputText id="Name" value="#{currentUserBean.e.name}"
-							required="true" pt:data-tooltip="Campo Obrigatorio" />
+							required="true" pt:data-tooltip="Campo Obrigatorio"
+							requiredMessage="Nome inválido!" />
 
 
-						<p:outputLabel value="Data de Nascimento" />
-						<p:calendar value="#{currentUserBean.e.dateOfBirth}"
-							locate="pt" navigator="true" pattern="yyyy-MMM-dd"
-							pt:data-tooltip="Campo Obrigatorio" required="true" />
+						<h:outputText value="Data de Nascimento" />
+						<p:calendar value="#{currentUserBean.e.dateOfBirth}" locate="pt"
+							navigator="true" pattern="yyyy-MMM-dd"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Data de Nascimento inválida!" />
 
-						<p:outputLabel value="Genero" />
+						<h:outputText value="Genero" />
 						<p:selectOneMenu value="#{currentUserBean.e.gender}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneMenu>
-						<p:outputLabel value="Curso Academico" />
-						<p:inputText value="#{currentUserBean.e.academicCourse}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
 
-						<p:outputLabel value="Numero Telefone" />
-						<p:inputMask mask="999999999" value="#{currentUserBean.e.numTelephone}"
-							 pt:data-tooltip="Campo Obrigatorio" required="true"  />
-							 
-						<p:outputLabel value="Email" />
-						<p:inputText value="#{currentUserBean.e.email}" pt:data-tooltip="Campo Obrigatorio" required="true"/>
-						
-						<p:outputLabel value="Academia"/>
-						<p:selectOneMenu
-							value="#{academyBean.e.programmingLanguage}">
+						<h:outputText value="Numero Telefone" />
+						<p:inputMask mask="999999999"
+							value="#{currentUserBean.e.numTelephone}"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Contacto de telefone inválido!" />
+
+						<h:outputText value="Email" />
+						<p:inputText value="#{currentUserBean.e.email}"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Email inválido!" />
+
+						<h:outputText value="Academia" />
+						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
 							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
 							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
 						</p:selectOneMenu>
-						
+
 					</p:panelGrid>
 				</div>
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<p:panelGrid id="EditColNotVital" columns="2">
 
 						<p:outputLabel value="Dados" />
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Facebook" />
-						<h:inputText value="#{currentUserBean.e.facebookLink}" />
+						<p:inputText value="#{currentUserBean.e.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<h:inputText value="#{currentUserBean.e.linkedInLink}" />
+						<p:inputText value="#{currentUserBean.e.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<h:inputText value="#{currentUserBean.e.gitHubLink}" />
+						<p:inputText value="#{currentUserBean.e.gitHubLink}" />
 
+						<h:outputText value="Curso Academico" />
+						<p:inputText value="#{currentUserBean.e.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
-						<h:inputText value="#{currentUserBean.e.workPlace}" />
+						<p:inputText value="#{currentUserBean.e.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<p:fileUpload  mode="advanced" cancelLabel="Cancelar"
+						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
 							label="Selecionar" uploadLabel="Upload"
-							fileUploadListener="#{uploadBean.uploadCurriculum}" update=":myProfile:ProfileCol" />
+							fileUploadListener="#{uploadBean.uploadCurriculum}"
+							update=":myProfile:ProfileCol"
+							allowTypes="/(\.|\/)(pdf|doc|docx)$/i" />
 
 						<h:outputText value="Foto" />
 						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
 							label="Selecionar" uploadLabel="Upload"
-							fileUploadListener="#{uploadBean.uploadImg}" update=":myProfile:ProfileCol" sizeLimit="4000000"/>
+							fileUploadListener="#{uploadBean.uploadImg}"
+							update=":myProfile:ProfileCol" sizeLimit="4000000"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/i" />
 
 					</p:panelGrid>
 

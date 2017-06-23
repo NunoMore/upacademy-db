@@ -4,6 +4,15 @@
 	color: black;
 }
 
+.ui-growl {
+    margin-top: 40px;
+    z-index:9999;
+}
+
+.ui-panelgrid{
+	width: 100%;
+}
+
 .rowContent{
 	width: 99%;
 }
@@ -14,13 +23,13 @@
 	min-height: 100%;
 	background: url(/UPACADEMY_DB/resources/images/tail-middle.jpg) repeat-y
 		center 194px;
-		background-size: 80%;
+		background-size: 90%;
 	min-height: 1200px;
 }
 
 .container2 {
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 	overflow: hidden;
 	font-size: .875em;
 	padding-bottom: 120px;

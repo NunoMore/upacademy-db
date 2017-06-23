@@ -1,7 +1,7 @@
 
 // on click
 $(document).ready(function(){
-    $(document).click(function(){
+    $('.wrap').click(function(){
         PF('personDialog').hide();
     });
 });
