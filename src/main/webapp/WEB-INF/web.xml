@@ -47,6 +47,6 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
 	<welcome-file-list>
-		<welcome-file>main-page.xhtml</welcome-file>
+		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
 </web-app>
