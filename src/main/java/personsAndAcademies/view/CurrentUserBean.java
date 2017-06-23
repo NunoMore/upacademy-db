@@ -10,8 +10,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
 
 import personsAndAcademies.model.Person;
 
