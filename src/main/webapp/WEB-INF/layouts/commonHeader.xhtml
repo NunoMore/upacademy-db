@@ -6,7 +6,6 @@
 	xmlns:p="http://primefaces.org/ui">
 <body>
 	<ui:composition>
-
 		<header id="header_bar"
 			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 			role="banner">
@@ -56,8 +55,11 @@
 						</ul>
 						<!-- tentar meter isto do lado direito mais a direita -->
 						<ul id="logOutHeader" class="nav navbar-nav">
-							<li><a id="usernameHeader">#{currentUserBean.e.username}</a></li>
-							<li><a id="logOutLink" href="#">Logout</a></li>
+							
+							<li ><a id="usernameHeader" >#{currentUserBean.e.username}</a></li>
+							<li><h:form>
+								<h:commandLink value="logout" action="#{logout.submit}"/>
+							</h:form></li>
 						</ul>
 						<!-- 
 						<form action="" id="search-form">

@@ -12,12 +12,10 @@
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
 	<!-- ver p:pannelgrid com p:row ?? -->
 	<ui:define name="display">
-		<h2>Login</h2>
-   		 
-    <h:form id="login">
+		<h:form id="login">
         <h:panelGrid columns="3">
             <h:outputLabel for="username" value="Username:" />
-            <h:inputText id="username" required="true" />
+            <h:inputText id="username" required="true" value="#{currentUserBean.e.username}"/>
             <h:message for="username" />
 
             <h:outputLabel for="password" value="Password" />
@@ -37,4 +35,3 @@
     </h:form>
 	</ui:define>
 </ui:composition>
-
