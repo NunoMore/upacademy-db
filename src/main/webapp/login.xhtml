@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="WEB-INF/layouts/commonLayout.xhtml">
+
+
+	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
+	<!-- ver p:pannelgrid com p:row ?? -->
+	<ui:define name="display">
+		<h:form id="login">
+        <h:panelGrid columns="3">
+            <h:outputLabel for="username" value="Username:" />
+            <h:inputText id="username" required="true" value="#{currentUserBean.e.username}"/>
+            <h:message for="username" />
+
+            <h:outputLabel for="password" value="Password" />
+            <h:inputSecret id="password" required="true" />
+            <h:message for="password" />
+
+            <h:outputLabel for="rememberMe" value="Remember Me" />
+            <h:selectBooleanCheckbox id="rememberMe" />
+            <h:panelGroup />
+
+            <h:panelGroup />
+            <h:commandButton value="Login" />
+            <h:panelGroup styleClass="error" rendered="#{not facesContext.validationFailed}">
+                #{shiroLoginFailure}
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:form>
+	</ui:define>
+</ui:composition>

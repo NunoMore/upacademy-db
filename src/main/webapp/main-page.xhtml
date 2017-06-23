@@ -32,13 +32,6 @@
 				<p:ajax event="rowSelect" update=":formTable:personDetail"
 					oncomplete="PF('personDialog').show()" />
 
-				<p:column headerText="Online/Offline">
-					<p:graphicImage name="images/offline-red.png"
-						rendered="#{person.online == false}" style="width:30px" />
-					<p:graphicImage name="images/online-green.png"
-						rendered="#{person.online == true}" style="width:30px" />
-				</p:column>
-
 				<p:column headerText="Foto">
 					<p:graphicImage name="Uploads#{person.photo}"
 						rendered="#{person.photo != null}" style="width:30px" />

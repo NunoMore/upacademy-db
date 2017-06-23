@@ -9,6 +9,10 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+
 import personsAndAcademies.model.Person;
 
 @Named("currentUserBean")
@@ -43,11 +47,11 @@ public class CurrentUserBean extends EntityBean<Person> implements Serializable 
 		}
 	
 		public void initCurrentUser(){
-			if(!e.getUsername().isEmpty()){
+			e.setUsername((String)SecurityUtils.getSubject().getPrincipal()); 
 				e = read();
 				e.setOnline(true);
 				update();
-			}
+
 		}
 		
 //		private void uploadPhotos() throws IOException{ //nao testado
