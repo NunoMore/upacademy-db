@@ -23,10 +23,10 @@ public class UploadBean {
 
 	@Inject
 	private CurrentUserBean currentUser;
-
-	public void uploadImg(FileUploadEvent event) throws IOException {
-
-		// obter ficheiro
+	
+	public String uploadImg(FileUploadEvent event) throws IOException{
+		
+		//obter ficheiro
 		UploadedFile file = event.getFile();
 
 		// byte[] - array de bytes
@@ -56,7 +56,8 @@ public class UploadBean {
 			FacesMessage message = new FacesMessage("Success! ", file.getFileName() + " is uploaded!");
 			FacesContext.getCurrentInstance().addMessage("uploads", message);
 		}
-
+		
+		return photo.getAbsolutePath();
 	}
 
 	public void uploadCurriculum(FileUploadEvent event) throws IOException {
@@ -87,5 +88,13 @@ public class UploadBean {
 			FacesContext.getCurrentInstance().addMessage("uploads", message);
 		}
 
+	}
+	
+	public CurrentUserBean getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(CurrentUserBean currentUser) {
+		this.currentUser = currentUser;
 	}
 }
