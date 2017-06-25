@@ -10,6 +10,11 @@
 			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 			role="banner">
 			<div class="container">
+				<DIV class="col-md-3">
+					<a href="https://www.upacademy.pt/"><IMG
+						src="/UPACADEMY_DB/resources/images/logo.jpg" class="logo" /></a>
+
+				</DIV>
 				<div class="col-md-8">
 					<div class="navbar-header">
 						<button class="navbar-toggle" type="button" data-toggle="collapse"
@@ -55,11 +60,11 @@
 						</ul>
 						<!-- tentar meter isto do lado direito mais a direita -->
 						<ul id="logOutHeader" class="nav navbar-nav">
-							
-							<li ><a id="usernameHeader" >#{currentUserBean.e.username}</a></li>
+
+							<li><a id="usernameHeader">#{currentUserBean.e.username}</a></li>
 							<li><h:form>
-								<h:commandLink value="logout" action="#{logout.submit}"/>
-							</h:form></li>
+									<h:commandLink value="logout" action="#{logout.submit}" />
+								</h:form></li>
 						</ul>
 						<!-- 
 						<form action="" id="search-form">
@@ -71,13 +76,6 @@
 							</fieldset>
 						</form> -->
 					</nav>
-				</div>
-				<div class="col-md-4"> <!-- meteer uma imagem decente -->
-					<div id="upAcademyHeader" class="container2">
-						<h1>
-							<a >up academy</a>
-						</h1>
-					</div>
 				</div>
 
 			</div>

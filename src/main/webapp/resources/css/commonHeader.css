@@ -2,14 +2,18 @@ h1 {
 	text-indent: -9999px;
 }
 
-h1 a {
-	width: 200px;
-	height: 100px;
+.logo{
+	height: 50px;
+	
+}
+
+/* h1 a {
+	height: 50px;
 	position: absolute;
 	left: 5%;
 	background: url(/UPACADEMY_DB/resources/images/logo.jpg) no-repeat left;
-	background-size: 80%;
-}
+	background-size: 10%;
+} */
 
 /* dropdowns... */
 
