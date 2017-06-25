@@ -10,7 +10,7 @@
 			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 			role="banner">
 			<div class="container">
-				<DIV class="col-md-3">
+				<DIV class="col-md-2">
 					<a href="https://www.upacademy.pt/"><IMG
 						src="/UPACADEMY_DB/resources/images/logo.jpg" class="logo" /></a>
 
@@ -58,25 +58,23 @@
 							<!-- <li><a id="aboutBtn" href="#">About</a></li>
 							<li><a id="contactsBtn" href="#">Contacts</a></li> -->
 						</ul>
+					</nav>
+				</div>
+				<DIV class="col-md-2">
+					<nav>
+
 						<!-- tentar meter isto do lado direito mais a direita -->
 						<ul id="logOutHeader" class="nav navbar-nav">
 
-							<li><a id="usernameHeader">#{currentUserBean.e.username}</a></li>
-							<li><h:form>
-									<h:commandLink value="logout" action="#{logout.submit}" />
-								</h:form></li>
+							<li><a id="usernameHeader"
+								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">#{currentUserBean.e.username}</a></li>
+							<li><a> <h:form>
+										<h:commandLink value="Logout" action="#{logout.submit}" />
+									</h:form></a></li>
+							<!-- <li><p:graphicImage value="#{currentUserBean.e.photo}"/></li> -->
 						</ul>
-						<!-- 
-						<form action="" id="search-form">
-							<fieldset>
-								<div class="rowElem">
-									<input type="text" /> <a href="#"
-										onClick="document.getElementById('search-form').submit()">Search</a>
-								</div>
-							</fieldset>
-						</form> -->
 					</nav>
-				</div>
+				</DIV>
 
 			</div>
 		</header>
