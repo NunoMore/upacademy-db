@@ -10,4 +10,5 @@ public class AcademyType extends Entities implements Serializable  {
 	
 	
 
+	
 }
