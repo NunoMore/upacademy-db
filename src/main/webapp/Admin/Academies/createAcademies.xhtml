@@ -12,37 +12,34 @@
 
 
 	<ui:define name="display">
+	
+		<p:growl for="create" showDetail="true" autoUpdate="true" />
 		<h:form id="formCreateAcademies">
 
 			<p:panel id="panel">
 				<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
 
 					<p:outputLabel value="Nome" />
-					<p:inputText value="#{academyBean.e.name}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
+					<p:inputText value="#{academyBean.e.name}" required="true"
+						pt:data-tooltip="Campo Obrigatorio" />
 
 					<p:outputLabel for="german" value="Data Inicio" />
-					<p:calendar id="german" value="#{academyBean.e.date}"
-						locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
+					<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
+						navigator="true" pattern="yyyy-MMM-dd" />
 
 					<p:outputLabel value="Descricao" />
-					<p:inputTextarea value="#{academyBean.e.description}"
-						rows="6" cols="33"/>
-					
-					<p:outputLabel value="Linguagem Programacao"/>
+					<p:inputTextarea value="#{academyBean.e.description}" rows="6"
+						cols="33" />
+
+					<p:outputLabel value="Linguagem Programacao" />
 					<p:selectOneListbox value="#{academyBean.e.programmingLanguage}">
-						<f:selectItem itemLabel="JAVA" itemValue="JAVA"/>
-						<f:selectItem itemLabel="OutSystem" itemValue="OutSystem"/>
-						<f:selectItem itemLabel=".NET" itemValue=".NET"/>
+						<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
+						<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
+						<f:selectItem itemLabel=".NET" itemValue=".NET" />
 					</p:selectOneListbox>
 
 					<p:commandButton styleClass="btn btn-submit"
-						action="#{academyBean.create()}" value="Create!"
-						oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreateAcademies:createAcademyGrid"/>
-
-					<p:dialog header="Confirmacao criacao" widgetVar="dlg1"
-						minHeight="40" resizable="false">
-						<h:outputText value="A academia foi criada com sucesso" />
-					</p:dialog>
+						action="#{academyBean.create()}" value="Create!" />
 
 				</p:panelGrid>
 			</p:panel>

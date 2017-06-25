@@ -13,12 +13,15 @@
 
 	<ui:define name="display">
 
+		<p:growl for="create" showDetail="true" autoUpdate="true" />
 		<h:form id="formCreatePerson">
+		
+				<!-- vai se ter o username como sendo o email -->
 
 			<p:panelGrid id="createPersonGrid" columns="2">
-
 				<p:outputLabel value="Insere o email do novo utilizador" />
-				<p:inputText value="#{personBean.e.email}" required="true" pt:data-tooltip="Campo Obrigatorio"/>
+				<p:inputText value="#{personBean.e.email}" required="true"
+					pt:data-tooltip="Campo Obrigatorio" />
 
 				<h:outputLabel value="Insere o username do novo utilizador" />
 				<p:inputText value="#{personBean.e.username}" />
@@ -28,12 +31,8 @@
 			</p:panelGrid>
 			<br />
 			<p:commandButton value="Criar Utilizador"
-				action="#{personBean.create()}" oncomplete="if (!args.validationFailed) PF('dlg1').show()" update=":formCreatePerson:createPersonGrid"/>
+				action="#{personBean.create()}" />
 
-			<p:dialog header="Confirmacao criacao" widgetVar="dlg1"
-				minHeight="40" resizable="false">
-				<h:outputText value="O utilizador foi criado com sucesso" />
-			</p:dialog>
 		</h:form>
 
 	</ui:define>

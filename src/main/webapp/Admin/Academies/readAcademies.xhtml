@@ -16,7 +16,13 @@
 				<h:form id="formDisplayAcademy">
 					<p:dataTable id="academy" var="academy"
 						value="#{academyBean.readAll()}" selectionMode="single"
-						selection="#{tableView.selectedAcademy}" rowKey="#{academy.ID}">
+						selection="#{tableView.selectedAcademy}" rowKey="#{academy.ID}"
+						widgetVar="personsTable" multiViewState="true" rows="10"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="25"
+						emptyMessage="Não existem academias na pesquisa efectuada"
+						filteredValue="#{tableView.filteredAcademies}">
 
 						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
 
@@ -56,8 +62,7 @@
 						<p:inputText value="#{tableView.selectedAcademy.description}" />
 
 						<p:outputLabel value="Linguagem Programacao" />
-						<p:selectOneMenu
-							value="#{academyBean.e.programmingLanguage}">
+						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
 							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
 							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
