@@ -15,36 +15,32 @@
 				value="#{personBean.readAll()}" widgetVar="personsTable"
 				multiViewState="true" rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="100" selectionMode="single"
-				selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
-				emptyMessage="No persons found with that search criteria"
+				rowsPerPageTemplate="100" selection="#{tableView.selectedPerson}"
+				rowKey="#{person.ID}"
+				emptyMessage="Não existem utilizadores na pesquisa efectuada"
 				filteredValue="#{tableView.filteredPersons}">
 
 				<f:facet name="header">
 					<p:outputPanel>
-						<h:outputText value="Search all fields:" />
+						<h:outputText value="Pesquisa:" />
 						<p:inputText id="globalFilter"
-							onkeyup="PF('personsTable').filter()" style="width:150px"
-							placeholder="Search" />
+							onkeyup="PF('personsTable').filter()" />
 					</p:outputPanel>
 				</f:facet>
 
-				<p:ajax event="rowSelect" update=":formTable:personDetail"
-					oncomplete="PF('personDialog').show()" />
-
-				<p:column headerText="Foto">
-					<p:graphicImage name="Uploads#{person.photo}"
+				<p:column style="width:50px;text-align: center">
+					<p:graphicImage styleClass="img-circle" id="img" name="Uploads#{person.photo}"
 						rendered="#{person.photo != null}" style="width:30px" />
-					<p:graphicImage name="images/defaultUser.png"
+					<p:graphicImage styleClass="img-circle" name="images/defaultUser.png"
 						rendered="#{person.photo == null}" style="width:30px" />
 				</p:column>
 
-				<p:column headerText="Nome" filterBy="#{person.name}"
+				<p:column style="text-align: center" headerText="Nome" filterBy="#{person.name}"
 					sortBy="#{person.name}" filterMatchMode="startsWith">
 					<h:outputText value="#{person.name}" />
 				</p:column>
 
-				<p:column headerText="Academia" filterBy="#{person.academy}"
+				<p:column style="text-align: center" headerText="Academia" filterBy="#{person.academy}"
 					sortBy="#{person.academy}" filterMatchMode="exact">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('personsTable').filter()"
@@ -58,65 +54,11 @@
 					</f:facet>
 					<h:outputText value="#{person.academy}" />
 				</p:column>
+				<p:column style="width:50px;text-align: center">
+					<p:commandButton action="#{tableView.fillSelectedPerson(person)}"
+						icon="ui-icon-search" ajax="false" />
+				</p:column>
 			</p:dataTable>
-
-			<p:dialog id="dialogUser" header="Utilizador"
-				widgetVar="personDialog" showEffect="explode" hideEffect="explode"
-				resizable="false">
-				<p:outputPanel id="personDetail">
-					<p:panelGrid columns="2"
-						rendered="#{not empty tableView.selectedPerson}">
-						<f:facet name="header">
-							<p:graphicImage name="Uploads#{tableView.selectedPerson.photo}"
-								rendered="#{tableView.selectedPerson.photo != null}"
-								style="width:100px" />
-							<p:graphicImage name="images/defaultUser.png"
-								rendered="#{tableView.selectedPerson.photo == null}"
-								style="width:100px" />
-						</f:facet>
-
-						<h:outputText value="Nome" />
-						<h:outputText value="#{tableView.selectedPerson.name}" />
-
-						<h:outputText value="Data de Nascimento" />
-						<h:outputText value="#{tableView.selectedPerson.dateOfBirth}" />
-
-						<h:outputText value="Curso" />
-						<h:outputText value="#{tableView.selectedPerson.academicCourse}" />
-
-						<h:outputText value="Género" />
-						<h:outputText value="#{tableView.selectedPerson.gender}" />
-
-						<h:outputText value="Telemóvel" />
-						<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
-
-						<h:outputText value="Email" />
-						<h:outputText value="#{tableView.selectedPerson.email}" />
-
-						<h:outputText value="Academia" />
-						<h:outputText value="#{tableView.selectedPerson.academy}" />
-
-						<h:outputText value="Trabalho" />
-						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
-
-						<h:outputText value="Curriculum" />
-						<a href="resources/Uploads#{tableView.selectedPerson.curriculum}" target="_blank">download</a>
- 
-						<h:outputText value="Facebook" />
-						<h:link value="#{tableView.selectedPerson.facebookLink}" />
-
-						<h:outputText value="LinkedIn" />
-						<h:link value="#{tableView.selectedPerson.linkedInLink}" />
-
-						<h:outputText value="Git Hub" />
-						<h:link value="#{tableView.selectedPerson.gitHubLink}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
 		</h:form>
-		<p:dialog modal="true" widgetVar="statusDialog" header="Status"
-			draggable="false" closable="false" resizable="false">
-			<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
-		</p:dialog>
 	</ui:define>
 </ui:composition>

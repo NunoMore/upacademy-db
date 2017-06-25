@@ -1,3 +1,4 @@
-graphicImage{
-	vertical-align: middle;
+.img-circle{
+	
+    border-radius: 50%;
 }

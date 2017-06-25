@@ -15,7 +15,7 @@
 						src="/UPACADEMY_DB/resources/images/logo.jpg" class="logo" /></a>
 
 				</DIV>
-				<div class="col-md-8">
+				<div class="col-md-7">
 					<div class="navbar-header">
 						<button class="navbar-toggle" type="button" data-toggle="collapse"
 							data-target=".bs-navbar-collapse" />
@@ -55,12 +55,12 @@
 													Utilizadores</a></li>
 										</ul></li>
 								</ul></li>
-							<!-- <li><a id="aboutBtn" href="#">About</a></li>
-							<li><a id="contactsBtn" href="#">Contacts</a></li> -->
+							<li><a id="creditsBtn" href="/UPACADEMY_DB/credits.xhtml">Créditos</a></li>
+							<!-- <li><a id="contactsBtn" href="#">Contacts</a></li> -->
 						</ul>
 					</nav>
 				</div>
-				<DIV class="col-md-2">
+				<DIV class="col-md-3">
 					<nav>
 
 						<!-- tentar meter isto do lado direito mais a direita -->
@@ -68,10 +68,16 @@
 
 							<li><a id="usernameHeader"
 								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">#{currentUserBean.e.username}</a></li>
-							<li><a> <h:form>
-										<h:commandLink value="Logout" action="#{logout.submit}" />
-									</h:form></a></li>
-							<!-- <li><p:graphicImage value="#{currentUserBean.e.photo}"/></li> -->
+							<li><h:form>
+									<h:commandLink style="padding:15px; float: left" value="Logout"
+										action="#{logout.submit}" />
+								</h:form></li>
+							<p:graphicImage styleClass="img-circle" id="img"
+								name="Uploads#{currentUserBean.e.photo}" rendered="#{currentUserBean.e.photo != null}"
+								style="width:60px;" />
+							<p:graphicImage styleClass="img-circle"
+								name="images/defaultUser.png" rendered="#{currentUserBean.e.photo == null}"
+								style="width:60px;" />
 						</ul>
 					</nav>
 				</DIV>
