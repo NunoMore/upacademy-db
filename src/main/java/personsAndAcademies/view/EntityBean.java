@@ -22,6 +22,10 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 		service.create(e);
 		defineGrowl("Success!", "Entity was created!", "create");
 	}
+	public void create(E e){
+		service.create(e);
+		defineGrowl("Success!", "Entity was created!", "create");
+	}
 	
 	public E read(){
 		return service.read(e);
@@ -40,8 +44,16 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 		service.update(e);
 		defineGrowl("Success!", "Entity was updated!", "update");
 	}
+	public void update(E e){
+		service.update(e);
+		defineGrowl("Success!", "Entity was updated!", "update");
+	}
 	
 	public void remove(){
+		service.remove(e);
+		defineGrowl("Success!", "Entity was removed!", "remove");
+	}
+	public void remove(E e){
 		service.remove(e);
 		defineGrowl("Success!", "Entity was removed!", "remove");
 	}

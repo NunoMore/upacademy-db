@@ -15,9 +15,9 @@
 				value="#{personBean.readAll()}" widgetVar="personsTable"
 				multiViewState="true" rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="100" selection="#{tableView.selectedPerson}"
+				rowsPerPageTemplate="100"
 				rowKey="#{person.ID}"
-				emptyMessage="Não existem utilizadores na pesquisa efectuada"
+				emptyMessage="Não existem utilizadores a mostrar"
 				filteredValue="#{tableView.filteredPersons}">
 
 				<f:facet name="header">

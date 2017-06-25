@@ -11,6 +11,9 @@
 
 
 	<ui:define name="display">
+	
+		<p:growl for="remove" showDetail="true" autoUpdate="true" />
+		<p:growl for="update" showDetail="true" autoUpdate="true" />
 		<div class="row">
 			<div class="col-md-8">
 				<h:form id="formDisplayPersons">
@@ -20,7 +23,7 @@
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="25" selectionMode="single"
 						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
-						emptyMessage="Não existem utilizadores na pesquisa efectuada"
+						emptyMessage="Não existem utilizadores a mostrar"
 						filteredValue="#{tableView.filteredPersons}">
 
 						<p:ajax event="rowSelect" update=":formEditPerson:editPerson" />
@@ -96,25 +99,21 @@
 
 
 					<p:commandButton value="Guardar alteracoes" style="center"
-						action="#{personService.update(tableView.selectedPerson)}"
+						action="#{personBean.update(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons"
 						onclick="PF('dlg1').show()" />
 
-					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
-						minHeight="40" resizable="false">
-						<h:outputText value="As alteracoes foram guardadas com sucesso" />
-					</p:dialog>
-
 					<p:commandButton value="Remover"
-						action="#{personService.remove(tableView.selectedPerson)}"
+						action="#{personBean.remove(tableView.selectedPerson)}"
 						update=":formEditPerson:editPerson,formDisplayPersons:persons">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
 					</p:commandButton>
+					
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{personService.remove(tableView.selectedPerson)}" />
+							action="#{personBean.remove(tableView.selectedPerson)}" />
 						<p:commandButton value="Nao" type="button"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>
