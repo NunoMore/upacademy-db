@@ -9,6 +9,7 @@ import javax.enterprise.inject.New;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -25,7 +26,7 @@ import personsAndAcademies.view.UploadBean;
 public class uploadImgTest {
 	
 	private File tempFolder;
-
+	@Ignore
 	@Test
 	public void test() throws IOException {
 		

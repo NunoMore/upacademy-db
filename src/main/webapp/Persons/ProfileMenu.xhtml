@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/layouts/commonLayout.xhtml">
+
+
+	<ui:define name="display">
+
+		<p:tooltip />
+		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
+		<p:growl id="msg"/>
+
+		<h:form id="myProfile" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-md-2">
+					<!-- Panelgrid with photo -->
+					<p:panelGrid id="ProfileCol" columns="2">
+						<f:facet name="header">
+							<p:graphicImage name="Uploads#{currentUserBean.e.photo}"
+								rendered="#{currentUserBean.e.photo != null}" style="width:100%" />
+							<p:graphicImage name="images/defaultUser.png"
+								rendered="#{currentUserBean.e.photo == null}" style="width:100%" />
+						</f:facet>
+					</p:panelGrid>
+					<br />
+					<p:commandButton id="saveBtn" value="Guardar"
+						action="#{currentUserBean.update()}"
+						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
+						update="myProfile,msg" />
+				</div>
+
+				<div class="col-md-4">
+
+					<p:panelGrid id="EditColVital" columns="2">
+
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Informacoes" />
+
+						<h:outputText value="Nome" />
+						<p:inputText id="Name" value="#{currentUserBean.e.name}"
+							required="true" pt:data-tooltip="Campo Obrigatorio"
+							requiredMessage="Nome inválido!" />
+
+
+						<h:outputText value="Data de Nascimento" />
+						<p:calendar value="#{currentUserBean.e.dateOfBirth}" locate="pt"
+							navigator="true" pattern="yyyy-MMM-dd"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Data de Nascimento inválida!" />
+
+						<h:outputText value="Genero" />
+						<p:selectOneMenu value="#{currentUserBean.e.gender}">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</p:selectOneMenu>
+
+						<h:outputText value="Numero Telefone" />
+						<p:inputMask mask="999999999"
+							value="#{currentUserBean.e.numTelephone}"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Contacto de telefone inválido!" />
+
+						<h:outputText value="Email" />
+						<p:inputText value="#{currentUserBean.e.email}"
+							pt:data-tooltip="Campo Obrigatorio" required="true"
+							requiredMessage="Email inválido!" />
+
+						<h:outputText value="Academia" />
+						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
+							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
+							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
+							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+						</p:selectOneMenu>
+
+					</p:panelGrid>
+				</div>
+
+				<div class="col-md-6">
+					<p:panelGrid id="EditColNotVital" columns="2">
+
+						<p:outputLabel value="Dados" />
+						<p:outputLabel value="Informacoes" />
+
+						<h:outputText value="Facebook" />
+						<p:inputText value="#{currentUserBean.e.facebookLink}" />
+
+						<h:outputText value="LinkedIn" />
+						<p:inputText value="#{currentUserBean.e.linkedInLink}" />
+
+						<h:outputText value="Git" />
+						<p:inputText value="#{currentUserBean.e.gitHubLink}" />
+
+						<h:outputText value="Curso Academico" />
+						<p:inputText value="#{currentUserBean.e.academicCourse}" />
+
+						<h:outputText value="Local de Trabalho" />
+						<p:inputText value="#{currentUserBean.e.workPlace}" />
+
+						<h:outputText value="Curriculo" />
+						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadCurriculum}"
+							update=":myProfile:ProfileCol"
+							allowTypes="/(\.|\/)(pdf|doc|docx)$/i" />
+
+						<h:outputText value="Foto" />
+						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
+							label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadImg}"
+							update=":myProfile:ProfileCol" sizeLimit="4000000"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/i" />
+
+					</p:panelGrid>
+
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

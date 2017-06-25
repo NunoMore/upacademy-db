@@ -6,10 +6,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
@@ -19,77 +17,88 @@ import org.primefaces.model.UploadedFile;
 
 @ManagedBean(name = "uploadBean")
 @RequestScoped
-public class UploadBean {
+public class UploadBean extends GrowlBean {
 
 	@Inject
 	private CurrentUserBean currentUser;
-	
-	public String uploadImg(FileUploadEvent event) throws IOException{
+
+	public String uploadImg(FileUploadEvent event) throws IOException {
+		UploadedFile uploadfile = null;
+		File file = null;
 		
-		//obter ficheiro
-		UploadedFile file = event.getFile();
+		if (event.getFile() != null) {
 
-		// byte[] - array de bytes
-		byte[] fileBytes = file.getContents();
+			// obter ficheiro
+			uploadfile = event.getFile();
 
-		// byte[] to bufferedImage
-		BufferedImage img = ImageIO.read(new ByteArrayInputStream(fileBytes));
+			// byte[] - array de bytes
+			byte[] fileBytes = uploadfile.getContents();
 
-		// caminho de ficheiro
-		String filePath = file.getFileName();
+			// byte[] to bufferedImage
+			BufferedImage img = ImageIO.read(new ByteArrayInputStream(fileBytes));
 
-		// guarda extensao de ficheiro
-		String extension = FilenameUtils.getExtension(filePath);
+			// caminho de ficheiro
+			String filePath = uploadfile.getFileName();
 
-		// obtem o caminho necessário
-		File tempFolder = currentUser.getTempFolder();
+			// guarda extensao de ficheiro
+			String extension = FilenameUtils.getExtension(filePath);
 
-		// guarda numa pasta
-		File photo = new File(tempFolder, filePath);
-		ImageIO.write(img, extension, photo);
+			// obtem o caminho necessário
+			File tempFolder = currentUser.getTempFolder();
 
-		// mete caminho na base de dados
-		currentUser.getE().setPhoto(File.separator + filePath);
-		currentUser.update();
+			// guarda numa pasta
+			file = new File(tempFolder, filePath);
+			ImageIO.write(img, extension, file);
 
-		if (file != null) {
-			FacesMessage message = new FacesMessage("Success! ", file.getFileName() + " is uploaded!");
-			FacesContext.getCurrentInstance().addMessage("uploads", message);
+			// mete caminho na base de dados
+			currentUser.getE().setPhoto(File.separator + filePath);
+			currentUser.update();
 		}
-		
-		return photo.getAbsolutePath();
+
+		if (uploadfile != null) {
+			defineGrowl("Success! ", uploadfile.getFileName() + " is uploaded!", "uploads");
+		} else {
+			defineGrowl("Error!", "Upload was unsucceful", "uploads");
+		}
+
+		return file.getAbsolutePath();
 	}
 
 	public void uploadCurriculum(FileUploadEvent event) throws IOException {
 
-		// obter ficheiro
-		UploadedFile file = event.getFile();
+		UploadedFile file = null;
 
-		// byte[] - array de bytes
-		byte[] fileBytes = file.getContents();
+		if (event.getFile() != null) {
+			// obter ficheiro
+			file = event.getFile();
 
-		// caminho de ficheiro
-		String filePath = file.getFileName();
+			// byte[] - array de bytes
+			byte[] fileBytes = file.getContents();
 
-		// obtem o caminho necessário
-		File tempFolder = currentUser.getTempFolder();
+			// caminho de ficheiro
+			String filePath = file.getFileName();
 
-		// guarda numa pasta
-		FileOutputStream fos = new FileOutputStream(tempFolder.getAbsolutePath() + File.separator + filePath);
-		fos.write(fileBytes);
-		fos.close();
+			// obtem o caminho necessário
+			File tempFolder = currentUser.getTempFolder();
 
-		// mete caminho na base de dados
-		currentUser.getE().setCurriculum(File.separator + filePath);
-		currentUser.update();
+			// guarda numa pasta
+			FileOutputStream fos = new FileOutputStream(tempFolder.getAbsolutePath() + File.separator + filePath);
+			fos.write(fileBytes);
+			fos.close();
+
+			// mete caminho na base de dados
+			currentUser.getE().setCurriculum(File.separator + filePath);
+			currentUser.update();
+		}
 
 		if (file != null) {
-			FacesMessage message = new FacesMessage("Success! ", file.getFileName() + " is uploaded!");
-			FacesContext.getCurrentInstance().addMessage("uploads", message);
+			defineGrowl("Success! ", file.getFileName() + " is uploaded!", "uploads");
+		} else {
+			defineGrowl("Error!", "Upload was unsucceful", "uploads");
 		}
 
 	}
-	
+
 	public CurrentUserBean getCurrentUser() {
 		return currentUser;
 	}

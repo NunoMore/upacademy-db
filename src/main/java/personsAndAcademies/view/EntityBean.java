@@ -11,7 +11,7 @@ import personsAndAcademies.model.Person;
 import personsAndAcademies.service.Service;
 
 @Transactional
-public class EntityBean<E extends Entities> {
+public class EntityBean<E extends Entities> extends GrowlBean{
 	
 	protected E e;
 	
@@ -20,6 +20,7 @@ public class EntityBean<E extends Entities> {
 	
 	public void create(){
 		service.create(e);
+		defineGrowl("Success!", "Entity was created!", "create");
 	}
 	
 	public E read(){
@@ -37,10 +38,12 @@ public class EntityBean<E extends Entities> {
 	
 	public void update(){
 		service.update(e);
+		defineGrowl("Success!", "Entity was updated!", "update");
 	}
 	
 	public void remove(){
 		service.remove(e);
+		defineGrowl("Success!", "Entity was removed!", "remove");
 	}
 
 	public E getE() {
