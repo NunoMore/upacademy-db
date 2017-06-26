@@ -16,7 +16,6 @@ public class Academy extends Entities implements Serializable {
 	private Date date;
 	private String programmingLanguage;
 //	private Set<AcademyType> types;
-
 	
 	public String getName() {
 		return name;

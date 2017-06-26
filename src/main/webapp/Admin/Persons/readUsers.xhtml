@@ -11,7 +11,7 @@
 
 
 	<ui:define name="display">
-	
+
 		<p:growl for="remove" showDetail="true" autoUpdate="true" />
 		<p:growl for="update" showDetail="true" autoUpdate="true" />
 		<div class="row">
@@ -19,9 +19,9 @@
 				<h:form id="formDisplayPersons">
 					<p:dataTable id="persons" var="person"
 						value="#{personBean.readAll()}" widgetVar="personsTable"
-						multiViewState="true" rows="10" paginator="true"
+						multiViewState="true" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="25" selectionMode="single"
+						rows="25" selectionMode="single"
 						selection="#{tableView.selectedPerson}" rowKey="#{person.ID}"
 						emptyMessage="Não existem utilizadores a mostrar"
 						filteredValue="#{tableView.filteredPersons}">
@@ -29,18 +29,37 @@
 						<p:ajax event="rowSelect" update=":formEditPerson:editPerson" />
 
 						<f:facet name="header">
-				            Lista de Utilizadores
-				        </f:facet>
-						<p:column headerText="Nome">
+							<p:outputPanel>
+								<h:outputText value="Pesquisa" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('personsTable').filter()" />
+							</p:outputPanel>
+						</f:facet>
+
+						<p:column style="text-align: center" headerText="Nome"
+							filterBy="#{person.name}" sortBy="#{person.name}"
+							filterMatchMode="startsWith">
 							<h:outputText value="#{person.name}" />
 						</p:column>
-						<p:column headerText="Username">
-							<h:outputText value="#{person.username}" />
+
+						<p:column style="text-align: center" headerText="Academia"
+							filterBy="#{person.academy}" sortBy="#{person.academy}"
+							filterMatchMode="exact">
+							<p:outputLabel value="#{person.academy}" />
 						</p:column>
-						<p:column headerText="Academia">
+
+						<p:column style="text-align: center" headerText="Tecnologia"
+							filterBy="" sortBy="" filterMatchMode="exact">
 							<p:outputLabel value="#{person.academy}" />
 						</p:column>
 					</p:dataTable>
+					<br />
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/excel.png" width="24" />
+						<h:outputText value=" Download em formato .xls" />
+						<p:dataExporter type="xls" target="persons"
+							fileName="utilizadores" pageOnly="true" />
+					</h:commandLink>
 				</h:form>
 			</div>
 			<div class="col-md-4">
@@ -97,19 +116,18 @@
 						<h:inputText value="#{tableView.selectedPerson.workPlace}" />
 					</p:panelGrid>
 
-
-					<p:commandButton value="Guardar alteracoes" style="center"
+					<p:commandButton value="Guardar alteracoes" style="float:left;"
 						action="#{personBean.update(tableView.selectedPerson)}"
-						update=":formEditPerson:editPerson,formDisplayPersons:persons"
-						onclick="PF('dlg1').show()" />
+						update=":formEditPerson:editPerson,formDisplayPersons:persons" />
 
 					<p:commandButton value="Remover"
 						action="#{personBean.remove(tableView.selectedPerson)}"
-						update=":formEditPerson:editPerson,formDisplayPersons:persons">
+						update=":formEditPerson:editPerson,formDisplayPersons:persons"
+						style="float:right;">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
 					</p:commandButton>
-					
+
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"

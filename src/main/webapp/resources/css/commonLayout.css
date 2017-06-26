@@ -9,6 +9,18 @@ html *
 	color: black;
 }
 
+.center{
+	text-align: center;
+}
+
+.column1{
+	width: 20px;
+}
+
+.column2{
+	width: 50px;
+}
+
 .ui-growl {
     margin-top: 50px;
     z-index:9999;
