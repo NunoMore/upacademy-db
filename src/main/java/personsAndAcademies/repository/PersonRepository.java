@@ -5,8 +5,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
@@ -16,9 +14,6 @@ import personsAndAcademies.model.Person;
 @Transactional
 @ApplicationScoped
 public class PersonRepository extends Repository<Person>{
-	
-	@PersistenceContext(name="ProjectDataBase")
-	private EntityManager em;
 	
 	@PostConstruct
 	public void initAdmim(){
