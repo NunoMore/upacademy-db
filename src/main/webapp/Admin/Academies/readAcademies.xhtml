@@ -11,6 +11,9 @@
 
 
 	<ui:define name="display">
+	
+		<p:growl for="remove" showDetail="true" autoUpdate="true" />
+		<p:growl for="update" showDetail="true" autoUpdate="true" />
 		<div class="row">
 			<div class="col-md-8">
 				<h:form id="formDisplayAcademy">
@@ -21,7 +24,7 @@
 						paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="25"
-						emptyMessage="Não existem academias na pesquisa efectuada"
+						emptyMessage="Não existem academias a mostrar"
 						filteredValue="#{tableView.filteredAcademies}">
 
 						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
@@ -43,6 +46,20 @@
 					</p:dataTable>
 				</h:form>
 			</div>
+			
+<!-- 			<p:dataTable var="languages" value="#{academyTypeBean.readAll()}"> -->
+<!-- 				<p:column headerText="Id"> -->
+<!-- 					<h:outputText value="#{academyType.ID}" /> -->
+<!-- 				</p:column> -->
+
+<!-- 				<p:column headerText="language"> -->
+<!-- 					<h:outputText value="#{academyType.language}" /> -->
+<!-- 				</p:column> -->
+
+<!-- 			</p:dataTable> -->
+
+
+
 			<div class="col-md-4">
 				<h:form id="formEditAcademy">
 					<p:panelGrid id="editAcademy" columns="2">
@@ -70,17 +87,11 @@
 
 					</p:panelGrid>
 					<p:commandButton value="Guardar alteracoes" style="center"
-						action="#{academyService.update(tableView.selectedAcademy)}"
-						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy"
-						onclick="PF('dlg1').show()" />
-
-					<p:dialog header="Confirmacao alteracoes" widgetVar="dlg1"
-						minHeight="40" resizable="false">
-						<h:outputText value="As alteracoes foram guardadas com sucesso" />
-					</p:dialog>
+						action="#{academyBean.update(tableView.selectedAcademy)}"
+						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
 
 					<p:commandButton value="Remover"
-						action="#{academyService.remove(tableView.selectedAcademy)}"
+						action="#{academyBean.remove(tableView.selectedAcademy)}"
 						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
@@ -88,7 +99,7 @@
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{academyService.remove(tableView.selectedAcademy)}" />
+							action="#{academyBean.remove(tableView.selectedAcademy)}" />
 						<p:commandButton value="Nao" type="button"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>
