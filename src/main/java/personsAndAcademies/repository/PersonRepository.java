@@ -15,15 +15,7 @@ import personsAndAcademies.model.Person;
 @ApplicationScoped
 public class PersonRepository extends Repository<Person>{
 	
-	@PostConstruct
-	public void initAdmim(){
-		final Person admin = new Person();
-		admin.setName("Admin");
-		admin.setPassword("admin");
-		admin.setUsername("admin");
-		create(admin);
-	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<String> readPhotos(){
 		Query query = em.createQuery("Select photo from Person");

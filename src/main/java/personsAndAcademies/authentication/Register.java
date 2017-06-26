@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.omnifaces.util.Messages;
 
 import personsAndAcademies.authentication.User;

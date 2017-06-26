@@ -1,5 +1,4 @@
 package personsAndAcademies.authentication;
-
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,9 +8,9 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import personsAndAcademies.authentication.User;
 import org.omnifaces.cdi.ViewScoped;
 
+import personsAndAcademies.authentication.User;
 
 @Stateless
 public class UserService {
