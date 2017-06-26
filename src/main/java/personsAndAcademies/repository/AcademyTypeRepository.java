@@ -1,5 +1,7 @@
 package personsAndAcademies.repository;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -18,7 +20,7 @@ public class AcademyTypeRepository extends Repository<AcademyType>{
 	private EntityManager em;
 	
 	public AcademyType read(AcademyType academyType){
-		Query query = em.createQuery(("Select e from Academy e where e.name = '"+ academyType.getLanguage() + "'"));
+		Query query = em.createQuery(("Select e from AcademyType e where e.language = '"+ academyType.getLanguage() + "'"));
 		return (AcademyType)query.getResultList().get(0);
 	}
 	
@@ -26,6 +28,19 @@ public class AcademyTypeRepository extends Repository<AcademyType>{
 		academyType = em.find(AcademyType.class,academyType.getID());
 		em.remove(academyType);
 	}
+	
+//	public AcademyType readLanguage(AcademyType academyType){
+//		Query query = em.createQuery("Select e from AcademyType e where e.language = '"+ academyType.getLanguage() + "'");
+//		return (AcademyType)query.getResultList().get(0);
+//	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> readLanguages(){
+		Query query = em.createQuery("Select language from AcademyType language");
+		return (List<String>) query.getResultList();
+	}
+
+
 }
 	
 

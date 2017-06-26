@@ -31,18 +31,20 @@
 					<p:inputTextarea value="#{academyBean.e.description}" rows="6"
 						cols="33" />
 
-					<p:outputLabel value="Linguagem Programacao" />
-					<p:selectOneListbox value="#{academyTypeBean.e.language}">
-						<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
-						<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
-						<f:selectItem itemLabel=".NET" itemValue=".NET" />
-					</p:selectOneListbox>
+					<p:outputLabel for="language" value="Linguagem: " />
+					<p:selectOneMenu id="language" value="#{academyTypeBean.e.language}"
+						style="width:150px">
+
+						<f:selectItem itemLabel="Select language" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{academyTypeService.allLanguages()}" />
+					</p:selectOneMenu>
 
 					<p:commandButton styleClass="btn btn-submit"
-						action="#{academyBean.create()}" value="Create!" />
-
+								action="#{academyBean.create()}" value="Create!" />
 				</p:panelGrid>
 			</p:panel>
+								
 		</h:form>
 	</ui:define>
 </ui:composition>

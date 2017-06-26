@@ -1,21 +1,24 @@
 package personsAndAcademies.model;
 
 import java.io.Serializable;
-//import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-//import javax.persistence.CascadeType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-//import javax.persistence.JoinTable;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AcademyType extends Entities implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	
 	private String language;
-	private String other;
-//	private Set<Academy> academies;
+	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+//	@JoinColumn(name = "name")
+	private List<Academy> names;
 	
 	
 	public String getLanguage() {
@@ -24,27 +27,14 @@ public class AcademyType extends Entities implements Serializable  {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public String getOther() {
-		return other;
+	public List<Academy> getNames() {
+		return names;
 	}
-	public void setOther(String other) {
-		this.other = other;
+	public void setNames(List<Academy> names) {
+		this.names = names;
 	}
-//	public Set<Academy> getAcademies() {
-//		return academies;
-//	}
-//	public void setAcademies(Set<Academy> academies) {
-//		this.academies = academies;
-//	}
-	
-	
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "academyandtype", joinColumns = @JoinColumn(name = "academytype_language", referencedColumnName = "language"), inverseJoinColumns = @JoinColumn(name = "academy_name", referencedColumnName = "name"))
-//    public Set<Academy> geAcademies() {
-//        return academies;
-//    }
-	
-	
+
+
 
 	
 }
