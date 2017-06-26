@@ -1,3 +1,8 @@
+html *
+{
+   font-family:  Helvetica Neue,Helvetica,Arial,sans-serif; !important;
+}
+
 /* Conteudo central */
 #content {
 	margin-top: 100px;
@@ -5,7 +10,7 @@
 }
 
 .ui-growl {
-    margin-top: 40px;
+    margin-top: 50px;
     z-index:9999;
 }
 
@@ -27,7 +32,7 @@
 
 .container2 {
 	margin: 0 auto;
-	width: 80%;
+	width: 90%;
 	overflow: hidden;
 	font-size: .875em;
 	padding-bottom: 120px;

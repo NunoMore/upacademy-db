@@ -12,7 +12,7 @@
 
 	<ui:define name="display">
 
-		<p:tooltip />
+		<p:tooltip style="color: black" />
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
 		<p:growl id="msg"/>
 
@@ -22,16 +22,15 @@
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol" columns="2">
 						<f:facet name="header">
-							<p:graphicImage name="Uploads#{currentUserBean.e.photo}"
+							<p:graphicImage styleClass="img-circle" name="Uploads#{currentUserBean.e.photo}"
 								rendered="#{currentUserBean.e.photo != null}" style="width:100%" />
-							<p:graphicImage name="images/defaultUser.png"
+							<p:graphicImage styleClass="img-circle" name="images/defaultUser.png"
 								rendered="#{currentUserBean.e.photo == null}" style="width:100%" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
 						action="#{currentUserBean.update()}"
-						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
 						update="myProfile,msg" />
 				</div>
 

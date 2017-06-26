@@ -16,23 +16,20 @@
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
 		<p:growl id="msg"/>
 
-		<h:form id="myProfile" enctype="multipart/form-data">
+		<h:form id="myProfile">
 			<div class="row">
 				<div class="col-md-2">
 					<!-- Panelgrid with photo -->
-					<p:panelGrid id="ProfileCol" columns="2">
+					<p:panelGrid id="ProfileCol" >
 						<f:facet name="header">
-							<p:graphicImage name="Uploads#{currentUserBean.e.photo}"
-								rendered="#{currentUserBean.e.photo != null}" style="width:100%" />
-							<p:graphicImage name="images/defaultUser.png"
-								rendered="#{currentUserBean.e.photo == null}" style="width:100%" />
+							<p:graphicImage styleClass="img-circle" name="Uploads#{tableView.selectedPerson.photo}"
+								rendered="#{tableView.selectedPerson.photo != null}" style="width:100%" />
+							<p:graphicImage styleClass="img-circle" name="images/defaultUser.png"
+								rendered="#{tableView.selectedPerson.photo == null}" style="width:100%" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<p:commandButton id="saveBtn" value="Guardar"
-						action="#{currentUserBean.update()}"
-						oncomplete="if (!args.validationFailed) PF('dlg1').show()"
-						update="myProfile,msg" />
+					<p:commandLink action="/main-page.xhtml?faces-redirect=true" value="Voltar" style=" padding: 30px;" ajax="false"/>
 				</div>
 
 				<div class="col-md-4">
@@ -43,40 +40,23 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Nome" />
-						<p:inputText id="Name" value="#{currentUserBean.e.name}"
-							required="true" pt:data-tooltip="Campo Obrigatorio"
-							requiredMessage="Nome inválido!" />
+						<h:outputText id="Name" value="#{tableView.selectedPerson.name}" />
 
 
 						<h:outputText value="Data de Nascimento" />
-						<p:calendar value="#{currentUserBean.e.dateOfBirth}" locate="pt"
-							navigator="true" pattern="yyyy-MMM-dd"
-							pt:data-tooltip="Campo Obrigatorio" required="true"
-							requiredMessage="Data de Nascimento inválida!" />
+						<h:outputText value="#{tableView.selectedPerson.dateOfBirth}" />
 
 						<h:outputText value="Genero" />
-						<p:selectOneMenu value="#{currentUserBean.e.gender}">
-							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-						</p:selectOneMenu>
+						<h:outputText value="#{tableView.selectedPerson.gender}" />
 
 						<h:outputText value="Numero Telefone" />
-						<p:inputMask mask="999999999"
-							value="#{currentUserBean.e.numTelephone}"
-							pt:data-tooltip="Campo Obrigatorio" required="true"
-							requiredMessage="Contacto de telefone inválido!" />
+						<h:outputText value="#{tableView.selectedPerson.numTelephone}"/>
 
 						<h:outputText value="Email" />
-						<p:inputText value="#{currentUserBean.e.email}"
-							pt:data-tooltip="Campo Obrigatorio" required="true"
-							requiredMessage="Email inválido!" />
+						<h:outputText value="#{tableView.selectedPerson.email}"/>
 
 						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
-							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
-							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
-							<f:selectItem itemLabel=".NET" itemValue=".NET" />
-						</p:selectOneMenu>
+						<h:outputText value="#{tableView.selectedPerson.academy}" />
 
 					</p:panelGrid>
 				</div>
@@ -88,33 +68,22 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Facebook" />
-						<p:inputText value="#{currentUserBean.e.facebookLink}" />
+						<h:link value="#{tableView.selectedPerson.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<p:inputText value="#{currentUserBean.e.linkedInLink}" />
+						<h:link value="#{tableView.selectedPerson.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<p:inputText value="#{currentUserBean.e.gitHubLink}" />
+						<h:link value="#{tableView.selectedPerson.gitHubLink}" />
 
 						<h:outputText value="Curso Academico" />
-						<p:inputText value="#{currentUserBean.e.academicCourse}" />
+						<h:outputText value="#{tableView.selectedPerson.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
-						<p:inputText value="#{currentUserBean.e.workPlace}" />
+						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
-							label="Selecionar" uploadLabel="Upload"
-							fileUploadListener="#{uploadBean.uploadCurriculum}"
-							update=":myProfile:ProfileCol"
-							allowTypes="/(\.|\/)(pdf|doc|docx)$/i" />
-
-						<h:outputText value="Foto" />
-						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
-							label="Selecionar" uploadLabel="Upload"
-							fileUploadListener="#{uploadBean.uploadImg}"
-							update=":myProfile:ProfileCol" sizeLimit="4000000"
-							allowTypes="/(\.|\/)(gif|jpe?g|png)$/i" />
+						<a href="resources/Uploads#{tableView.selectedPerson.curriculum}" target="_blank">Download</a>
 
 					</p:panelGrid>
 
