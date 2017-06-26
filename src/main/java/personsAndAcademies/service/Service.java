@@ -10,9 +10,11 @@ import javax.inject.Inject;
 import org.primefaces.event.SelectEvent;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.AcademyType;
 import personsAndAcademies.model.Entities;
 import personsAndAcademies.model.Person;
 import personsAndAcademies.repository.AcademyRepository;
+import personsAndAcademies.repository.AcademyTypeRepository;
 import personsAndAcademies.repository.PersonRepository;
 import personsAndAcademies.repository.Repository;
 
@@ -23,6 +25,9 @@ public abstract class Service<E extends Entities> {
 	
 	@Inject
 	private AcademyRepository academyRepo;
+	
+	@Inject
+	private AcademyTypeRepository academyTypeRepo;
 
 	@Inject
 	private PersonRepository personRepo;
@@ -37,6 +42,9 @@ public abstract class Service<E extends Entities> {
 			return (E)personRepo.read((Person)e);
 		} else if (e.getClass() == Academy.class) {
 			return (E)academyRepo.read((Academy)e);
+		}
+		else if (e.getClass() == AcademyType.class) {
+			return (E)academyTypeRepo.read((AcademyType)e);
 		}
 		return null;
 	}

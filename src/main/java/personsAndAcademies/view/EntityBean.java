@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.AcademyType;
 import personsAndAcademies.model.Entities;
 import personsAndAcademies.model.Person;
 import personsAndAcademies.service.Service;
@@ -32,6 +33,8 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 			return service.readAll("Person");
 		} else if (e.getClass() == Academy.class) {
 			return service.readAll("Academy");
+		}else if (e.getClass() == AcademyType.class) {
+			return service.readAll("AcademyType");
 		}
 		return null;
 	}
