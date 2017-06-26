@@ -16,17 +16,18 @@ import personsAndAcademies.service.AcademyTypeService;
 @RequestScoped
 public class AcademyTypeBean extends EntityBean<AcademyType> {
 	
-//	@Inject
-//	private AcademyTypeService academyTypeService;
-//	
-//	public List<String> readAllLanguages(){
-//		return academyTypeService.readLanguages();
-//	}
+	@Inject
+	private AcademyTypeService academyTypeService;
 	
+	public List<String> readAllLanguages(){
+		return academyTypeService.allLanguages();
+	}
 	
 	@PostConstruct
 	public void init(){
 		e=new AcademyType();
 	}
+	
+
 	
 }
