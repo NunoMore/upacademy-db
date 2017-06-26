@@ -60,6 +60,14 @@
 						<p:dataExporter type="xls" target="persons"
 							fileName="utilizadores" pageOnly="true" />
 					</h:commandLink>
+					<br />
+					<br />
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/pdf.png" width="24" />
+						<h:outputText value=" Download em formato .pdf" />
+						<p:dataExporter type="pdf" target="persons"
+							fileName="utilizadores" pageOnly="true" />
+					</h:commandLink>
 				</h:form>
 			</div>
 			<div class="col-md-4">

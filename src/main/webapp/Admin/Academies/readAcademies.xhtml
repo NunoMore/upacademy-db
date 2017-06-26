@@ -41,37 +41,45 @@
 							filterMatchMode="startsWith">
 							<h:outputText value="#{academy.name}" />
 						</p:column>
-						
+
 						<p:column headerText="Date">
 							<h:outputText value="#{academy.date}">
 								<f:convertDateTime pattern="yyyy-MMM-dd" />
 							</h:outputText>
 						</p:column>
-						
+
 						<p:column headerText="Tecnologia">
 							<h:outputText value="#{academy.programmingLanguage}" />
 						</p:column>
 					</p:dataTable>
 					<br />
-							<h:commandLink style="float:left;">
-								<p:graphicImage name="images/excel.png" width="24" />
-								<h:outputText value=" Download em formato .xls" />
-								<p:dataExporter type="xls" target="academy"
-									fileName="academias" pageOnly="true" />
-							</h:commandLink>
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/excel.png" width="24" />
+						<h:outputText value=" Download em formato .xls" />
+						<p:dataExporter type="xls" target="academy" fileName="academias"
+							pageOnly="true" />
+					</h:commandLink>
+					<br />
+					<br />
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/pdf.png" width="24" />
+						<h:outputText value=" Download em formato .pdf" />
+						<p:dataExporter type="pdf" target="academy"
+							fileName="academias" pageOnly="true" />
+					</h:commandLink>
 				</h:form>
 			</div>
-			
-<!-- 			<p:dataTable var="languages" value="#{academyTypeBean.readAll()}"> -->
-<!-- 				<p:column headerText="Id"> -->
-<!-- 					<h:outputText value="#{academyType.ID}" /> -->
-<!-- 				</p:column> -->
 
-<!-- 				<p:column headerText="language"> -->
-<!-- 					<h:outputText value="#{academyType.language}" /> -->
-<!-- 				</p:column> -->
+			<!-- 			<p:dataTable var="languages" value="#{academyTypeBean.readAll()}"> -->
+			<!-- 				<p:column headerText="Id"> -->
+			<!-- 					<h:outputText value="#{academyType.ID}" /> -->
+			<!-- 				</p:column> -->
 
-<!-- 			</p:dataTable> -->
+			<!-- 				<p:column headerText="language"> -->
+			<!-- 					<h:outputText value="#{academyType.language}" /> -->
+			<!-- 				</p:column> -->
+
+			<!-- 			</p:dataTable> -->
 
 
 
