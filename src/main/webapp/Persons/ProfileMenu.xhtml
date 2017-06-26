@@ -14,22 +14,27 @@
 
 		<p:tooltip />
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
-		<p:growl id="msg"/>
+		<p:growl id="msg" />
 
 		<h:form id="myProfile">
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-2 center">
 					<!-- Panelgrid with photo -->
-					<p:panelGrid id="ProfileCol" >
+					<p:panelGrid id="ProfileCol">
 						<f:facet name="header">
-							<p:graphicImage styleClass="img-circle" name="Uploads#{tableView.selectedPerson.photo}"
-								rendered="#{tableView.selectedPerson.photo != null}" style="width:100%" />
-							<p:graphicImage styleClass="img-circle" name="images/defaultUser.png"
-								rendered="#{tableView.selectedPerson.photo == null}" style="width:100%" />
+							<p:graphicImage styleClass="img-circle"
+								name="Uploads#{tableView.selectedPerson.photo}"
+								rendered="#{tableView.selectedPerson.photo != null}"
+								style="width:100px" />
+							<p:graphicImage styleClass="img-circle"
+								name="images/defaultUser.png"
+								rendered="#{tableView.selectedPerson.photo == null}"
+								style="width:100px" />
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<p:commandLink action="/main-page.xhtml?faces-redirect=true" value="Voltar" style=" padding: 30px;" ajax="false"/>
+					<p:commandLink action="/main-page.xhtml?faces-redirect=true"
+						value="Voltar" ajax="false" />
 				</div>
 
 				<div class="col-md-4">
@@ -37,11 +42,10 @@
 					<p:panelGrid id="EditColVital" columns="2">
 
 						<p:outputLabel value="Dados" />
-						<p:outputLabel value="Informacoes" />
+						<p:outputLabel value="Informações" />
 
 						<h:outputText value="Nome" />
 						<h:outputText id="Name" value="#{tableView.selectedPerson.name}" />
-
 
 						<h:outputText value="Data de Nascimento" />
 						<h:outputText value="#{tableView.selectedPerson.dateOfBirth}" />
@@ -50,10 +54,10 @@
 						<h:outputText value="#{tableView.selectedPerson.gender}" />
 
 						<h:outputText value="Numero Telefone" />
-						<h:outputText value="#{tableView.selectedPerson.numTelephone}"/>
+						<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
 
 						<h:outputText value="Email" />
-						<h:outputText value="#{tableView.selectedPerson.email}"/>
+						<h:outputText value="#{tableView.selectedPerson.email}" />
 
 						<h:outputText value="Academia" />
 						<h:outputText value="#{tableView.selectedPerson.academy}" />
@@ -65,7 +69,7 @@
 					<p:panelGrid id="EditColNotVital" columns="2">
 
 						<p:outputLabel value="Dados" />
-						<p:outputLabel value="Informacoes" />
+						<p:outputLabel value="Informações" />
 
 						<h:outputText value="Facebook" />
 						<h:link value="#{tableView.selectedPerson.facebookLink}" />
@@ -83,7 +87,11 @@
 						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<a href="resources/Uploads#{tableView.selectedPerson.curriculum}" target="_blank">Download</a>
+						<h:outputText rendered="#{tableView.selectedPerson.curriculum == null}" value="Utilizador não fez upload do seu curriculum."/>
+						<h:link rendered="#{tableView.selectedPerson.curriculum != null}">
+							<a href="resources/Uploads#{tableView.selectedPerson.curriculum}"
+								target="_blank">Download</a>
+						</h:link>
 
 					</p:panelGrid>
 

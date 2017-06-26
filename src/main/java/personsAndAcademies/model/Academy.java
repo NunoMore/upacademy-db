@@ -14,9 +14,6 @@ public class Academy extends Entities implements Serializable {
 	private Date date;
 	private String programmingLanguage;
 
-	//@Lob
-	//private byte[] pdf;
-	
 	public String getName() {
 		return name;
 	}
