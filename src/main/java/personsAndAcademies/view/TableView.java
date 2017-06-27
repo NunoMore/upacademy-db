@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import personsAndAcademies.model.Academy;
+import personsAndAcademies.model.AcademyType;
 import personsAndAcademies.model.Person;
 
 @Named("tableView")
@@ -19,6 +20,25 @@ public class TableView implements Serializable {
 	
 	private Academy selectedAcademy;
 	private List<Academy> filteredAcademies;
+	
+	public AcademyType getSelectedType() {
+		return selectedType;
+	}
+
+	public void setSelectedType(AcademyType selectedType) {
+		this.selectedType = selectedType;
+	}
+
+	public List<AcademyType> getFilteredTypes() {
+		return filteredTypes;
+	}
+
+	public void setFilteredTypes(List<AcademyType> filteredTypes) {
+		this.filteredTypes = filteredTypes;
+	}
+
+	private AcademyType selectedType;
+	private List<AcademyType> filteredTypes;
 	
 	public String fillSelectedPerson(Person person){
 		selectedPerson = person;

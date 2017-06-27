@@ -60,6 +60,12 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 		service.remove(e);
 		defineGrowl("Success!", "Entity was removed!", "remove");
 	}
+	
+//	public void createTwoInOne(Academy academy, AcademyType type){
+//		service.create(e);
+//		service.create(type);
+//		
+//	}
 
 	public E getE() {
 		return e;

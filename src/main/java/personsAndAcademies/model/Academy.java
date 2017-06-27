@@ -2,10 +2,9 @@ package personsAndAcademies.model;
 
 import java.io.Serializable;
 import java.util.Date;
-//import java.util.Set;
 
 import javax.persistence.Entity;
-//import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Academy extends Entities implements Serializable {
@@ -15,7 +14,7 @@ public class Academy extends Entities implements Serializable {
 	private String description;
 	private Date date;
 	private String programmingLanguage;
-//	private Set<AcademyType> types;
+
 	
 	public String getName() {
 		return name;
@@ -42,15 +41,5 @@ public class Academy extends Entities implements Serializable {
 	public void setProgrammingLanguage(String programmingLanguage) {
 		this.programmingLanguage = programmingLanguage;
 	}
-//	public Set<AcademyType> getTypes() {
-//		return types;
-//	}
-//	public void setTypes(Set<AcademyType> types) {
-//		this.types = types;
-//	}	
-//	
-//	  @ManyToMany(mappedBy = "academies")
-//	    public Set<AcademyType> geTypes() {
-//	        return types;
-//	    }
+
 }
