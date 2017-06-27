@@ -20,4 +20,6 @@ public class AcademyTypeService extends Service<AcademyType>{
 		return academyTyperepo.readLanguages();
 	}
 	
+//	String [] arrayLanguages = new String [allLanguages().size()];
+	
 }

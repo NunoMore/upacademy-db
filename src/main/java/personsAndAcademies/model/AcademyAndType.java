@@ -28,6 +28,5 @@ public class AcademyAndType extends Entities implements Serializable{
 
 
 
-
 	
 }

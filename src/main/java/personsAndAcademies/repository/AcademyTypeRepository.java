@@ -38,7 +38,21 @@ public class AcademyTypeRepository extends Repository<AcademyType>{
 	public List<String> readLanguages(){
 		Query query = em.createQuery("Select language from AcademyType language");
 		return (List<String>) query.getResultList();
+		
+//		final List<String> readLanguages;
+//		
+//		String [] langarr = new String [readLanguages.size()];
+//				readLanguages.toArray(langarr);
+//		final List<String> readLanguages;
+//				
+//		String [] stringArray = readLanguages.toArray(new String[readLanguages.size()];
 	}
+	
+	
+	
+	
+
+	
 
 
 }
