@@ -11,7 +11,7 @@
 
 
 	<ui:define name="display">
-	
+
 		<p:growl for="remove" showDetail="true" autoUpdate="true" />
 		<p:growl for="update" showDetail="true" autoUpdate="true" />
 		<div class="row">
@@ -20,32 +20,56 @@
 					<p:dataTable id="academy" var="academy"
 						value="#{academyBean.readAll()}" selectionMode="single"
 						selection="#{tableView.selectedAcademy}" rowKey="#{academy.ID}"
-						widgetVar="personsTable" multiViewState="true" rows="10"
+						widgetVar="personsTable" multiViewState="true" rows="25"
 						paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="25"
 						emptyMessage="Não existem academias a mostrar"
 						filteredValue="#{tableView.filteredAcademies}">
 
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Pesquisa" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('personsTable').filter()" />
+							</p:outputPanel>
+						</f:facet>
+
 						<p:ajax event="rowSelect" update=":formEditAcademy:editAcademy" />
 
-						<f:facet name="header">
-				            Single with Row Click
-				        </f:facet>
-						<p:column headerText="Name">
+						<p:column style="text-align: center" headerText="Nome"
+							filterBy="#{academy.name}" sortBy="#{academy.name}"
+							filterMatchMode="startsWith">
 							<h:outputText value="#{academy.name}" />
 						</p:column>
-						<p:column headerText="Date">
+
+						<p:column headerText="Data de Inicio">
 							<h:outputText value="#{academy.date}">
 								<f:convertDateTime pattern="yyyy-MMM-dd" />
 							</h:outputText>
 						</p:column>
-						<p:column headerText="linguagem Programacao">
+
+						<p:column headerText="Linguagem de Progararmção">
 							<h:outputText value="#{academy.programmingLanguage}" />
+<!-- 							<h:outputText value="#{academyType.laguage}" rendered="#{academy.programmingLanguage}==null" /> -->
 						</p:column>
 					</p:dataTable>
+					<br />
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/excel.png" width="24" />
+						<h:outputText value=" Download em formato .xls" />
+						<p:dataExporter type="xls" target="academy" fileName="academias"
+							pageOnly="true" />
+					</h:commandLink>
+					<br />
+					<br />
+					<h:commandLink style="float:left;">
+						<p:graphicImage name="images/pdf.png" width="24" />
+						<h:outputText value=" Download em formato .pdf" />
+						<p:dataExporter type="pdf" target="academy"
+							fileName="academias" pageOnly="true" />
+					</h:commandLink>
 				</h:form>
-			</div>
+			</div>e
 
 			<div class="col-md-4">
 				<h:form id="formEditAcademy">
@@ -65,26 +89,32 @@
 						<p:outputLabel value="Descricao" />
 						<p:inputText value="#{tableView.selectedAcademy.description}" />
 
-						<p:outputLabel for="language" value="Linguagem: " />
-						<p:selectOneMenu id="language" value="#{tableView.selectedAcademy.programmingLanguage}"
+						<p:outputLabel for="programmingLanguage" value="Linguagem: " />
+						<p:selectOneMenu id="programmingLanguage" value="#{tableView.selectedAcademy.programmingLanguage}"
 						style="width:150px">
 						<f:selectItem itemLabel="Select language" itemValue=""
 							noSelectionOption="true" />
 						<f:selectItems value="#{academyTypeService.allLanguages()}" />
 						</p:selectOneMenu>
+						
+						
+						
 
 					</p:panelGrid>
-					<p:commandButton value="Guardar alteracoes" style="center"
+
+					<p:commandButton value="Guardar alteracoes" style="float:left"
 						action="#{academyBean.update(tableView.selectedAcademy)}"
 						
 						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
 
 					<p:commandButton value="Remover"
 						action="#{academyBean.remove(tableView.selectedAcademy)}"
-						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy">
+						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy"
+						style="float:right;">
 						<p:confirm header="Confirmacao de Remocao"
 							message="Pretende avancar?" icon="ui-icon-alert" />
 					</p:commandButton>
+
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
