@@ -37,20 +37,7 @@ public class CurrentUserBean extends EntityBean<Person> implements Serializable 
 				System.out.println(e.getMessage());
 			}
 		}
-		
-		@PreDestroy
-		public void logOut(){
-			e.setOnline(false);
-			update();
-		}
 	
-		public void initCurrentUser(){
-			e.setUsername((String)SecurityUtils.getSubject().getPrincipal()); 
-				e = read();
-				e.setOnline(true);
-				update();
-
-		}
 		
 //		private void uploadPhotos() throws IOException{ //nao testado
 //			
