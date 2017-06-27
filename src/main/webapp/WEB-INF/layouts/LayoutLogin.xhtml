@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title><ui:insert name="title">Some title</ui:insert></title>
+
+	<!-- BOOTSTRAP -->
+	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+
+	<!-- css only -->
+	<h:outputStylesheet name="css/commonLayout.css" />
+	<h:outputStylesheet name="css/commonHeader.css" />
+	<h:outputStylesheet name="css/commonFooter.css" />
+	<h:outputStylesheet name="css/main-page.css" />
+
+	<ui:insert name="css" />
+
+</h:head>
+<body>
+	<div class="wrap">
+	
+		<ui:insert name="header">
+		
+			<!--  Header -->
+			<ui:include src="/WEB-INF/layouts/HeaderLogin.xhtml" />
+		</ui:insert>
+		
+		<!-- Conteudo central -->
+		<div class="row rowContent">
+			<div id="content" class="container2">
+				<ui:insert name="display">
+				</ui:insert>
+			</div>
+		</div>
+	</div>
+
+	<!--  Footer -->
+	<ui:include src="/WEB-INF/layouts/commonFooter.xhtml" />
+
+	<h:outputScript name="bootstrap/js/bootstrap.js" />
+	<h:outputScript name="javascript/commonHeader.js" />
+	<h:outputScript name="javascript/mainPage.js" />
+</body>
+</html>

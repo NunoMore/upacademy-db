@@ -8,10 +8,6 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.omnifaces.cdi.ViewScoped;
-
-import personsAndAcademies.authentication.User;
-
 @Stateless
 public class UserService {
 

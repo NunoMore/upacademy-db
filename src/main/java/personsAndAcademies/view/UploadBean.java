@@ -94,7 +94,7 @@ public class UploadBean extends GrowlBean {
 		if (file != null) {
 			defineGrowl("Success! ", file.getFileName() + " is uploaded!", "uploads");
 		} else {
-			defineGrowl("Error!", "Upload was unsucceful", "uploads");
+			defineGrowl("Error!", "Upload was unsuccessful", "uploads");
 		}
 
 	}

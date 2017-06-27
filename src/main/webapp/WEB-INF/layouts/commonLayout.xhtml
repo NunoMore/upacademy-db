@@ -28,9 +28,13 @@
 </h:head>
 <body>
 	<div class="wrap">
-		<!--  Header -->
-		<ui:include src="/WEB-INF/layouts/commonHeader.xhtml" />
-
+	
+		<ui:insert name="header">
+		
+			<!--  Header -->
+			<ui:include src="#{currentUserBean.role()}" />
+		</ui:insert>
+		
 		<!-- Conteudo central -->
 		<div class="row rowContent">
 			<div id="content" class="container2">

@@ -10,13 +10,13 @@
 
 	<ui:define name="display">
 	#{currentUserBean.initCurrentUser()}
+			
 		<h:form id="formTable">
 			<p:dataTable id="consultAll" var="person"
 				value="#{personBean.readAll()}" widgetVar="personsTable"
 				multiViewState="true" rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="100"
-				rowKey="#{person.ID}"
+				rowsPerPageTemplate="100" rowKey="#{person.ID}"
 				emptyMessage="Não existem utilizadores a mostrar"
 				filteredValue="#{tableView.filteredPersons}">
 
@@ -29,19 +29,23 @@
 				</f:facet>
 
 				<p:column style="width:50px;text-align: center">
-					<p:graphicImage styleClass="img-circle" id="img" name="Uploads#{person.photo}"
-						rendered="#{person.photo != null}" style="width:30px" />
-					<p:graphicImage styleClass="img-circle" name="images/defaultUser.png"
-						rendered="#{person.photo == null}" style="width:30px" />
+					<p:graphicImage styleClass="img-circle" id="img"
+						name="Uploads#{person.photo}" rendered="#{person.photo != null}"
+						style="width:30px" />
+					<p:graphicImage styleClass="img-circle"
+						name="images/defaultUser.png" rendered="#{person.photo == null}"
+						style="width:30px" />
 				</p:column>
 
-				<p:column style="text-align: center" headerText="Nome" filterBy="#{person.name}"
-					sortBy="#{person.name}" filterMatchMode="startsWith">
+				<p:column style="text-align: center" headerText="Nome"
+					filterBy="#{person.name}" sortBy="#{person.name}"
+					filterMatchMode="startsWith">
 					<h:outputText value="#{person.name}" />
 				</p:column>
 
-				<p:column style="text-align: center" headerText="Academia" filterBy="#{person.academy}"
-					sortBy="#{person.academy}" filterMatchMode="exact">
+				<p:column style="text-align: center" headerText="Academia"
+					filterBy="#{person.academy}" sortBy="#{person.academy}"
+					filterMatchMode="exact">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('personsTable').filter()"
 							style="width:150px;">
@@ -54,12 +58,12 @@
 					</f:facet>
 					<h:outputText value="#{person.academy}" />
 				</p:column>
-				
+
 				<p:column style="width:50px;text-align: center">
 					<p:commandButton action="#{tableView.fillSelectedPerson(person)}"
 						icon="ui-icon-search" ajax="false" />
 				</p:column>
-				
+
 			</p:dataTable>
 		</h:form>
 	</ui:define>

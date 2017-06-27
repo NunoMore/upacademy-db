@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
-import personsAndAcademies.authentication.Login;
 import personsAndAcademies.model.Person;
 
 @Named("currentUserBean")
@@ -44,6 +41,16 @@ public class CurrentUserBean extends EntityBean<Person> implements Serializable 
 			e.setUsername((String) SecurityUtils.getSubject().getPrincipal());
 			e=read();
 			update();
+		}
+		
+		public String role(){
+			String user = (String)SecurityUtils.getSubject().getPrincipal();
+			//String user = (String)SecurityUtils.getSubject().checkRole(roleIdentifier);
+			if (user.equals("admin")) {
+				return "/WEB-INF/layouts/commonHeaderAdmin.xhtml";
+			} else {
+				return "/WEB-INF/layouts/commonHeaderUser.xhtml";
+			}
 		}
 	
 		

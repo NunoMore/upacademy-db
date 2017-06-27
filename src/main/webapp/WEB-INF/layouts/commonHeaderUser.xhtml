@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body >
+	<ui:composition>
+		<header id="header_bar"
+			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
+			role="banner">
+			<div class="container">
+				<DIV class="col-md-2">
+					<a href="https://www.upacademy.pt/"><IMG
+						src="/UPACADEMY_DB/resources/images/logo.jpg" class="logo" /></a>
+
+				</DIV>
+				<div class="col-md-7">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse"
+							data-target=".bs-navbar-collapse" />
+						<a id="homeBtn" href="/UPACADEMY_DB/main-page.xhtml"
+							class="navbar-brand">Home</a>
+					</div>
+					<nav class="collapse navbar-collapse bs-navbar-collapse"
+						role="navigation">
+						<ul class="nav navbar-nav">
+							<li><a id="myProfileBtn"
+								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">My Profile</a></li>
+							<!-- <li><a id="creditsBtn" href="/UPACADEMY_DB/credits.xhtml">Créditos</a></li> -->
+							<!-- <li><a id="contactsBtn" href="#">Contacts</a></li> -->
+						</ul>
+					</nav>
+				</div>
+				<DIV class="col-md-3">
+					<nav>
+
+						<!-- tentar meter isto do lado direito mais a direita -->
+						<ul id="logOutHeader" class="nav navbar-nav">
+
+							<li><a id="usernameHeader"
+								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">#{currentUserBean.e.username}</a></li>
+							<li><h:form>
+									<h:commandLink style="padding:15px; float: left" value="Logout"
+										action="#{logout.submit}" />
+								</h:form></li>
+							<p:graphicImage styleClass="img-circle" id="img"
+								name="Uploads#{currentUserBean.e.photo}" rendered="#{currentUserBean.e.photo != null}"
+								style="width:50px;" />
+							<p:graphicImage styleClass="img-circle"
+								name="images/defaultUser.png" rendered="#{currentUserBean.e.photo == null}"
+								style="width:50px;" />
+						</ul>
+					</nav>
+				</DIV>
+
+			</div>
+		</header>
+	</ui:composition>
+</body>
+</html>

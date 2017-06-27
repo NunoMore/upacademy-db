@@ -6,13 +6,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	template="WEB-INF/layouts/commonLayout.xhtml">
+	template="WEB-INF/layouts/LayoutLogin.xhtml">
 
 
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
 	<!-- ver p:pannelgrid com p:row ?? -->
 	<ui:define name="display">
-		<div class="row">
+		<div class="row login">
 			<div class="col-md-5">
 				<h2>Login</h2>
 				<h:form id="login">
@@ -45,8 +45,12 @@
 			</div>
 			<div class="col-md-2"></div>
 			<div class="col-md-5">
-				<h:graphicImage src="/resources/images/todos_a_trabalhar.jpg" alt="image not shown" /> 
-				<h:graphicImage src="/resources/images/todos_no_jardim.jpg" alt="image not shown" />
+
+				<h:graphicImage name="images/todos_a_trabalhar.jpg"
+					alt="image not shown" style="width:400px" />
+				<h:graphicImage name="images/todos_no_jardim.jpg"
+					alt="image not shown" style="width:400px" />
+					
 			</div>
 		</div>
 	</ui:define>
