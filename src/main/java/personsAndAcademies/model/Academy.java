@@ -1,11 +1,9 @@
 package personsAndAcademies.model;
 
-import personsAndAcademies.model.AcademyType;
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -16,7 +14,7 @@ public class Academy extends Entities implements Serializable {
 	private String description;
 	private Date date;
 	private String programmingLanguage;
-	
+
 	
 	public String getName() {
 		return name;

@@ -28,7 +28,9 @@
 
 						<f:facet name="header">
 							<p:outputPanel>
+
 								<h:outputText value="Pesquisa" />
+
 								<p:inputText id="globalFilter"
 									onkeyup="PF('personsTable').filter()" />
 							</p:outputPanel>
@@ -43,11 +45,13 @@
 						</p:column>
 
 						<p:column headerText="Data de Inicio">
+
 							<h:outputText value="#{academy.date}">
 								<f:convertDateTime pattern="yyyy-MMM-dd" />
 							</h:outputText>
 						</p:column>
 
+<<<<<<< HEAD
 						<p:column headerText="Linguagem de Progararmção">
 							<h:outputText value="#{academy.programmingLanguage}" />
 <!-- 							<h:outputText value="#{academyType.laguage}" rendered="#{academy.programmingLanguage}==null" /> -->
