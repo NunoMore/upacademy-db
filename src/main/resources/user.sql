@@ -1,6 +1,6 @@
-Insert into User values(1,'admin','admin');
-Insert into User values(2,'user','user');
-Insert into UserRoles values (1,'ADMIN');
-Insert into UserRoles values (2,'USER');
-Insert into Person(ID,username) values (1,'admin')
-Insert into Person(ID,username) values (2,'user')
+Insert into User (id,username,password,roles) values(1,'admin','admin','ADMIN');
+Insert into User (id,username,password,roles) values(2,'user','user','USER');
+
+
+Insert into Person(ID,username) values (1,'admin');
+Insert into Person(ID,username) values (2,'user');

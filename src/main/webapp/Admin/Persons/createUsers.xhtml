@@ -16,31 +16,10 @@
 
 	<ui:define name="display">
 
-		<p:growl for="create" showDetail="true" autoUpdate="true" />
-		<h:form id="formCreatePerson">
-		
-				<!-- vai se ter o username como sendo o email -->
 
-			<p:panelGrid id="createPersonGrid" columns="2">
-				<p:outputLabel value="Insere o email do novo utilizador" />
-				<p:inputText value="#{personBean.e.email}" required="true"
-					pt:data-tooltip="Campo Obrigatorio" />
-
-				<h:outputLabel value="Insere o username do novo utilizador" />
-				<p:inputText value="#{personBean.e.username}" />
-
-				<h:outputLabel value="Insere a password do novo utilizador" />
-				<p:inputText value="#{personBean.e.password}" />
-			</p:panelGrid>
-			<br />
-			<p:commandButton value="Criar Utilizador"
-				action="#{personBean.create()}" />
-
-		</h:form>
-		
 		 <o:importConstants type="personsAndAcademies.authentication.Role" />
 
-    <h2>Register</h2>
+    <h2>Criar novo utilizador</h2>
     <h:form id="register">
         <h:panelGrid columns="3">
             <h:outputLabel for="username" value="Username:" />
@@ -56,14 +35,14 @@
             <h:message id="m_password" for="password" />
 
             <h:outputLabel for="roles" value="Roles:" />
-            <h:selectManyCheckbox id="roles" value="#{register.user.roles}" required="true"
-                layout="pageDirection" converter="omnifaces.GenericEnumConverter">
-                <f:selectItems value="#{Role}" />
-            </h:selectManyCheckbox>
-            <h:message id="m_roles" for="roles" />
+           	<h:selectOneListbox value="#{register.user.roles}">
+           		<f:selectItem itemLabel="ADMIN" itemValue="ADMIN"/>
+           		<f:selectItem itemLabel="USER" itemValue="USER"/>
+           	</h:selectOneListbox>
+           
 
             <h:panelGroup />
-            <h:commandButton value="Register" action="#{register.submit}" >
+            <h:commandButton value="Criar" action="#{register.submit}" >
                 <f:ajax execute="@form" render="@form" />
             </h:commandButton>
             <h:messages globalOnly="true" layout="table" />

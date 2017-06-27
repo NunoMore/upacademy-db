@@ -39,11 +39,9 @@ public class User{
     @NotNull
     private String password;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "UserRoles", joinColumns = { @JoinColumn(name = "userId") })
-    @Column(name = "role")
-    private List<Role> roles;
+    private Role roles;
 
 	public Long getId() {
 		return id;
@@ -69,11 +67,11 @@ public class User{
 		this.password = password;
 	}
 
-	public List<Role> getRoles() {
+	public Role getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Role roles) {
 		this.roles = roles;
 	}
 
@@ -101,10 +99,7 @@ public class User{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (roles == null) {
-			if (other.roles != null)
-				return false;
-		} else if (!roles.equals(other.roles))
+		if (roles != other.roles)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -113,4 +108,6 @@ public class User{
 			return false;
 		return true;
 	}
+
+	
 }

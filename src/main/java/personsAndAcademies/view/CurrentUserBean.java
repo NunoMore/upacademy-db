@@ -7,10 +7,12 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
+import personsAndAcademies.authentication.Login;
 import personsAndAcademies.model.Person;
 
 @Named("currentUserBean")
@@ -36,6 +38,12 @@ public class CurrentUserBean extends EntityBean<Person> implements Serializable 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
+		}
+		
+		public void initCurrentUser(){
+			e.setUsername((String) SecurityUtils.getSubject().getPrincipal());
+			e=read();
+			update();
 		}
 	
 		
