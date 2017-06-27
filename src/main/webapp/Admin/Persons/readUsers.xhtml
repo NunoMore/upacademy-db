@@ -47,11 +47,8 @@
 							filterMatchMode="exact">
 							<p:outputLabel value="#{person.academy}" />
 						</p:column>
+						
 
-						<p:column style="text-align: center" headerText="Tecnologia"
-							filterBy="" sortBy="" filterMatchMode="exact">
-							<p:outputLabel value="#{person.academy}" />
-						</p:column>
 					</p:dataTable>
 					<br />
 					<h:commandLink style="float:left;">
@@ -80,12 +77,11 @@
 						<h:outputText value="Nome" />
 						<h:inputText value="#{tableView.selectedPerson.name}" />
 
-						<h:outputText value="Academia" />
-						<p:selectOneMenu style="width:150px">
-							<f:selectItem itemLabel="Academias" itemValue="#{null}"
+					<h:outputText value="Academia" />
+						<p:selectOneMenu value="#{tableView.selectedPerson.academy}">
+							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
 								noSelectionOption="true" />
-							<f:selectItems value="#{AcademyService.academies}" />
-
+							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
 
 						<h:outputText value="Data de Nascimento" />

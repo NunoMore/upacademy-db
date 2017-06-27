@@ -72,14 +72,14 @@
 							fileName="academias" pageOnly="true" />
 					</h:commandLink>
 				</h:form>
-			</div>e
+			</div>
 
 			<div class="col-md-4">
 				<h:form id="formEditAcademy">
 					<p:panelGrid id="editAcademy" columns="2">
 
 						<p:outputLabel value="Dados" />
-						<p:outputLabel value="Edicao" />
+						<p:outputLabel value="Edição" />
 
 						<p:outputLabel value="Nome" />
 						<p:inputText value="#{tableView.selectedAcademy.name}" />
@@ -89,10 +89,10 @@
 							locate="pt" navigator="true" pattern="yyyy-MMM-dd" />
 
 
-						<p:outputLabel value="Descricao" />
+						<p:outputLabel value="Descrição" />
 						<p:inputText value="#{tableView.selectedAcademy.description}" />
 
-						<p:outputLabel for="programmingLanguage" value="Linguagem: " />
+						<p:outputLabel for="programmingLanguage" value="Linguagem " />
 						<p:selectOneMenu id="programmingLanguage" value="#{tableView.selectedAcademy.programmingLanguage}"
 						style="width:150px">
 						<f:selectItem itemLabel="Select language" itemValue=""

@@ -45,11 +45,9 @@
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('personsTable').filter()"
 							style="width:150px;">
-							<f:selectItem itemLabel="Academias" itemValue="#{null}"
+							<f:selectItem itemValue=""
 								noSelectionOption="true" />
-							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
-							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
-							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
 					</f:facet>
 					<h:outputText value="#{person.academy}" />

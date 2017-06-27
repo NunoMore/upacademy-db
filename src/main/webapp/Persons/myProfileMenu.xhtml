@@ -74,10 +74,10 @@
 							requiredMessage="Email inválido!" />
 
 						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
-							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
-							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
-							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+						<p:selectOneMenu value="#{currentUserBean.e.academy}">
+							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
 
 					</p:panelGrid>
