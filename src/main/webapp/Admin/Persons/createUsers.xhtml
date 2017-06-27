@@ -7,36 +7,52 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	template="/WEB-INF/layouts/commonLayout.xhtml">
+	template="/WEB-INF/layouts/commonLayout.xhtml"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 
 
 	<ui:define name="display">
-
 		<p:tooltip />
 
 		<p:growl for="create" showDetail="true" autoUpdate="true" />
-		<h:form id="formCreatePerson">
-		
-				<!-- vai se ter o username como sendo o email -->
 
-			<p:panelGrid id="createPersonGrid" columns="2">
-				<p:outputLabel value="Insere o email do novo utilizador" />
-				<p:inputText value="#{personBean.e.email}" required="true"
-					pt:data-tooltip="Campo Obrigatorio" />
+			<!-- vai se ter o username como sendo o email -->
 
-				<h:outputLabel value="Insere o username do novo utilizador" />
-				<p:inputText value="#{personBean.e.username}" />
+			<o:importConstants type="personsAndAcademies.authentication.Role" />
 
-				<h:outputLabel value="Insere a password do novo utilizador" />
-				<p:inputText value="#{personBean.e.password}" />
-			</p:panelGrid>
-			<br />
-			<p:commandButton value="Criar Utilizador"
-				action="#{personBean.create()}" />
+			<h2>Criar novo utilizador</h2>
+			<h:form id="register">
+				<h:panelGrid columns="3">
+					<h:outputLabel for="username" value="Username:" />
+					<h:inputText id="username" value="#{register.user.username}"
+						required="true">
+						<f:ajax event="blur" render="m_username" />
+					</h:inputText>
+					<h:message id="m_username" for="username" />
 
-		</h:form>
+					<h:outputLabel for="password" value="Password:" />
+					<h:inputSecret id="password" value="#{register.user.password}"
+						required="true">
+						<f:ajax event="blur" render="m_password" />
+					</h:inputSecret>
+					<h:message id="m_password" for="password" />
 
+					<h:outputLabel for="roles" value="Roles:" />
+					<h:selectOneListbox value="#{register.user.roles}">
+						<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
+						<f:selectItem itemLabel="USER" itemValue="USER" />
+					</h:selectOneListbox>
+
+
+					<h:panelGroup />
+					<h:commandButton value="Criar" action="#{register.submit}">
+						<f:ajax execute="@form" render="@form" />
+					</h:commandButton>
+					<h:messages globalOnly="true" layout="table" />
+				</h:panelGrid>
+			</h:form>
 	</ui:define>
 
 

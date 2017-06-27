@@ -1,4 +1,4 @@
-package personsAndAcademies.view;
+package personsAndAcademies.authentication;
 
 import java.io.IOException;
 

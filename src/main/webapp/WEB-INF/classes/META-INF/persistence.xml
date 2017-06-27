@@ -4,6 +4,7 @@
    <persistence-unit name="ProjectDataBase" transaction-type="JTA">
      <description>Repositories for entities</description>
      <jta-data-source>java:jboss/datasources/UPACADEMY_DB_DS</jta-data-source>
+      <class>personsAndAcademies.authentication.User</class>
      <properties>
      	<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
      	<property name="javax.persistence.schema-generation.create-source" value="metadata" />
@@ -12,6 +13,7 @@
         <property name="hibernate.format_sql" value="true" />
         <property name="hibernate.use_sql_comments" value="true" />
          <property name="javax.persistence.sql-load-script-source" value="standartTypes.sql" />
+         <property name="javax.persistence.sql-load-script-source" value="user.sql" />
      </properties>
    </persistence-unit>
 </persistence>

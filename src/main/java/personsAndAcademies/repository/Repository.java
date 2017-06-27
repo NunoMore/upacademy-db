@@ -22,7 +22,7 @@ public abstract class Repository <E extends Entities> {
 //	}
 	
 	@PersistenceContext(name="ProjectDataBase")
-	private EntityManager em;
+	protected EntityManager em;
 	
 	public void create(E e){
 		em.persist(e);

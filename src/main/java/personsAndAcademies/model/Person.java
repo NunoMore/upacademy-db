@@ -10,7 +10,6 @@ public class Person extends Entities implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
-	private boolean online = false;
 	private String username;
 	private Date dateOfBirth;
 	private String academicCourse;
@@ -28,12 +27,6 @@ public class Person extends Entities implements Serializable{
 	private String securityQuestion;
 	private String securityAnswer;	
 	
-	public boolean isOnline() {
-		return online;
-	}
-	public void setOnline(boolean online) {
-		this.online = online;
-	}
 	public String getUsername() {
 		return username;
 	}

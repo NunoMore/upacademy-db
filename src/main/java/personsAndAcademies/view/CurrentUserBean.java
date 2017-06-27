@@ -7,10 +7,12 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
+import personsAndAcademies.authentication.Login;
 import personsAndAcademies.model.Person;
 
 @Named("currentUserBean")
@@ -38,19 +40,12 @@ public class CurrentUserBean extends EntityBean<Person> implements Serializable 
 			}
 		}
 		
-		@PreDestroy
-		public void logOut(){
-			e.setOnline(false);
+		public void initCurrentUser(){
+			e.setUsername((String) SecurityUtils.getSubject().getPrincipal());
+			e=read();
 			update();
 		}
 	
-		public void initCurrentUser(){
-			e.setUsername((String)SecurityUtils.getSubject().getPrincipal()); 
-				e = read();
-				e.setOnline(true);
-				update();
-
-		}
 		
 //		private void uploadPhotos() throws IOException{ //nao testado
 //			
