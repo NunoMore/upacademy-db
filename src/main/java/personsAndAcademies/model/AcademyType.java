@@ -3,6 +3,7 @@ package personsAndAcademies.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,22 +17,11 @@ public class AcademyType extends Entities implements Serializable  {
 	
 	private String language;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-//	@JoinColumn(name = "name")
-	private List<Academy> names;
-	
-	
 	public String getLanguage() {
 		return language;
 	}
 	public void setLanguage(String language) {
 		this.language = language;
-	}
-	public List<Academy> getNames() {
-		return names;
-	}
-	public void setNames(List<Academy> names) {
-		this.names = names;
 	}
 
 
@@ -40,5 +30,4 @@ public class AcademyType extends Entities implements Serializable  {
 		return "" + language+ ""; 
 	}
 
-	
 }

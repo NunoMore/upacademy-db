@@ -4,6 +4,7 @@ import personsAndAcademies.model.AcademyType;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 
@@ -42,8 +43,5 @@ public class Academy extends Entities implements Serializable {
 	public void setProgrammingLanguage(String programmingLanguage) {
 		this.programmingLanguage = programmingLanguage;
 	}
-
-
-	
 
 }

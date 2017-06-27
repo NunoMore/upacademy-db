@@ -46,17 +46,6 @@
 					</p:dataTable>
 				</h:form>
 			</div>
-			
-<!-- 			<p:dataTable var="languages" value="#{academyTypeBean.readAll()}"> -->
-<!-- 				<p:column headerText="Id"> -->
-<!-- 					<h:outputText value="#{academyType.ID}" /> -->
-<!-- 				</p:column> -->
-
-<!-- 				<p:column headerText="language"> -->
-<!-- 					<h:outputText value="#{academyType.language}" /> -->
-<!-- 				</p:column> -->
-
-<!-- 			</p:dataTable> -->
 
 			<div class="col-md-4">
 				<h:form id="formEditAcademy">
@@ -76,16 +65,18 @@
 						<p:outputLabel value="Descricao" />
 						<p:inputText value="#{tableView.selectedAcademy.description}" />
 
-						<p:outputLabel value="Linguagem Programacao" />
-						<p:selectOneMenu value="#{academyBean.e.programmingLanguage}">
-							<f:selectItem itemLabel="JAVA" itemValue="JAVA" />
-							<f:selectItem itemLabel="OutSystem" itemValue="OutSystem" />
-							<f:selectItem itemLabel=".NET" itemValue=".NET" />
+						<p:outputLabel for="language" value="Linguagem: " />
+						<p:selectOneMenu id="language" value="#{tableView.selectedAcademy.programmingLanguage}"
+						style="width:150px">
+						<f:selectItem itemLabel="Select language" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{academyTypeService.allLanguages()}" />
 						</p:selectOneMenu>
 
 					</p:panelGrid>
 					<p:commandButton value="Guardar alteracoes" style="center"
 						action="#{academyBean.update(tableView.selectedAcademy)}"
+						
 						update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
 
 					<p:commandButton value="Remover"

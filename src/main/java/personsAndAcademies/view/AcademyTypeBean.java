@@ -1,6 +1,5 @@
 package personsAndAcademies.view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,12 +8,18 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import personsAndAcademies.model.AcademyType;
-import personsAndAcademies.repository.AcademyTypeRepository;
 import personsAndAcademies.service.AcademyTypeService;
 
 @Named("academyTypeBean")
 @RequestScoped
 public class AcademyTypeBean extends EntityBean<AcademyType> {
+	
+	@PostConstruct
+	public void init(){
+		e=new AcademyType();
+	}
+	
+	private boolean selectOther = false;
 	
 	@Inject
 	private AcademyTypeService academyTypeService;
@@ -23,9 +28,19 @@ public class AcademyTypeBean extends EntityBean<AcademyType> {
 		return academyTypeService.allLanguages();
 	}
 	
-	@PostConstruct
-	public void init(){
-		e=new AcademyType();
+	public void otherTrue(){
+		selectOther = true;
+	}
+	public void otherFalse(){
+		selectOther = false;
+	}
+
+	public boolean isSelectOther() {
+		return selectOther;
+	}
+
+	public void setSelectOther(boolean selectOther) {
+		this.selectOther = selectOther;
 	}
 	
 
