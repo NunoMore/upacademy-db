@@ -25,7 +25,7 @@
 								<h:message id="m_username" for="username" styleClass="loginMessage"/>
 							</h:outputLabel>
 							<h:inputText id="username" value="#{login.username}"
-								required="true" requiredMessage="Erro com username!">
+								required="true" requiredMessage="Coloque username!">
 								<f:ajax event="blur" render="m_username" />
 							</h:inputText>
 
@@ -34,7 +34,7 @@
 								<h:message id="m_password" for="password" styleClass="loginMessage"/>
 							</h:outputLabel>
 							<h:inputSecret id="password" value="#{login.password}"
-								required="true" requiredMessage="Erro com password">
+								required="true" requiredMessage="Coloque password">
 								<f:ajax event="blur" render="m_password" />
 							</h:inputSecret>
 						</h:panelGrid>
@@ -45,11 +45,11 @@
 					</h:form>
 				</div>
 			</div>
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-1"></div>
+			<div class="col-md-7">
 
 				<h:graphicImage name="images/todos_no_jardim.jpg"
-					alt="image not shown" style="width:550px" styleClass="loginImage" />
+					alt="image not shown" style="width:100%" styleClass="loginImage" />
 
 			</div>
 		</div>

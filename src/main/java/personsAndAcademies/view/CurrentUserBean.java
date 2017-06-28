@@ -22,6 +22,7 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		private File tempFolder;
 		private String oldPass;
 		private String newPass;
+		private String newPass2;
 		
 		@Inject
 		private Logout logout;
@@ -37,7 +38,6 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 				tempFolder = new File(absolutPath);
 				tempFolder.mkdir();
 				
-//				uploadPhotos();
 				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -61,7 +61,9 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		}
 		
 		public void changePass(){
-			if (oldPass.equals(e.getPassword())) {
+		if (!newPass.equals(newPass2)) {
+			defineGrowl("Erro!", "Confirmação de password deve ser igual à password definida!", "changePass");
+		} else if (oldPass.equals(e.getPassword()) && newPass.equals(newPass2)) {
 				e.setPassword(newPass);
 				update();
 				defineGrowl("Password alterada com sucesso!", " ", "changePass");
@@ -113,5 +115,13 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 
 		public void setNewPass(String newPass) {
 			this.newPass = newPass;
+		}
+
+		public String getNewPass2() {
+			return newPass2;
+		}
+
+		public void setNewPass2(String newPass2) {
+			this.newPass2 = newPass2;
 		}	
 	}

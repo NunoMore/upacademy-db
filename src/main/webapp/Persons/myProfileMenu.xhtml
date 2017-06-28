@@ -13,7 +13,7 @@
 	<ui:define name="display">
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
 		<p:growl id="msg" />
-		<p:growl for="changePass" autoUpdate="true" />
+		<p:growl for="changePass" showDetail="true" autoUpdate="true" />
 
 		<h:form id="myProfile" enctype="multipart/form-data">
 			<div class="row">
@@ -73,7 +73,7 @@
 
 						<h:outputText value="Academia" />
 						<p:selectOneMenu value="#{currentUserBean.e.academy}">
-							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
+							<f:selectItem itemLabel="Selecionar Academia"
 								noSelectionOption="true" />
 							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
@@ -88,19 +88,24 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Facebook" />
-						<p:inputText style="width:400px" value="#{currentUserBean.e.facebookLink}" />
+						<p:inputText style="width:400px"
+							value="#{currentUserBean.e.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<p:inputText style="width:400px" value="#{currentUserBean.e.linkedInLink}" />
+						<p:inputText style="width:400px"
+							value="#{currentUserBean.e.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<p:inputText style="width:400px" value="#{currentUserBean.e.gitHubLink}" />
+						<p:inputText style="width:400px"
+							value="#{currentUserBean.e.gitHubLink}" />
 
 						<h:outputText value="Curso Academico" />
-						<p:inputText style="width:400px" value="#{currentUserBean.e.academicCourse}" />
+						<p:inputText style="width:400px"
+							value="#{currentUserBean.e.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
-						<p:inputText style="width:400px" value="#{currentUserBean.e.workPlace}" />
+						<p:inputText style="width:400px"
+							value="#{currentUserBean.e.workPlace}" />
 
 						<h:outputText value="Curriculo" />
 						<p:fileUpload style="width:400px" mode="advanced"
@@ -138,6 +143,10 @@
 						<h:outputText value="Password Nova" />
 						<p:password id="newPAss" value="#{currentUserBean.newPass}"
 							required="true" feedback="true" />
+
+						<h:outputText value="Confirmação de password" />
+						<p:password id="newPAss2" value="#{currentUserBean.newPass2}"
+							required="true"  />
 
 					</p:panelGrid>
 					<p:commandButton id="oldNewPassBtn" value="Alterar"
