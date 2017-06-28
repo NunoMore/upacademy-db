@@ -12,11 +12,12 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.omnifaces.util.Faces;
-import org.omnifaces.util.Messages;
+
+import personsAndAcademies.view.GrowlBean;
 
 @Named
 @RequestScoped
-public class Login {
+public class Login extends GrowlBean{
 
     public static final String HOME_URL = "main-page.xhtml";
 
@@ -31,7 +32,7 @@ public class Login {
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : HOME_URL);
         }
         catch (AuthenticationException e) {
-            Messages.addGlobalError("Unknown user, please try again");
+            defineGrowl("Unknown user, please try again", "", "login");
             e.printStackTrace(); // TODO: logger.
         }
     }

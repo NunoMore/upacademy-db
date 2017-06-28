@@ -12,28 +12,36 @@
 	<!-- Este é o mainPage onde o utilizador inicia o log in (neste momento nao tem login) -->
 	<!-- ver p:pannelgrid com p:row ?? -->
 	<ui:define name="display">
+	
+		<p:growl for="login" autoUpdate="true"/>
 		<div class="row ">
 			<div class="col-md-3 ">
 				<div class="loginBox">
 					<h2>Login</h2>
 					<h:form id="login">
 						<h:panelGrid columns="2">
-							<h:outputLabel for="username" value="Username :" />
+							<h:outputLabel for="username" value="Username:">
+								<br />
+								<h:message id="m_username" for="username" styleClass="loginMessage"/>
+							</h:outputLabel>
 							<h:inputText id="username" value="#{login.username}"
-								required="true">
+								required="true" requiredMessage="Erro com username!">
 								<f:ajax event="blur" render="m_username" />
 							</h:inputText>
 
-							<h:outputLabel for="password" value="Password :" />
+							<h:outputLabel for="password" value="Password:">
+								<br />
+								<h:message id="m_password" for="password" styleClass="loginMessage"/>
+							</h:outputLabel>
 							<h:inputSecret id="password" value="#{login.password}"
-								required="true">
+								required="true" requiredMessage="Erro com password">
 								<f:ajax event="blur" render="m_password" />
 							</h:inputSecret>
 						</h:panelGrid>
 
-						<h:commandButton value="Login" action="#{login.submit}">
+						<p:commandButton value="Login" action="#{login.submit}">
 							<f:ajax execute="@form" render="@form" />
-						</h:commandButton>
+						</p:commandButton>
 					</h:form>
 				</div>
 			</div>
@@ -41,7 +49,7 @@
 			<div class="col-md-6">
 
 				<h:graphicImage name="images/todos_no_jardim.jpg"
-					alt="image not shown" style="width:550px" styleClass="img-circle"/>
+					alt="image not shown" style="width:550px" styleClass="img-circle" />
 
 			</div>
 		</div>
