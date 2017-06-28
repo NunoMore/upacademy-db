@@ -2,13 +2,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <body>
 	<ui:composition>
-		<footer id="footer" class="col-md-12">
-			<h3 class="titulo">© 2016–2017 UP Academy. All rights reserved.</h3>
+
+		<footer id="footer">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="titulo" style="text-align: center">Toda a conquista
+						começa com a decisão de tentar</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="titulo" style="text-align: center">Desenvolvido com a
+						preciosa contribuição de :</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4" />
+				<div class="col-md-4">
+					<p:graphicImage styleClass="img-circle"
+						name="images/IMG_20170424_185226.jpg"
+						style="height:80px;width:80px;float:right" />
+
+					<p:graphicImage styleClass="img-circle"
+						name="images/IMG_20170424_185413.jpg"
+						style="width:80px;height:80px" />
+
+					<p:graphicImage styleClass="img-circle"
+						name="images/IMG_20170424_185611.jpg"
+						style="height:80px;width:80px;float:left" />
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4" />
+				<div class="col-md-4">
+					<p style="float: right">Luis Alves</p>
+					<p style="float: left">Nuno Moreira</p>
+					<p>Andre Rei</p>
+				</div>
+			</div>
+
+
 		</footer>
+
 	</ui:composition>
 </body>
 </html>
