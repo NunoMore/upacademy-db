@@ -27,8 +27,6 @@
 						<ul class="nav navbar-nav">
 							<li><a id="myProfileBtn"
 								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">My Profile</a></li>
-							<!-- <li><a id="creditsBtn" href="/UPACADEMY_DB/credits.xhtml">Créditos</a></li> -->
-							<!-- <li><a id="contactsBtn" href="#">Contacts</a></li> -->
 						</ul>
 					</nav>
 				</div>
@@ -41,7 +39,8 @@
 							<li><a id="usernameHeader"
 								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">#{currentUserBean.e.username}</a></li>
 							<li><h:form>
-									<h:commandLink id="logoutLink" style="padding:15px; float: left" value="Logout"
+									<h:commandLink id="logoutLink"
+										style="padding:15px; float: left" value="Logout"
 										action="#{logout.submit}" />
 								</h:form></li>
 							<p:graphicImage styleClass="img-circle" id="img"

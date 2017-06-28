@@ -15,6 +15,9 @@ h1 {
 	padding-right: 10px;
 }
 
+a:HOVER{
+	color: #43a4de;
+}
 
 
 /* dropdowns... */
