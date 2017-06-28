@@ -8,6 +8,9 @@ import javax.inject.Named;
 
 import org.omnifaces.util.Messages;
 
+import personsAndAcademies.model.User;
+import personsAndAcademies.service.UserService;
+
 @Named
 @RequestScoped
 public class Register {
@@ -25,7 +28,7 @@ public class Register {
     public void submit() {
         try {
             service.create(user);
-            Messages.addGlobalInfo("Registration suceed, new user ID is: {0}", user.getId());
+            Messages.addGlobalInfo("Registration suceed, new user ID is: {0}", user.getID());
         }
         catch (RuntimeException e) {
             Messages.addGlobalError("Registration failed: {0}", e.getMessage());

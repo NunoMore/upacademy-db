@@ -23,12 +23,12 @@
 					<p:panelGrid id="ProfileCol">
 						<f:facet name="header">
 							<p:graphicImage styleClass="img-circle"
-								name="Uploads#{tableView.selectedPerson.photo}"
-								rendered="#{tableView.selectedPerson.photo != null}"
+								name="Uploads#{tableView.selectedUser.photo}"
+								rendered="#{tableView.selectedUser.photo != null}"
 								style="width:100px" />
 							<p:graphicImage styleClass="img-circle"
 								name="images/defaultUser.png"
-								rendered="#{tableView.selectedPerson.photo == null}"
+								rendered="#{tableView.selectedUser.photo == null}"
 								style="width:100px" />
 						</f:facet>
 					</p:panelGrid>
@@ -45,22 +45,22 @@
 						<p:outputLabel value="Informações" />
 
 						<h:outputText value="Nome" />
-						<h:outputText id="Name" value="#{tableView.selectedPerson.name}" />
+						<h:outputText id="Name" value="#{tableView.selectedUser.name}" />
 
 						<h:outputText value="Data de Nascimento" />
-						<h:outputText value="#{tableView.selectedPerson.dateOfBirth}" />
+						<h:outputText value="#{tableView.selectedUser.dateOfBirth}" />
 
 						<h:outputText value="Genero" />
-						<h:outputText value="#{tableView.selectedPerson.gender}" />
+						<h:outputText value="#{tableView.selectedUser.gender}" />
 
 						<h:outputText value="Numero Telefone" />
-						<h:outputText value="#{tableView.selectedPerson.numTelephone}" />
+						<h:outputText value="#{tableView.selectedUser.numTelephone}" />
 
 						<h:outputText value="Email" />
-						<h:outputText value="#{tableView.selectedPerson.email}" />
+						<h:outputText value="#{tableView.selectedUser.email}" />
 
 						<h:outputText value="Academia" />
-						<h:outputText value="#{tableView.selectedPerson.academy}" />
+						<h:outputText value="#{tableView.selectedUser.academy}" />
 
 					</p:panelGrid>
 				</div>
@@ -72,24 +72,24 @@
 						<p:outputLabel value="Informações" />
 
 						<h:outputText value="Facebook" />
-						<h:link value="#{tableView.selectedPerson.facebookLink}" />
+						<h:link value="#{tableView.selectedUser.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<h:link value="#{tableView.selectedPerson.linkedInLink}" />
+						<h:link value="#{tableView.selectedUser.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<h:link value="#{tableView.selectedPerson.gitHubLink}" />
+						<h:link value="#{tableView.selectedUser.gitHubLink}" />
 
 						<h:outputText value="Curso Academico" />
-						<h:outputText value="#{tableView.selectedPerson.academicCourse}" />
+						<h:outputText value="#{tableView.selectedUser.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
-						<h:outputText value="#{tableView.selectedPerson.workPlace}" />
+						<h:outputText value="#{tableView.selectedUser.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<h:outputText rendered="#{tableView.selectedPerson.curriculum == null}" value="Utilizador não fez upload do seu curriculum."/>
-						<h:link rendered="#{tableView.selectedPerson.curriculum != null}">
-							<a href="resources/Uploads#{tableView.selectedPerson.curriculum}"
+						<h:outputText rendered="#{tableView.selectedUser.curriculum == null}" value="Utilizador não fez upload do seu curriculum."/>
+						<h:link rendered="#{tableView.selectedUser.curriculum != null}">
+							<a href="resources/Uploads#{tableView.selectedUser.curriculum}"
 								target="_blank">Download</a>
 						</h:link>
 

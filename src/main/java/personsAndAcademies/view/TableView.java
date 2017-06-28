@@ -8,15 +8,15 @@ import javax.inject.Named;
 
 import personsAndAcademies.model.Academy;
 import personsAndAcademies.model.AcademyType;
-import personsAndAcademies.model.Person;
+import personsAndAcademies.model.User;
 
 @Named("tableView")
 @SessionScoped
 public class TableView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Person selectedPerson; //atributo para guardar person que sera selecionada na tabela do main
-	private List<Person> filteredPersons; //atributo para guardar a seleccao de filtragem
+	private User selectedUser; //atributo para guardar person que sera selecionada na tabela do main
+	private List<User> filteredUsers; //atributo para guardar a seleccao de filtragem
 	
 	private Academy selectedAcademy;
 	private List<Academy> filteredAcademies;
@@ -40,25 +40,25 @@ public class TableView implements Serializable {
 	private AcademyType selectedType;
 	private List<AcademyType> filteredTypes;
 	
-	public String fillSelectedPerson(Person person){
-		selectedPerson = person;
+	public String fillSelectedUser(User user){
+		selectedUser = user;
 		return "/Persons/ProfileMenu?faces-redirect=true";
 	}
 
-	public List<Person> getFilteredPersons() {
-		return filteredPersons;
+	public List<User> getFilteredUsers() {
+		return filteredUsers;
 	}
 
-	public void setFilteredPersons(List<Person> filteredPersons) {
-		this.filteredPersons = filteredPersons;
+	public void setFilteredUsers(List<User> filteredUsers) {
+		this.filteredUsers = filteredUsers;
 	}
 
-	public Person getSelectedPerson() {
-		return selectedPerson;
+	public User getSelectedUser() {
+		return selectedUser;
 	}
 
-	public void setSelectedPerson(Person selectedPerson) {
-		this.selectedPerson = selectedPerson;
+	public void setSelectedUser(User selectedUser) {
+		this.selectedUser = selectedUser;
 	}
 
 	public List<Academy> getFilteredAcademies() {

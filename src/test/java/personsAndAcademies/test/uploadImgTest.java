@@ -26,7 +26,7 @@ import org.mockito.junit.MockitoJUnitRunner.Silent;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
-import personsAndAcademies.model.Person;
+import personsAndAcademies.model.User;
 import personsAndAcademies.view.CurrentUserBean;
 import personsAndAcademies.view.UploadBean;
 
@@ -61,7 +61,7 @@ public class uploadImgTest extends FacesContext{
 																								
 		Mockito.when(uploadedFile.getFileName()).thenReturn(file.getName());
 		Mockito.when(currentUser.getTempFolder()).thenReturn(tempFolder);
-		Mockito.doReturn(new Person()).when(currentUser).getE();
+		Mockito.doReturn(new User()).when(currentUser).getE();
 
 		bean.setCurrentUser(currentUser);
 

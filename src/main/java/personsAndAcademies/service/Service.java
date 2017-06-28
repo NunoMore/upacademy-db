@@ -12,11 +12,11 @@ import org.primefaces.event.SelectEvent;
 import personsAndAcademies.model.Academy;
 import personsAndAcademies.model.AcademyType;
 import personsAndAcademies.model.Entities;
-import personsAndAcademies.model.Person;
+import personsAndAcademies.model.User;
 import personsAndAcademies.repository.AcademyRepository;
 import personsAndAcademies.repository.AcademyTypeRepository;
-import personsAndAcademies.repository.PersonRepository;
 import personsAndAcademies.repository.Repository;
+import personsAndAcademies.repository.UserRepository;
 
 public abstract class Service<E extends Entities> {
 	
@@ -30,7 +30,7 @@ public abstract class Service<E extends Entities> {
 	private AcademyTypeRepository academyTypeRepo;
 
 	@Inject
-	private PersonRepository personRepo;
+	private UserRepository userRepo;
 	
 	public void create(E e){
 		repo.create(e);
@@ -38,8 +38,8 @@ public abstract class Service<E extends Entities> {
 	
 	@SuppressWarnings("unchecked")
 	public E read(E e){
-		if (e.getClass() == Person.class) {
-			return (E)personRepo.read((Person)e);
+		if (e.getClass() == User.class) {
+			return (E)userRepo.read((User)e);
 		} else if (e.getClass() == Academy.class) {
 			return (E)academyRepo.read((Academy)e);
 		}
@@ -58,8 +58,8 @@ public abstract class Service<E extends Entities> {
 	}
 	
 	public void remove(E e){
-		if (e.getClass() == Person.class) {
-			personRepo.remove((Person)e);
+		if (e.getClass() == User.class) {
+			userRepo.remove((User)e);
 		} else if (e.getClass() == Academy.class) {
 			academyRepo.remove((Academy)e);
 		}

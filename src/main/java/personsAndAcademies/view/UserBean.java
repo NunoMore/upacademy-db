@@ -4,17 +4,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import personsAndAcademies.model.Person;
-
-@Named("personBean")
+import personsAndAcademies.model.User;
+@Named("userBean")
 @RequestScoped
-public class PersonBean extends EntityBean<Person> {
-	
+public class UserBean extends EntityBean<User>{
+
 	@PostConstruct
 	public void init(){
-		e=new Person();
+		e=new User();
 	}
-	
-	
 }
-

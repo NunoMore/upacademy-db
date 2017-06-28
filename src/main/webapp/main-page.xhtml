@@ -12,42 +12,42 @@
 	#{currentUserBean.initCurrentUser()}
 			
 		<h:form id="formTable">
-			<p:dataTable id="consultAll" var="person"
-				value="#{personBean.readAll()}" widgetVar="personsTable"
+			<p:dataTable id="consultAll" var="user"
+				value="#{userBean.readAll()}" widgetVar="usersTable"
 				multiViewState="true" rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="100" rowKey="#{person.ID}"
+				rowsPerPageTemplate="100" rowKey="#{user.ID}"
 				emptyMessage="Não existem utilizadores a mostrar"
-				filteredValue="#{tableView.filteredPersons}">
+				filteredValue="#{tableView.filteredUsers}">
 
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Pesquisa:" />
 						<p:inputText id="globalFilter"
-							onkeyup="PF('personsTable').filter()" />
+							onkeyup="PF('usersTable').filter()" />
 					</p:outputPanel>
 				</f:facet>
 
 				<p:column style="width:50px;text-align: center">
 					<p:graphicImage styleClass="img-circle" id="img"
-						name="Uploads#{person.photo}" rendered="#{person.photo != null}"
+						name="Uploads#{user.photo}" rendered="#{user.photo != null}"
 						style="width:30px" />
 					<p:graphicImage styleClass="img-circle"
-						name="images/defaultUser.png" rendered="#{person.photo == null}"
+						name="images/defaultUser.png" rendered="#{user.photo == null}"
 						style="width:30px" />
 				</p:column>
 
 				<p:column style="text-align: center" headerText="Nome"
-					filterBy="#{person.name}" sortBy="#{person.name}"
+					filterBy="#{user.name}" sortBy="#{user.name}"
 					filterMatchMode="startsWith">
-					<h:outputText value="#{person.name}" />
+					<h:outputText value="#{user.name}" />
 				</p:column>
 
 				<p:column style="text-align: center" headerText="Academia"
-					filterBy="#{person.academy}" sortBy="#{person.academy}"
+					filterBy="#{user.academy}" sortBy="#{user.academy}"
 					filterMatchMode="exact">
 					<f:facet name="filter">
-						<p:selectOneMenu onchange="PF('personsTable').filter()"
+						<p:selectOneMenu onchange="PF('usersTable').filter()"
 							style="width:150px;">
 							<f:selectItem itemLabel="Academias" itemValue="#{null}"
 								noSelectionOption="true" />
@@ -56,11 +56,11 @@
 							<f:selectItem itemLabel=".NET" itemValue=".NET" />
 						</p:selectOneMenu>
 					</f:facet>
-					<h:outputText value="#{person.academy}" />
+					<h:outputText value="#{user.academy}" />
 				</p:column>
 
 				<p:column style="width:50px;text-align: center">
-					<p:commandButton action="#{tableView.fillSelectedPerson(person)}"
+					<p:commandButton action="#{tableView.fillSelectedUser(user)}"
 						icon="ui-icon-search" ajax="false" />
 				</p:column>
 

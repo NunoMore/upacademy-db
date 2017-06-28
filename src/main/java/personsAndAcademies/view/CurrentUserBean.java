@@ -10,18 +10,18 @@ import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
-import personsAndAcademies.model.Person;
+import personsAndAcademies.model.User;
 
 @Named("currentUserBean")
 @SessionScoped
-public class CurrentUserBean extends EntityBean<Person> implements Serializable {
+public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private File tempFolder;
 		
 		@PostConstruct
 		public void createFolder() throws IOException{
-			e=new Person();
+			e=new User();
 			try { // mudar pasta de destino
 				String filename = "Uploads"; //nao mudar este nome!!!!!!!!!!!
 				String workingDirectory = System.getProperty("jboss.server.data.dir"); //vai buscar directory mas com um extra "/data"
