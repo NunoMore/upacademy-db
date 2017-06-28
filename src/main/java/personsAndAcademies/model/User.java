@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
@@ -37,7 +38,7 @@ public class User extends Entities{
 	private String academicCourse;
 	private String gender;
 	private String photo;
-	private String academy;
+
 	private String numTelephone;
 	private String email;
 	private String facebookLink;
@@ -49,6 +50,9 @@ public class User extends Entities{
     
     @Enumerated(EnumType.STRING)
     private Role roles;
+    
+    @ManyToOne
+    private Academy academy;
 
 	public String getUsername() {
 		return username;
@@ -148,13 +152,6 @@ public class User extends Entities{
 		this.photo = photo;
 	}
 
-	public String getAcademy() {
-		return academy;
-	}
-
-	public void setAcademy(String academy) {
-		this.academy = academy;
-	}
 
 	public String getNumTelephone() {
 		return numTelephone;
@@ -210,6 +207,14 @@ public class User extends Entities{
 
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
+	}
+
+	public Academy getAcademy() {
+		return academy;
+	}
+
+	public void setAcademy(Academy academy) {
+		this.academy = academy;
 	}
 
 	

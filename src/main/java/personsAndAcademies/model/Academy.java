@@ -2,8 +2,10 @@ package personsAndAcademies.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -14,7 +16,9 @@ public class Academy extends Entities implements Serializable {
 	private String description;
 	private Date date;
 	private String programmingLanguage;
-
+	
+	@OneToMany (mappedBy="academy")
+	private List<User> users;
 	
 	public String getName() {
 		return name;
@@ -44,6 +48,12 @@ public class Academy extends Entities implements Serializable {
 	@Override
 	public String toString(){
 		return "" + name+ ""; 
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
