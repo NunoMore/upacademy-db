@@ -18,8 +18,11 @@ public class TableView implements Serializable {
 	private User selectedUser; //atributo para guardar person que sera selecionada na tabela do main
 	private List<User> filteredUsers; //atributo para guardar a seleccao de filtragem
 	
-	private Academy selectedAcademy;
+	private Academy selectedAcademy = new Academy();
 	private List<Academy> filteredAcademies;
+	
+	private AcademyType selectedType;
+	private List<AcademyType> filteredTypes;
 	
 	public AcademyType getSelectedType() {
 		return selectedType;
@@ -37,8 +40,7 @@ public class TableView implements Serializable {
 		this.filteredTypes = filteredTypes;
 	}
 
-	private AcademyType selectedType;
-	private List<AcademyType> filteredTypes;
+
 	
 	public String fillSelectedUser(User user){
 		selectedUser = user;

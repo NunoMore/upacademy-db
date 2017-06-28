@@ -41,5 +41,9 @@ public class Academy extends Entities implements Serializable {
 	public void setProgrammingLanguage(String programmingLanguage) {
 		this.programmingLanguage = programmingLanguage;
 	}
+	@Override
+	public String toString(){
+		return "" + name+ ""; 
+	}
 
 }

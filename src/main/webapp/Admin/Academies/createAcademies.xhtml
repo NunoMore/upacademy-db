@@ -12,38 +12,42 @@
 
 
 	<ui:define name="display">
-
-		<p:tooltip />
-
+	
 		<p:growl for="create" showDetail="true" autoUpdate="true" />
 		<h:form id="formCreateAcademies">
-			<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
 
-				<p:outputLabel value="Nome" />
-				<p:inputText value="#{academyBean.e.name}" required="true"
-					pt:data-tooltip="Campo Obrigatorio" />
+			<p:panel id="panel">
+				<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
 
-				<p:outputLabel for="german" value="Data Inicio" />
-				<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
-					navigator="true" pattern="yyyy-MMM-dd" />
+					<p:outputLabel value="Nome" />
+					<p:inputText value="#{academyBean.e.name}" required="true"
+						pt:data-tooltip="Campo Obrigatorio" />
 
-				<p:outputLabel value="Descricao" />
-				<p:inputTextarea value="#{academyBean.e.description}" rows="6"
-					cols="33" />
+					<p:outputLabel for="german" value="Data Inicio" />
+					<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
+						navigator="true" pattern="yyyy-MMM-dd" />
 
-				<p:outputLabel for="language" value="Linguagem: " />
-				<p:selectOneMenu id="language"
-					value="#{academyBean.e.programmingLanguage}" style="width:150px">
+					<p:outputLabel value="Descricao" />
+					<p:inputTextarea value="#{academyBean.e.description}" rows="6"
+						cols="33" />
 
-					<f:selectItem itemLabel="Select language" noSelectionOption="true" />
-					<f:selectItems value="#{academyTypeService.allLanguages()}" />
-				</p:selectOneMenu>
+					<p:outputLabel for="language" value="Linguagem: " />
+					<p:selectOneMenu id="language" value="#{academyBean.e.programmingLanguage}"
+						style="width:150px">
 
-			</p:panelGrid>
+						<f:selectItem itemLabel="Select language" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{academyTypeService.allLanguages()}" />
+					</p:selectOneMenu>
 
-			<p:commandButton styleClass="btn btn-submit"
-				action="#{academyBean.create()}" value="Create!" />
+<!-- 					<p:outputLabel value="Outra Linguagem" /> -->
+<!-- 					<p:inputText  value="#{academyTypeBean.e.language}" /> -->
 
+					<p:commandButton styleClass="btn btn-submit"
+								action="#{academyBean.create()}" value="Create!" />
+				</p:panelGrid>
+			</p:panel>
+								
 		</h:form>
 	</ui:define>
 </ui:composition>

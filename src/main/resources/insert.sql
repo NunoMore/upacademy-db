@@ -4,3 +4,4 @@ Insert into User (id,username,password,roles) values(2,'user','user','USER');
 Insert into academytype values (1, 'Java');
 Insert into academytype values (2, '.NET');
 Insert into academytype values (3, 'Outsystems');
+Insert into academytype values (4, 'C#');

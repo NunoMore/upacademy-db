@@ -2,6 +2,7 @@ package personsAndAcademies.repository;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -13,7 +14,7 @@ import personsAndAcademies.model.AcademyType;
 
 @Named("academyTypeRepo")
 @Transactional
-@RequestScoped
+@ApplicationScoped
 public class AcademyTypeRepository extends Repository<AcademyType>{
 	
 	@PersistenceContext(name="ProjectDataBase")
@@ -29,32 +30,14 @@ public class AcademyTypeRepository extends Repository<AcademyType>{
 		em.remove(academyType);
 	}
 	
-//	public AcademyType readLanguage(AcademyType academyType){
-//		Query query = em.createQuery("Select e from AcademyType e where e.language = '"+ academyType.getLanguage() + "'");
-//		return (AcademyType)query.getResultList().get(0);
-//	}
 	
 	@SuppressWarnings("unchecked")
 	public List<String> readLanguages(){
 		Query query = em.createQuery("Select language from AcademyType language");
 		return (List<String>) query.getResultList();
 		
-//		final List<String> readLanguages;
-//		
-//		String [] langarr = new String [readLanguages.size()];
-//				readLanguages.toArray(langarr);
-//		final List<String> readLanguages;
-//				
-//		String [] stringArray = readLanguages.toArray(new String[readLanguages.size()];
 	}
 	
-	
-	
-	
-
-	
-
-
 }
 	
 
