@@ -23,4 +23,9 @@ public class AcademyRepository extends Repository<Academy> {
 		academy = em.find(Academy.class,academy.getID());
 		em.remove(academy);
 	}
+	
+	public Academy readByName(String academyname){
+		Query query = em.createQuery(("Select e from Academy e where e.name = '"+ academyname + "'"));
+		return (Academy)query.getResultList().get(0);
+	}
 }

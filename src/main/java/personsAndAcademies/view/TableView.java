@@ -15,7 +15,7 @@ import personsAndAcademies.model.User;
 public class TableView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private User selectedUser; //atributo para guardar person que sera selecionada na tabela do main
+	private User selectedUser = new User(); //atributo para guardar person que sera selecionada na tabela do main
 	private List<User> filteredUsers; //atributo para guardar a seleccao de filtragem
 	
 	private Academy selectedAcademy = new Academy();

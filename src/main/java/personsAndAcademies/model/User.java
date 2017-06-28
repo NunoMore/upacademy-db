@@ -38,6 +38,7 @@ public class User extends Entities{
 	private String gender;
 	private String photo;
 	private String academy;
+	private String languageProgramming;
 	private String numTelephone;
 	private String email;
 	private String facebookLink;
@@ -211,6 +212,19 @@ public class User extends Entities{
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
 	}
+	
+	public String getLanguageProgramming() {
+		return languageProgramming;
+	}
+
+	public void setLanguageProgramming(String languageProgramming) {
+		this.languageProgramming = languageProgramming;
+	}
+	
+
+	
+
+
 
 	
 }

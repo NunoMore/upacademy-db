@@ -18,7 +18,7 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 	protected E e;
 	
 	@Inject
-	private Service<E> service;	
+	protected Service<E> service;	
 	
 	public void create(){
 		service.create(e);

@@ -13,6 +13,7 @@ import org.apache.shiro.SecurityUtils;
 
 import personsAndAcademies.authentication.Logout;
 import personsAndAcademies.model.User;
+import personsAndAcademies.service.AcademyService;
 
 @Named("currentUserBean")
 @SessionScoped
@@ -76,6 +77,18 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 			} else{
 				defineGrowl("Passoword antiga está incorreta.", "", "changePass");
 			}
+		}
+		
+		@Inject
+		private AcademyService acadRepo;
+		
+		@Override
+		public void update(){
+			if (e.getAcademy()!=null) {
+				e.setLanguageProgramming(acadRepo.readName(e.getAcademy()).getProgrammingLanguage());
+			}
+			service.update(e);
+			defineGrowl("Success!", "Entity was updated!", "update");
 		}
 	
 		

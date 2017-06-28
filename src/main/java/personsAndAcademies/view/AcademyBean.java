@@ -15,5 +15,6 @@ public class AcademyBean extends EntityBean<Academy> {
 		e=new Academy();
 	}
 	
+	
 
 }
