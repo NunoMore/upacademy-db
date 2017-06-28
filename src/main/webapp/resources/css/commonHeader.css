@@ -4,8 +4,17 @@ h1 {
 
 .logo{
 	height: 50px;
-	
 }
+
+.logoDiv{
+	float: left;
+}
+
+.loginDiv{
+	float: right;
+	padding-right: 10px;
+}
+
 
 
 /* dropdowns... */
@@ -60,9 +69,7 @@ h1 {
 
 /* ... */
 
-#logOutLink{
-	color: blue;
-}
+
 
 #usernameHeader{
 	color: white;
@@ -74,14 +81,14 @@ h1 {
 
 .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>li>a:hover,
 	.navbar-inverse .navbar-nav>li>a:focus {
-	background-color: #4A4A4A
+	background-color: #000080;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a,
 	.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,
 	.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,
 	.navbar-inverse .navbar-nav>.open>a:focus {
-	background-color: #4A4A4A
+	background-color: #000080;
 }
 
 .dropdown-menu {
@@ -113,12 +120,12 @@ h1 {
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #999999
+	color: #D1D1D1
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus
 	{
-	color: #FFFFFF
+	color: #D1D1D1
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a,

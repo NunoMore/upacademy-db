@@ -9,7 +9,7 @@
 		<header id="header_bar"
 			class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 			role="banner">
-			<div class="container">
+			<div class="">
 				<DIV class="col-md-2">
 					<a href="https://www.upacademy.pt/"><IMG
 						src="/UPACADEMY_DB/resources/images/logo.jpg" class="logo" /></a>
@@ -60,7 +60,7 @@
 						</ul>
 					</nav>
 				</div>
-				<DIV class="col-md-3">
+				<DIV class=" loginDiv">
 					<nav>
 
 						<!-- tentar meter isto do lado direito mais a direita -->
@@ -69,7 +69,7 @@
 							<li><a id="usernameHeader"
 								href="/UPACADEMY_DB/Persons/myProfileMenu.xhtml">#{currentUserBean.e.username}</a></li>
 							<li><h:form>
-									<h:commandLink style="padding:15px; float: left" value="Logout"
+									<h:commandLink  id="logoutLink" style="padding:15px; float: left" value="Logout"
 										action="#{logout.submit}" />
 								</h:form></li>
 							<p:graphicImage styleClass="img-circle" id="img"
