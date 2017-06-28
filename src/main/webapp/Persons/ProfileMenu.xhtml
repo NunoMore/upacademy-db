@@ -72,13 +72,13 @@
 						<p:outputLabel value="Informações" />
 
 						<h:outputText value="Facebook" />
-						<h:link value="#{tableView.selectedUser.facebookLink}" />
+						<a href="#{tableView.selectedUser.facebookLink}" target="_blank">#{tableView.selectedUser.facebookLink}</a>
 
 						<h:outputText value="LinkedIn" />
-						<h:link value="#{tableView.selectedUser.linkedInLink}" />
+						<a href="#{tableView.selectedUser.linkedInLink}"  target="_blank">#{tableView.selectedUser.linkedInLink}</a>
 
 						<h:outputText value="Git" />
-						<h:link value="#{tableView.selectedUser.gitHubLink}" />
+						<a href="#{tableView.selectedUser.gitHubLink}" target="_blank" >#{tableView.selectedUser.gitHubLink}</a>
 
 						<h:outputText value="Curso Academico" />
 						<h:outputText value="#{tableView.selectedUser.academicCourse}" />
@@ -87,7 +87,9 @@
 						<h:outputText value="#{tableView.selectedUser.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<h:outputText rendered="#{tableView.selectedUser.curriculum == null}" value="Utilizador não fez upload do seu curriculum."/>
+						<h:outputText
+							rendered="#{tableView.selectedUser.curriculum == null}"
+							value="Utilizador não fez upload do seu curriculum." />
 						<h:link rendered="#{tableView.selectedUser.curriculum != null}">
 							<a href="resources/Uploads#{tableView.selectedUser.curriculum}"
 								target="_blank">Download</a>

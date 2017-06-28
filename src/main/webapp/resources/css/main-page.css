@@ -1,4 +1,4 @@
 .img-circle{
-	
+	border: solid black 2px;
     border-radius: 50%;
 }

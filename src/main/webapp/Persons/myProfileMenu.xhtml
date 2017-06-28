@@ -11,27 +11,23 @@
 
 
 	<ui:define name="display">
-
-		<p:tooltip />
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
 		<p:growl id="msg" />
-		<p:growl for="changePass" autoUpdate="true"/>
+		<p:growl for="changePass" autoUpdate="true" />
 
 		<h:form id="myProfile" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-2 center">
 					<!-- Panelgrid with photo -->
 					<p:panelGrid id="ProfileCol">
-						<f:facet name="header">
-							<p:graphicImage styleClass="img-circle"
-								name="Uploads#{currentUserBean.e.photo}"
-								rendered="#{currentUserBean.e.photo != null}"
-								style="width:100px;" />
-							<p:graphicImage styleClass="img-circle"
-								name="images/defaultUser.png"
-								rendered="#{currentUserBean.e.photo == null}"
-								style="width:100px;" />
-						</f:facet>
+						<h:graphicImage styleClass="img-circle"
+							name="Uploads#{currentUserBean.e.photo}"
+							rendered="#{currentUserBean.e.photo != null}"
+							style="width:100px;" />
+						<h:graphicImage styleClass="img-circle"
+							name="images/defaultUser.png"
+							rendered="#{currentUserBean.e.photo == null}"
+							style="width:100px;" />
 					</p:panelGrid>
 					<br />
 					<p:commandButton id="saveBtn" value="Guardar"
@@ -92,31 +88,30 @@
 						<p:outputLabel value="Informacoes" />
 
 						<h:outputText value="Facebook" />
-						<p:inputText value="#{currentUserBean.e.facebookLink}" />
+						<p:inputText style="width:400px" value="#{currentUserBean.e.facebookLink}" />
 
 						<h:outputText value="LinkedIn" />
-						<p:inputText value="#{currentUserBean.e.linkedInLink}" />
+						<p:inputText style="width:400px" value="#{currentUserBean.e.linkedInLink}" />
 
 						<h:outputText value="Git" />
-						<p:inputText value="#{currentUserBean.e.gitHubLink}" />
+						<p:inputText style="width:400px" value="#{currentUserBean.e.gitHubLink}" />
 
 						<h:outputText value="Curso Academico" />
-						<p:inputText value="#{currentUserBean.e.academicCourse}" />
+						<p:inputText style="width:400px" value="#{currentUserBean.e.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
-						<p:inputText value="#{currentUserBean.e.workPlace}" />
+						<p:inputText style="width:400px" value="#{currentUserBean.e.workPlace}" />
 
 						<h:outputText value="Curriculo" />
-						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
-							label="Selecionar" uploadLabel="Upload"
+						<p:fileUpload style="width:400px" mode="advanced"
+							cancelLabel="Cancelar" label="Selecionar" uploadLabel="Upload"
 							fileUploadListener="#{uploadBean.uploadCurriculum}"
 							allowTypes="/(\.|\/)(pdf|doc|docx)$/i" />
 
 						<h:outputText value="Foto" />
-						<p:fileUpload mode="advanced" cancelLabel="Cancelar"
-							label="Selecionar" uploadLabel="Upload"
-							fileUploadListener="#{uploadBean.uploadImg}"
-							update=":myProfile:ProfileCol" sizeLimit="4000000"
+						<p:fileUpload style="width:400px" mode="advanced"
+							cancelLabel="Cancelar" label="Selecionar" uploadLabel="Upload"
+							fileUploadListener="#{uploadBean.uploadImg}" sizeLimit="4000000"
 							allowTypes="/(\.|\/)(gif|jpe?g|png)$/i" />
 
 					</p:panelGrid>
@@ -137,14 +132,16 @@
 						<span />
 
 						<h:outputText value="Password Antiga" />
-						<h:inputSecret id="oldPAss" value="#{currentUserBean.oldPass}" />
+						<p:password id="oldPAss" value="#{currentUserBean.oldPass}"
+							required="true" feedback="true" />
 
 						<h:outputText value="Password Nova" />
-						<h:inputSecret id="newPAss" value="#{currentUserBean.newPass}" />
+						<p:password id="newPAss" value="#{currentUserBean.newPass}"
+							required="true" feedback="true" />
 
 					</p:panelGrid>
 					<p:commandButton id="oldNewPassBtn" value="Alterar"
-						action="#{currentUserBean.changePass()}"/>
+						action="#{currentUserBean.changePass()}" />
 
 				</div>
 			</div>
