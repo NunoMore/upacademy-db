@@ -16,42 +16,43 @@
 	<ui:define name="display">
 		<p:tooltip />
 
-		<p:growl for="create" showDetail="true" autoUpdate="true" />
+		<p:growl for="registar" showDetail="true" autoUpdate="true" />
 
 			<!-- vai se ter o username como sendo o email -->
 
 			<o:importConstants type="personsAndAcademies.authentication.Role" />
 
 			<h2>Criar novo utilizador</h2>
+			
 			<h:form id="register">
-				<h:panelGrid columns="3">
-					<h:outputLabel for="username" value="Username:" />
-					<h:inputText id="username" value="#{register.user.username}"
+				<p:panelGrid columns="2">
+					<p:outputLabel for="username" value="Username:" />
+					<p:inputText id="username" value="#{register.user.username}"
 						required="true">
 						<f:ajax event="blur" render="m_username" />
-					</h:inputText>
-					<h:message id="m_username" for="username" />
+					</p:inputText>
 
-					<h:outputLabel for="password" value="Password:" />
-					<h:inputSecret id="password" value="#{register.user.password}"
-						required="true">
+
+					<p:outputLabel for="password" value="Password:" />
+					<p:inputText id="password" value="#{register.user.password}"
+						required="true" type="password">
 						<f:ajax event="blur" render="m_password" />
-					</h:inputSecret>
-					<h:message id="m_password" for="password" />
+					</p:inputText>
 
-					<h:outputLabel for="roles" value="Roles:" />
-					<h:selectOneListbox value="#{register.user.roles}">
+
+					<p:outputLabel value="Roles:" />
+					<p:selectOneListbox value="#{register.user.roles}">
 						<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
 						<f:selectItem itemLabel="USER" itemValue="USER" />
-					</h:selectOneListbox>
+					</p:selectOneListbox>
 
-
-					<h:panelGroup />
-					<h:commandButton value="Criar" action="#{register.submit}">
+						
+					</p:panelGrid>
+					<br/>
+					<p:commandButton value="Criar" action="#{register.submit}">
 						<f:ajax execute="@form" render="@form" />
-					</h:commandButton>
-					<h:messages globalOnly="true" layout="table" />
-				</h:panelGrid>
+					</p:commandButton>
+
 			</h:form>
 	</ui:define>
 
