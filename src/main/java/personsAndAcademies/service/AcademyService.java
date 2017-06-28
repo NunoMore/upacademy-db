@@ -8,5 +8,7 @@ import personsAndAcademies.model.Academy;
 @Named("academyService")
 @RequestScoped
 public class AcademyService extends Service<Academy> {
-
+	public Academy findByName(String name) {
+		return academyRepo.findByName(name);
+	}
 }

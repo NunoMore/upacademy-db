@@ -73,8 +73,8 @@
 							pt:data-tooltip="Campo Obrigatorio" required="true"
 							requiredMessage="Email inválido!" />
 
-						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{currentUserBean.e.academy}">
+						<h:outputText rendered="#{not currentUserBean.admin}" value="Academia" />
+						<p:selectOneMenu rendered="#{not currentUserBean.admin}" value="#{currentUserBean.e.academy.name}">
 							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
 								noSelectionOption="true" />
 							<f:selectItems value="#{academyBean.readAll()}" />

@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
+import personsAndAcademies.authentication.Role;
 import personsAndAcademies.model.User;
 
 @Named("currentUserBean")
@@ -51,6 +52,10 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 			} else {
 				return "/WEB-INF/layouts/commonHeaderUser.xhtml";
 			}
+		}
+		
+		public boolean isAdmin() {
+			return e.getRoles() == Role.ADMIN;
 		}
 	
 		

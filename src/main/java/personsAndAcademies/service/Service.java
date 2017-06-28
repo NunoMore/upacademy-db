@@ -24,13 +24,13 @@ public abstract class Service<E extends Entities> {
 	private Repository<E> repo;
 	
 	@Inject
-	private AcademyRepository academyRepo;
+	protected AcademyRepository academyRepo;
 	
 	@Inject
-	private AcademyTypeRepository academyTypeRepo;
+	protected AcademyTypeRepository academyTypeRepo;
 
 	@Inject
-	private UserRepository userRepo;
+	protected UserRepository userRepo;
 	
 	public void create(E e){
 		repo.create(e);

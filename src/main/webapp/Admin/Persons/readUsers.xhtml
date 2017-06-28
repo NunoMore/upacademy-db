@@ -42,15 +42,10 @@
 						</p:column>
 
 						<p:column style="text-align: center" headerText="Academia"
-							filterBy="#{user.academy}" sortBy="#{user.academy}"
+							filterBy="#{user.academy.name}" sortBy="#{user.academy.name}"
 							filterMatchMode="exact">
-							<p:outputLabel value="#{user.academy}" />
+							<p:outputLabel value="#{user.academy.name}" />
 						</p:column>
-
-						<!-- <p:column style="text-align: center" headerText="Tecnologia"
-							filterBy="" sortBy="" filterMatchMode="exact">
-							<p:outputLabel value="#{user.academy}" />
-						</p:column> -->
 					</p:dataTable>
 					<br />
 					<h:commandLink style="float:left;">
@@ -80,11 +75,12 @@
 						<h:inputText value="#{tableView.selectedUser.name}" />
 
 						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{tableView.selectedUser.academy}">
-							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{academyBean.readAll()}" />
+						<p:selectOneMenu converter="#{academyConverter}" value="#{tableView.selectedUser.academy}">
+							<f:selectItem itemLabel="Selecionar Academia" itemValue="" />
+							<f:selectItems var="academy" value="#{academyBean.readAll()}" itemLabel="#{academy.name}"  itemValue="#{academy.ID}" />
 						</p:selectOneMenu>
+						
+
 
 						<h:outputText value="Data de Nascimento" />
 						<p:calendar value="#{tableView.selectedUser.dateOfBirth}"
@@ -144,5 +140,7 @@
 				</h:form>
 			</div>
 		</div>
+		
+								<p:messages autoUpdate="true" showSummary="true" />
 	</ui:define>
 </ui:composition>

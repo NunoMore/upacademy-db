@@ -44,7 +44,7 @@
 				</p:column>
 
 				<p:column style="text-align: center" headerText="Academia"
-					filterBy="#{user.academy}" sortBy="#{user.academy}"
+					filterBy="#{user.academy.name}" sortBy="#{user.academy.name}"
 					filterMatchMode="exact">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('usersTable').filter()"
@@ -54,7 +54,7 @@
 							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
 					</f:facet>
-					<h:outputText value="#{user.academy}" />
+					<h:outputText value="#{user.academy.name}" />
 				</p:column>
 
 				<p:column style="width:50px;text-align: center">

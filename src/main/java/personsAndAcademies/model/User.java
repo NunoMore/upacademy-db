@@ -1,35 +1,40 @@
 package personsAndAcademies.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import personsAndAcademies.authentication.Role;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(
-        name = "User.find",
-        query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password"),
-    @NamedQuery(
-        name = "User.list",
-        query = "SELECT u FROM User u")
+	@NamedQuery(
+			name = "User.find",
+			query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password"),
+	@NamedQuery(
+			name = "User.list",
+			query = "SELECT u FROM User u")
 })
 public class User extends Entities{
 
-	
-    @NotNull
-    @Column(unique = true)
-    private String username;
 
-    @NotNull
-    private String password;
+	@NotNull
+	@Column(unique = true)
+	private String username;
+
+	@NotNull
+	private String password;
 
 	private String name;
 
@@ -37,7 +42,6 @@ public class User extends Entities{
 	private String academicCourse;
 	private String gender;
 	private String photo;
-	private String academy;
 	private String numTelephone;
 	private String email;
 	private String facebookLink;
@@ -46,9 +50,12 @@ public class User extends Entities{
 	private String workPlace;
 	private String curriculum;
 
-    
-    @Enumerated(EnumType.STRING)
-    private Role roles;
+
+	@Enumerated(EnumType.STRING)
+	private Role roles;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Academy academy;
 
 	public String getUsername() {
 		return username;
@@ -148,14 +155,6 @@ public class User extends Entities{
 		this.photo = photo;
 	}
 
-	public String getAcademy() {
-		return academy;
-	}
-
-	public void setAcademy(String academy) {
-		this.academy = academy;
-	}
-
 	public String getNumTelephone() {
 		return numTelephone;
 	}
@@ -212,5 +211,21 @@ public class User extends Entities{
 		this.curriculum = curriculum;
 	}
 
-	
+	public Academy getAcademy() {
+		return academy;
+	}
+
+	public void setAcademy(Academy academy) {
+		this.academy = academy;
+	}
+
+	//	public List<Academy> getAcademies() {
+	//		return academies;
+	//	}
+	//
+	//	public void setAcademies(List<Academy> academies) {
+	//		this.academies = academies;
+	//	}
+
+
 }
