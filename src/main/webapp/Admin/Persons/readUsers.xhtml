@@ -46,11 +46,13 @@
 							filterMatchMode="exact">
 							<p:outputLabel value="#{user.academy}" />
 						</p:column>
+						
+						<p:column style="text-align: center" headerText="Academia"
+							filterBy="#{user.languageProgramming}" sortBy="#{user.languageProgramming}"
+							filterMatchMode="exact">
+							<p:outputLabel value="#{user.languageProgramming}" />
+						</p:column>
 
-						<!-- <p:column style="text-align: center" headerText="Tecnologia"
-							filterBy="" sortBy="" filterMatchMode="exact">
-							<p:outputLabel value="#{user.academy}" />
-						</p:column> -->
 					</p:dataTable>
 					<br />
 					<h:commandLink style="float:left;">

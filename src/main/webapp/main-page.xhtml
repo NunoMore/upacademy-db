@@ -54,6 +54,19 @@
 					</f:facet>
 					<h:outputText value="#{user.academy}" />
 				</p:column>
+				
+				<p:column style="text-align: center" headerText="Linguagem de Programação"
+					filterBy="#{user.languageProgramming}" sortBy="#{user.languageProgramming}"
+					filterMatchMode="exact">
+					<f:facet name="filter">
+						<p:selectOneMenu onchange="PF('usersTable').filter()"
+							style="width:150px;">
+							<f:selectItem itemValue="" noSelectionOption="true" />
+							<f:selectItems value="#{academyTypeBean.readAll()}" />
+						</p:selectOneMenu>
+					</f:facet>
+					<h:outputText value="#{user.languageProgramming}" />
+				</p:column>
 
 				<p:column style="width:50px;text-align: center">
 					<p:commandButton action="#{tableView.fillSelectedUser(user)}"
