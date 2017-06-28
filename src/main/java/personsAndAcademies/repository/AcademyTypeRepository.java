@@ -3,7 +3,6 @@ package personsAndAcademies.repository;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,14 +29,10 @@ public class AcademyTypeRepository extends Repository<AcademyType>{
 		em.remove(academyType);
 	}
 	
-	
 	@SuppressWarnings("unchecked")
 	public List<String> readLanguages(){
 		Query query = em.createQuery("Select language from AcademyType language");
 		return (List<String>) query.getResultList();
-		
 	}
 	
 }
-	
-
