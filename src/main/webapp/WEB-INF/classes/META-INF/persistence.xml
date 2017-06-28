@@ -12,7 +12,6 @@
      	<property name="hibernate.show_sql" value="true" />
         <property name="hibernate.format_sql" value="true" />
         <property name="hibernate.use_sql_comments" value="true" />
-        <property name="javax.persistence.sql-load-script-source" value="standartTypes.sql" />
         <property name="javax.persistence.sql-load-script-source" value="user.sql" />
      </properties>
    </persistence-unit>
