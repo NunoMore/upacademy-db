@@ -12,19 +12,18 @@
 	#{currentUserBean.initCurrentUser()}
 			
 		<h:form id="formTable">
-			<p:dataTable id="consultAll" var="user"
-				value="#{userBean.readAll()}" widgetVar="usersTable"
-				multiViewState="true" rows="10" paginator="true"
+			<p:dataTable id="consultAll" var="user" value="#{userBean.readAll()}"
+				widgetVar="usersTable" multiViewState="true" rows="100"
+				paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="100" rowKey="#{user.ID}"
+				rowKey="#{user.ID}"
 				emptyMessage="Não existem utilizadores a mostrar"
 				filteredValue="#{tableView.filteredUsers}">
 
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Pesquisa" />
-						<p:inputText id="globalFilter"
-							onkeyup="PF('usersTable').filter()" />
+						<p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()" />
 					</p:outputPanel>
 				</f:facet>
 
@@ -49,8 +48,7 @@
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('usersTable').filter()"
 							style="width:150px;">
-							<f:selectItem itemValue=""
-								noSelectionOption="true" />
+							<f:selectItem itemValue="" noSelectionOption="true" />
 							<f:selectItems value="#{academyBean.readAll()}" />
 						</p:selectOneMenu>
 					</f:facet>
