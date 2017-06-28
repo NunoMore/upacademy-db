@@ -32,7 +32,7 @@ public class Login extends GrowlBean{
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : HOME_URL);
         }
         catch (AuthenticationException e) {
-            defineGrowl("Unknown user, please try again", "", "login");
+            defineGrowl("Dados inseridos invalidos. Tente novamente", "", "login");
             e.printStackTrace(); // TODO: logger.
         }
     }

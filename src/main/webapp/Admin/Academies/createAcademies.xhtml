@@ -21,7 +21,7 @@
 
 					<p:outputLabel value="Nome" />
 					<p:inputText value="#{academyBean.e.name}" required="true"
-						pt:data-tooltip="Campo Obrigatorio" />
+						pt:data-tooltip="Campo Obrigatorio" requiredMessage="Nome Invalido"/>
 
 					<p:outputLabel for="german" value="Data Inicio" />
 					<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
