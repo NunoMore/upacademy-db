@@ -15,6 +15,7 @@
 		<p:tooltip />
 		<p:growl for="uploads" showDetail="true" autoUpdate="true" />
 		<p:growl id="msg" />
+		<p:growl for="changePass" autoUpdate="true"/>
 
 		<h:form id="myProfile" enctype="multipart/form-data">
 			<div class="row">
@@ -39,7 +40,8 @@
 
 				<div class="col-md-4">
 
-					<p:panelGrid id="EditColVital" columns="2" columnClasses="column1, column2">
+					<p:panelGrid id="EditColVital" columns="2"
+						columnClasses="column1, column2">
 
 						<p:outputLabel value="Dados" />
 						<p:outputLabel value="Informacoes" />
@@ -122,6 +124,30 @@
 				</div>
 			</div>
 
+		</h:form>
+
+		<br />
+		<br />
+		<h:form>
+			<div class="row">
+				<div class="col-md-7">
+					<p:panelGrid columns="2" columnClasses="column1, column2">
+
+						<p:outputLabel value="Alteração de Password" />
+						<span />
+
+						<h:outputText value="Password Antiga" />
+						<h:inputSecret id="oldPAss" value="#{currentUserBean.oldPass}" />
+
+						<h:outputText value="Password Nova" />
+						<h:inputSecret id="newPAss" value="#{currentUserBean.newPass}" />
+
+					</p:panelGrid>
+					<p:commandButton id="oldNewPassBtn" value="Alterar"
+						action="#{currentUserBean.changePass()}"/>
+
+				</div>
+			</div>
 		</h:form>
 	</ui:define>
 </ui:composition>

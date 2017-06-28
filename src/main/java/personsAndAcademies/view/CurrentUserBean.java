@@ -6,10 +6,12 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 
+import personsAndAcademies.authentication.Logout;
 import personsAndAcademies.model.User;
 
 @Named("currentUserBean")
@@ -18,6 +20,11 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private File tempFolder;
+		private String oldPass;
+		private String newPass;
+		
+		@Inject
+		private Logout logout;
 		
 		@PostConstruct
 		public void createFolder() throws IOException{
@@ -52,6 +59,24 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 				return "/WEB-INF/layouts/commonHeaderUser.xhtml";
 			}
 		}
+		
+		public void changePass(){
+			if (oldPass.equals(e.getPassword())) {
+				e.setPassword(newPass);
+				update();
+				defineGrowl("Password alterada com sucesso!", " ", "changePass");
+				
+				try {
+					logout.submit();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			} else{
+				defineGrowl("Passoword antiga está incorreta.", "", "changePass");
+			}
+		}
 	
 		
 //		private void uploadPhotos() throws IOException{ //nao testado
@@ -72,5 +97,21 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 
 		public void setTempFolder(File tempFolder) {
 			this.tempFolder = tempFolder;
+		}
+
+		public String getOldPass() {
+			return oldPass;
+		}
+
+		public void setOldPass(String oldPass) {
+			this.oldPass = oldPass;
+		}
+
+		public String getNewPass() {
+			return newPass;
+		}
+
+		public void setNewPass(String newPass) {
+			this.newPass = newPass;
 		}	
 	}
