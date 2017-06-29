@@ -51,7 +51,8 @@
 
 						<p:column headerText="Linguagem de Programação">
 							<h:outputText value="#{academy.programmingLanguage}" />
-							<h:outputText value="#{academyType.laguage}" rendered="#{academy.programmingLanguage}==null" />
+							<h:outputText value="#{academyType.laguage}"
+								rendered="#{academy.programmingLanguage}==null" />
 						</p:column>
 					</p:dataTable>
 					<br />
@@ -112,10 +113,11 @@
 					</p:commandButton>
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sim" type="button"
+						<p:commandButton value="Sim" 
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{academyBean.remove(tableView.selectedAcademy)}" />
-						<p:commandButton value="Nao" type="button"
+							action="#{academyBean.remove(tableView.selectedAcademy)}"
+							update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
+						<p:commandButton value="Nao" 
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>
 				</h:form>

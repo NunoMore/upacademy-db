@@ -46,10 +46,11 @@
 							filterMatchMode="exact">
 							<p:outputLabel value="#{user.academy}" />
 						</p:column>
-						
-						<p:column style="text-align: center" headerText="Linguagem de Programação"
-							filterBy="#{user.languageProgramming}" sortBy="#{user.languageProgramming}"
-							filterMatchMode="exact">
+
+						<p:column style="text-align: center"
+							headerText="Linguagem de Programação"
+							filterBy="#{user.languageProgramming}"
+							sortBy="#{user.languageProgramming}" filterMatchMode="exact">
 							<p:outputLabel value="#{user.languageProgramming}" />
 						</p:column>
 
@@ -137,10 +138,11 @@
 					</p:commandButton>
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sim" type="button"
+						<p:commandButton value="Sim" 
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							action="#{userBean.remove(tableView.selectedUser)}" />
-						<p:commandButton value="Nao" type="button"
+							action="#{userBean.remove(tableView.selectedUser)}"
+							update=":formEditUser:editUser,formDisplayUsers:users" />
+						<p:commandButton value="Nao" 
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>
 				</h:form>

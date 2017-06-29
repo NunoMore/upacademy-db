@@ -50,7 +50,7 @@
 						<h:outputText value="Data de Nascimento" />
 						<h:outputText value="#{tableView.selectedUser.dateOfBirth}" />
 
-						<h:outputText value="Genero" />
+						<h:outputText value="Género" />
 						<h:outputText value="#{tableView.selectedUser.gender}" />
 
 						<h:outputText value="Numero Telefone" />
@@ -75,12 +75,12 @@
 						<a href="#{tableView.selectedUser.facebookLink}" target="_blank">#{tableView.selectedUser.facebookLink}</a>
 
 						<h:outputText value="LinkedIn" />
-						<a href="#{tableView.selectedUser.linkedInLink}"  target="_blank">#{tableView.selectedUser.linkedInLink}</a>
+						<a href="#{tableView.selectedUser.linkedInLink}" target="_blank">#{tableView.selectedUser.linkedInLink}</a>
 
 						<h:outputText value="Git" />
-						<a href="#{tableView.selectedUser.gitHubLink}" target="_blank" >#{tableView.selectedUser.gitHubLink}</a>
+						<a href="#{tableView.selectedUser.gitHubLink}" target="_blank">#{tableView.selectedUser.gitHubLink}</a>
 
-						<h:outputText value="Curso Academico" />
+						<h:outputText value="Curso Académico" />
 						<h:outputText value="#{tableView.selectedUser.academicCourse}" />
 
 						<h:outputText value="Local de Trabalho" />
@@ -89,10 +89,10 @@
 						<h:outputText value="Curriculo" />
 						<h:outputText
 							rendered="#{tableView.selectedUser.curriculum == null}"
-							value="Utilizador não fez upload do seu curriculum." />
+							value="Utilizador não fez upload do seu curriculo." />
 						<h:link rendered="#{tableView.selectedUser.curriculum != null}">
-							<a href="/UPACADEMY_DB/resources/Uploads#{tableView.selectedUser.curriculum}"
-							
+							<a
+								href="/UPACADEMY_DB/resources/Uploads#{tableView.selectedUser.curriculum}"
 								target="_blank">Download</a>
 						</h:link>
 
