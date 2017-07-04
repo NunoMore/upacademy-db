@@ -51,8 +51,6 @@
 
 						<p:column headerText="Linguagem de Programação">
 							<h:outputText value="#{academy.programmingLanguage}" />
-							<h:outputText value="#{academyType.laguage}"
-								rendered="#{academy.programmingLanguage}==null" />
 						</p:column>
 					</p:dataTable>
 					<br />
@@ -92,11 +90,12 @@
 
 						<p:outputLabel for="programmingLanguage" value="Linguagem " />
 						<p:selectOneMenu id="programmingLanguage"
+							converter="academyTypeConverter"
 							value="#{tableView.selectedAcademy.programmingLanguage}"
 							style="width:150px">
 							<f:selectItem itemLabel="Select language" itemValue=""
 								noSelectionOption="true" />
-							<f:selectItems value="#{academyTypeService.allLanguages()}" />
+							<f:selectItems value="#{academyTypeBean.readAll()}" />
 						</p:selectOneMenu>
 					</p:panelGrid>
 
@@ -113,12 +112,12 @@
 					</p:commandButton>
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sim" 
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+						<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+							icon="ui-icon-check"
 							action="#{academyBean.remove(tableView.selectedAcademy)}"
 							update=":formEditAcademy:editAcademy,formDisplayAcademy:academy" />
-						<p:commandButton value="Nao" 
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						<p:commandButton value="Nao" styleClass="ui-confirmdialog-no"
+							icon="ui-icon-close" />
 					</p:confirmDialog>
 				</h:form>
 			</div>

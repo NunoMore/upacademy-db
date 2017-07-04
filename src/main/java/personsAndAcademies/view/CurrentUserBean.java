@@ -13,7 +13,6 @@ import org.apache.shiro.SecurityUtils;
 
 import personsAndAcademies.authentication.Logout;
 import personsAndAcademies.model.User;
-import personsAndAcademies.service.AcademyService;
 
 @Named("currentUserBean")
 @SessionScoped
@@ -29,20 +28,16 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		private Logout logout;
 		
 		@PostConstruct
-		public void createFolder() throws IOException{
+		public void createFolder(){
 			e=new User();
-			try { // mudar pasta de destino
-				String filename = "Uploads"; //nao mudar este nome!!!!!!!!!!!
-				String workingDirectory = System.getProperty("jboss.server.data.dir"); //vai buscar directory mas com um extra "/data"
-				workingDirectory = workingDirectory.replace(File.separator+"data", ""); //elimina "/data" - substitui por vazio
-				String absolutPath = workingDirectory + File.separator + "deployments"+ File.separator + "UPACADEMY_DB.war"+ File.separator + "resources" + File.separator + filename; //ATENCAO!!!!!!! perguntar ao luis se isto vai funcionaar XD
-				tempFolder = new File(absolutPath);
-				tempFolder.mkdir();
-				
-				
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
+			
+			// mudar pasta de destino
+			String filename = "Uploads"; //nao mudar este nome!!!!!!!!!!!
+			String workingDirectory = System.getProperty("jboss.server.data.dir"); //vai buscar directory mas com um extra "/data"
+			workingDirectory = workingDirectory.replace(File.separator+"data", ""); //elimina "/data" - substitui por vazio
+			String absolutPath = workingDirectory + File.separator + "deployments"+ File.separator + "UPACADEMY_DB.war"+ File.separator + "resources" + File.separator + filename; //ATENCAO!!!!!!! perguntar ao luis se isto vai funcionaar XD
+			tempFolder = new File(absolutPath);
+			tempFolder.mkdir();
 		}
 		
 		public void initCurrentUser(){
@@ -81,17 +76,17 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 			}
 		}
 		
-		@Inject
-		private AcademyService acadRepo;
-		
-		@Override
-		public void update(){
-			if (e.getAcademy()!=null) {
-				e.setLanguageProgramming(acadRepo.readName(e.getAcademy()).getProgrammingLanguage());
-			}
-			service.update(e);
-			defineGrowl("Success!", "Entity was updated!", "update");
-		}
+//		@Inject
+//		private AcademyService acadRepo;
+//		
+//		@Override
+//		public void update(){
+//			if (e.getAcademy()!=null) {
+////				e.setLanguageProgramming(acadRepo.readName(e.getAcademy()).getProgrammingLanguage());
+//			}
+//			service.update(e);
+//			defineGrowl("Success!", "Entity was updated!", "update");
+//		}
 	
 		
 //		private void uploadPhotos() throws IOException{ //nao testado

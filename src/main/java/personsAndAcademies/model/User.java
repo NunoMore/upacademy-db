@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
@@ -30,15 +33,21 @@ public class User extends Entities{
 
     @NotNull
     private String password;
-
+    
 	private String name;
-
 	private Date dateOfBirth;
 	private String academicCourse;
 	private String gender;
 	private String photo;
-	private String academy;
-	private String languageProgramming;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ACADEMY_ID")
+	private Academy academy;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ACADEMY_TYPE_ID")
+	private AcademyType languageProgramming;
+	
 	private String numTelephone;
 	private String email;
 	private String facebookLink;
@@ -149,11 +158,11 @@ public class User extends Entities{
 		this.photo = photo;
 	}
 
-	public String getAcademy() {
+	public Academy getAcademy() {
 		return academy;
 	}
 
-	public void setAcademy(String academy) {
+	public void setAcademy(Academy academy) {
 		this.academy = academy;
 	}
 
@@ -213,18 +222,12 @@ public class User extends Entities{
 		this.curriculum = curriculum;
 	}
 	
-	public String getLanguageProgramming() {
+	public AcademyType getLanguageProgramming() {
 		return languageProgramming;
 	}
 
-	public void setLanguageProgramming(String languageProgramming) {
+	public void setLanguageProgramming(AcademyType languageProgramming) {
 		this.languageProgramming = languageProgramming;
 	}
-	
-
-	
-
-
-
 	
 }

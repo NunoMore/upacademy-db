@@ -7,13 +7,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
-
 
 import personsAndAcademies.model.User;
 
 @Named("userRepo")
-@Transactional
 @ApplicationScoped
 public class UserRepository extends Repository<User>{
 	

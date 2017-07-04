@@ -12,43 +12,40 @@
 
 
 	<ui:define name="display">
-	
+
 		<p:growl for="create" showDetail="true" autoUpdate="true" />
 		<h:form id="formCreateAcademies">
 
 
-				<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
+			<p:panelGrid id="createAcademyGrid" columns="2" cellpadding="5">
 
-					<p:outputLabel value="Nome" />
-					<p:inputText value="#{academyBean.e.name}" required="true"
-						pt:data-tooltip="Campo Obrigatorio" requiredMessage="Nome Invalido"/>
-						
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{academyBean.e.name}" required="true"
+					pt:data-tooltip="Campo Obrigatorio" requiredMessage="Nome Invalido" />
 
-					<p:outputLabel for="german" value="Data Inicio" />
-					<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
-						navigator="true" pattern="yyyy-MMM-dd" />
 
-					<p:outputLabel value="Descricao" />
-					<p:inputTextarea value="#{academyBean.e.description}" rows="6"
-						cols="33" />
+				<p:outputLabel for="german" value="Data Inicio" />
+				<p:calendar id="german" value="#{academyBean.e.date}" locate="pt"
+					navigator="true" pattern="yyyy-MMM-dd" />
 
-					<p:outputLabel for="language" value="Linguagem: " />
-					<p:selectOneMenu id="language" value="#{academyBean.e.programmingLanguage}"
-						style="width:150px">
+				<p:outputLabel value="Descricao" />
+				<p:inputTextarea value="#{academyBean.e.description}" rows="6"
+					cols="33" />
 
-						<f:selectItem itemLabel="Select language" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{academyTypeService.allLanguages()}" />
-					</p:selectOneMenu>
+				<p:outputLabel for="language" value="Linguagem: " />
+				<p:selectOneMenu id="language" converter="academyTypeConverter"
+					value="#{academyBean.e.programmingLanguage}" style="width:150px">
 
-<!-- 					<p:outputLabel value="Outra Linguagem" /> -->
-<!-- 					<p:inputText  value="#{academyTypeBean.e.language}" /> -->
+					<f:selectItem itemLabel="Select language" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{academyTypeBean.readAll()}" var="type"
+						itemLabel="#{type.language}" itemValue="#{type.ID}" />
+				</p:selectOneMenu>
 
-					<p:commandButton styleClass="btn btn-submit"
-								action="#{academyBean.create()}" value="Create!" />
-				</p:panelGrid>
+			</p:panelGrid>
 
-								
+			<p:commandButton action="#{academyBean.create()}" value="Create!" />
+
 		</h:form>
 	</ui:define>
 </ui:composition>

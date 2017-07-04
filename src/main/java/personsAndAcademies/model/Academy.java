@@ -2,8 +2,13 @@ package personsAndAcademies.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -13,8 +18,14 @@ public class Academy extends Entities implements Serializable {
 	private String name;
 	private String description;
 	private Date date;
-	private String programmingLanguage;
+	private String pdf;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ACADEMY_TYPE_ID")
+	private AcademyType programmingLanguage;
 
+	@OneToMany(mappedBy = "academy")
+	private List<User> users;
 	
 	public String getName() {
 		return name;
@@ -35,15 +46,27 @@ public class Academy extends Entities implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getProgrammingLanguage() {
+	public AcademyType getProgrammingLanguage() {
 		return programmingLanguage;
 	}
-	public void setProgrammingLanguage(String programmingLanguage) {
+	public void setProgrammingLanguage(AcademyType programmingLanguage) {
 		this.programmingLanguage = programmingLanguage;
 	}
 	@Override
 	public String toString(){
-		return "" + name+ ""; 
+		return name; 
+	}
+	public String getPdf() {
+		return pdf;
+	}
+	public void setPdf(String pdf) {
+		this.pdf = pdf;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
