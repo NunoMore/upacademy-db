@@ -12,6 +12,7 @@ import personsAndAcademies.model.AcademyType;
 @FacesConverter("academyTypeConverter")
 public class AcademyTypeConverter implements Converter{
 	
+	@Override
 	public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if(value != null && value.trim().length() > 0) {
             try {
@@ -25,7 +26,8 @@ public class AcademyTypeConverter implements Converter{
             return null;
         }
     }
- 
+	
+	@Override
     public String getAsString(FacesContext fc, UIComponent uic, Object object) {
         if(object != null) {
             return String.valueOf(((AcademyType) object).getID());

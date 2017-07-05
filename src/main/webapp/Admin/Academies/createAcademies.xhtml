@@ -10,7 +10,6 @@
 	template="/WEB-INF/layouts/commonLayout.xhtml">
 
 
-
 	<ui:define name="display">
 
 		<p:growl for="create" showDetail="true" autoUpdate="true" />
@@ -36,10 +35,8 @@
 				<p:selectOneMenu id="language" converter="academyTypeConverter"
 					value="#{academyBean.e.programmingLanguage}" style="width:150px">
 
-					<f:selectItem itemLabel="Select language" itemValue=""
-						noSelectionOption="true" />
 					<f:selectItems value="#{academyTypeBean.readAll()}" var="type"
-						itemLabel="#{type.language}" itemValue="#{type.ID}" />
+						itemValue="#{type}" itemLabel="#{type.language}" />
 				</p:selectOneMenu>
 
 			</p:panelGrid>
