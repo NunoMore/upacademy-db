@@ -17,8 +17,10 @@ public class AcademyTypeConverter implements Converter{
 	public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if(value != null && value.trim().length() > 0) {
             try {
-                AcademyTypeBean service = (AcademyTypeBean) FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get("academyTypeBean");
-                return service.readAll().get(Integer.parseInt(value));
+            	AcademyTypeBean service = (AcademyTypeBean) fc.getELContext().getELResolver().getValue(fc.getELContext(), null,"academyTypeBean");
+//                AcademyTypeBean service = (AcademyTypeBean) fc.getExternalContext().getRequestMap().get("academyTypeBean");
+            	AcademyType a = service.readAll().get(Integer.parseInt(value));
+                return a;
             } catch(NumberFormatException e) {
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
             }
@@ -31,7 +33,7 @@ public class AcademyTypeConverter implements Converter{
 	@Override
     public String getAsString(FacesContext fc, UIComponent uic, Object object) {
         if(object != null) {
-            return String.valueOf(((AcademyType) object).getID());
+            return String.valueOf(((AcademyType) object).getID()-1);
         }
         else {
             return null;

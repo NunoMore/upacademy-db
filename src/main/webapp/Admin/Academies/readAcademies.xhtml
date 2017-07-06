@@ -93,9 +93,8 @@
 							converter="academyTypeConverter"
 							value="#{tableView.selectedAcademy.programmingLanguage}"
 							style="width:150px">
-							<f:selectItem itemLabel="Select language" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{academyTypeBean.readAll()}" />
+							<f:selectItems value="#{academyTypeBean.readAll()}" var="type"
+						itemValue="#{type}" itemLabel="#{type.language}" />
 						</p:selectOneMenu>
 					</p:panelGrid>
 
