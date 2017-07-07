@@ -1,8 +1,11 @@
 package personsAndAcademies.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,7 +25,10 @@ import personsAndAcademies.authentication.Role;
         query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password"),
     @NamedQuery(
         name = "User.list",
-        query = "SELECT u FROM User u")
+        query = "SELECT u FROM User u"),
+    @NamedQuery(
+            name = "User.role",
+            query = "SELECT u FROM User u WHERE u.roles =  :roles")
 })
 public class User extends Entities{
 
@@ -52,9 +58,11 @@ public class User extends Entities{
 	private String workPlace;
 	private String curriculum;
 
-    
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private Role roles;
+    @CollectionTable(name = "UserRoles", joinColumns = { @JoinColumn(name = "userId") })
+    @Column(name = "role")
+    private List<Role> roles;
 
 	public String getUsername() {
 		return username;
@@ -70,14 +78,6 @@ public class User extends Entities{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Role getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Role roles) {
-		this.roles = roles;
 	}
 
 	@Override
@@ -218,4 +218,12 @@ public class User extends Entities{
 		this.curriculum = curriculum;
 	}
 	
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 }

@@ -23,11 +23,11 @@ public class Login extends GrowlBean{
 
     private String username;
     private String password;
-    private boolean remember;
+
 
     public void submit() throws IOException {
         try {
-            SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password, remember));
+            SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
             SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(Faces.getRequest());
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : HOME_URL);
         }
@@ -53,12 +53,5 @@ public class Login extends GrowlBean{
 		this.password = password;
 	}
 
-	public boolean isRemember() {
-		return remember;
-	}
-
-	public void setRemember(boolean remember) {
-		this.remember = remember;
-	}
 
 }
