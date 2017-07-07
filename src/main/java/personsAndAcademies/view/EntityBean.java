@@ -16,6 +16,7 @@ import personsAndAcademies.service.Service;
 public class EntityBean<E extends Entities> extends GrowlBean{
 	
 	protected E e;
+	protected List<E> list; 
 	
 	@Inject
 	protected Service<E> service;	
@@ -74,6 +75,12 @@ public class EntityBean<E extends Entities> extends GrowlBean{
 
 	public void setE(E e) {
 		this.e = e;
+	}
+	public List<E> getList() {
+		return list;
+	}
+	public void setList(List<E> list) {
+		this.list = list;
 	}
 
 }

@@ -56,16 +56,16 @@
 				</p:column>
 				
 				<p:column style="text-align: center" headerText="Linguagem de Programação"
-					filterBy="#{user.languageProgramming}" sortBy="#{user.languageProgramming}"
+					filterBy="#{user.academy.programmingLanguage.language}" sortBy="#{user.academy.programmingLanguage.language}"
 					filterMatchMode="exact">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('usersTable').filter()"
 							style="width:150px;">
 							<f:selectItem itemValue="" noSelectionOption="true" />
-							<f:selectItems value="#{academyTypeBean.readAll()}" />
+							<f:selectItems value="#{academyTypeBean.list}" />
 						</p:selectOneMenu>
 					</f:facet>
-					<h:outputText value="#{user.languageProgramming}" />
+					<h:outputText value="#{user.academy.programmingLanguage.language}" />
 				</p:column>
 
 				<p:column style="width:50px;text-align: center">

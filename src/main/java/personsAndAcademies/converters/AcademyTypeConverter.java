@@ -1,4 +1,4 @@
-package personsAndAcademies.service;
+package personsAndAcademies.converters;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -18,11 +18,10 @@ public class AcademyTypeConverter implements Converter{
         if(value != null && value.trim().length() > 0) {
             try {
             	AcademyTypeBean service = (AcademyTypeBean) fc.getELContext().getELResolver().getValue(fc.getELContext(), null,"academyTypeBean");
-//                AcademyTypeBean service = (AcademyTypeBean) fc.getExternalContext().getRequestMap().get("academyTypeBean");
-            	AcademyType a = service.readAll().get(Integer.parseInt(value));
+            	AcademyType a = service.getList().get(Integer.parseInt(value));
                 return a;
             } catch(NumberFormatException e) {
-                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid academyType."));
             }
         }
         else {

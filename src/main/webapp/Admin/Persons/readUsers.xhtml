@@ -49,9 +49,11 @@
 
 						<p:column style="text-align: center"
 							headerText="Linguagem de Programação"
-							filterBy="#{user.languageProgramming}"
-							sortBy="#{user.languageProgramming}" filterMatchMode="exact">
-							<p:outputLabel value="#{user.languageProgramming}" />
+							filterBy="#{user.academy.programmingLanguage.language}"
+							sortBy="#{user.academy.programmingLanguage.language}"
+							filterMatchMode="exact">
+							<p:outputLabel
+								value="#{user.academy.programmingLanguage.language}" />
 						</p:column>
 
 					</p:dataTable>
@@ -83,10 +85,13 @@
 						<h:inputText value="#{tableView.selectedUser.name}" />
 
 						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{tableView.selectedUser.academy}">
-							<f:selectItem itemLabel="Selecionar Academia" itemValue=""
+						<p:selectOneMenu value="#{tableView.selectedUser.academy}"
+							converter="academyConverter">
+							<f:selectItem
+								itemLabel="#{tableView.selectedUser.academy.name}"
 								noSelectionOption="true" />
-							<f:selectItems value="#{academyBean.readAll()}" />
+							<f:selectItems value="#{academyBean.list}" var="academy"
+								itemValue="#{academy}" itemLabel="#{academy.name}" />
 						</p:selectOneMenu>
 
 						<h:outputText value="Data de Nascimento" />
@@ -138,12 +143,12 @@
 					</p:commandButton>
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sim" 
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+						<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+							icon="ui-icon-check"
 							action="#{userBean.remove(tableView.selectedUser)}"
 							update=":formEditUser:editUser,formDisplayUsers:users" />
-						<p:commandButton value="Nao" 
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						<p:commandButton value="Nao" styleClass="ui-confirmdialog-no"
+							icon="ui-icon-close" />
 					</p:confirmDialog>
 				</h:form>
 			</div>

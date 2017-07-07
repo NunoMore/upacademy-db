@@ -40,13 +40,9 @@ public class User extends Entities{
 	private String gender;
 	private String photo;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="ACADEMY_ID")
 	private Academy academy;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ACADEMY_TYPE_ID")
-	private AcademyType languageProgramming;
 	
 	private String numTelephone;
 	private String email;
@@ -220,14 +216,6 @@ public class User extends Entities{
 
 	public void setCurriculum(String curriculum) {
 		this.curriculum = curriculum;
-	}
-	
-	public AcademyType getLanguageProgramming() {
-		return languageProgramming;
-	}
-
-	public void setLanguageProgramming(AcademyType languageProgramming) {
-		this.languageProgramming = languageProgramming;
 	}
 	
 }

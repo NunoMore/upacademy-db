@@ -15,9 +15,6 @@ public class AcademyType extends Entities implements Serializable  {
 	@OneToMany(mappedBy = "programmingLanguage")
 	private List<Academy> academies;
 	
-	@OneToMany(mappedBy = "languageProgramming")
-	private List<User> users;
-	
 	public String getLanguage() {
 		return language;
 	}

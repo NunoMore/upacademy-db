@@ -20,7 +20,7 @@ public class Academy extends Entities implements Serializable {
 	private Date date;
 	private String pdf;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="ACADEMY_TYPE_ID")
 	private AcademyType programmingLanguage;
 

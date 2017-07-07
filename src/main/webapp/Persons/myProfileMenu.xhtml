@@ -70,12 +70,13 @@
 						<p:inputText value="#{currentUserBean.e.email}"
 							pt:data-tooltip="Campo Obrigatorio" required="true"
 							requiredMessage="Email inválido!" />
-
-						<h:outputText value="Academia" />
-						<p:selectOneMenu value="#{currentUserBean.e.academy}">
-							<f:selectItem itemLabel="Selecionar Academia"
-								noSelectionOption="true" />
-							<f:selectItems value="#{academyBean.readAll()}" />
+							
+							<h:outputText value="Academia" />
+						<p:selectOneMenu value="#{currentUserBean.e.academy}"
+							converter="academyConverter">
+							<f:selectItem itemLabel="#{currentUserBean.e.academy.name}" noSelectionOption="true"/>
+							<f:selectItems value="#{academyBean.list}" var="academy"
+								itemValue="#{academy}" itemLabel="#{academy.name}" />
 						</p:selectOneMenu>
 
 					</p:panelGrid>

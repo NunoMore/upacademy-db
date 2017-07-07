@@ -50,7 +50,7 @@
 						</p:column>
 
 						<p:column headerText="Linguagem de Programação">
-							<h:outputText value="#{academy.programmingLanguage}" />
+							<h:outputText value="#{academy.programmingLanguage.language}" />
 						</p:column>
 					</p:dataTable>
 					<br />
@@ -93,8 +93,9 @@
 							converter="academyTypeConverter"
 							value="#{tableView.selectedAcademy.programmingLanguage}"
 							style="width:150px">
-							<f:selectItems value="#{academyTypeBean.readAll()}" var="type"
-						itemValue="#{type}" itemLabel="#{type.language}" />
+							<f:selectItem itemLabel="#{tableView.selectedAcademy.programmingLanguage.language}" noSelectionOption="true"/>
+							<f:selectItems value="#{academyTypeBean.list}" var="type"
+								itemValue="#{type}" itemLabel="#{type.language}" />
 						</p:selectOneMenu>
 					</p:panelGrid>
 

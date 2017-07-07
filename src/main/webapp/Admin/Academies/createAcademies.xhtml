@@ -35,13 +35,13 @@
 				<p:selectOneMenu id="language" converter="academyTypeConverter"
 					value="#{academyBean.e.programmingLanguage}" style="width:150px">
 
-					<f:selectItems value="#{academyTypeBean.readAll()}" var="type"
+					<f:selectItems value="#{academyTypeBean.list}" var="type"
 						itemValue="#{type}" itemLabel="#{type.language}" />
 				</p:selectOneMenu>
 
 			</p:panelGrid>
 
-			<p:commandButton action="readAcademies" value="Create!" />
+			<p:commandButton action="#{academyBean.create()}" value="Create!" />
 
 		</h:form>
 	</ui:define>
