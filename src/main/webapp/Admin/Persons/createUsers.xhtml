@@ -18,42 +18,43 @@
 
 		<p:growl for="registar" showDetail="true" autoUpdate="true" />
 
-			<!-- vai se ter o username como sendo o email -->
+		<!-- vai se ter o username como sendo o email -->
 
-			<o:importConstants type="personsAndAcademies.authentication.Role" />
+		<o:importConstants type="personsAndAcademies.authentication.Role" />
 
-			<h2>Criar novo utilizador</h2>
-			
-			<h:form id="register">
-				<p:panelGrid columns="2">
-					<p:outputLabel for="username" value="Username:" />
-					<p:inputText id="username" value="#{register.user.username}"
-						required="true">
-						<f:ajax event="blur" render="m_username" />
-					</p:inputText>
+		<h2>Criar novo utilizador</h2>
 
-
-					<p:outputLabel for="password" value="Password:" />
-					<p:inputText id="password" value="#{register.user.password}"
-						required="true" type="password">
-						<f:ajax event="blur" render="m_password" />
-					</p:inputText>
+		<h:form id="register">
+			<p:panelGrid columns="2">
+				<p:outputLabel for="username" value="Username:" />
+				<p:inputText id="username" value="#{register.user.username}"
+					required="true">
+					<f:ajax event="blur" render="m_username" />
+				</p:inputText>
 
 
-					<p:outputLabel value="Roles:" />
-					<p:selectOneListbox value="#{register.user.roles}">
-						<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
-						<f:selectItem itemLabel="USER" itemValue="USER" />
-					</p:selectOneListbox>
+				<p:outputLabel for="password" value="Password:" />
+				<p:inputText id="password" value="#{register.user.password}"
+					required="true" type="password">
+					<f:ajax event="blur" render="m_password" />
+				</p:inputText>
 
-						
-					</p:panelGrid>
-					<br/>
-					<p:commandButton value="Criar" action="#{register.submit}">
-						<f:ajax execute="@form" render="@form" />
-					</p:commandButton>
 
-			</h:form>
+				<h:outputLabel for="roles" value="Roles:" />
+				<h:selectManyCheckbox id="roles" value="#{register.user.roles}"
+					required="true" layout="pageDirection"
+					converter="omnifaces.GenericEnumConverter">
+					<f:selectItems value="#{Role}" />
+				</h:selectManyCheckbox>
+
+
+			</p:panelGrid>
+			<br />
+			<p:commandButton value="Criar" action="#{register.submit}">
+				<f:ajax execute="@form" render="@form" />
+			</p:commandButton>
+
+		</h:form>
 	</ui:define>
 
 

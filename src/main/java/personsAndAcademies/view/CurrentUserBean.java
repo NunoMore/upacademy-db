@@ -12,6 +12,7 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 import personsAndAcademies.authentication.Logout;
+import personsAndAcademies.authentication.Role;
 import personsAndAcademies.model.User;
 import personsAndAcademies.service.AcademyService;
 
@@ -52,9 +53,7 @@ public class CurrentUserBean extends EntityBean<User> implements Serializable {
 		}
 		
 		public String role(){
-			String user = (String)SecurityUtils.getSubject().getPrincipal();
-			//String user = (String)SecurityUtils.getSubject().checkRole(roleIdentifier);
-			if (user.equals("admin")) {
+			if (SecurityUtils.getSubject().hasRole(Role.ADMIN.toString())) {
 				return "/WEB-INF/layouts/commonHeaderAdmin.xhtml";
 			} else {
 				return "/WEB-INF/layouts/commonHeaderUser.xhtml";
